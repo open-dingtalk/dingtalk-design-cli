@@ -1,0 +1,37 @@
+{
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "parserOptions": {
+    "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module" // Allows for the use of imports
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended" // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+  ],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "no-console": [1, { "allow": ["warn", "error"] }],
+    "valid-jsdoc": [0],
+    "indent": ["error", 2],
+    "semi": "error",
+    "@typescript-eslint/type-annotation-spacing": "error",
+    "@typescript-eslint/no-unsafe-assignment": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "quotes": ["error", "single"],
+    "@typescript-eslint/ban-ts-comment": 0,
+    "comma-dangle": [
+      1,
+      {
+          "arrays": "ignore",
+          "objects": "always",
+          "imports": "always",
+          "exports": "ignore",
+          "functions": "ignore"
+      }
+    ],
+    "comma-spacing": 1,
+    "object-curly-spacing": ["error", "always"]
+  }
+}

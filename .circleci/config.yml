@@ -1,0 +1,66 @@
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/project/dd
+  docker:
+    - image: circleci/node:lts-browsers
+
+aliases:
+  - &restore-yarn-cache
+    key: v2-dd-cli-{{ checksum "yarn.lock" }}
+
+  - &save-yarn-cache
+    key: v2-dd-cli-{{ checksum "yarn.lock" }}
+    paths:
+      - node_modules/
+      - ~/.cache
+
+workflow_filters: &filters
+  filters:
+    branches:
+      ignore:
+      - docs
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore-yarn-cache
+      - run: yarn --network-timeout 600000
+      - save_cache: *save-yarn-cache
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/dd
+            - .cache/Cypress
+
+  dd-cli:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn run build
+      - run: yarn test -p cli
+      
+  dd-generator:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn test -p generator
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - install:
+          <<: *filters
+      - dd-cli:
+          <<: *filters
+          requires:
+            - install
+      - dd-generator:
+          <<: *filters
+          requires:
+            - install

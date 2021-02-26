@@ -1,0 +1,18 @@
+{
+  "compact": false,
+  "retainLines": true,
+  "minified": false,
+  "inputSourceMap": false,
+  "sourceMaps": false,
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./generators"],
+        "alias": {
+          "@common": "./generators/common"
+        }
+      }
+    ]
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "changelog": {
+    "repo": "lou1swu/DingDevCLI2",
+    "labels": {
+      "feat": ":rocket: New Feature",
+      "bug": ":bug: Bug Fix",
+      "doc": ":memo: Documentation",
+      "internal": ":house: Internal",
+      "breaking": ":boom: Breaking Change"
+    },
+    "cacheDir": ".changelog"
+  },
+  "npmClient": "yarn",
+  "version": "0.2.0",
+  "useWorkspaces": true
+}
