@@ -1,5 +1,4 @@
-# DingTalk App CLI [![Build Status](https://circleci.com/gh/circleci/circleci-docs/tree/teesloane-patch-5.svg?style=shield)](https://circleci.com/gh/open-dingtalk/dingtalk-app-cli/tree/develop)  [![Windows Build status](https://ci.appveyor.com/api/projects/status/rkpafdpdwie9lqx0/branch/dev?svg=true)](https://ci.appveyor.com/project/open-dingtalk/dingtalk-app-cli/branch/develop) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-
+# DingTalk App CLI [![Build Status](https://circleci.com/gh/open-dingtalk/dingtalk-app-cli.svg?style=shield)](https://circleci.com/gh/open-dingtalk/dingtalk-app-cli/tree/develop)  [![Windows Build status](https://ci.appveyor.com/api/projects/status/rkpafdpdwie9lqx0/branch/dev?svg=true)](https://ci.appveyor.com/project/open-dingtalk/dingtalk-app-cli/branch/develop) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 > DingTalk App CLI is the Standard Tooling for DingTalk Application Development.
 
