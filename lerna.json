@@ -3,7 +3,7 @@
     "packages/*"
   ],
   "changelog": {
-    "repo": "lou1swu/DingDevCLI2",
+    "repo": "open-dingtalk/dingtalk-fe-cli",
     "labels": {
       "feat": ":rocket: New Feature",
       "bug": ":bug: Bug Fix",
@@ -14,6 +14,6 @@
     "cacheDir": ".changelog"
   },
   "npmClient": "yarn",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "useWorkspaces": true
 }
