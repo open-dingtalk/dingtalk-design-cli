@@ -51,7 +51,7 @@ Then you will be prompted to pick a template:
 ![https://i01.lw.aliimg.com/media/lALPDetfTSxLX5_NA8bNBdI_1490_966.png](https://i01.lw.aliimg.com/media/lALPDetfTSxLX5_NA8bNBdI_1490_966.png)
 
 Finally you will be prompted to pick a language:
-![https://i01.lw.aliimg.com/media/lALPDfmVR79odWTNA8bNBdI_1490_966.png](https://i01.lw.aliimg.com/media/lALPDfmVR79odWTNA8bNBdI_1490_966.png)
+![https://i01.lw.aliimg.com/media/lALPDf0ixn4LtVbNBKTNBbQ_1460_1188.png](https://i01.lw.aliimg.com/media/lALPDf0ixn4LtVbNBKTNBbQ_1460_1188.png)
 
 And you have completed all the initial steps, after installing dependencies, 
 the new project will be initialated to the directory - `myapp`.
