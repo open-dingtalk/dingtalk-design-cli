@@ -25,7 +25,7 @@ describe('Init', ()=>{
       .run(path.join(__dirname, '../generators/app'))
       .cd(absoluteTestDir)
       .withArguments([outDir])        // Mock the arguments
-      .withPrompts({ appType: 'plugin', template: 'default', language: 'ts', 'skip-install': true, })   // Mock the prompt answers
+      .withPrompts({ appType: 'plugin', template: 'default', language: 'typescript', 'skip-install': true, })   // Mock the prompt answers
       .withLocalConfig({ lang: 'en', }) // Mock the local config
       .then(function() {
         // assert something about the generator
@@ -38,7 +38,7 @@ describe('Init', ()=>{
       .run(path.join(__dirname, '../generators/app'))
       .cd(absoluteTestDir)
       .withArguments([outDir])        // Mock the arguments
-      .withPrompts({ appType: 'plugin', template: 'default', language: 'js', 'skip-install': true, })   // Mock the prompt answers
+      .withPrompts({ appType: 'plugin', template: 'default', language: 'javascript', 'skip-install': true, })   // Mock the prompt answers
       .withLocalConfig({ lang: 'en', }) // Mock the local config
       .then(function() {
         // assert something about the generator
