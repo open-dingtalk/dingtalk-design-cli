@@ -1,6 +1,6 @@
-# DingTalk App CLI [![Build Status](https://circleci.com/gh/open-dingtalk/dingtalk-app-cli.svg?style=shield)](https://circleci.com/gh/open-dingtalk/dingtalk-app-cli/tree/develop)  [![Windows Build status](https://ci.appveyor.com/api/projects/status/hi7uu5rnbs4x9vas/branch/develop?svg=true)](https://ci.appveyor.com/project/lou1swu/dingtalk-app-cli/branch/develop) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+# DingTalk Fe CLI [![Build Status](https://circleci.com/gh/open-dingtalk/dingtalk-fe-cli.svg?style=shield)](https://circleci.com/gh/open-dingtalk/dingtalk-fe-cli/tree/develop)  [![Windows Build status](https://ci.appveyor.com/api/projects/status/hi7uu5rnbs4x9vas/branch/develop?svg=true)](https://ci.appveyor.com/project/lou1swu/dingtalk-fe-cli/branch/develop) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-> DingTalk App CLI is the Standard Tooling for DingTalk Application Development.
+> DingTalk Fe CLI is the Standard Tooling for DingTalk Application Development.
 
 <br/>
 
@@ -13,11 +13,11 @@ DingDing Cli requires Node.js version 12.15.x or above. You can manage multiple 
 To install the new package, use one of the following commands
 
 ```bash
-npm install dingtalk-app-cli -g
+npm install dingtalk-fe-cli -g
 
 # OR
 
-yarn global add dingtalk-app-cli
+yarn global add dingtalk-fe-cli
 ```
 
 After installation, you will have access to the `dd` binary in your command line. You can verify that it is properly installed by simply running `dd`, which should present you with a help message listing all available commands.
@@ -28,12 +28,12 @@ dd --version
 ```
 
 ### Upgrading
-To upgrade the global DingTalk App CLI package, you need to run:
+To upgrade the global DingTalk Fe CLI package, you need to run:
 ```bash
-npm update -g dingtalk-app-cli
+npm update -g dingtalk-fe-cli
 
 # OR
-yarn global upgrade --latest dingtalk-app-cli
+yarn global upgrade --latest dingtalk-fe-cli
 ```
 ## Quick Start
 <br/>
@@ -77,4 +77,4 @@ Options:
 ```
 ## License
 
-[MIT](https://github.com/open-dingtalk/dingtalk-app-cli/blob/develop/LICENSE)
+[MIT](https://github.com/open-dingtalk/dingtalk-fe-cli/blob/develop/LICENSE)

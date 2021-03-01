@@ -1,7 +1,7 @@
 {
-  "name": "dingtalk-app-cli",
+  "name": "dingtalk-fe-cli",
   "version": "0.2.0",
-  "description": "dingtalk app cli",
+  "description": "dingtalk fe cli",
   "keywords": [
     "DingTalk",
     "DingDing",
