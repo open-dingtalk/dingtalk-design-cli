@@ -1,3 +1,3 @@
 export default {
-  generator: '@ali/dd-worktabplugin',
+  generatorNamespace: 'dd-application:app',
 };

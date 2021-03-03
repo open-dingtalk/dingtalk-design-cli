@@ -36,7 +36,7 @@ program
     };
     // @ts-ignore
     env.lookup(function () {
-      env.run(`${config.generator} ${outDir || ''}`, {
+      env.run(`${config.generatorNamespace} ${outDir || ''}`, {
         appType: options['appType'],
         template: options['template'],
         language: options['language'],
