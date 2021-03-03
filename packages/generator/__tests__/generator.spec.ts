@@ -11,13 +11,28 @@ describe('Init', ()=>{
     if(!fs.existsSync(absoluteTestDir)) {
       fs.mkdirSync(absoluteTestDir);
     }
+    console.log(__dirname);
     process.chdir(__dirname);
   });
 
   afterEach(()=>{
-    fs.rmdirSync(absoluteTestDir, {
-      recursive: true,
-    });
+    try {
+      fs.rmdirSync(path.join(absoluteTestDir, outDir), {
+        recursive: true,
+      });
+    } catch(e) {
+      console.error(e);
+    }
+  });
+
+  afterAll(()=>{
+    try {
+      fs.rmdirSync(absoluteTestDir, {
+        recursive: true,
+      });
+    } catch(e) {
+      console.error(e);
+    }
   });
 
   test('plugin-default-ts', ()=>{
@@ -29,7 +44,7 @@ describe('Init', ()=>{
       .withLocalConfig({ lang: 'en', }) // Mock the local config
       .then(function() {
         // assert something about the generator
-        expect(fs.existsSync(path.join(__dirname, testDir, outDir))).toBe(true);
+        expect(fs.existsSync(path.join(absoluteTestDir, outDir))).toBe(true);
       });
   }, 50 * 1000);
 
@@ -42,7 +57,7 @@ describe('Init', ()=>{
       .withLocalConfig({ lang: 'en', }) // Mock the local config
       .then(function() {
         // assert something about the generator
-        expect(fs.existsSync(path.join(__dirname, testDir, outDir))).toBe(true);
+        expect(fs.existsSync(path.join(absoluteTestDir, outDir))).toBe(true);
       });
   }, 50 * 1000);
 });

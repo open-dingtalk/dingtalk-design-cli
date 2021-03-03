@@ -14,7 +14,6 @@ const timeInspector_1 = require("../utils/timeInspector");
 const errors_1 = require("../common/errors");
 const path = require("path");
 const logger_1 = require("../utils/logger");
-const copy_1 = require("../utils/copy");
 const simple_git_1 = require("simple-git");
 const config_1 = require("../common/config");
 const fs = require("fs");
@@ -206,7 +205,7 @@ module.exports = class CustomGenerator extends Generator {
             const demoPath = path.join(config_1.repoLocalRootPath, appType, template, language);
             if (fs.existsSync(demoPath)) {
                 try {
-                    yield copy_1.default(demoPath, targetDir);
+                    this.copyDestination(demoPath, targetDir);
                 }
                 catch (e) {
                     this.log(logger_1.error('Demo repo copy failed.' + JSON.stringify(e), true));
