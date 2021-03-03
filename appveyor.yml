@@ -10,6 +10,7 @@ test_script:
   - node --version
   - yarn --version
   - yarn run build
+  - set NODE_ENV=__DEBUG__
   - yarn test
 
 cache:

@@ -236,7 +236,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     const demoPath = path.join(repoLocalRootPath, appType, template, language);
     if(fs.existsSync(demoPath)) {
       try {
-        await copy(demoPath, targetDir);
+        this.copyDestination(demoPath, targetDir);
       } catch(e) {
         this.log(error('Demo repo copy failed.' + JSON.stringify(e), true));
         return this.env.error(new Error(ERROR_DEMO_COPY));
