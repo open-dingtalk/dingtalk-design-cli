@@ -5,3 +5,7 @@ export const ERROR_PM_NOT_FOUND = 'All PackageManager(yarn, pnpm, npm) no found,
 export const ERROR_DEMO_COPY = 'Demo repo copy failed. Please check if you have enough auth to operate the cwd, then use --force-update-repo to update the repo';
 
 export const ERROR_APP_TYPE_NOT_FOUND = 'The appType is not valid. Cannot find a repo path for this appType';
+
+export const ERROR_REPO_NOT_VALID = 'Demo repo is not valid.';
+
+export const ERROR_REPO_IS_EMPTY = 'Demo repo is empty.';

@@ -4,13 +4,15 @@ import {
   ERROR_REPO_NOT_FOUND,
   ERROR_DEMO_COPY,
   ERROR_APP_TYPE_NOT_FOUND,
+  ERROR_REPO_NOT_VALID,
+  ERROR_REPO_IS_EMPTY,
 } from '@common/errors';
 import * as path from 'path';
 import { error, done, debug, info, } from '../utils/logger';
-import copy from '../utils/copy';
 import simpleGit from 'simple-git';
-import { HUBS_CONFIG, repoLocalRootPath, } from '@common/config';
+import { HUBS_CONFIG, REPO_LOCAL_ROOT_PATH, DEFAULT_DIRECTORY_SEPERATOR,  } from '@common/config';
 import * as fs from 'fs';
+import isValidDirectory from '../utils/isValidRepoDirectory';
 
 const git = simpleGit();
 
@@ -95,13 +97,15 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       return this.env.error(new Error(ERROR_APP_TYPE_NOT_FOUND));
     }
 
-    const repoLocalPath = path.join(repoLocalRootPath, appType);
+    const repoLocalPath = path.join(REPO_LOCAL_ROOT_PATH, appType);
     if(fs.existsSync(repoLocalPath)) {
       try {
         const res = await git.cwd(repoLocalPath).pull();
         this.log(done(res.files.length > 0 ? 'Demo repo update success.' : 'Demo repo is already up-to-date', true));
       } catch(e) {
-        console.error(e.message);
+        if(e instanceof Error) {
+          console.error(e.message);
+        }
         this.log(error('Demo repo update fail.', true));
         return this.env.error(e);
       }
@@ -118,7 +122,9 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
         }, opts);
         this.log(done('Demo repo download success.', true));
       } catch(e) {
-        console.error(e.message);
+        if(e instanceof Error) {
+          console.error(e.message);
+        }
         this.log(error('Demo repo clone fail.', true));
         return this.env.error(e);
       }
@@ -126,17 +132,28 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     
     let templateList = [];
     try {
-      templateList = fs.readdirSync(repoLocalPath, {
+      const originTemplateList = fs.readdirSync(repoLocalPath, {
         withFileTypes: true,
       });
-      // filter file which is not seen
-      templateList = templateList.filter(v=>v.isDirectory() && !v.name.startsWith('.')).map(v=>({
-        name: v.name,
+      const sliceIdx = `${appType}${DEFAULT_DIRECTORY_SEPERATOR}`.length;
+      // filter file which is not seen,
+      // 1. get Directory and filter hidden files
+      // 2. get Directory which starts with appType
+      templateList = originTemplateList.filter(v=>v.isDirectory() && isValidDirectory(v.name, appType)).map(v=>({
+        name: v.name.slice(sliceIdx),
+        value: v.name,
       }));
-      debug(`templateList: ${JSON.stringify(templateList)}`);
+      debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
+
+      if(templateList.length ===0) {
+        this.log(error(`The directory name must start with ${appType}`, true));
+        throw ERROR_REPO_IS_EMPTY;
+      }
     } catch(e) {
-      console.error(e.message);
-      this.log(error('Demo repo is not valid.', true));
+      if(e instanceof Error) {
+        console.error(e.message);
+      }
+      this.log(error(ERROR_REPO_NOT_VALID, true));
       return this.env.error(e);
     }
 
@@ -167,7 +184,9 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       }));
       debug(`languageList: ${JSON.stringify(languageList)}`);
     } catch(e) {
-      console.error(e.message);
+      if(e instanceof Error) {
+        console.error(e.message);
+      }
       this.log(error('Demo repo is not valid.', true));
       return this.env.error(e);
     }
@@ -233,7 +252,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       return this.env.error(e);
     }
 
-    const demoPath = path.join(repoLocalRootPath, appType, template, language);
+    const demoPath = path.join(REPO_LOCAL_ROOT_PATH, appType, template, language);
     if(fs.existsSync(demoPath)) {
       try {
         this.copyDestination(demoPath, targetDir);

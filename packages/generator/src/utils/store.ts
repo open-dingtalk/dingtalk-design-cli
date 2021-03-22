@@ -1,7 +1,5 @@
-import * as os from 'os';
 import * as fs from 'fs';
-import * as path from 'path';
-import { rcPath, } from '@common/config';
+import { RC_PATH, } from '@common/config';
 
 export interface Options {
   // 存储地址
@@ -15,7 +13,7 @@ export interface Config {
   latestVersion: string;
 }
 
-const DEFAULT_STORE_PATH = rcPath;
+const DEFAULT_STORE_PATH = RC_PATH;
 
 export default class Store {
   storePath: string;

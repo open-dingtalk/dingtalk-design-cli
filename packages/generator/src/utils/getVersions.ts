@@ -1,7 +1,6 @@
 import Store from './store';
 import * as semver from 'semver';
 import getRemoteVersion from './getRemoteVersion';
-import { reset, } from 'chalk';
 
 const localStore = new Store();
 

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const config_1 = require("../common/config");
-const DEFAULT_STORE_PATH = config_1.rcPath;
+const DEFAULT_STORE_PATH = config_1.RC_PATH;
 class Store {
     constructor(opts) {
         this.storePath = opts && opts.storePath || DEFAULT_STORE_PATH;

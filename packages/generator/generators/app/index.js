@@ -17,6 +17,7 @@ const logger_1 = require("../utils/logger");
 const simple_git_1 = require("simple-git");
 const config_1 = require("../common/config");
 const fs = require("fs");
+const isValidRepoDirectory_1 = require("../utils/isValidRepoDirectory");
 const git = simple_git_1.default();
 module.exports = class CustomGenerator extends Generator {
     constructor(args, opts) {
@@ -66,14 +67,16 @@ module.exports = class CustomGenerator extends Generator {
                 this.log(logger_1.error(errors_1.ERROR_APP_TYPE_NOT_FOUND, true));
                 return this.env.error(new Error(errors_1.ERROR_APP_TYPE_NOT_FOUND));
             }
-            const repoLocalPath = path.join(config_1.repoLocalRootPath, appType);
+            const repoLocalPath = path.join(config_1.REPO_LOCAL_ROOT_PATH, appType);
             if (fs.existsSync(repoLocalPath)) {
                 try {
                     const res = yield git.cwd(repoLocalPath).pull();
                     this.log(logger_1.done(res.files.length > 0 ? 'Demo repo update success.' : 'Demo repo is already up-to-date', true));
                 }
                 catch (e) {
-                    console.error(e.message);
+                    if (e instanceof Error) {
+                        console.error(e.message);
+                    }
                     this.log(logger_1.error('Demo repo update fail.', true));
                     return this.env.error(e);
                 }
@@ -92,25 +95,37 @@ module.exports = class CustomGenerator extends Generator {
                     this.log(logger_1.done('Demo repo download success.', true));
                 }
                 catch (e) {
-                    console.error(e.message);
+                    if (e instanceof Error) {
+                        console.error(e.message);
+                    }
                     this.log(logger_1.error('Demo repo clone fail.', true));
                     return this.env.error(e);
                 }
             }
             let templateList = [];
             try {
-                templateList = fs.readdirSync(repoLocalPath, {
+                const originTemplateList = fs.readdirSync(repoLocalPath, {
                     withFileTypes: true });
 
-                // filter file which is not seen
-                templateList = templateList.filter(v => v.isDirectory() && !v.name.startsWith('.')).map(v => ({
-                    name: v.name }));
+                const sliceIdx = `${appType}${config_1.DEFAULT_DIRECTORY_SEPERATOR}`.length;
+                // filter file which is not seen,
+                // 1. get Directory and filter hidden files
+                // 2. get Directory which starts with appType
+                templateList = originTemplateList.filter(v => v.isDirectory() && isValidRepoDirectory_1.default(v.name, appType)).map(v => ({
+                    name: v.name.slice(sliceIdx),
+                    value: v.name }));
 
-                logger_1.debug(`templateList: ${JSON.stringify(templateList)}`);
+                logger_1.debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
+                if (templateList.length === 0) {
+                    this.log(logger_1.error(`The directory name must start with ${appType}`, true));
+                    throw errors_1.ERROR_REPO_IS_EMPTY;
+                }
             }
             catch (e) {
-                console.error(e.message);
-                this.log(logger_1.error('Demo repo is not valid.', true));
+                if (e instanceof Error) {
+                    console.error(e.message);
+                }
+                this.log(logger_1.error(errors_1.ERROR_REPO_NOT_VALID, true));
                 return this.env.error(e);
             }
             /**
@@ -140,7 +155,9 @@ module.exports = class CustomGenerator extends Generator {
                 logger_1.debug(`languageList: ${JSON.stringify(languageList)}`);
             }
             catch (e) {
-                console.error(e.message);
+                if (e instanceof Error) {
+                    console.error(e.message);
+                }
                 this.log(logger_1.error('Demo repo is not valid.', true));
                 return this.env.error(e);
             }
@@ -202,7 +219,7 @@ module.exports = class CustomGenerator extends Generator {
                 this.log(logger_1.error(e.toString(), true));
                 return this.env.error(e);
             }
-            const demoPath = path.join(config_1.repoLocalRootPath, appType, template, language);
+            const demoPath = path.join(config_1.REPO_LOCAL_ROOT_PATH, appType, template, language);
             if (fs.existsSync(demoPath)) {
                 try {
                     this.copyDestination(demoPath, targetDir);

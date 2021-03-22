@@ -19,7 +19,9 @@
     "build": "yarn clean && npm run build:types",
     "build:types": "tsc",
     "test": "jest",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "link:generator:global": "cd ../generator && npm link",
+    "link:generator:local": "npm run link:generator:global && npm link generator-dd-application"
   },
   "author": "lou1swu",
   "license": "MIT",

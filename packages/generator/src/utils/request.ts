@@ -1,5 +1,4 @@
-/* eslint-disable */
-import {Options} from 'request';
+import { Options, } from 'request';
 export default {
   get (uri: string, opts: Partial<Options>) {
     // lazy require
@@ -11,9 +10,9 @@ export default {
       resolveWithFullResponse: true,
       json: true,
       uri,
-      ...opts
+      ...opts,
     };
   
     return request(reqOpts);
-  }
+  },
 };

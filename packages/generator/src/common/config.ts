@@ -3,9 +3,12 @@ import * as path from 'path';
 import { APP_TYPE_ENUM, } from './constants'; 
 
 // 配置文件
-export const rcPath = path.join(os.homedir(), '.dd-cli-rc.json');
+export const RC_PATH = path.join(os.homedir(), '.dd-cli-rc.json');
 // 本地缓存
-export const repoLocalRootPath = path.join(os.homedir(), '.dd-demo-repo');
+export const REPO_LOCAL_ROOT_PATH = path.join(os.homedir(), '.dd-demo-repo');
+// 代码仓库目录名分隔符，合格的目录名格式: ${appType}${seperator}${desc}
+export const DEFAULT_DIRECTORY_SEPERATOR = '_';
+
 interface HUB {
   /**
    * 套件名称
