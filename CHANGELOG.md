@@ -1,4 +1,15 @@
 
+## 0.6.0 (2021-03-23)
+
+#### :bug: Bug Fix
+* `cli`, `generator`
+  * [#9](https://github.com/open-dingtalk/dingtalk-fe-cli/pull/9) fix(cli): add extra command preventing to be overrided by the system … ([@lou1swu](https://github.com/lou1swu))
+
+#### Committers: 1
+- louiswu ([@lou1swu](https://github.com/lou1swu))
+
+
+
 ## 0.5.0 (2021-03-03)
 
 #### :bug: Bug Fix
