@@ -83,15 +83,15 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
         name: 'appType',
         message: 'Choose a appType to create',
         choices: HUBS_CONFIG.map(v=>({
-          name: v.name,
+          name: v.name || v.key,
+          value: v.key,
         })),
-        default: HUBS_CONFIG[0].name,
-        store: true,
+        default: HUBS_CONFIG[0].key,
         when: !options.appType,
       },
     ]) as Answers;
 
-    const selectedHub = HUBS_CONFIG.find(v=>v.name === appType);
+    const selectedHub = HUBS_CONFIG.find(v=>v.key === appType);
     if(!selectedHub) {
       this.log(error(ERROR_APP_TYPE_NOT_FOUND, true));
       return this.env.error(new Error(ERROR_APP_TYPE_NOT_FOUND));
@@ -118,7 +118,9 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
           internal: 10 * 1000,
         };
         await timeInspector(async ()=>{
-          await git.clone(selectedHub.repoRemotePath, repoLocalPath);
+          await git.clone(selectedHub.repoRemotePath, repoLocalPath, {
+            '--branch': 'feature/multi-app-type-new',
+          });
         }, opts);
         this.log(done('Demo repo download success.', true));
       } catch(e) {

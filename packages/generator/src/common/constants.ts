@@ -1,11 +1,7 @@
 export enum APP_TYPE_ENUM {
-  PLUGIN = 'plugin'
+  PLUGIN = 'plugin',
+  MP = 'mp',
+  H5 = 'h5'
 }
-
-export const APP_TYPE_PRROMPT_LIST = [
-  {
-    name: APP_TYPE_ENUM.PLUGIN,
-  },
-];
 
 export const DEFAULT_APP_TYPE = APP_TYPE_ENUM.PLUGIN;
