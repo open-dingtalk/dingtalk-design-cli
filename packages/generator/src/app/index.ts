@@ -100,12 +100,16 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     const repoLocalPath = path.join(REPO_LOCAL_ROOT_PATH, appType);
     if(fs.existsSync(repoLocalPath)) {
       try {
-        const res = await git.cwd(repoLocalPath).pull();
+        const res = await git
+          .outputHandler((bin, stdout, stderr, args, )=>{
+            stdout.pipe(process.stdout);
+            stderr.pipe(process.stderr);
+          })
+          .env({ ...process.env, })
+          .cwd(repoLocalPath)
+          .pull();
         this.log(done(res.files.length > 0 ? 'Demo repo update success.' : 'Demo repo is already up-to-date', true));
       } catch(e) {
-        if(e instanceof Error) {
-          console.error(e.message);
-        }
         this.log(error('Demo repo update fail.', true));
         return this.env.error(e);
       }
@@ -118,15 +122,16 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
           internal: 10 * 1000,
         };
         await timeInspector(async ()=>{
-          await git.clone(selectedHub.repoRemotePath, repoLocalPath, {
-            '--branch': 'feature/multi-app-type-new',
-          });
+          await git
+            .outputHandler((bin, stdout, stderr, args, )=>{
+              stdout.pipe(process.stdout);
+              stderr.pipe(process.stderr);
+            })
+            .env({ ...process.env, })
+            .clone(selectedHub.repoRemotePath, repoLocalPath);
         }, opts);
         this.log(done('Demo repo download success.', true));
       } catch(e) {
-        if(e instanceof Error) {
-          console.error(e.message);
-        }
         this.log(error('Demo repo clone fail.', true));
         return this.env.error(e);
       }

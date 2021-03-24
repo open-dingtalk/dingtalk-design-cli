@@ -70,13 +70,17 @@ module.exports = class CustomGenerator extends Generator {
             const repoLocalPath = path.join(config_1.REPO_LOCAL_ROOT_PATH, appType);
             if (fs.existsSync(repoLocalPath)) {
                 try {
-                    const res = yield git.cwd(repoLocalPath).pull();
+                    const res = yield git.
+                    outputHandler((bin, stdout, stderr, args) => {
+                        stdout.pipe(process.stdout);
+                        stderr.pipe(process.stderr);
+                    }).
+                    env(Object.assign({}, process.env)).
+                    cwd(repoLocalPath).
+                    pull();
                     this.log(logger_1.done(res.files.length > 0 ? 'Demo repo update success.' : 'Demo repo is already up-to-date', true));
                 }
                 catch (e) {
-                    if (e instanceof Error) {
-                        console.error(e.message);
-                    }
                     this.log(logger_1.error('Demo repo update fail.', true));
                     return this.env.error(e);
                 }
@@ -90,16 +94,17 @@ module.exports = class CustomGenerator extends Generator {
                         internal: 10 * 1000 };
 
                     yield timeInspector_1.default(() => __awaiter(this, void 0, void 0, function* () {
-                        yield git.clone(selectedHub.repoRemotePath, repoLocalPath, {
-                            '--branch': 'feature/multi-app-type-new' });
-
+                        yield git.
+                        outputHandler((bin, stdout, stderr, args) => {
+                            stdout.pipe(process.stdout);
+                            stderr.pipe(process.stderr);
+                        }).
+                        env(Object.assign({}, process.env)).
+                        clone(selectedHub.repoRemotePath, repoLocalPath);
                     }), opts);
                     this.log(logger_1.done('Demo repo download success.', true));
                 }
                 catch (e) {
-                    if (e instanceof Error) {
-                        console.error(e.message);
-                    }
                     this.log(logger_1.error('Demo repo clone fail.', true));
                     return this.env.error(e);
                 }
