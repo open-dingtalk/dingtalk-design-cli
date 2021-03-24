@@ -1,6 +1,6 @@
 {
   "name": "dingtalk-fe-cli",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "dingtalk fe cli",
   "keywords": [
     "DingTalk",
@@ -11,7 +11,8 @@
   ],
   "main": "dist/bin/dd.js",
   "bin": {
-    "dd": "dist/bin/dd.js"
+    "dd": "dist/bin/dd.js",
+    "ddi": "dist/bin/dd.js"
   },
   "scripts": {
     "type-check": "tsc --noEmit",
