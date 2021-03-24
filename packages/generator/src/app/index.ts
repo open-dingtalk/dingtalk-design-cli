@@ -110,6 +110,9 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
           .pull();
         this.log(done(res.files.length > 0 ? 'Demo repo update success.' : 'Demo repo is already up-to-date', true));
       } catch(e) {
+        if(e instanceof Error) {
+          console.error(e);
+        }
         this.log(error('Demo repo update fail.', true));
         return this.env.error(e);
       }
@@ -132,6 +135,9 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
         }, opts);
         this.log(done('Demo repo download success.', true));
       } catch(e) {
+        if(e instanceof Error) {
+          console.error(e);
+        }
         this.log(error('Demo repo clone fail.', true));
         return this.env.error(e);
       }
