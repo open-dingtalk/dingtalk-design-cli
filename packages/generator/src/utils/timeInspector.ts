@@ -14,9 +14,9 @@ export default async (fn: () => Promise<any>, opts?: Partial<{
 }>): Promise<void> => {
   const {
     logger = console.log,
-    interval = 3* 1000,
+    interval = 3 * 1000,
     fetchingTips = 'fetching...',
-    timeout = 30* 1000,
+    timeout = 30 * 1000,
     timeoutTips = 'task timeout',
   } = opts || {};
 

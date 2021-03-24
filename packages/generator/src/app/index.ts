@@ -152,7 +152,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       }));
       debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
 
-      if(templateList.length ===0) {
+      if(templateList.length === 0) {
         this.log(error(`The directory name must start with ${appType}`, true));
         throw ERROR_REPO_IS_EMPTY;
       }
