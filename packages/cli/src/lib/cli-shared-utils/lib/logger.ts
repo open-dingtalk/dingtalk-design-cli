@@ -34,6 +34,11 @@ export const warn = (msg = '', tag = null): void => {
   console.warn(format(chalk.bgYellow.black(' WARN ') + (tag ? chalkTag(tag) : ''), chalk.yellow(msg)));
 };
 
+export const debug = (msg: string) => {
+  const txt = format(chalk.bgBlue.black(' DEBUG '), msg);
+  return process.env.NODE_ENV === '__DEBUG__' &&  console.log(txt);
+};
+
 export const error = (msg: string | Error, tag = null): void => {
   stopSpinner();
   console.error(format(chalk.bgRed(' ERROR ') + (tag ? chalkTag(tag) : ''), chalk.red(msg)));
