@@ -1,4 +1,19 @@
 
+## 0.7.0 (2021-03-24)
+
+#### :rocket: New Feature
+* `cli`, `generator`
+  * [#10](https://github.com/open-dingtalk/dingtalk-fe-cli/pull/10) Feature/multi app type ([@lou1swu](https://github.com/lou1swu))
+
+#### :bug: Bug Fix
+* `cli`, `generator`
+  * [#10](https://github.com/open-dingtalk/dingtalk-fe-cli/pull/10) Feature/multi app type ([@lou1swu](https://github.com/lou1swu))
+
+#### Committers: 1
+- louiswu ([@lou1swu](https://github.com/lou1swu))
+
+
+
 ## 0.6.0 (2021-03-23)
 
 #### :bug: Bug Fix
