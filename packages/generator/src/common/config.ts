@@ -3,16 +3,24 @@ import * as path from 'path';
 import { APP_TYPE_ENUM, } from './constants'; 
 
 // 配置文件
-export const rcPath = path.join(os.homedir(), '.dd-cli-rc.json');
+export const RC_PATH = path.join(os.homedir(), '.dd-cli-rc.json');
 // 本地缓存
-export const repoLocalRootPath = path.join(os.homedir(), '.dd-demo-repo');
+export const REPO_LOCAL_ROOT_PATH = path.join(os.homedir(), '.dd-demo-repo');
+// 代码仓库目录名分隔符，合格的目录名格式: ${appType}${seperator}${desc}
+export const DEFAULT_DIRECTORY_SEPERATOR = '_';
+
 interface HUB {
   /**
    * 套件名称
    * 用于问询环节以及模版配置文件中
    */
-  name: string;
+  name?: string;
 
+  /**
+   * 套件标识
+   */
+  key: string;
+   
   /**
    * 套件的代码仓库地址
    * git ssh
@@ -42,7 +50,18 @@ interface HUB {
 // 套件配置
 export const HUBS_CONFIG: HUB[] = [
   {
-    name: APP_TYPE_ENUM.PLUGIN,
+    key: APP_TYPE_ENUM.PLUGIN,
+    name: '自定义组件',
     repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git',
-  }
+  },
+  {
+    key: APP_TYPE_ENUM.MP,
+    name: '小程序',
+    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git',
+  },
+  {
+    key: APP_TYPE_ENUM.H5,
+    name: 'H5微应用',
+    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git',
+  },
 ];
