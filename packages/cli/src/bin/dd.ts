@@ -6,7 +6,7 @@ import program from 'commander';
 import checkNodeVersion from '../lib/util/checkNodeVersion';
 import yeomanRuntime from 'yeoman-environment';
 import leven from 'leven';
-import { done as doneLog, } from '../lib/cli-shared-utils/lib/logger';
+import { done as doneLog, debug, } from '../lib/cli-shared-utils/lib/logger';
 
 const pkgJson = require('../../package.json');
 const requiredVersion = pkgJson.engines.node;
@@ -36,6 +36,7 @@ program
     };
     // @ts-ignore
     env.lookup(function () {
+      debug(JSON.stringify(env.getGeneratorsMeta()));
       env.run(`${config.generatorNamespace} ${outDir || ''}`, {
         appType: options['appType'],
         template: options['template'],
