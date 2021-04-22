@@ -9,7 +9,7 @@
     ],                           /* Specify library files to be included in the compilation:  */
     "allowJs": true,                       /* Allow javascript files to be compiled. */
     "allowSyntheticDefaultImports": true,
-    // "checkJs": true,                       /* Report errors in .js files. */
+    "checkJs": false,                       /* Report errors in .js files. */
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "sourceMap": true,                     /* Generates corresponding '.map' file. */
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
