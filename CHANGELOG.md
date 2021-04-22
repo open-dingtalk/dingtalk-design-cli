@@ -1,4 +1,15 @@
 
+## 0.10.0 (2021-04-22)
+
+#### :rocket: New Feature
+* `cli`
+  * [#13](https://github.com/open-dingtalk/dingtalk-design-cli/pull/13) feat: change packageName "DingTalk Fe CLI" to "DingTalk Design CLI" ([@lou1swu](https://github.com/lou1swu))
+
+#### Committers: 1
+- louiswu ([@lou1swu](https://github.com/lou1swu))
+
+
+
 
 
 ## 0.7.0 (2021-03-24)
