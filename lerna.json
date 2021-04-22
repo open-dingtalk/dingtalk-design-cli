@@ -3,7 +3,7 @@
     "packages/*"
   ],
   "changelog": {
-    "repo": "open-dingtalk/dingtalk-fe-cli",
+    "repo": "open-dingtalk/dingtalk-design-cli",
     "labels": {
       "feat": ":rocket: New Feature",
       "bug": ":bug: Bug Fix",

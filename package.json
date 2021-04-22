@@ -1,5 +1,5 @@
 {
-  "name": "DingTalk-Fe-CLI",
+  "name": "DingTalk-Design-CLI",
   "private": true,
   "workspaces": [
     "packages/*"
