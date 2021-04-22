@@ -36,6 +36,7 @@ export const warn = (msg = '', tag = null): void => {
 
 export const debug = (msg: string) => {
   const txt = format(chalk.bgBlue.black(' DEBUG '), msg);
+  // @ts-ignore
   return process.env.NODE_ENV === '__DEBUG__' &&  console.log(txt);
 };
 

@@ -6,7 +6,12 @@ import program from 'commander';
 import checkNodeVersion from '../lib/util/checkNodeVersion';
 import yeomanRuntime from 'yeoman-environment';
 import leven from 'leven';
-import { done as doneLog, debug, } from '../lib/cli-shared-utils/lib/logger';
+import { done as doneLog, debug, error, } from '../lib/cli-shared-utils/lib/logger';
+import * as path from 'path';
+import checkCanPreview from '../lib/util/checkCanPreview';
+import { exec, } from 'child_process';
+import open from 'open';
+import urlencode from 'urlencode';
 
 const pkgJson = require('../../package.json');
 const requiredVersion = pkgJson.engines.node;
@@ -45,6 +50,33 @@ program
         'skip-install': options['skipInstall'],
       }, done);
     });
+  });
+
+program
+  .command('preview')
+  .action((outDir, options)=>{
+    const rcPath = path.join(__dirname, '.ddrc');
+    const canPreview = true || checkCanPreview(rcPath);
+    if (canPreview) {
+      const mockPreviewEnvironmentPath = path.join(__dirname, '../../h5bundle');
+      console.log('mock', mockPreviewEnvironmentPath);
+      const cp = exec(`cd ${mockPreviewEnvironmentPath} && npm run start`);
+      cp.stdout && cp.stdout.on('data', (chunk)=>{
+        const msg = chunk.toString();
+        if (msg.indexOf('Starting the development server') !== -1) {
+          open(`dingtalk://dingtalkclient/page/link?url=${urlencode('http://127.0.0.1:3000?ddtab=true')}`);
+        }
+      });
+
+      cp.stderr && cp.stderr.on('data', (chunk)=>{
+        error(chunk.toString());
+      });
+
+      cp.on('error', (err)=>{
+        console.error(err);
+        error(err.message);
+      });
+    }
   });
 
 // output help information on unknown commands
