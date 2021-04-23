@@ -18,6 +18,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "prestart": "npm i",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
