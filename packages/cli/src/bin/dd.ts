@@ -6,14 +6,30 @@ import program from 'commander';
 import checkNodeVersion from '../lib/util/checkNodeVersion';
 import yeomanRuntime from 'yeoman-environment';
 import leven from 'leven';
-import { done as doneLog, debug, } from '../lib/cli-shared-utils/lib/logger';
+import { done as doneLog, debug, error, info, } from '../lib/cli-shared-utils/lib/logger';
+import * as path from 'path';
+import checkCanPreview from '../lib/util/checkCanPreview';
+import getPluginRoot from '../lib/util/getPluginRoot';
+import { exec, execSync, } from 'child_process';
+import open from 'open';
+import urlencode from 'urlencode';
+import getH5ProBinPath from '../lib/util/getH5ProBinPath';
+import * as fs from 'fs';
+import { logWithSpinner, stopSpinner, failSpinner, } from '../lib/cli-shared-utils/lib/spinner';
+import EventEmitter from 'events';
+import getRc from '../lib/util/getRc';
+import { get, } from 'lodash';
+import { IPcPluginDevOpts, IPluginRc, } from '../lib/common/types';
 
+const event = new EventEmitter();
 const pkgJson = require('../../package.json');
 const requiredVersion = pkgJson.engines.node;
 const pkgName = pkgJson.name;
 const pkgVersion = pkgJson.version;
 
 checkNodeVersion(requiredVersion, pkgName);
+
+
 
 program
   .version(`${pkgName} ${pkgVersion}`)
@@ -47,6 +63,79 @@ program
     });
   });
 
+program
+  .command('preview')
+  .action(async (outDir, options)=>{
+    // const rcPath = path.resolve('./', '.ddrc');
+    const canPreview = checkCanPreview();
+    if (canPreview) {
+      const pluginRoot = getPluginRoot();
+      if (!pluginRoot) {
+        process.exit();
+      }
+
+      const pluginRc: IPluginRc = getRc(path.join(pluginRoot, '.ddrc'));
+      const pcPluginDevOpts: IPcPluginDevOpts = {
+        corpId: '',
+        mode: '',
+      };
+      pcPluginDevOpts.corpId = get(pluginRc, 'previewOptions.corpId', '');
+      pcPluginDevOpts.mode = get(pluginRc, 'previewOptions.mode', 'light');
+
+      // preview基座
+      const mockPreviewEnvironmentPath = path.join(__dirname, '../../h5bundle');
+      // h5pro可执行路径
+      const binPath = await getH5ProBinPath();
+
+      /** generate component.json */
+      try {
+        fs.copyFileSync(path.resolve(pluginRoot, 'plugin.json'), path.resolve(pluginRoot, 'component.json'));
+      } catch(e) {
+        console.error(e);
+        error(e.message);
+        return;
+      }
+
+      // h5pro ouput path
+      const bundlePath = path.join(__dirname, '../../h5bundle/src/bundle');
+      const spinner = logWithSpinner(' ', 'Building');
+      
+      /** build */
+      const command = `${binPath} component --watch --input=${pluginRoot} --output=${bundlePath}`;
+      const buildCp = exec(command);
+      let isInit = false;
+      let eventEmitTimer: NodeJS.Timeout;
+      
+      buildCp.stdout && buildCp.stdout.on('data', (chunk)=>{
+        const msg = chunk.toString();
+        if (msg.indexOf('Built at:') !== -1 && !isInit) {
+          spinner.text = 'Starting the development server';
+          eventEmitTimer = setTimeout(()=>{
+            event.emit('first-build-uccess');
+          }, 500);
+          isInit = true;
+        } else if(msg.indexOf('ERROR in') !== -1) {
+          error(msg);
+          failSpinner('Build fail.');
+          clearTimeout(eventEmitTimer);
+          buildCp.kill();
+          process.exit();
+        }
+      });
+
+      buildCp.on('error', (err) => {
+        failSpinner('Build fail');
+        error(err.message);
+        clearTimeout(eventEmitTimer);
+        buildCp.kill();
+        process.exit();
+      });
+
+      /** start dev server */
+      event.on('first-build-uccess', startDevServer.bind(null, mockPreviewEnvironmentPath, pcPluginDevOpts));
+    }
+  });
+
 // output help information on unknown commands
 program.on('command:*', ([cmd]) => {
   program.outputHelp();
@@ -78,4 +167,33 @@ function suggestCommands (unknownCommand: string) {
   if (suggestion) {
     console.log('  ' + chalk.red(`Did you mean ${chalk.yellow(suggestion)}?`));
   }
+}
+
+function startDevServer(mockPreviewEnvironmentPath: string, pcPluginDevOpts: IPcPluginDevOpts) {
+  const cp = exec(`cd ${mockPreviewEnvironmentPath} && npm run start`);
+  cp.stdout && cp.stdout.on('data', (chunk)=>{
+    const msg = chunk.toString();
+    console.log(msg);
+    if (msg.indexOf('Starting the development server') !== -1) {
+      stopSpinner();
+      console.clear();
+      const {
+        corpId,
+        mode,
+      } = pcPluginDevOpts;
+
+      open(`dingtalk://dingtalkclient/page/link?url=${urlencode(`http://127.0.0.1:12345?corpId=${corpId}&mode=${mode}&ddtab=true`)}`);
+    } else if (msg.indexOf('Something is already running on port') !== -1) {
+      stopSpinner();
+      error(msg);
+      process.exit();
+    }
+  });
+
+  cp.on('error', (err)=>{
+    failSpinner('Start dev server fail');
+    console.error(err);
+    error(err.message);
+    process.exit();
+  });
 }

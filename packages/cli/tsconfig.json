@@ -1,12 +1,19 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "lib": [
+      "DOM"
+    ],
     "outDir": "dist",
     "rootDir": "src",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "strict": false
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
   
