@@ -1,4 +1,15 @@
 
+## 0.11.0-beta.1 (2021-04-23)
+
+#### :rocket: New Feature
+* `cli`, `generator`
+  * [#14](https://github.com/open-dingtalk/dingtalk-design-cli/pull/14) Feature/plugin preview pc ([@lou1swu](https://github.com/lou1swu))
+
+#### Committers: 1
+- louiswu ([@lou1swu](https://github.com/lou1swu))
+
+
+
 ## 0.10.0 (2021-04-22)
 
 #### :rocket: New Feature
