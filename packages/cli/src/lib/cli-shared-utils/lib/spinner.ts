@@ -8,7 +8,7 @@ let lastMsg: {
 } | null = null;
 let isPaused = false;
 
-export const logWithSpinner = (symbol: string, msg: string): void => {
+export const logWithSpinner = (symbol: string, msg?: string): ora.Ora => {
   if (!msg) {
     msg = symbol;
     symbol = chalk.green('✔');
@@ -24,7 +24,7 @@ export const logWithSpinner = (symbol: string, msg: string): void => {
     symbol: symbol + ' ',
     text: msg,
   };
-  spinner.start();
+  return spinner.start();
 };
 
 export const stopSpinner = (persist?: boolean): void => {
