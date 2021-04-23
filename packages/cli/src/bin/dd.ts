@@ -172,6 +172,7 @@ function suggestCommands (unknownCommand: string) {
 
 function startDevServer(mockPreviewEnvironmentPath: string, pcPluginDevOpts: IPcPluginDevOpts) {
   const cp = exec(`cd ${mockPreviewEnvironmentPath} && npm run start`);
+  console.log('mock', mockPreviewEnvironmentPath);
   cp.stdout && cp.stdout.on('data', (chunk)=>{
     const msg = chunk.toString();
     console.log(msg);
