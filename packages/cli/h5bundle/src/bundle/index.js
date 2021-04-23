@@ -117,119 +117,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "+bWP":
-/*!*********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/es7.promise.try.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// https://github.com/tc39/proposal-promise-try
-var $export = __webpack_require__(/*! ./_export */ "mr/O");
-var newPromiseCapability = __webpack_require__(/*! ./_new-promise-capability */ "KjuZ");
-var perform = __webpack_require__(/*! ./_perform */ "IoDf");
-
-$export($export.S, 'Promise', { 'try': function (callbackfn) {
-  var promiseCapability = newPromiseCapability.f(this);
-  var result = perform(callbackfn);
-  (result.e ? promiseCapability.reject : promiseCapability.resolve)(result.v);
-  return promiseCapability.promise;
-} });
-
-
-/***/ }),
-
-/***/ "/6V8":
-/*!*******************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/babel-runtime/node_modules/regenerator-runtime/runtime-module.js ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-// This method of obtaining a reference to the global object needs to be
-// kept identical to the way it is obtained in runtime.js
-var g = (function() { return this })() || Function("return this")();
-
-// Use `getOwnPropertyNames` because not all browsers support calling
-// `hasOwnProperty` on the global `self` object in a worker. See #183.
-var hadRuntime = g.regeneratorRuntime &&
-  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
-
-// Save the old regeneratorRuntime in case it needs to be restored later.
-var oldRuntime = hadRuntime && g.regeneratorRuntime;
-
-// Force reevalutation of runtime.js.
-g.regeneratorRuntime = undefined;
-
-module.exports = __webpack_require__(/*! ./runtime */ "6eWP");
-
-if (hadRuntime) {
-  // Restore the original runtime.
-  g.regeneratorRuntime = oldRuntime;
-} else {
-  // Remove the global property added by runtime.js.
-  try {
-    delete g.regeneratorRuntime;
-  } catch(e) {
-    g.regeneratorRuntime = undefined;
-  }
-}
-
-
-/***/ }),
-
-/***/ "/DYc":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_string-at.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__(/*! ./_to-integer */ "hTNh");
-var defined = __webpack_require__(/*! ./_defined */ "7SSL");
-// true  -> String#at
-// false -> String#codePointAt
-module.exports = function (TO_STRING) {
-  return function (that, pos) {
-    var s = String(defined(that));
-    var i = toInteger(pos);
-    var l = s.length;
-    var a, b;
-    if (i < 0 || i >= l) return TO_STRING ? '' : undefined;
-    a = s.charCodeAt(i);
-    return a < 0xd800 || a > 0xdbff || i + 1 === l || (b = s.charCodeAt(i + 1)) < 0xdc00 || b > 0xdfff
-      ? TO_STRING ? s.charAt(i) : a
-      : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
-  };
-};
-
-
-/***/ }),
-
-/***/ "/lLM":
-/*!******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_descriptors.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(/*! ./_fails */ "VqAG")(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
 /***/ 0:
 /*!***********************************************************************************************************************!*\
   !*** multi /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!./component.json?jsonAsESM ***!
@@ -237,273 +124,257 @@ module.exports = !__webpack_require__(/*! ./_fails */ "VqAG")(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!/Users/wuzequan/code/dd-application-template/plugin_application-ecology/javascript/plugin/component.json?jsonAsESM */"Ly1O");
+module.exports = __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!/Users/wuzequan/code/dd-application-template/plugin_default/javascript/plugin/component.json?jsonAsESM */"Ly1O");
 
 
 /***/ }),
 
-/***/ "0CIb":
-/*!********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_object-create.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "0Ql3":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/project-select-view/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: exportNamed, exportDefault, usingComponents */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(/*! ./_an-object */ "Wnzs");
-var dPs = __webpack_require__(/*! ./_object-dps */ "T7lt");
-var enumBugKeys = __webpack_require__(/*! ./_enum-bug-keys */ "NQZz");
-var IE_PROTO = __webpack_require__(/*! ./_shared-key */ "frbX")('IE_PROTO');
-var Empty = function () { /* empty */ };
-var PROTOTYPE = 'prototype';
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
 
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var createDict = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(/*! ./_dom-create */ "MBQf")('iframe');
-  var i = enumBugKeys.length;
-  var lt = '<';
-  var gt = '>';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  __webpack_require__(/*! ./_html */ "5oDt").appendChild(iframe);
-  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
-  // createDict = iframe.contentWindow.Object;
-  // html.removeChild(iframe);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
-  iframeDocument.close();
-  createDict = iframeDocument.F;
-  while (i--) delete createDict[PROTOTYPE][enumBugKeys[i]];
-  return createDict();
-};
+  
+  
 
-module.exports = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    Empty[PROTOTYPE] = anObject(O);
-    result = new Empty();
-    Empty[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
-  } else result = createDict();
-  return Properties === undefined ? result : dPs(result, Properties);
-};
+  
 
+  
 
-/***/ }),
+  
 
-/***/ "0b0m":
-/*!**************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_library.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = true;
-
-
-/***/ }),
-
-/***/ "0k9/":
-/*!***********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_task.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ctx = __webpack_require__(/*! ./_ctx */ "7J0t");
-var invoke = __webpack_require__(/*! ./_invoke */ "ivWA");
-var html = __webpack_require__(/*! ./_html */ "5oDt");
-var cel = __webpack_require__(/*! ./_dom-create */ "MBQf");
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var process = global.process;
-var setTask = global.setImmediate;
-var clearTask = global.clearImmediate;
-var MessageChannel = global.MessageChannel;
-var Dispatch = global.Dispatch;
-var counter = 0;
-var queue = {};
-var ONREADYSTATECHANGE = 'onreadystatechange';
-var defer, channel, port;
-var run = function () {
-  var id = +this;
-  // eslint-disable-next-line no-prototype-builtins
-  if (queue.hasOwnProperty(id)) {
-    var fn = queue[id];
-    delete queue[id];
-    fn();
-  }
-};
-var listener = function (event) {
-  run.call(event.data);
-};
-// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
-if (!setTask || !clearTask) {
-  setTask = function setImmediate(fn) {
-    var args = [];
-    var i = 1;
-    while (arguments.length > i) args.push(arguments[i++]);
-    queue[++counter] = function () {
-      // eslint-disable-next-line no-new-func
-      invoke(typeof fn == 'function' ? fn : Function(fn), args);
-    };
-    defer(counter);
-    return counter;
+  var included = {
+    
   };
-  clearTask = function clearImmediate(id) {
-    delete queue[id];
+  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
+  var renderContext = {
+    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
+    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
+    s: {},
+    i: included,
+    t: {}
   };
-  // Node.js 0.8-
-  if (__webpack_require__(/*! ./_cof */ "KFxW")(process) == 'process') {
-    defer = function (id) {
-      process.nextTick(ctx(run, id, 1));
-    };
-  // Sphere (JS game engine) Dispatch API
-  } else if (Dispatch && Dispatch.now) {
-    defer = function (id) {
-      Dispatch.now(ctx(run, id, 1));
-    };
-  // Browsers with MessageChannel, includes WebWorkers
-  } else if (MessageChannel) {
-    channel = new MessageChannel();
-    port = channel.port2;
-    channel.port1.onmessage = listener;
-    defer = ctx(port.postMessage, port, 1);
-  // Browsers with postMessage, skip WebWorkers
-  // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
-  } else if (global.addEventListener && typeof postMessage == 'function' && !global.importScripts) {
-    defer = function (id) {
-      global.postMessage(id + '', '*');
-    };
-    global.addEventListener('message', listener, false);
-  // IE8-
-  } else if (ONREADYSTATECHANGE in cel('script')) {
-    defer = function (id) {
-      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function () {
-        html.removeChild(this);
-        run.call(id);
-      };
-    };
-  // Rest old browsers
-  } else {
-    defer = function (id) {
-      setTimeout(ctx(run, id, 1), 0);
-    };
+
+  var exportNamed = {
+    
+  };
+
+  var exportDefault = {
+    zcomponent: (
+function getComponent($$renderContext_0, $$runtimeContext_0) {
+  var $$helper_0 = $$runtimeContext_0.h;
+  var $$getelement_0 = $$runtimeContext_0.e;
+  var $$inlinehelper_0 = $$renderContext_0.l;
+  var $$element_view_0 = $$getelement_0(1);
+  var $$element_picker_0 = $$getelement_0(27);
+  function create_main_block_0($$componentInstance_0, context_0) {
+    var range____0;
+    var range__1;
+    var range_row_extra_0;
+    var range__dataSource_arrIndex__name_0;
+    var range__0;
+    var range_row_title_0;
+    var range_row_0;
+    var range_name_0;
+    var range_dataSource_0;
+    var range_arrIndex_0;
+    var range_onPickerChange_0;
+    var range_marginBottom__componentProps_marginBottom_px_0;
+    var range_comp_project_select_0;
+    var exp_dataSource_arrIndex__name_0;
+    var exp_dataSource_0;
+    var exp_arrIndex_0;
+    var exp_componentProps_marginBottom_0;
+    var node_texte_8_0;
+    var node_eleme_view_7_0;
+    var node_texte_6_0;
+    var node_eleme_view_5_0;
+    var node_eleme_view_4_0;
+    var node_eleme_picker_3_0;
+    var node_eleme_view_2_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 3);
+        node_eleme_picker_3_0 = $$helper_0.e($$componentInstance_0, $$element_picker_0, 24);
+        node_eleme_view_4_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        node_eleme_view_5_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        exp_dataSource_arrIndex__name_0 = $$helper_0.f($$inlinehelper_0.g(context_0, ['dataSource', context_0.arrIndex, 'name']));
+        range__dataSource_arrIndex__name_0 = ""+exp_dataSource_arrIndex__name_0;
+        node_texte_6_0 = $$helper_0.t($$componentInstance_0, range__dataSource_arrIndex__name_0);
+        node_eleme_view_7_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        range____0 = "切换";
+        node_texte_8_0 = $$helper_0.t($$componentInstance_0, range____0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_comp_project_select_0 = "comp-project-select";
+        exp_componentProps_marginBottom_0 = $$inlinehelper_0.g(context_0, ['componentProps', 'marginBottom']);
+        range_marginBottom__componentProps_marginBottom_px_0 = "marginBottom:"+exp_componentProps_marginBottom_0+"px";
+        assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
+        , range_comp_project_select_0 //;
+        , range_marginBottom__componentProps_marginBottom_px_0 //;
+        , null //;
+        , 2 //;
+        );
+        range_onPickerChange_0 = "onPickerChange";
+        $$helper_0.k(node_eleme_picker_3_0, "change", 0, range_onPickerChange_0, $$componentInstance_0);
+        exp_arrIndex_0 = context_0.arrIndex;
+        range_arrIndex_0 = exp_arrIndex_0;
+        exp_dataSource_0 = context_0.dataSource;
+        range_dataSource_0 = exp_dataSource_0;
+        range_name_0 = "name";
+        assign_class_style_props_0(node_eleme_picker_3_0, $$componentInstance_0 //;
+        , '' //;
+        , '' //;
+        , { //;
+          "value": range_arrIndex_0, //;
+          "range": range_dataSource_0, //;
+          "rangeKey": range_name_0, //;
+        } //;
+        );
+        range_row_0 = "row";
+        assign_class_style_props_0(node_eleme_view_4_0, $$componentInstance_0 //;
+        , range_row_0 //;
+        );
+        range_row_title_0 = "row-title";
+        assign_class_style_props_0(node_eleme_view_5_0, $$componentInstance_0 //;
+        , range_row_title_0 //;
+        );
+        range_row_extra_0 = "row-extra";
+        assign_class_style_props_0(node_eleme_view_7_0, $$componentInstance_0 //;
+        , range_row_extra_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_picker_3_0);
+        $$helper_0.a(node_eleme_picker_3_0, node_eleme_view_4_0);
+        $$helper_0.a(node_eleme_view_4_0, node_eleme_view_5_0);
+        $$helper_0.A(node_eleme_view_5_0, node_texte_6_0);
+        $$helper_0.a(node_eleme_view_4_0, node_eleme_view_7_0);
+        $$helper_0.A(node_eleme_view_7_0, node_texte_8_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_dataSource_arrIndex__name_0;
+        var changed_exp_dataSource_0;
+        var changed_exp_arrIndex_0;
+        var changed_exp_componentProps_marginBottom_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["componentProps"]) {;
+          exp_componentProps_marginBottom_0 = $$inlinehelper_0.g(data_0, ['componentProps', 'marginBottom']);
+          changed_exp_componentProps_marginBottom_0 = true;
+        };
+        if (changed_exp_componentProps_marginBottom_0) {;
+          var local_changed_0 = range_marginBottom__componentProps_marginBottom_px_0 !== (range_marginBottom__componentProps_marginBottom_px_0 = "marginBottom:"+exp_componentProps_marginBottom_0+"px");
+          if (local_changed_0) {;
+          };
+        };
+        if (local_changed_0) {;
+          $$helper_0.X(node_eleme_view_2_0, $$componentInstance_0 //;
+          , range_comp_project_select_0 //;
+          , null //;
+          , range_marginBottom__componentProps_marginBottom_px_0 //;
+          , local_changed_0 //;
+          , null //;
+          , null //;
+          , 2 //;
+          );
+        };
+        if (diff_0["arrIndex"]) {;
+          exp_arrIndex_0 = data_0.arrIndex;
+          changed_exp_arrIndex_0 = true;
+        };
+        if (diff_0["dataSource"]) {;
+          exp_dataSource_0 = data_0.dataSource;
+          changed_exp_dataSource_0 = true;
+        };
+        if (changed_exp_arrIndex_0 || changed_exp_dataSource_0) {;
+          var local_changed_1 = range_arrIndex_0 !== (range_arrIndex_0 = exp_arrIndex_0);
+          var local_changed_2 = range_dataSource_0 !== (range_dataSource_0 = exp_dataSource_0);
+          if (local_changed_1 || local_changed_2) {;
+          };
+        };
+        if (local_changed_1 || local_changed_2) {;
+          $$helper_0.w(node_eleme_picker_3_0, $$componentInstance_0 //;
+          , { //;
+            "value": range_arrIndex_0, //;
+            "range": range_dataSource_0, //;
+          } //;
+          , { //;
+            "value": local_changed_1, //;
+            "range": local_changed_2, //;
+          } //;
+          );
+        };
+        if (diff_0["dataSource"] || diff_0["arrIndex"]) {;
+          exp_dataSource_arrIndex__name_0 = $$helper_0.f($$inlinehelper_0.g(data_0, ['dataSource', data_0.arrIndex, 'name']));
+          changed_exp_dataSource_arrIndex__name_0 = true;
+        };
+        if (changed_exp_dataSource_arrIndex__name_0) {;
+          var local_changed_3 = range__dataSource_arrIndex__name_0 !== (range__dataSource_arrIndex__name_0 = ""+exp_dataSource_arrIndex__name_0);
+          if (local_changed_3) {;
+            $$helper_0.N(node_texte_6_0, range__dataSource_arrIndex__name_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_6_0);
+        $$helper_0.d(node_eleme_view_5_0);
+        $$helper_0.D(node_texte_8_0);
+        $$helper_0.d(node_eleme_view_7_0);
+        $$helper_0.d(node_eleme_view_4_0);
+        $$helper_0.d(node_eleme_picker_3_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_2_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_2_0);
+        };
+      },
+    }
   }
+
+
+  return {
+    fragment: create_main_block_0
+  };
+
 }
-module.exports = {
-  set: setTask,
-  clear: clearTask
-};
+).bind(null, renderContext),
 
+    style: null  
+  };
 
-/***/ }),
-
-/***/ "1mC4":
-/*!************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_set-to-string-tag.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var def = __webpack_require__(/*! ./_object-dp */ "dkmB").f;
-var has = __webpack_require__(/*! ./_has */ "n00i");
-var TAG = __webpack_require__(/*! ./_wks */ "95QX")('toStringTag');
-
-module.exports = function (it, tag, stat) {
-  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
-};
-
+  var usingComponents = {
+    
+  };
+  
+  
 
 /***/ }),
 
-/***/ "27E+":
-/*!*************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/es6.string.iterator.js ***!
-  \*************************************************************************************/
+/***/ "1PYs":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at = __webpack_require__(/*! ./_string-at */ "/DYc")(true);
 
-// 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(/*! ./_iter-define */ "7oB8")(String, 'String', function (iterated) {
-  this._t = String(iterated); // target
-  this._i = 0;                // next index
-// 21.1.5.2.1 %StringIteratorPrototype%.next()
-}, function () {
-  var O = this._t;
-  var index = this._i;
-  var point;
-  if (index >= O.length) return { value: undefined, done: true };
-  point = $at(O, index);
-  this._i += point.length;
-  return { value: point, done: false };
-});
+var _sdk = __webpack_require__(/*! ../../api/sdk */ "zTrJ");
 
-
-/***/ }),
-
-/***/ "2tud":
-/*!************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_to-absolute-index.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__(/*! ./_to-integer */ "hTNh");
-var max = Math.max;
-var min = Math.min;
-module.exports = function (index, length) {
-  index = toInteger(index);
-  return index < 0 ? max(index + length, 0) : min(index, length);
-};
-
-
-/***/ }),
-
-/***/ "31k4":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
-  \*************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
-
-internal_style = ".component-template {line-height:0.32rem;font-size:0.24rem;padding:0.24rem 0.36rem}.component-template.dark {color:#fff}.success-content,\n.error-content {overflow:hidden}";
-/* harmony default export */ __webpack_exports__["default"] = (internal_style);
-
-/***/ }),
-
-/***/ "37Yt":
-/*!***********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_core.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.6.12' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ "3Ks2":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/node_modules/@antv/f2-context/esm/context/wx.js ***!
-  \**********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 var global = undefined,
     self = undefined,
     window = undefined,
@@ -522,36 +393,72 @@ var global = undefined,
     __CUBE_KERNEL__ = undefined,
     $AppxRegistry = undefined,
     $AppxStyleRegistry = undefined;
-// 微信程序的context适配
-var CAPITALIZED_ATTRS_MAP = {
-    fontSize: 'FontSize',
-    opacity: 'GlobalAlpha',
-    lineDash: 'LineDash',
-    textAlign: 'TextAlign',
-};
-/**
- * wxapp textAlign align 可选值为 left|center|right
- * 标准canvas textAlign align 可选值为 left|center|right|start|end
- */
-var TEXT_ALIGN_MAP = {
-    start: 'left',
-    end: 'right',
-};
-/* harmony default export */ __webpack_exports__["default"] = (function (ctx) {
-    Object.keys(CAPITALIZED_ATTRS_MAP).map(function (style) {
-        Object.defineProperty(ctx, style, {
-            set: function (value) {
-                if (style === 'textAlign') {
-                    value = TEXT_ALIGN_MAP[value] ? TEXT_ALIGN_MAP[value] : value;
-                }
-                var name = 'set' + CAPITALIZED_ATTRS_MAP[style];
-                ctx[name](value);
-            }
-        });
-        return style;
-    });
+
+$global.$addComponentConfig({
+  componentPath: "components/project-select-view/index"
 });
 
+
+var i = 1;
+Component({
+  data: {
+    arrIndex: 0,
+    dataSource: [{
+      name: "项目1",
+      id: "p_1"
+    }, {
+      name: "项目2",
+      id: "p_2"
+    }]
+  },
+  props: {
+    componentName: "",
+    componentProps: {
+      marginBottom: 100,
+      gateWayApi: {}
+    }
+  },
+
+  didMount: function didMount() {
+    (0, _sdk.getLifecycleSdk)().didMount(this.props.componentName);
+  },
+  didUpdate: function didUpdate() {
+    (0, _sdk.getLifecycleSdk)().didUpdate(this.props.componentName);
+  },
+  didUnmount: function didUnmount() {
+    (0, _sdk.getLifecycleSdk)().didUnmount(this.props.componentName);
+  },
+
+
+  methods: {
+    onPickerChange: function onPickerChange(e) {
+      var arrIndex = e.detail.value;
+      this.setData({
+        arrIndex: arrIndex
+      });
+      var dataSource = this.data.dataSource;
+      var selectedProject = dataSource[arrIndex];
+      // // 选择项目，广播通知其他组件项目变更
+      (0, _sdk.getSdk)().triggerCustomEvent("dingtalk/changeProject", selectedProject);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "31k4":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
+
+internal_style = ".component-template {line-height:0.32rem;font-size:0.24rem;padding:0.24rem 0.36rem}";
+/* harmony default export */ __webpack_exports__["default"] = (internal_style);
 
 /***/ }),
 
@@ -606,8 +513,7 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
   var $$element_view_0 = $$getelement_0(1);
   function create_main_block_0($$componentInstance_0, context_0) {
     var range_onInitChart_0;
-    var range_container__mode_0;
-    var exp_mode_0;
+    var range_container_0;
     var node_compo__node_modules__antv_my_f2_es_index_3_0;
     var node_eleme_view_2_0;
     node_compo__node_modules__antv_my_f2_es_index_3_0 = $$helper_0.l($$getcomponent_0("/node_modules/@antv/my-f2/es/index"), $$componentInstance_0, null //;
@@ -622,34 +528,17 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
         }, [ //;
           "onInit" ], 0);
         var assign_class_style_props_0 = $$helper_0.x;
-        exp_mode_0 = context_0.mode;
-        range_container__mode_0 = "container "+exp_mode_0;
+        range_container_0 = "container";
         assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
-        , range_container__mode_0 //;
+        , range_container_0 //;
         );
       },
       m: function (target_0, anchor_0) {
         $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
         $$helper_0.m(node_compo__node_modules__antv_my_f2_es_index_3_0, node_eleme_view_2_0, null);
       },
-      u: function (diff_0, data_0) {
-        var changed_exp_mode_0;
+      u: function () {
         var hasNoChildren_1 = 1;
-        if (diff_0["mode"]) {;
-          exp_mode_0 = data_0.mode;
-          changed_exp_mode_0 = true;
-        };
-        if (changed_exp_mode_0) {;
-          var local_changed_0 = range_container__mode_0 !== (range_container__mode_0 = "container "+exp_mode_0);
-          if (local_changed_0) {;
-          };
-        };
-        if (local_changed_0) {;
-          $$helper_0.y(node_eleme_view_2_0, $$componentInstance_0 //;
-          , range_container__mode_0 //;
-          , local_changed_0 //;
-          );
-        };
       },
       d: function (root_0) {
         $$helper_0.o(node_compo__node_modules__antv_my_f2_es_index_3_0);
@@ -681,3686 +570,10 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
 
 /***/ }),
 
-/***/ "3im8":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_to-length.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.15 ToLength
-var toInteger = __webpack_require__(/*! ./_to-integer */ "hTNh");
-var min = Math.min;
-module.exports = function (it) {
-  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-};
-
-
-/***/ }),
-
-/***/ "415x":
-/*!*******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_redefine-all.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var hide = __webpack_require__(/*! ./_hide */ "Uc+G");
-module.exports = function (target, src, safe) {
-  for (var key in src) {
-    if (safe && target[key]) target[key] = src[key];
-    else hide(target, key, src[key]);
-  } return target;
-};
-
-
-/***/ }),
-
-/***/ "4kZA":
-/*!***************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_object-keys-internal.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var has = __webpack_require__(/*! ./_has */ "n00i");
-var toIObject = __webpack_require__(/*! ./_to-iobject */ "wq9V");
-var arrayIndexOf = __webpack_require__(/*! ./_array-includes */ "MdZi")(false);
-var IE_PROTO = __webpack_require__(/*! ./_shared-key */ "frbX")('IE_PROTO');
-
-module.exports = function (object, names) {
-  var O = toIObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (has(O, key = names[i++])) {
-    ~arrayIndexOf(result, key) || result.push(key);
-  }
-  return result;
-};
-
-
-/***/ }),
-
-/***/ "5oDt":
-/*!***********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_html.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var document = __webpack_require__(/*! ./_global */ "vx5S").document;
-module.exports = document && document.documentElement;
-
-
-/***/ }),
-
-/***/ "5wUF":
-/*!******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_iter-detect.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ITERATOR = __webpack_require__(/*! ./_wks */ "95QX")('iterator');
-var SAFE_CLOSING = false;
-
-try {
-  var riter = [7][ITERATOR]();
-  riter['return'] = function () { SAFE_CLOSING = true; };
-  // eslint-disable-next-line no-throw-literal
-  Array.from(riter, function () { throw 2; });
-} catch (e) { /* empty */ }
-
-module.exports = function (exec, skipClosing) {
-  if (!skipClosing && !SAFE_CLOSING) return false;
-  var safe = false;
-  try {
-    var arr = [7];
-    var iter = arr[ITERATOR]();
-    iter.next = function () { return { done: safe = true }; };
-    arr[ITERATOR] = function () { return iter; };
-    exec(arr);
-  } catch (e) { /* empty */ }
-  return safe;
-};
-
-
-/***/ }),
-
-/***/ "6Q5A":
-/*!***************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_redefine.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./_hide */ "Uc+G");
-
-
-/***/ }),
-
-/***/ "6eWP":
-/*!************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/babel-runtime/node_modules/regenerator-runtime/runtime.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-!(function(global) {
-  "use strict";
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var undefined; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  var inModule = typeof module === "object";
-  var runtime = global.regeneratorRuntime;
-  if (runtime) {
-    if (inModule) {
-      // If regeneratorRuntime is defined globally and we're in a module,
-      // make the exports object identical to regeneratorRuntime.
-      module.exports = runtime;
-    }
-    // Don't bother evaluating the rest of this file if the runtime was
-    // already defined globally.
-    return;
-  }
-
-  // Define the runtime globally (as expected by generated code) as either
-  // module.exports (if we're in a module) or a new, empty object.
-  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    generator._invoke = makeInvokeMethod(innerFn, self, context);
-
-    return generator;
-  }
-  runtime.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
-    }
-  }
-
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
-
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
-
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
-    return this;
-  };
-
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
-  }
-
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunctionPrototype[toStringTagSymbol] =
-    GeneratorFunction.displayName = "GeneratorFunction";
-
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      prototype[method] = function(arg) {
-        return this._invoke(method, arg);
-      };
-    });
-  }
-
-  runtime.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  runtime.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-    } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      if (!(toStringTagSymbol in genFun)) {
-        genFun[toStringTagSymbol] = "GeneratorFunction";
-      }
-    }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
-
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  runtime.awrap = function(arg) {
-    return { __await: arg };
-  };
-
-  function AsyncIterator(generator) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
-      } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return Promise.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
-          });
-        }
-
-        return Promise.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration. If the Promise is rejected, however, the
-          // result for this iteration will be rejected with the same
-          // reason. Note that rejections of yielded Promises are not
-          // thrown back into the generator function, as is the case
-          // when an awaited Promise is rejected. This difference in
-          // behavior between yield and await is important, because it
-          // allows the consumer to decide what to do with the yielded
-          // rejection (swallow it and continue, manually .throw it back
-          // into the generator, abandon iteration, whatever). With
-          // await, by contrast, there is no opportunity to examine the
-          // rejection reason outside the generator function, so the
-          // only option is to throw it from the await expression, and
-          // let the generator function handle the exception.
-          result.value = unwrapped;
-          resolve(result);
-        }, reject);
-      }
-    }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new Promise(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    this._invoke = enqueue;
-  }
-
-  defineIteratorMethods(AsyncIterator.prototype);
-  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
-    return this;
-  };
-  runtime.AsyncIterator = AsyncIterator;
-
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList)
-    );
-
-    return runtime.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
-        });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
-      }
-
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
-        }
-
-        // Be forgiving, per 25.3.3.3.3 of the spec:
-        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-        return doneResult();
-      }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
-          }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
-        }
-
-        state = GenStateExecuting;
-
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
-
-          if (record.arg === ContinueSentinel) {
-            continue;
-          }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
-  }
-
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (method === undefined) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method always terminates the yield* loop.
-      context.delegate = null;
-
-      if (context.method === "throw") {
-        if (delegate.iterator.return) {
-          // If the delegate iterator has a return method, give it a
-          // chance to clean up.
-          context.method = "return";
-          context.arg = undefined;
-          maybeInvokeDelegate(delegate, context);
-
-          if (context.method === "throw") {
-            // If maybeInvokeDelegate(context) changed context.method from
-            // "return" to "throw", let that override the TypeError below.
-            return ContinueSentinel;
-          }
-        }
-
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined;
-      }
-
-    } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
-    }
-
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
-  }
-
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  Gp[toStringTagSymbol] = "Generator";
-
-  // A Generator should always return itself as the iterator object when the
-  // @@iterator function is called on it. Some browsers' implementations of the
-  // iterator prototype chain incorrectly implement this, causing the Generator
-  // object to not be returned from this call. This ensures that doesn't happen.
-  // See https://github.com/facebook/regenerator/issues/274 for more details.
-  Gp[iteratorSymbol] = function() {
-    return this;
-  };
-
-  Gp.toString = function() {
-    return "[object Generator]";
-  };
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
-  }
-
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
-  }
-
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
-  }
-
-  runtime.keys = function(object) {
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    // Return an iterator with no values.
-    return { next: doneResult };
-  }
-  runtime.values = values;
-
-  function doneResult() {
-    return { value: undefined, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined;
-          }
-        }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined;
-      }
-
-      return ContinueSentinel;
-    }
-  };
-})(
-  // In sloppy mode, unbound `this` refers to the global object, fallback to
-  // Function constructor if we're in global strict mode. That is sadly a form
-  // of indirect eval which violates Content Security Policy.
-  (function() { return this })() || Function("return this")()
-);
-
-
-/***/ }),
-
-/***/ "7J0t":
-/*!**********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_ctx.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__(/*! ./_a-function */ "L398");
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-
-/***/ "7SSL":
-/*!**************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_defined.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "7oB8":
-/*!******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_iter-define.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var LIBRARY = __webpack_require__(/*! ./_library */ "0b0m");
-var $export = __webpack_require__(/*! ./_export */ "mr/O");
-var redefine = __webpack_require__(/*! ./_redefine */ "6Q5A");
-var hide = __webpack_require__(/*! ./_hide */ "Uc+G");
-var Iterators = __webpack_require__(/*! ./_iterators */ "jEVu");
-var $iterCreate = __webpack_require__(/*! ./_iter-create */ "Ziy2");
-var setToStringTag = __webpack_require__(/*! ./_set-to-string-tag */ "1mC4");
-var getPrototypeOf = __webpack_require__(/*! ./_object-gpo */ "HiNv");
-var ITERATOR = __webpack_require__(/*! ./_wks */ "95QX")('iterator');
-var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
-var FF_ITERATOR = '@@iterator';
-var KEYS = 'keys';
-var VALUES = 'values';
-
-var returnThis = function () { return this; };
-
-module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED) {
-  $iterCreate(Constructor, NAME, next);
-  var getMethod = function (kind) {
-    if (!BUGGY && kind in proto) return proto[kind];
-    switch (kind) {
-      case KEYS: return function keys() { return new Constructor(this, kind); };
-      case VALUES: return function values() { return new Constructor(this, kind); };
-    } return function entries() { return new Constructor(this, kind); };
-  };
-  var TAG = NAME + ' Iterator';
-  var DEF_VALUES = DEFAULT == VALUES;
-  var VALUES_BUG = false;
-  var proto = Base.prototype;
-  var $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT];
-  var $default = $native || getMethod(DEFAULT);
-  var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
-  var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
-  var methods, key, IteratorPrototype;
-  // Fix native
-  if ($anyNative) {
-    IteratorPrototype = getPrototypeOf($anyNative.call(new Base()));
-    if (IteratorPrototype !== Object.prototype && IteratorPrototype.next) {
-      // Set @@toStringTag to native iterators
-      setToStringTag(IteratorPrototype, TAG, true);
-      // fix for some old engines
-      if (!LIBRARY && typeof IteratorPrototype[ITERATOR] != 'function') hide(IteratorPrototype, ITERATOR, returnThis);
-    }
-  }
-  // fix Array#{values, @@iterator}.name in V8 / FF
-  if (DEF_VALUES && $native && $native.name !== VALUES) {
-    VALUES_BUG = true;
-    $default = function values() { return $native.call(this); };
-  }
-  // Define iterator
-  if ((!LIBRARY || FORCED) && (BUGGY || VALUES_BUG || !proto[ITERATOR])) {
-    hide(proto, ITERATOR, $default);
-  }
-  // Plug for library
-  Iterators[NAME] = $default;
-  Iterators[TAG] = returnThis;
-  if (DEFAULT) {
-    methods = {
-      values: DEF_VALUES ? $default : getMethod(VALUES),
-      keys: IS_SET ? $default : getMethod(KEYS),
-      entries: $entries
-    };
-    if (FORCED) for (key in methods) {
-      if (!(key in proto)) redefine(proto, key, methods[key]);
-    } else $export($export.P + $export.F * (BUGGY || VALUES_BUG), NAME, methods);
-  }
-  return methods;
-};
-
-
-/***/ }),
-
-/***/ "8B5K":
-/*!***********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/babel-runtime/core-js/promise.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(/*! core-js/library/fn/promise */ "fh+e"), __esModule: true };
-
-/***/ }),
-
-/***/ "8ya8":
-/*!**************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_species-constructor.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject = __webpack_require__(/*! ./_an-object */ "Wnzs");
-var aFunction = __webpack_require__(/*! ./_a-function */ "L398");
-var SPECIES = __webpack_require__(/*! ./_wks */ "95QX")('species');
-module.exports = function (O, D) {
-  var C = anObject(O).constructor;
-  var S;
-  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
-};
-
-
-/***/ }),
-
-/***/ "95QX":
-/*!**********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_wks.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var store = __webpack_require__(/*! ./_shared */ "z9LK")('wks');
-var uid = __webpack_require__(/*! ./_uid */ "K9JZ");
-var Symbol = __webpack_require__(/*! ./_global */ "vx5S").Symbol;
-var USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function (name) {
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
-};
-
-$exports.store = store;
-
-
-/***/ }),
-
-/***/ "9kv2":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_is-object.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-
-/***/ "AfWf":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _f = __webpack_require__(/*! @antv/f2 */ "o+bf");
-
-var _f2 = _interopRequireDefault(_f);
-
-var _f2Context = __webpack_require__(/*! @antv/f2-context */ "LiJU");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var global = undefined,
-    self = undefined,
-    window = undefined,
-    document = undefined,
-    location = undefined,
-    XMLHttpRequest = undefined,
-    AlipayJSBridge = undefined,
-    importScript = undefined,
-    importScripts = undefined,
-    AFAppX = undefined,
-    fetch = undefined,
-    $AppxFramework = undefined,
-    $AppxRuntime = undefined,
-    mqEnvironment = undefined,
-    wxEnvironment = undefined,
-    __CUBE_KERNEL__ = undefined,
-    $AppxRegistry = undefined,
-    $AppxStyleRegistry = undefined;
-
-$global.$addComponentConfig({
-  componentPath: "/node_modules/@antv/my-f2/es/index"
-});
-
-
-function wrapEvent(e) {
-  if (!e) return;
-  if (!e.preventDefault) {
-    e.preventDefault = function () {};
-  }
-  return e;
-}
-
-Component({
-  // mixins: [],
-  // data: {},
-  props: {
-    onInit: function onInit() {},
-    // width height 会作为元素兜底的宽高使用
-    width: null,
-    height: null
-  },
-  didMount: function didMount() {
-    var _this = this;
-
-    var id = 'f2-canvas-' + this.$id;
-    var myCtx = my.createCanvasContext(id);
-    var context = (0, _f2Context.my)(myCtx);
-
-    var query = my.createSelectorQuery();
-    query.select('#' + id).boundingClientRect().exec(function (res) {
-      // 获取画布实际宽高, 用props的宽高做失败兜底
-      var _ref = res && res[0] ? res[0] : _this.props,
-          width = _ref.width,
-          height = _ref.height;
-
-      if (!width || !height) {
-        return;
-      }
-      var pixelRatio = my.getSystemInfoSync().pixelRatio;
-      // 高清解决方案
-      _this.setData({
-        id: id,
-        width: width * pixelRatio,
-        height: height * pixelRatio
-      }, function () {
-        var ref = _this;
-        var chart = _this.props.onInit(_f2.default, { context: context, width: width, height: height, pixelRatio: pixelRatio }, ref);
-        if (chart) {
-          _this.chart = chart;
-          _this.canvasEl = chart.get('el');
-        }
-      });
-    });
-  },
-
-  // didUpdate() {},
-  // didUnmount() {},
-  methods: {
-    touchStart: function touchStart(e) {
-      var canvasEl = this.canvasEl;
-      if (!canvasEl) {
-        return;
-      }
-      canvasEl.dispatchEvent('touchstart', wrapEvent(e));
-    },
-    touchMove: function touchMove(e) {
-      var canvasEl = this.canvasEl;
-      if (!canvasEl) {
-        return;
-      }
-      canvasEl.dispatchEvent('touchmove', wrapEvent(e));
-    },
-    touchEnd: function touchEnd(e) {
-      var canvasEl = this.canvasEl;
-      if (!canvasEl) {
-        return;
-      }
-      canvasEl.dispatchEvent('touchend', wrapEvent(e));
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "B8uw":
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
-  \***********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
-
-internal_style = ".f2-canvas {width:100%;height:100%}";
-/* harmony default export */ __webpack_exports__["default"] = (internal_style);
-
-/***/ }),
-
-/***/ "CgZd":
-/*!*****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./components/component-template/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \*****************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: exportNamed, exportDefault, usingComponents */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
-
-  
-  
-
-  
-
-  
-
-  
-
-  var included = {
-    
-  };
-  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
-  var renderContext = {
-    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
-    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
-    s: {},
-    i: included,
-    t: {}
-  };
-
-  var exportNamed = {
-    
-  };
-
-  var exportDefault = {
-    zcomponent: (
-function getComponent($$renderContext_0, $$runtimeContext_0) {
-  var $$helper_0 = $$runtimeContext_0.h;
-  var $$getelement_0 = $$runtimeContext_0.e;
-  var $$element_view_0 = $$getelement_0(1);
-  function create_main_block_0($$componentInstance_0, context_0) {
-    var range__errorContent_0;
-    var range__2;
-    var range_error_content_0;
-    var range__successsContent_0;
-    var range__1;
-    var range_success_content_0;
-    var range________________________________0;
-    var range__0;
-    var range_onContentClick_0;
-    var range_component_template__mode_0;
-    var exp_errorContent_0;
-    var exp_successsContent_0;
-    var exp_mode_0;
-    var node_texte_7_0;
-    var node_eleme_view_6_0;
-    var node_texte_5_0;
-    var node_eleme_view_4_0;
-    var node_texte_3_0;
-    var node_eleme_view_2_0;
-    return {
-      c: function () {
-        var hasNoChildren_1 = 1;
-        node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 9);
-        range________________________________0 = "这个是组件模板，请复制文件夹创建组件，请在模板代码基础上修改";
-        node_texte_3_0 = $$helper_0.t($$componentInstance_0, range________________________________0);
-        node_eleme_view_4_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
-        exp_successsContent_0 = $$helper_0.f(context_0.successsContent);
-        range__successsContent_0 = ""+exp_successsContent_0;
-        node_texte_5_0 = $$helper_0.t($$componentInstance_0, range__successsContent_0);
-        node_eleme_view_6_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
-        exp_errorContent_0 = $$helper_0.f(context_0.errorContent);
-        range__errorContent_0 = ""+exp_errorContent_0;
-        node_texte_7_0 = $$helper_0.t($$componentInstance_0, range__errorContent_0);
-        var assign_class_style_props_0 = $$helper_0.x;
-        range_onContentClick_0 = "onContentClick";
-        $$helper_0.k(node_eleme_view_2_0, "tap", 0, range_onContentClick_0, $$componentInstance_0);
-        exp_mode_0 = context_0.mode;
-        range_component_template__mode_0 = "component-template "+exp_mode_0;
-        assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
-        , range_component_template__mode_0 //;
-        );
-        range_success_content_0 = "success-content";
-        assign_class_style_props_0(node_eleme_view_4_0, $$componentInstance_0 //;
-        , range_success_content_0 //;
-        );
-        range_error_content_0 = "error-content";
-        assign_class_style_props_0(node_eleme_view_6_0, $$componentInstance_0 //;
-        , range_error_content_0 //;
-        );
-      },
-      m: function (target_0, anchor_0) {
-        $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
-        $$helper_0.A(node_eleme_view_2_0, node_texte_3_0);
-        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_4_0);
-        $$helper_0.A(node_eleme_view_4_0, node_texte_5_0);
-        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_6_0);
-        $$helper_0.A(node_eleme_view_6_0, node_texte_7_0);
-      },
-      u: function (diff_0, data_0) {
-        var changed_exp_errorContent_0;
-        var changed_exp_successsContent_0;
-        var changed_exp_mode_0;
-        var hasNoChildren_1 = 1;
-        if (diff_0["mode"]) {;
-          exp_mode_0 = data_0.mode;
-          changed_exp_mode_0 = true;
-        };
-        if (changed_exp_mode_0) {;
-          var local_changed_0 = range_component_template__mode_0 !== (range_component_template__mode_0 = "component-template "+exp_mode_0);
-          if (local_changed_0) {;
-          };
-        };
-        if (local_changed_0) {;
-          $$helper_0.y(node_eleme_view_2_0, $$componentInstance_0 //;
-          , range_component_template__mode_0 //;
-          , local_changed_0 //;
-          );
-        };
-        if (diff_0["successsContent"]) {;
-          exp_successsContent_0 = $$helper_0.f(data_0.successsContent);
-          changed_exp_successsContent_0 = true;
-        };
-        if (changed_exp_successsContent_0) {;
-          var local_changed_1 = range__successsContent_0 !== (range__successsContent_0 = ""+exp_successsContent_0);
-          if (local_changed_1) {;
-            $$helper_0.N(node_texte_5_0, range__successsContent_0);
-          };
-        };
-        if (diff_0["errorContent"]) {;
-          exp_errorContent_0 = $$helper_0.f(data_0.errorContent);
-          changed_exp_errorContent_0 = true;
-        };
-        if (changed_exp_errorContent_0) {;
-          var local_changed_2 = range__errorContent_0 !== (range__errorContent_0 = ""+exp_errorContent_0);
-          if (local_changed_2) {;
-            $$helper_0.N(node_texte_7_0, range__errorContent_0);
-          };
-        };
-      },
-      d: function (root_0) {
-        $$helper_0.D(node_texte_3_0);
-        $$helper_0.D(node_texte_5_0);
-        $$helper_0.d(node_eleme_view_4_0);
-        $$helper_0.D(node_texte_7_0);
-        $$helper_0.d(node_eleme_view_6_0);
-        if (root_0) { //;
-          $$helper_0.r(node_eleme_view_2_0);
-        } else { //;
-          $$helper_0.d(node_eleme_view_2_0);
-        };
-      },
-    }
-  }
-
-
-  return {
-    fragment: create_main_block_0
-  };
-
-}
-).bind(null, renderContext),
-
-    style: null  
-  };
-
-  var usingComponents = {
-    
-  };
-  
-  
-
-/***/ }),
-
-/***/ "EMQm":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "AfWf");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
-
-  
-  
-  
-
-/***/ }),
-
-/***/ "EtF6":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./components/chart/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/chart/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "WGcX");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
-
-  
-  $AppxRegistry.registerComponentRenderConfig({
-    componentPath: "components/chart/index",
-    options: function () {
-      return __webpack_require__(/*! ./components/chart/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "3W84");
-    }
-  });
-  
-
-/***/ }),
-
-/***/ "F1RD":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/es6.promise.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var LIBRARY = __webpack_require__(/*! ./_library */ "0b0m");
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var ctx = __webpack_require__(/*! ./_ctx */ "7J0t");
-var classof = __webpack_require__(/*! ./_classof */ "Q7Ls");
-var $export = __webpack_require__(/*! ./_export */ "mr/O");
-var isObject = __webpack_require__(/*! ./_is-object */ "9kv2");
-var aFunction = __webpack_require__(/*! ./_a-function */ "L398");
-var anInstance = __webpack_require__(/*! ./_an-instance */ "bnif");
-var forOf = __webpack_require__(/*! ./_for-of */ "Xgie");
-var speciesConstructor = __webpack_require__(/*! ./_species-constructor */ "8ya8");
-var task = __webpack_require__(/*! ./_task */ "0k9/").set;
-var microtask = __webpack_require__(/*! ./_microtask */ "hgEv")();
-var newPromiseCapabilityModule = __webpack_require__(/*! ./_new-promise-capability */ "KjuZ");
-var perform = __webpack_require__(/*! ./_perform */ "IoDf");
-var userAgent = __webpack_require__(/*! ./_user-agent */ "S1aT");
-var promiseResolve = __webpack_require__(/*! ./_promise-resolve */ "ShoH");
-var PROMISE = 'Promise';
-var TypeError = global.TypeError;
-var process = global.process;
-var versions = process && process.versions;
-var v8 = versions && versions.v8 || '';
-var $Promise = global[PROMISE];
-var isNode = classof(process) == 'process';
-var empty = function () { /* empty */ };
-var Internal, newGenericPromiseCapability, OwnPromiseCapability, Wrapper;
-var newPromiseCapability = newGenericPromiseCapability = newPromiseCapabilityModule.f;
-
-var USE_NATIVE = !!function () {
-  try {
-    // correct subclassing with @@species support
-    var promise = $Promise.resolve(1);
-    var FakePromise = (promise.constructor = {})[__webpack_require__(/*! ./_wks */ "95QX")('species')] = function (exec) {
-      exec(empty, empty);
-    };
-    // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
-    return (isNode || typeof PromiseRejectionEvent == 'function')
-      && promise.then(empty) instanceof FakePromise
-      // v8 6.6 (Node 10 and Chrome 66) have a bug with resolving custom thenables
-      // https://bugs.chromium.org/p/chromium/issues/detail?id=830565
-      // we can't detect it synchronously, so just check versions
-      && v8.indexOf('6.6') !== 0
-      && userAgent.indexOf('Chrome/66') === -1;
-  } catch (e) { /* empty */ }
-}();
-
-// helpers
-var isThenable = function (it) {
-  var then;
-  return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
-};
-var notify = function (promise, isReject) {
-  if (promise._n) return;
-  promise._n = true;
-  var chain = promise._c;
-  microtask(function () {
-    var value = promise._v;
-    var ok = promise._s == 1;
-    var i = 0;
-    var run = function (reaction) {
-      var handler = ok ? reaction.ok : reaction.fail;
-      var resolve = reaction.resolve;
-      var reject = reaction.reject;
-      var domain = reaction.domain;
-      var result, then, exited;
-      try {
-        if (handler) {
-          if (!ok) {
-            if (promise._h == 2) onHandleUnhandled(promise);
-            promise._h = 1;
-          }
-          if (handler === true) result = value;
-          else {
-            if (domain) domain.enter();
-            result = handler(value); // may throw
-            if (domain) {
-              domain.exit();
-              exited = true;
-            }
-          }
-          if (result === reaction.promise) {
-            reject(TypeError('Promise-chain cycle'));
-          } else if (then = isThenable(result)) {
-            then.call(result, resolve, reject);
-          } else resolve(result);
-        } else reject(value);
-      } catch (e) {
-        if (domain && !exited) domain.exit();
-        reject(e);
-      }
-    };
-    while (chain.length > i) run(chain[i++]); // variable length - can't use forEach
-    promise._c = [];
-    promise._n = false;
-    if (isReject && !promise._h) onUnhandled(promise);
-  });
-};
-var onUnhandled = function (promise) {
-  task.call(global, function () {
-    var value = promise._v;
-    var unhandled = isUnhandled(promise);
-    var result, handler, console;
-    if (unhandled) {
-      result = perform(function () {
-        if (isNode) {
-          process.emit('unhandledRejection', value, promise);
-        } else if (handler = global.onunhandledrejection) {
-          handler({ promise: promise, reason: value });
-        } else if ((console = global.console) && console.error) {
-          console.error('Unhandled promise rejection', value);
-        }
-      });
-      // Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
-      promise._h = isNode || isUnhandled(promise) ? 2 : 1;
-    } promise._a = undefined;
-    if (unhandled && result.e) throw result.v;
-  });
-};
-var isUnhandled = function (promise) {
-  return promise._h !== 1 && (promise._a || promise._c).length === 0;
-};
-var onHandleUnhandled = function (promise) {
-  task.call(global, function () {
-    var handler;
-    if (isNode) {
-      process.emit('rejectionHandled', promise);
-    } else if (handler = global.onrejectionhandled) {
-      handler({ promise: promise, reason: promise._v });
-    }
-  });
-};
-var $reject = function (value) {
-  var promise = this;
-  if (promise._d) return;
-  promise._d = true;
-  promise = promise._w || promise; // unwrap
-  promise._v = value;
-  promise._s = 2;
-  if (!promise._a) promise._a = promise._c.slice();
-  notify(promise, true);
-};
-var $resolve = function (value) {
-  var promise = this;
-  var then;
-  if (promise._d) return;
-  promise._d = true;
-  promise = promise._w || promise; // unwrap
-  try {
-    if (promise === value) throw TypeError("Promise can't be resolved itself");
-    if (then = isThenable(value)) {
-      microtask(function () {
-        var wrapper = { _w: promise, _d: false }; // wrap
-        try {
-          then.call(value, ctx($resolve, wrapper, 1), ctx($reject, wrapper, 1));
-        } catch (e) {
-          $reject.call(wrapper, e);
-        }
-      });
-    } else {
-      promise._v = value;
-      promise._s = 1;
-      notify(promise, false);
-    }
-  } catch (e) {
-    $reject.call({ _w: promise, _d: false }, e); // wrap
-  }
-};
-
-// constructor polyfill
-if (!USE_NATIVE) {
-  // 25.4.3.1 Promise(executor)
-  $Promise = function Promise(executor) {
-    anInstance(this, $Promise, PROMISE, '_h');
-    aFunction(executor);
-    Internal.call(this);
-    try {
-      executor(ctx($resolve, this, 1), ctx($reject, this, 1));
-    } catch (err) {
-      $reject.call(this, err);
-    }
-  };
-  // eslint-disable-next-line no-unused-vars
-  Internal = function Promise(executor) {
-    this._c = [];             // <- awaiting reactions
-    this._a = undefined;      // <- checked in isUnhandled reactions
-    this._s = 0;              // <- state
-    this._d = false;          // <- done
-    this._v = undefined;      // <- value
-    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
-    this._n = false;          // <- notify
-  };
-  Internal.prototype = __webpack_require__(/*! ./_redefine-all */ "415x")($Promise.prototype, {
-    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
-    then: function then(onFulfilled, onRejected) {
-      var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
-      reaction.ok = typeof onFulfilled == 'function' ? onFulfilled : true;
-      reaction.fail = typeof onRejected == 'function' && onRejected;
-      reaction.domain = isNode ? process.domain : undefined;
-      this._c.push(reaction);
-      if (this._a) this._a.push(reaction);
-      if (this._s) notify(this, false);
-      return reaction.promise;
-    },
-    // 25.4.5.1 Promise.prototype.catch(onRejected)
-    'catch': function (onRejected) {
-      return this.then(undefined, onRejected);
-    }
-  });
-  OwnPromiseCapability = function () {
-    var promise = new Internal();
-    this.promise = promise;
-    this.resolve = ctx($resolve, promise, 1);
-    this.reject = ctx($reject, promise, 1);
-  };
-  newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
-    return C === $Promise || C === Wrapper
-      ? new OwnPromiseCapability(C)
-      : newGenericPromiseCapability(C);
-  };
-}
-
-$export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
-__webpack_require__(/*! ./_set-to-string-tag */ "1mC4")($Promise, PROMISE);
-__webpack_require__(/*! ./_set-species */ "xtfz")(PROMISE);
-Wrapper = __webpack_require__(/*! ./_core */ "37Yt")[PROMISE];
-
-// statics
-$export($export.S + $export.F * !USE_NATIVE, PROMISE, {
-  // 25.4.4.5 Promise.reject(r)
-  reject: function reject(r) {
-    var capability = newPromiseCapability(this);
-    var $$reject = capability.reject;
-    $$reject(r);
-    return capability.promise;
-  }
-});
-$export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
-  // 25.4.4.6 Promise.resolve(x)
-  resolve: function resolve(x) {
-    return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
-  }
-});
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(/*! ./_iter-detect */ "5wUF")(function (iter) {
-  $Promise.all(iter)['catch'](empty);
-})), PROMISE, {
-  // 25.4.4.1 Promise.all(iterable)
-  all: function all(iterable) {
-    var C = this;
-    var capability = newPromiseCapability(C);
-    var resolve = capability.resolve;
-    var reject = capability.reject;
-    var result = perform(function () {
-      var values = [];
-      var index = 0;
-      var remaining = 1;
-      forOf(iterable, false, function (promise) {
-        var $index = index++;
-        var alreadyCalled = false;
-        values.push(undefined);
-        remaining++;
-        C.resolve(promise).then(function (value) {
-          if (alreadyCalled) return;
-          alreadyCalled = true;
-          values[$index] = value;
-          --remaining || resolve(values);
-        }, reject);
-      });
-      --remaining || resolve(values);
-    });
-    if (result.e) reject(result.v);
-    return capability.promise;
-  },
-  // 25.4.4.4 Promise.race(iterable)
-  race: function race(iterable) {
-    var C = this;
-    var capability = newPromiseCapability(C);
-    var reject = capability.reject;
-    var result = perform(function () {
-      forOf(iterable, false, function (promise) {
-        C.resolve(promise).then(capability.resolve, reject);
-      });
-    });
-    if (result.e) reject(result.v);
-    return capability.promise;
-  }
-});
-
-
-/***/ }),
-
-/***/ "HiNv":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_object-gpo.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(/*! ./_has */ "n00i");
-var toObject = __webpack_require__(/*! ./_to-object */ "oqME");
-var IE_PROTO = __webpack_require__(/*! ./_shared-key */ "frbX")('IE_PROTO');
-var ObjectProto = Object.prototype;
-
-module.exports = Object.getPrototypeOf || function (O) {
-  O = toObject(O);
-  if (has(O, IE_PROTO)) return O[IE_PROTO];
-  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
-    return O.constructor.prototype;
-  } return O instanceof Object ? ObjectProto : null;
-};
-
-
-/***/ }),
-
-/***/ "HzyB":
-/*!*****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
-  \*****************************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "B8uw");
-
-  
-    
-  
-  var stylesheet = $AppxStyleRegistry.createStyle("node_modules/@antv/my-f2/es/index.acss", _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
-  
-  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
-  
-
-/***/ }),
-
-/***/ "Inku":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "r9NZ");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "NbkS");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _sdk = __webpack_require__(/*! ../../api/sdk */ "zTrJ");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var global = undefined,
-    self = undefined,
-    window = undefined,
-    document = undefined,
-    location = undefined,
-    XMLHttpRequest = undefined,
-    AlipayJSBridge = undefined,
-    importScript = undefined,
-    importScripts = undefined,
-    AFAppX = undefined,
-    fetch = undefined,
-    $AppxFramework = undefined,
-    $AppxRuntime = undefined,
-    mqEnvironment = undefined,
-    wxEnvironment = undefined,
-    __CUBE_KERNEL__ = undefined,
-    $AppxRegistry = undefined,
-    $AppxStyleRegistry = undefined;
-
-$global.$addComponentConfig({
-  componentPath: "components/component-template/index"
-});
-
-
-var PROMOTION_STATE_TRYOUT = 'STANDARD_WORKTAB';
-
-Component({
-  data: {},
-  props: {
-    componentName: '',
-    componentProps: {// config.json文件中定义的props可以从componentProps中获取，这里可以设置默认值。如果有在设计器里修改，则会被新值覆盖。
-
-    },
-    config: {
-      corpId: '' // 可以通过this.props.config.corpId 获取当前工作台用户的企业corpId
-    }
-  },
-  didMount: function didMount() {
-    var _this = this;
-
-    return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-      var props, data;
-      return _regenerator2.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              (0, _sdk.getLifecycleSdk)().didMount(_this.props.componentName);
-              // 这里读到的props，和config.json文件中定义的props相对应，详见config.json文件说明
-              props = _this.props.componentProps;
-              // 业务代码写到下方
-              // 注意，这里的this，用的是箭头函数，所以内部的this就是指向didMount里的this
-              // 如果不是箭头函数，需要主动bind(this)
-
-              _this.onShowListener = function () {
-                console.log('监听到onShow');
-                // 一般onShow里可以进行刷新接口数据等操作-注意后端别被打爆
-              };
-              (0, _sdk.getSdk)().listenCustomEvent('onShow', _this.onShowListener);
-
-              // sdk请求时需要try catch
-              _context.prev = 4;
-              _context.next = 7;
-              return (0, _sdk.getSdk)().request(_this.props.componentProps.gateWayApi, '', {
-                url: 'http://httpbin.org/get',
-                apiKey: 'httpbin',
-                httpMethod: 'GET',
-                params: '',
-                apiSecret: '11',
-                system: {
-                  userid: 'zhangdan',
-                  corpId: 'dingd07aef772fd2b897'
-                }
-              });
-
-            case 7:
-              data = _context.sent;
-
-              _this.setData({
-                successsContent: '\u8BF7\u6C42\u6210\u529F: ' + JSON.stringify(data)
-              });
-              console.log('数据请求成功:', data);
-              _context.next = 16;
-              break;
-
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context['catch'](4);
-
-              _this.setData({
-                errorContent: '\u8BF7\u6C42\u5931\u8D25\uFF1A' + JSON.stringify(_context.t0)
-              });
-              console.log('数据请求error:', _context.t0);
-
-            case 16:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, _this, [[4, 12]]);
-    }))();
-  },
-  didUpdate: function didUpdate(prevProps) {
-    (0, _sdk.getLifecycleSdk)().didUpdate(this.props.componentName);
-    // 业务代码写到下方
-    // 营销态的数据是props.componentProps.promotionState，注意嵌套层级
-    if (prevProps.componentProps.promotionState !== this.props.componentProps.promotionState) {
-      // 营销态状态变更，一般变更后也可刷新插件数据
-      // 变更频率不会很高，只会在营销态和非营销态切换时用到
-      console.log('营销态状态变更，当前状态:', this.props.componentProps.promotionState);
-    }
-  },
-  didUnmount: function didUnmount() {
-    (0, _sdk.getLifecycleSdk)().didUnmount(this.props.componentName);
-    // 业务代码写到下方
-    (0, _sdk.getSdk)().removeCustomEvent('onShow', this.onShowListener);
-  },
-
-  methods: {
-    onContentClick: function onContentClick() {
-      // 营销态时，需要打开tryoutAddress，其余时候正常打开（一般与应用相关，插件自行处理）
-      if (this.props.componentProps.promotionState === PROMOTION_STATE_TRYOUT) {
-        console.log('打开营销态：', this.props.componentProps.tryoutAddress);
-        (0, _sdk.getSdk)().openApp({
-          url: this.props.componentProps.tryoutAddress
-        });
-        return;
-      }
-      // 插件自己正常情况下改打开的地址，这里仅模拟mock数据
-      var appAddress = 'https://www.dingtalk.com';
-      console.log('打开应用内地址：', appAddress);
-      (0, _sdk.getSdk)().openApp({
-        url: appAddress
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "IoDf":
-/*!**************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_perform.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return { e: false, v: exec() };
-  } catch (e) {
-    return { e: true, v: e };
-  }
-};
-
-
-/***/ }),
-
-/***/ "K9JZ":
-/*!**********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_uid.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var id = 0;
-var px = Math.random();
-module.exports = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-};
-
-
-/***/ }),
-
-/***/ "KFxW":
-/*!**********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_cof.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-
-/***/ }),
-
-/***/ "KjuZ":
-/*!*****************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_new-promise-capability.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// 25.4.1.5 NewPromiseCapability(C)
-var aFunction = __webpack_require__(/*! ./_a-function */ "L398");
-
-function PromiseCapability(C) {
-  var resolve, reject;
-  this.promise = new C(function ($$resolve, $$reject) {
-    if (resolve !== undefined || reject !== undefined) throw TypeError('Bad Promise constructor');
-    resolve = $$resolve;
-    reject = $$reject;
-  });
-  this.resolve = aFunction(resolve);
-  this.reject = aFunction(reject);
-}
-
-module.exports.f = function (C) {
-  return new PromiseCapability(C);
-};
-
-
-/***/ }),
-
-/***/ "L398":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_a-function.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "Lg79":
-/*!******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_object-keys.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(/*! ./_object-keys-internal */ "4kZA");
-var enumBugKeys = __webpack_require__(/*! ./_enum-bug-keys */ "NQZz");
-
-module.exports = Object.keys || function keys(O) {
-  return $keys(O, enumBugKeys);
-};
-
-
-/***/ }),
-
-/***/ "LiJU":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/node_modules/@antv/f2-context/esm/index.js ***!
-  \*****************************************************************************/
-/*! exports provided: auto, wx, my */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "auto", function() { return auto; });
-/* harmony import */ var _context_wx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context/wx */ "3Ks2");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "wx", function() { return _context_wx__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-/* harmony import */ var _context_my__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context/my */ "fYY2");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "my", function() { return _context_my__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "itOJ");
-var global = undefined,
-    self = undefined,
-    window = undefined,
-    document = undefined,
-    location = undefined,
-    XMLHttpRequest = undefined,
-    AlipayJSBridge = undefined,
-    importScript = undefined,
-    importScripts = undefined,
-    AFAppX = undefined,
-    fetch = undefined,
-    $AppxFramework = undefined,
-    $AppxRuntime = undefined,
-    mqEnvironment = undefined,
-    wxEnvironment = undefined,
-    __CUBE_KERNEL__ = undefined,
-    $AppxRegistry = undefined,
-    $AppxStyleRegistry = undefined;
-
-
-
-var auto = function (ctx) {
-    if (_util__WEBPACK_IMPORTED_MODULE_2__["isWx"]) {
-        return Object(_context_wx__WEBPACK_IMPORTED_MODULE_0__["default"])(ctx);
-    }
-    if (_util__WEBPACK_IMPORTED_MODULE_2__["isMy"]) {
-        return Object(_context_my__WEBPACK_IMPORTED_MODULE_1__["default"])(ctx);
-    }
-    return ctx;
-};
-
-
-
-/***/ }),
-
-/***/ "Ly1O":
-/*!*****************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!./component.json?jsonAsESM ***!
-  \*****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-    module.exports = {
-      __meta__: {
-        version: "0.4.7",
-      },
-      component2: false,
-      main: function () {
-        return __webpack_require__(/*! ./index.js */ "QfWi");
-      },
-      pluginId: undefined,
-      publicComponents: {
-        pluginInfo: null,
-        publicComponents: {
-          "component-template": {
-            componentPath: "components/component-template/index",
-            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "fdNf")
-          }
-,"chart": {
-            componentPath: "components/chart/index",
-            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "maHI")
-          }
-        },
-        renderType: 8,
-        callback: function () {
-          __webpack_require__(/*! ./components/component-template/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/component-template/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "XevS");
-__webpack_require__(/*! ./components/chart/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/chart/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "EtF6");
-          __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "elUV");
-__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "RsvT");
-          __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "Inku");
-__webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rN5b");
-          return {
-            style: [__webpack_require__(/*! ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "WvET").default,__webpack_require__(/*! ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "gsve").default].join('\n'),
-          };
-        },
-      },
-    };
-    
-
-/***/ }),
-
-/***/ "MBQf":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_dom-create.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ./_is-object */ "9kv2");
-var document = __webpack_require__(/*! ./_global */ "vx5S").document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ "MdZi":
-/*!*********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_array-includes.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// false -> Array#indexOf
-// true  -> Array#includes
-var toIObject = __webpack_require__(/*! ./_to-iobject */ "wq9V");
-var toLength = __webpack_require__(/*! ./_to-length */ "3im8");
-var toAbsoluteIndex = __webpack_require__(/*! ./_to-absolute-index */ "2tud");
-module.exports = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIObject($this);
-    var length = toLength(O.length);
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
-    if (IS_INCLUDES && el != el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare
-      if (value != value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
-      if (O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-
-/***/ }),
-
-/***/ "NQZz":
-/*!********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_enum-bug-keys.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// IE 8- don't enum bug keys
-module.exports = (
-  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-).split(',');
-
-
-/***/ }),
-
-/***/ "NbkS":
-/*!********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/babel-runtime/helpers/asyncToGenerator.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _promise = __webpack_require__(/*! ../core-js/promise */ "8B5K");
-
-var _promise2 = _interopRequireDefault(_promise);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (fn) {
-  return function () {
-    var gen = fn.apply(this, arguments);
-    return new _promise2.default(function (resolve, reject) {
-      function step(key, arg) {
-        try {
-          var info = gen[key](arg);
-          var value = info.value;
-        } catch (error) {
-          reject(error);
-          return;
-        }
-
-        if (info.done) {
-          resolve(value);
-        } else {
-          return _promise2.default.resolve(value).then(function (value) {
-            step("next", value);
-          }, function (err) {
-            step("throw", err);
-          });
-        }
-      }
-
-      return step("next");
-    });
-  };
-};
-
-/***/ }),
-
-/***/ "Nq6r":
-/*!*******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_to-primitive.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(/*! ./_is-object */ "9kv2");
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ "O/ru":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_iter-call.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// call something on iterator step with safe closing on error
-var anObject = __webpack_require__(/*! ./_an-object */ "Wnzs");
-module.exports = function (iterator, fn, value, entries) {
-  try {
-    return entries ? fn(anObject(value)[0], value[1]) : fn(value);
-  // 7.4.6 IteratorClose(iterator, completion)
-  } catch (e) {
-    var ret = iterator['return'];
-    if (ret !== undefined) anObject(ret.call(iterator));
-    throw e;
-  }
-};
-
-
-/***/ }),
-
-/***/ "Q7Ls":
-/*!**************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_classof.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(/*! ./_cof */ "KFxW");
-var TAG = __webpack_require__(/*! ./_wks */ "95QX")('toStringTag');
-// ES3 wrong here
-var ARG = cof(function () { return arguments; }()) == 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
-  } catch (e) { /* empty */ }
-};
-
-module.exports = function (it) {
-  var O, T, B;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (T = tryGet(O = Object(it), TAG)) == 'string' ? T
-    // builtinTag case
-    : ARG ? cof(O)
-    // ES3 arguments fallback
-    : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
-};
-
-
-/***/ }),
-
-/***/ "QLUo":
-/*!**********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/web.dom.iterable.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ./es6.array.iterator */ "aIes");
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var hide = __webpack_require__(/*! ./_hide */ "Uc+G");
-var Iterators = __webpack_require__(/*! ./_iterators */ "jEVu");
-var TO_STRING_TAG = __webpack_require__(/*! ./_wks */ "95QX")('toStringTag');
-
-var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
-  'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' +
-  'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' +
-  'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' +
-  'TextTrackList,TouchList').split(',');
-
-for (var i = 0; i < DOMIterables.length; i++) {
-  var NAME = DOMIterables[i];
-  var Collection = global[NAME];
-  var proto = Collection && Collection.prototype;
-  if (proto && !proto[TO_STRING_TAG]) hide(proto, TO_STRING_TAG, NAME);
-  Iterators[NAME] = Iterators.Array;
-}
-
-
-/***/ }),
-
-/***/ "QfWi":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.registerWorktab = registerWorktab;
-
-var _sdk = __webpack_require__(/*! ./api/sdk */ "zTrJ");
-
-var global = undefined,
-    self = undefined,
-    window = undefined,
-    document = undefined,
-    location = undefined,
-    XMLHttpRequest = undefined,
-    AlipayJSBridge = undefined,
-    importScript = undefined,
-    importScripts = undefined,
-    AFAppX = undefined,
-    fetch = undefined,
-    $AppxFramework = undefined,
-    $AppxRuntime = undefined,
-    mqEnvironment = undefined,
-    wxEnvironment = undefined,
-    __CUBE_KERNEL__ = undefined,
-    $AppxRegistry = undefined,
-    $AppxStyleRegistry = undefined;
-function registerWorktab(obj) {
-    (0, _sdk.setSdk)(obj.sdk);
-    (0, _sdk.setLifecycleSdk)(obj.lifecycle);
-}
-
-/***/ }),
-
-/***/ "RsvT":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _snapshot_toolkit_node_modules_ali_antcube_build_lib_build_loader_engine_shared_javascript_entry_js_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineTypes_zephyr_engineJsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "EMQm");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rN5b");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__);
-
-  
-  
-  
-
-/***/ }),
-
-/***/ "S1aT":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_user-agent.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var navigator = global.navigator;
-
-module.exports = navigator && navigator.userAgent || '';
-
-
-/***/ }),
-
-/***/ "ShoH":
-/*!**********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_promise-resolve.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(/*! ./_an-object */ "Wnzs");
-var isObject = __webpack_require__(/*! ./_is-object */ "9kv2");
-var newPromiseCapability = __webpack_require__(/*! ./_new-promise-capability */ "KjuZ");
-
-module.exports = function (C, x) {
-  anObject(C);
-  if (isObject(x) && x.constructor === C) return x;
-  var promiseCapability = newPromiseCapability.f(C);
-  var resolve = promiseCapability.resolve;
-  resolve(x);
-  return promiseCapability.promise;
-};
-
-
-/***/ }),
-
-/***/ "T7lt":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_object-dps.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__(/*! ./_object-dp */ "dkmB");
-var anObject = __webpack_require__(/*! ./_an-object */ "Wnzs");
-var getKeys = __webpack_require__(/*! ./_object-keys */ "Lg79");
-
-module.exports = __webpack_require__(/*! ./_descriptors */ "/lLM") ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject(O);
-  var keys = getKeys(Properties);
-  var length = keys.length;
-  var i = 0;
-  var P;
-  while (length > i) dP.f(O, P = keys[i++], Properties[P]);
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "Uc+G":
-/*!***********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_hide.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__(/*! ./_object-dp */ "dkmB");
-var createDesc = __webpack_require__(/*! ./_property-desc */ "vesQ");
-module.exports = __webpack_require__(/*! ./_descriptors */ "/lLM") ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-
-/***/ "V+xL":
-/*!************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/index.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.gcp = void 0;
-var member_1 = __webpack_require__(/*! ./member */ "ZS7F");
-exports.gcp = member_1.gcp;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "VqAG":
-/*!************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_fails.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
-
-/***/ }),
-
-/***/ "WGcX":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-  
-  $AppxRegistry.registerComponentRenderConfig({
-    componentPath: "/node_modules/@antv/my-f2/es/index",
-    options: function () {
-      return __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "f90g");
-    }
-  });
-  
-
-/***/ }),
-
-/***/ "Wnzs":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_an-object.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ./_is-object */ "9kv2");
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "WvET":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
-  \****************************************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "h1YD");
-
-  
-  
-  
-
-  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
-  
-  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
-  
-
-/***/ }),
-
-/***/ "X+ib":
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
-  \******************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/chart/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ov+r");
-
-  
-    
-  
-  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
-  
-  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
-  
-
-/***/ }),
-
-/***/ "XevS":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./components/component-template/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/component-template/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-  
-  $AppxRegistry.registerComponentRenderConfig({
-    componentPath: "components/component-template/index",
-    options: function () {
-      return __webpack_require__(/*! ./components/component-template/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "CgZd");
-    }
-  });
-  
-
-/***/ }),
-
-/***/ "Xgie":
-/*!*************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_for-of.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ctx = __webpack_require__(/*! ./_ctx */ "7J0t");
-var call = __webpack_require__(/*! ./_iter-call */ "O/ru");
-var isArrayIter = __webpack_require__(/*! ./_is-array-iter */ "ZK1Q");
-var anObject = __webpack_require__(/*! ./_an-object */ "Wnzs");
-var toLength = __webpack_require__(/*! ./_to-length */ "3im8");
-var getIterFn = __webpack_require__(/*! ./core.get-iterator-method */ "vDkj");
-var BREAK = {};
-var RETURN = {};
-var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
-  var iterFn = ITERATOR ? function () { return iterable; } : getIterFn(iterable);
-  var f = ctx(fn, that, entries ? 2 : 1);
-  var index = 0;
-  var length, step, iterator, result;
-  if (typeof iterFn != 'function') throw TypeError(iterable + ' is not iterable!');
-  // fast case for arrays with default iterator
-  if (isArrayIter(iterFn)) for (length = toLength(iterable.length); length > index; index++) {
-    result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
-    if (result === BREAK || result === RETURN) return result;
-  } else for (iterator = iterFn.call(iterable); !(step = iterator.next()).done;) {
-    result = call(iterator, f, step.value, entries);
-    if (result === BREAK || result === RETURN) return result;
-  }
-};
-exports.BREAK = BREAK;
-exports.RETURN = RETURN;
-
-
-/***/ }),
-
-/***/ "ZFTA":
-/*!*****************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/index.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// 不能存在 export *, import *
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.mediaQueryMatch = exports.inline = exports.sjs = void 0;
-var inline_1 = __webpack_require__(/*! ./inline */ "V+xL");
-var sjs_1 = __webpack_require__(/*! ./sjs */ "vQ11");
-exports.sjs = {
-    callProperty4Object: sjs_1.callProperty4Object,
-    getProperty4Object: sjs_1.getProperty4Object,
-    identifier: sjs_1.identifier,
-    interpolateDefault: sjs_1.interpolateDefault,
-    interpolateExport: sjs_1.interpolateExport,
-    setProperty4Object: sjs_1.setProperty4Object,
-    transformProperty: sjs_1.transformProperty,
-};
-exports.inline = {
-    _gcp: inline_1.gcp,
-    g: inline_1.gcp,
-};
-var style_1 = __webpack_require__(/*! ./style */ "lVIL");
-exports.mediaQueryMatch = style_1.mediaQueryMatch;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "ZK1Q":
-/*!********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_is-array-iter.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// check on default Array iterator
-var Iterators = __webpack_require__(/*! ./_iterators */ "jEVu");
-var ITERATOR = __webpack_require__(/*! ./_wks */ "95QX")('iterator');
-var ArrayProto = Array.prototype;
-
-module.exports = function (it) {
-  return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
-};
-
-
-/***/ }),
-
-/***/ "ZS7F":
-/*!*************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/member.js ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.gcp = void 0;
-function gcp(target, args, isFunction) {
-    var ret = target;
-    var lastArg;
-    for (var _i = 0, args_1 = args; _i < args_1.length; _i++) {
-        var id = args_1[_i];
-        if (!ret) {
-            break;
-        }
-        lastArg = ret;
-        ret = ret[id];
-    }
-    if (isFunction) {
-        if (typeof ret !== 'function') {
-            return noop;
-        }
-        else {
-            return ret.bind(lastArg);
-        }
-    }
-    return ret;
-}
-exports.gcp = gcp;
-function noop() { }
-//# sourceMappingURL=member.js.map
-
-/***/ }),
-
-/***/ "Ziy2":
-/*!******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_iter-create.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var create = __webpack_require__(/*! ./_object-create */ "0CIb");
-var descriptor = __webpack_require__(/*! ./_property-desc */ "vesQ");
-var setToStringTag = __webpack_require__(/*! ./_set-to-string-tag */ "1mC4");
-var IteratorPrototype = {};
-
-// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(/*! ./_hide */ "Uc+G")(IteratorPrototype, __webpack_require__(/*! ./_wks */ "95QX")('iterator'), function () { return this; });
-
-module.exports = function (Constructor, NAME, next) {
-  Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
-  setToStringTag(Constructor, NAME + ' Iterator');
-};
-
-
-/***/ }),
-
-/***/ "aIes":
-/*!************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/es6.array.iterator.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var addToUnscopables = __webpack_require__(/*! ./_add-to-unscopables */ "yWzI");
-var step = __webpack_require__(/*! ./_iter-step */ "dBuh");
-var Iterators = __webpack_require__(/*! ./_iterators */ "jEVu");
-var toIObject = __webpack_require__(/*! ./_to-iobject */ "wq9V");
-
-// 22.1.3.4 Array.prototype.entries()
-// 22.1.3.13 Array.prototype.keys()
-// 22.1.3.29 Array.prototype.values()
-// 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(/*! ./_iter-define */ "7oB8")(Array, 'Array', function (iterated, kind) {
-  this._t = toIObject(iterated); // target
-  this._i = 0;                   // next index
-  this._k = kind;                // kind
-// 22.1.5.2.1 %ArrayIteratorPrototype%.next()
-}, function () {
-  var O = this._t;
-  var kind = this._k;
-  var index = this._i++;
-  if (!O || index >= O.length) {
-    this._t = undefined;
-    return step(1);
-  }
-  if (kind == 'keys') return step(0, index);
-  if (kind == 'values') return step(0, O[index]);
-  return step(0, [index, O[index]]);
-}, 'values');
-
-// argumentsList[@@iterator] is %ArrayProto_values% (9.4.4.6, 9.4.4.7)
-Iterators.Arguments = Iterators.Array;
-
-addToUnscopables('keys');
-addToUnscopables('values');
-addToUnscopables('entries');
-
-
-/***/ }),
-
-/***/ "bnif":
-/*!******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_an-instance.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (it, Constructor, name, forbiddenField) {
-  if (!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)) {
-    throw TypeError(name + ': incorrect invocation!');
-  } return it;
-};
-
-
-/***/ }),
-
-/***/ "caQc":
-/*!*************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/es7.promise.finally.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// https://github.com/tc39/proposal-promise-finally
-
-var $export = __webpack_require__(/*! ./_export */ "mr/O");
-var core = __webpack_require__(/*! ./_core */ "37Yt");
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var speciesConstructor = __webpack_require__(/*! ./_species-constructor */ "8ya8");
-var promiseResolve = __webpack_require__(/*! ./_promise-resolve */ "ShoH");
-
-$export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
-  var C = speciesConstructor(this, core.Promise || global.Promise);
-  var isFunction = typeof onFinally == 'function';
-  return this.then(
-    isFunction ? function (x) {
-      return promiseResolve(C, onFinally()).then(function () { return x; });
-    } : onFinally,
-    isFunction ? function (e) {
-      return promiseResolve(C, onFinally()).then(function () { throw e; });
-    } : onFinally
-  );
-} });
-
-
-/***/ }),
-
-/***/ "dBuh":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_iter-step.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (done, value) {
-  return { value: value, done: !!done };
-};
-
-
-/***/ }),
-
-/***/ "dkmB":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_object-dp.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(/*! ./_an-object */ "Wnzs");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ./_ie8-dom-define */ "iqNE");
-var toPrimitive = __webpack_require__(/*! ./_to-primitive */ "Nq6r");
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(/*! ./_descriptors */ "/lLM") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "elUV":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "Inku");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
-
-  
-  
-  
-
-/***/ }),
-
-/***/ "f90g":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/es/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \***************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: exportNamed, exportDefault, usingComponents */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
-
-  
-  
-
-  
-
-  
-
-  
-
-  var included = {
-    
-  };
-  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
-  var renderContext = {
-    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
-    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
-    s: {},
-    i: included,
-    t: {}
-  };
-
-  var exportNamed = {
-    
-  };
-
-  var exportDefault = {
-    zcomponent: (
-function getComponent($$renderContext_0, $$runtimeContext_0) {
-  var $$helper_0 = $$runtimeContext_0.h;
-  var $$getelement_0 = $$runtimeContext_0.e;
-  var $$element_canvas_0 = $$getelement_0(18);
-  function create_main_block_0($$componentInstance_0, context_0) {
-    var range_touchEnd_0;
-    var range_touchMove_0;
-    var range_touchStart_0;
-    var range_height_0;
-    var range_width_0;
-    var range_f2_canvas_0;
-    var range_f2_canvas__$id_0;
-    var exp_height_0;
-    var exp_width_0;
-    var exp_$id_0;
-    var node_eleme_canvas_2_0;
-    return {
-      c: function () {
-        var hasNoChildren_1 = 1;
-        node_eleme_canvas_2_0 = $$helper_0.e($$componentInstance_0, $$element_canvas_0, 89);
-        var assign_class_style_props_0 = $$helper_0.x;
-        range_touchStart_0 = "touchStart";
-        $$helper_0.k(node_eleme_canvas_2_0, "touchStart", 0, range_touchStart_0, $$componentInstance_0);
-        range_touchMove_0 = "touchMove";
-        $$helper_0.k(node_eleme_canvas_2_0, "touchMove", 1, range_touchMove_0, $$componentInstance_0);
-        range_touchEnd_0 = "touchEnd";
-        $$helper_0.k(node_eleme_canvas_2_0, "touchEnd", 2, range_touchEnd_0, $$componentInstance_0);
-        $$helper_0.ie(node_eleme_canvas_2_0 // ;
-        , { //;
-          "touchStart": [range_touchStart_0], //;
-          "touchMove": [range_touchMove_0], //;
-          "touchEnd": [range_touchEnd_0], //;
-        } //;
-        );
-        exp_$id_0 = context_0.$id;
-        range_f2_canvas__$id_0 = "f2-canvas-"+exp_$id_0;
-        $$helper_0.ea(node_eleme_canvas_2_0, "id", range_f2_canvas__$id_0);
-        range_f2_canvas_0 = "f2-canvas";
-        exp_width_0 = context_0.width;
-        range_width_0 = exp_width_0;
-        exp_height_0 = context_0.height;
-        range_height_0 = exp_height_0;
-        assign_class_style_props_0(node_eleme_canvas_2_0, $$componentInstance_0 //;
-        , range_f2_canvas_0 //;
-        , '' //;
-        , { //;
-          "width": range_width_0, //;
-          "height": range_height_0, //;
-        } //;
-        );
-      },
-      m: function (target_0, anchor_0) {
-        $$helper_0.i(target_0, node_eleme_canvas_2_0, anchor_0);
-      },
-      u: function (diff_0, data_0) {
-        var changed_exp_height_0;
-        var changed_exp_width_0;
-        var changed_exp_$id_0;
-        var hasNoChildren_1 = 1;
-        if (diff_0["$id"]) {;
-          exp_$id_0 = data_0.$id;
-          changed_exp_$id_0 = true;
-        };
-        if (changed_exp_$id_0) {;
-          var local_changed_0 = range_f2_canvas__$id_0 !== (range_f2_canvas__$id_0 = "f2-canvas-"+exp_$id_0);
-          if (local_changed_0) {;
-            $$helper_0.ea(node_eleme_canvas_2_0, "id", range_f2_canvas__$id_0);
-          };
-        };
-        if (diff_0["width"]) {;
-          exp_width_0 = data_0.width;
-          changed_exp_width_0 = true;
-        };
-        if (diff_0["height"]) {;
-          exp_height_0 = data_0.height;
-          changed_exp_height_0 = true;
-        };
-        if (changed_exp_width_0 || changed_exp_height_0) {;
-          var local_changed_1 = range_width_0 !== (range_width_0 = exp_width_0);
-          var local_changed_2 = range_height_0 !== (range_height_0 = exp_height_0);
-          if (local_changed_1 || local_changed_2) {;
-          };
-        };
-        if (local_changed_1 || local_changed_2) {;
-          $$helper_0.y(node_eleme_canvas_2_0, $$componentInstance_0 //;
-          , range_f2_canvas_0 //;
-          , null //;
-          , { //;
-            "width": range_width_0, //;
-            "height": range_height_0, //;
-          } //;
-          , { //;
-            "width": local_changed_1, //;
-            "height": local_changed_2, //;
-          } //;
-          );
-        };
-      },
-      d: function (root_0) {
-        if (root_0) { //;
-          $$helper_0.r(node_eleme_canvas_2_0);
-        } else { //;
-          $$helper_0.d(node_eleme_canvas_2_0);
-        };
-      },
-    }
-  }
-
-
-  return {
-    fragment: create_main_block_0
-  };
-
-}
-).bind(null, renderContext),
-
-    style: null  
-  };
-
-  var usingComponents = {
-    
-  };
-  
-  
-
-/***/ }),
-
-/***/ "fYY2":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/node_modules/@antv/f2-context/esm/context/my.js ***!
-  \**********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var global = undefined,
-    self = undefined,
-    window = undefined,
-    document = undefined,
-    location = undefined,
-    XMLHttpRequest = undefined,
-    AlipayJSBridge = undefined,
-    importScript = undefined,
-    importScripts = undefined,
-    AFAppX = undefined,
-    fetch = undefined,
-    $AppxFramework = undefined,
-    $AppxRuntime = undefined,
-    mqEnvironment = undefined,
-    wxEnvironment = undefined,
-    __CUBE_KERNEL__ = undefined,
-    $AppxRegistry = undefined,
-    $AppxStyleRegistry = undefined;
-// 支付宝小程序的context适配
-var CAPITALIZED_ATTRS_MAP = {
-    fillStyle: 'FillStyle',
-    fontSize: 'FontSize',
-    globalAlpha: 'GlobalAlpha',
-    opacity: 'GlobalAlpha',
-    lineCap: 'LineCap',
-    lineJoin: 'LineJoin',
-    lineWidth: 'LineWidth',
-    miterLimit: 'MiterLimit',
-    strokeStyle: 'StrokeStyle',
-    textAlign: 'TextAlign',
-    textBaseline: 'TextBaseline',
-    shadow: 'Shadow',
-    font: 'Font'
-};
-function strLen(str) {
-    var len = 0;
-    for (var i = 0; i < str.length; i++) {
-        if (str.charCodeAt(i) > 0 && str.charCodeAt(i) < 128) {
-            len++;
-        }
-        else {
-            len += 2;
-        }
-    }
-    return len;
-}
-/* harmony default export */ __webpack_exports__["default"] = (function (ctx) {
-    Object.keys(CAPITALIZED_ATTRS_MAP).map(function (key) {
-        Object.defineProperty(ctx, key, {
-            set: function (value) {
-                // 记录最新设置的值
-                ctx["__" + key] = value;
-                if (key === 'shadow' && ctx.setShadow && Array.isArray(value)) {
-                    ctx.setShadow(value[0], value[1], value[2], value[3]);
-                    return;
-                }
-                var name = 'set' + CAPITALIZED_ATTRS_MAP[key];
-                if (!ctx[name]) {
-                    return;
-                }
-                ctx[name](value);
-            }
-        });
-        return key;
-    });
-    // 钉钉钉钉小程序框架不支持 measureText 方法，用此方法 mock
-    if (!ctx.measureText) {
-        ctx.measureText = function (text) {
-            var fontSize = 12;
-            var font = ctx.__font;
-            if (font) {
-                fontSize = parseInt(font.split(' ')[3], 10);
-            }
-            fontSize /= 2;
-            return {
-                width: strLen(text) * fontSize
-            };
-        };
-    }
-    return ctx;
-});
-
-
-/***/ }),
-
-/***/ "fdNf":
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
-  \*******************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {"keys":[],"map":{}}
-
-/***/ }),
-
-/***/ "fh+e":
-/*!********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/fn/promise.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../modules/es6.object.to-string */ "igDH");
-__webpack_require__(/*! ../modules/es6.string.iterator */ "27E+");
-__webpack_require__(/*! ../modules/web.dom.iterable */ "QLUo");
-__webpack_require__(/*! ../modules/es6.promise */ "F1RD");
-__webpack_require__(/*! ../modules/es7.promise.finally */ "caQc");
-__webpack_require__(/*! ../modules/es7.promise.try */ "+bWP");
-module.exports = __webpack_require__(/*! ../modules/_core */ "37Yt").Promise;
-
-
-/***/ }),
-
-/***/ "frbX":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_shared-key.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var shared = __webpack_require__(/*! ./_shared */ "z9LK")('keys');
-var uid = __webpack_require__(/*! ./_uid */ "K9JZ");
-module.exports = function (key) {
-  return shared[key] || (shared[key] = uid(key));
-};
-
-
-/***/ }),
-
-/***/ "fwBD":
-/*!**************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_iobject.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(/*! ./_cof */ "KFxW");
-// eslint-disable-next-line no-prototype-builtins
-module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-  return cof(it) == 'String' ? it.split('') : Object(it);
-};
-
-
-/***/ }),
-
-/***/ "gsve":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
-  \***************************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HzyB");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "X+ib");
-
-  
-  
-  
-
-  
-
-  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"],_Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__["default"]]);
-  
-  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
-  
-
-/***/ }),
-
-/***/ "h1YD":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "31k4");
-
-  
-    
-  
-  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", _Users_wuzequan_code_dd_application_template_plugin_application_ecology_javascript_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
-  
-  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
-  
-
-/***/ }),
-
-/***/ "hTNh":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_to-integer.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-module.exports = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
-
-
-/***/ }),
-
-/***/ "hgEv":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_microtask.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var macrotask = __webpack_require__(/*! ./_task */ "0k9/").set;
-var Observer = global.MutationObserver || global.WebKitMutationObserver;
-var process = global.process;
-var Promise = global.Promise;
-var isNode = __webpack_require__(/*! ./_cof */ "KFxW")(process) == 'process';
-
-module.exports = function () {
-  var head, last, notify;
-
-  var flush = function () {
-    var parent, fn;
-    if (isNode && (parent = process.domain)) parent.exit();
-    while (head) {
-      fn = head.fn;
-      head = head.next;
-      try {
-        fn();
-      } catch (e) {
-        if (head) notify();
-        else last = undefined;
-        throw e;
-      }
-    } last = undefined;
-    if (parent) parent.enter();
-  };
-
-  // Node.js
-  if (isNode) {
-    notify = function () {
-      process.nextTick(flush);
-    };
-  // browsers with MutationObserver, except iOS Safari - https://github.com/zloirock/core-js/issues/339
-  } else if (Observer && !(global.navigator && global.navigator.standalone)) {
-    var toggle = true;
-    var node = document.createTextNode('');
-    new Observer(flush).observe(node, { characterData: true }); // eslint-disable-line no-new
-    notify = function () {
-      node.data = toggle = !toggle;
-    };
-  // environments with maybe non-completely correct, but existent Promise
-  } else if (Promise && Promise.resolve) {
-    // Promise.resolve without an argument throws an error in LG WebOS 2
-    var promise = Promise.resolve(undefined);
-    notify = function () {
-      promise.then(flush);
-    };
-  // for other environments - macrotask based on:
-  // - setImmediate
-  // - MessageChannel
-  // - window.postMessag
-  // - onreadystatechange
-  // - setTimeout
-  } else {
-    notify = function () {
-      // strange IE + webpack dev server bug - use .call(global)
-      macrotask.call(global, flush);
-    };
-  }
-
-  return function (fn) {
-    var task = { fn: fn, next: undefined };
-    if (last) last.next = task;
-    if (!head) {
-      head = task;
-      notify();
-    } last = task;
-  };
-};
-
-
-/***/ }),
-
-/***/ "igDH":
-/*!**************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/es6.object.to-string.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "iqNE":
-/*!*********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_ie8-dom-define.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(/*! ./_descriptors */ "/lLM") && !__webpack_require__(/*! ./_fails */ "VqAG")(function () {
-  return Object.defineProperty(__webpack_require__(/*! ./_dom-create */ "MBQf")('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "itOJ":
-/*!****************************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/node_modules/@antv/f2-context/esm/util.js ***!
-  \****************************************************************************/
-/*! exports provided: isWx, isMy */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isWx", function() { return isWx; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isMy", function() { return isMy; });
-var global = undefined,
-    self = undefined,
-    window = undefined,
-    document = undefined,
-    location = undefined,
-    XMLHttpRequest = undefined,
-    AlipayJSBridge = undefined,
-    importScript = undefined,
-    importScripts = undefined,
-    AFAppX = undefined,
-    fetch = undefined,
-    $AppxFramework = undefined,
-    $AppxRuntime = undefined,
-    mqEnvironment = undefined,
-    wxEnvironment = undefined,
-    __CUBE_KERNEL__ = undefined,
-    $AppxRegistry = undefined,
-    $AppxStyleRegistry = undefined;
-// weixin miniprogram
-// @ts-ignore
-var isWx = (typeof wx === 'object') && (typeof wx.getSystemInfoSync === 'function');
-// ant miniprogram
-// @ts-ignore
-var isMy = (typeof my === 'object') && (typeof my.getSystemInfoSync === 'function');
-
-
-
-/***/ }),
-
-/***/ "ivWA":
-/*!*************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_invoke.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// fast apply, http://jsperf.lnkit.com/fast-apply/5
-module.exports = function (fn, args, that) {
-  var un = that === undefined;
-  switch (args.length) {
-    case 0: return un ? fn()
-                      : fn.call(that);
-    case 1: return un ? fn(args[0])
-                      : fn.call(that, args[0]);
-    case 2: return un ? fn(args[0], args[1])
-                      : fn.call(that, args[0], args[1]);
-    case 3: return un ? fn(args[0], args[1], args[2])
-                      : fn.call(that, args[0], args[1], args[2]);
-    case 4: return un ? fn(args[0], args[1], args[2], args[3])
-                      : fn.call(that, args[0], args[1], args[2], args[3]);
-  } return fn.apply(that, args);
-};
-
-
-/***/ }),
-
-/***/ "jEVu":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_iterators.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {};
-
-
-/***/ }),
-
-/***/ "lVIL":
-/*!***********************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/style/index.js ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.mediaQueryMatch = void 0;
-function mediaQueryMatch(querys) {
-    if (querys === void 0) { querys = []; }
-    /**
-     * 参数保护确定是数组
-     * undefined 会被上面处理成默认 []
-     * null boolean number 会返回 false
-     */
-    if (Object.prototype.toString.call(querys) !== '[object Array]') {
-        return false;
-    }
-    /**
-     * 确定是个object
-     */
-    if (typeof WXEnvironment !== 'object' || WXEnvironment === null) {
-        return false;
-    }
-    /**
-     * 转换数据
-     * 如果有单位则会返回 nan
-     */
-    var scale = +WXEnvironment.scale;
-    if (scale === 0 || isNaN(scale)) {
-        return false;
-    }
-    for (var _i = 0, querys_1 = querys; _i < querys_1.length; _i++) {
-        var query = querys_1[_i];
-        /**
-         * 转换数据
-         * 如果有单位则会返回 nan
-         */
-        var rawValue = +WXEnvironment[query.name];
-        // 保证数字
-        if (rawValue === 0 || isNaN(rawValue)) {
-            return false;
-        }
-        var res = rawValue / scale - query.value;
-        // res NAN
-        if (isNaN(res)) {
-            return false;
-        }
-        if (query.op === 0 && Math.abs(res) > 1e-3) {
-            // TODO: 目前只有这种
-            // 要求相等的时候，但是 |差距| 小于 0.001
-            return false;
-        }
-        else if (res * query.op < 0) {
-            // 要求大小于，但是结果不同号，所以要false。
-            return false;
-        }
-    }
-    return true;
-}
-exports.mediaQueryMatch = mediaQueryMatch;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "maHI":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
-  \******************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {"keys":["/node_modules/@antv/my-f2/es/index"],"map":{"/node_modules/@antv/my-f2/es/index":1}}
-
-/***/ }),
-
-/***/ "mr/O":
-/*!*************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_export.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var core = __webpack_require__(/*! ./_core */ "37Yt");
-var ctx = __webpack_require__(/*! ./_ctx */ "7J0t");
-var hide = __webpack_require__(/*! ./_hide */ "Uc+G");
-var has = __webpack_require__(/*! ./_has */ "n00i");
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && has(exports, key)) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function (C) {
-      var F = function (a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0: return new C();
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-
-/***/ }),
-
-/***/ "n00i":
-/*!**********************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_has.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-
-/***/ }),
-
-/***/ "o+bf":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@antv/my-f2/node_modules/@antv/f2/dist/f2.js ***!
-  \*******************************************************************/
+/***/ "4ASp":
+/*!******************************************!*\
+  !*** ./node_modules/@antv/f2/dist/f2.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22439,19 +18652,1674 @@ var global = undefined,
 
 /***/ }),
 
-/***/ "oqME":
-/*!****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_to-object.js ***!
-  \****************************************************************************/
+/***/ "5cBC":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/statistical-indicator-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "Djna");
+
+  
+  
+  
+
+  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "8MaY":
+/*!****************************************************!*\
+  !*** ./node_modules/@antv/f2-context/esm/index.js ***!
+  \****************************************************/
+/*! exports provided: auto, wx, my */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "auto", function() { return auto; });
+/* harmony import */ var _context_wx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context/wx */ "XSo6");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "wx", function() { return _context_wx__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _context_my__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context/my */ "aSrl");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "my", function() { return _context_my__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "yoHC");
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+
+
+
+var auto = function (ctx) {
+    if (_util__WEBPACK_IMPORTED_MODULE_2__["isWx"]) {
+        return Object(_context_wx__WEBPACK_IMPORTED_MODULE_0__["default"])(ctx);
+    }
+    if (_util__WEBPACK_IMPORTED_MODULE_2__["isMy"]) {
+        return Object(_context_my__WEBPACK_IMPORTED_MODULE_1__["default"])(ctx);
+    }
+    return ctx;
+};
+
+
+
+/***/ }),
+
+/***/ "AfWf":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 7.1.13 ToObject(argument)
-var defined = __webpack_require__(/*! ./_defined */ "7SSL");
-module.exports = function (it) {
-  return Object(defined(it));
+"use strict";
+
+
+var _f = __webpack_require__(/*! @antv/f2 */ "4ASp");
+
+var _f2 = _interopRequireDefault(_f);
+
+var _f2Context = __webpack_require__(/*! @antv/f2-context */ "8MaY");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+
+$global.$addComponentConfig({
+  componentPath: "/node_modules/@antv/my-f2/es/index"
+});
+
+
+function wrapEvent(e) {
+  if (!e) return;
+  if (!e.preventDefault) {
+    e.preventDefault = function () {};
+  }
+  return e;
+}
+
+Component({
+  // mixins: [],
+  // data: {},
+  props: {
+    onInit: function onInit() {},
+    // width height 会作为元素兜底的宽高使用
+    width: null,
+    height: null
+  },
+  didMount: function didMount() {
+    var _this = this;
+
+    var id = 'f2-canvas-' + this.$id;
+    var myCtx = my.createCanvasContext(id);
+    var context = (0, _f2Context.my)(myCtx);
+
+    var query = my.createSelectorQuery();
+    query.select('#' + id).boundingClientRect().exec(function (res) {
+      // 获取画布实际宽高, 用props的宽高做失败兜底
+      var _ref = res && res[0] ? res[0] : _this.props,
+          width = _ref.width,
+          height = _ref.height;
+
+      if (!width || !height) {
+        return;
+      }
+      var pixelRatio = my.getSystemInfoSync().pixelRatio;
+      // 高清解决方案
+      _this.setData({
+        id: id,
+        width: width * pixelRatio,
+        height: height * pixelRatio
+      }, function () {
+        var ref = _this;
+        var chart = _this.props.onInit(_f2.default, { context: context, width: width, height: height, pixelRatio: pixelRatio }, ref);
+        if (chart) {
+          _this.chart = chart;
+          _this.canvasEl = chart.get('el');
+        }
+      });
+    });
+  },
+
+  // didUpdate() {},
+  // didUnmount() {},
+  methods: {
+    touchStart: function touchStart(e) {
+      var canvasEl = this.canvasEl;
+      if (!canvasEl) {
+        return;
+      }
+      canvasEl.dispatchEvent('touchstart', wrapEvent(e));
+    },
+    touchMove: function touchMove(e) {
+      var canvasEl = this.canvasEl;
+      if (!canvasEl) {
+        return;
+      }
+      canvasEl.dispatchEvent('touchmove', wrapEvent(e));
+    },
+    touchEnd: function touchEnd(e) {
+      var canvasEl = this.canvasEl;
+      if (!canvasEl) {
+        return;
+      }
+      canvasEl.dispatchEvent('touchend', wrapEvent(e));
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "B8uw":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
+
+internal_style = ".f2-canvas {width:100%;height:100%}";
+/* harmony default export */ __webpack_exports__["default"] = (internal_style);
+
+/***/ }),
+
+/***/ "CgZd":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/component-template/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: exportNamed, exportDefault, usingComponents */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+
+  
+
+  
+
+  
+
+  var included = {
+    
+  };
+  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
+  var renderContext = {
+    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
+    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
+    s: {},
+    i: included,
+    t: {}
+  };
+
+  var exportNamed = {
+    
+  };
+
+  var exportDefault = {
+    zcomponent: (
+function getComponent($$renderContext_0, $$runtimeContext_0) {
+  var $$helper_0 = $$runtimeContext_0.h;
+  var $$getelement_0 = $$runtimeContext_0.e;
+  var $$element_view_0 = $$getelement_0(1);
+  function create_main_block_0($$componentInstance_0, context_0) {
+    var range________________________________0;
+    var range__0;
+    var range_component_template_0;
+    var node_texte_3_0;
+    var node_eleme_view_2_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        range________________________________0 = "这个是组件模板，请复制文件夹创建组件，请在模板代码基础上修改";
+        node_texte_3_0 = $$helper_0.t($$componentInstance_0, range________________________________0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_component_template_0 = "component-template";
+        assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
+        , range_component_template_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
+        $$helper_0.A(node_eleme_view_2_0, node_texte_3_0);
+      },
+      u: function () {
+        var hasNoChildren_1 = 1;
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_3_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_2_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_2_0);
+        };
+      },
+    }
+  }
+
+
+  return {
+    fragment: create_main_block_0
+  };
+
+}
+).bind(null, renderContext),
+
+    style: null  
+  };
+
+  var usingComponents = {
+    
+  };
+  
+  
+
+/***/ }),
+
+/***/ "Djna":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/statistical-indicator-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "vcfA");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "EMQm":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "AfWf");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
+
+/***/ }),
+
+/***/ "EtF6":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/chart/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/chart/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "WGcX");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "components/chart/index",
+    options: function () {
+      return __webpack_require__(/*! ./components/chart/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "3W84");
+    }
+  });
+  
+
+/***/ }),
+
+/***/ "FAQD":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/statistical-indicator-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
+/***/ "HX8I":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./components/project-select-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
+
+internal_style = ".comp-project-select {width:100%;height:100%;background-color:transparent}.comp-project-select .row {display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;padding:0 0.3rem}.comp-project-select .row-title {-webkit-box-flex:1;-webkit-flex:1;flex:1;padding-top:0.28rem;padding-bottom:0.28rem;font-size:0.34rem;color:#000}.comp-project-select .row-extra {-webkit-flex-basis:initial;flex-basis:initial;font-size:0.32rem;color:#1890FF}.comp-project-select .row-arrow {width:0.32rem;height:0.32rem;margin-left:0.16rem}.schedule-scroll {position:absolute;top:0;left:0;bottom:0;width:100%;height:100%;z-index:9999;background:rgba(0,0,0,.4)}";
+/* harmony default export */ __webpack_exports__["default"] = (internal_style);
+
+/***/ }),
+
+/***/ "HzyB":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "B8uw");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("node_modules/@antv/my-f2/es/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "Inku":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _sdk = __webpack_require__(/*! ../../api/sdk */ "zTrJ");
+
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+
+$global.$addComponentConfig({
+  componentPath: "components/component-template/index"
+});
+
+
+Component({
+  data: {},
+  props: {
+    componentName: '',
+    componentProps: {// config.json文件中定义的props可以从componentProps中获取，这里可以设置默认值。如果有在设计器里修改，则会被新值覆盖。
+
+    },
+    config: {
+      corpId: '' // 可以通过this.props.config.corpId 获取当前工作台用户的企业corpId
+    }
+  },
+  didMount: function didMount() {
+    (0, _sdk.getLifecycleSdk)().didMount(this.props.componentName);
+    // 这里读到的props，和config.json文件中定义的props相对应，详见config.json文件说明
+    var props = this.props.componentProps;
+    // 业务代码写到下方
+  },
+  didUpdate: function didUpdate() {
+    (0, _sdk.getLifecycleSdk)().didUpdate(this.props.componentName);
+    // 业务代码写到下方
+
+  },
+  didUnmount: function didUnmount() {
+    (0, _sdk.getLifecycleSdk)().didUnmount(this.props.componentName);
+    // 业务代码写到下方
+  },
+
+  methods: {}
+});
+
+/***/ }),
+
+/***/ "K6IH":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/project-select-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
+/***/ "Ly1O":
+/*!*****************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!./component.json?jsonAsESM ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+    module.exports = {
+      __meta__: {
+        version: "0.4.7",
+      },
+      component2: false,
+      main: function () {
+        return __webpack_require__(/*! ./index.js */ "QfWi");
+      },
+      pluginId: undefined,
+      publicComponents: {
+        pluginInfo: null,
+        publicComponents: {
+          "project-select-view": {
+            componentPath: "components/project-select-view/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/project-select-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "K6IH")
+          }
+,"statistical-indicator-view": {
+            componentPath: "components/statistical-indicator-view/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/statistical-indicator-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "FAQD")
+          }
+,"component-template": {
+            componentPath: "components/component-template/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "fdNf")
+          }
+,"chart": {
+            componentPath: "components/chart/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "maHI")
+          }
+        },
+        renderType: 8,
+        callback: function () {
+          __webpack_require__(/*! ./components/project-select-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/project-select-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "nJgI");
+__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/statistical-indicator-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rAQU");
+__webpack_require__(/*! ./components/component-template/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/component-template/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "XevS");
+__webpack_require__(/*! ./components/chart/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/chart/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "EtF6");
+          __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/project-select-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/project-select-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "kn8Y");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/statistical-indicator-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "ZLAl");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "elUV");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "RsvT");
+          __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "1PYs");
+__webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "gDcH");
+__webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "Inku");
+__webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rN5b");
+          return {
+            style: [__webpack_require__(/*! ./components/project-select-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "wi5S").default,__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "5cBC").default,__webpack_require__(/*! ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "WvET").default,__webpack_require__(/*! ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "gsve").default].join('\n'),
+          };
+        },
+      },
+    };
+    
+
+/***/ }),
+
+/***/ "QfWi":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.registerWorktab = registerWorktab;
+
+var _sdk = __webpack_require__(/*! ./api/sdk */ "zTrJ");
+
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+function registerWorktab(obj) {
+    (0, _sdk.setSdk)(obj.sdk);
+    (0, _sdk.setLifecycleSdk)(obj.lifecycle);
+}
+
+/***/ }),
+
+/***/ "RsvT":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _snapshot_toolkit_node_modules_ali_antcube_build_lib_build_loader_engine_shared_javascript_entry_js_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineTypes_zephyr_engineJsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "EMQm");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rN5b");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+  
+
+/***/ }),
+
+/***/ "V+xL":
+/*!************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/index.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gcp = void 0;
+var member_1 = __webpack_require__(/*! ./member */ "ZS7F");
+exports.gcp = member_1.gcp;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "WGcX":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "/node_modules/@antv/my-f2/es/index",
+    options: function () {
+      return __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "f90g");
+    }
+  });
+  
+
+/***/ }),
+
+/***/ "WvET":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "h1YD");
+
+  
+  
+  
+
+  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "X+ib":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/chart/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ov+r");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "XSo6":
+/*!*********************************************************!*\
+  !*** ./node_modules/@antv/f2-context/esm/context/wx.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+// 微信程序的context适配
+var CAPITALIZED_ATTRS_MAP = {
+    fontSize: 'FontSize',
+    opacity: 'GlobalAlpha',
+    lineDash: 'LineDash',
+    textAlign: 'TextAlign',
+};
+/**
+ * wxapp textAlign align 可选值为 left|center|right
+ * 标准canvas textAlign align 可选值为 left|center|right|start|end
+ */
+var TEXT_ALIGN_MAP = {
+    start: 'left',
+    end: 'right',
+};
+/* harmony default export */ __webpack_exports__["default"] = (function (ctx) {
+    Object.keys(CAPITALIZED_ATTRS_MAP).map(function (style) {
+        Object.defineProperty(ctx, style, {
+            set: function (value) {
+                if (style === 'textAlign') {
+                    value = TEXT_ALIGN_MAP[value] ? TEXT_ALIGN_MAP[value] : value;
+                }
+                var name = 'set' + CAPITALIZED_ATTRS_MAP[style];
+                ctx[name](value);
+            }
+        });
+        return style;
+    });
+});
+
+
+/***/ }),
+
+/***/ "XevS":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/component-template/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/component-template/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "components/component-template/index",
+    options: function () {
+      return __webpack_require__(/*! ./components/component-template/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "CgZd");
+    }
+  });
+  
+
+/***/ }),
+
+/***/ "ZFTA":
+/*!*****************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/index.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// 不能存在 export *, import *
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mediaQueryMatch = exports.inline = exports.sjs = void 0;
+var inline_1 = __webpack_require__(/*! ./inline */ "V+xL");
+var sjs_1 = __webpack_require__(/*! ./sjs */ "vQ11");
+exports.sjs = {
+    callProperty4Object: sjs_1.callProperty4Object,
+    getProperty4Object: sjs_1.getProperty4Object,
+    identifier: sjs_1.identifier,
+    interpolateDefault: sjs_1.interpolateDefault,
+    interpolateExport: sjs_1.interpolateExport,
+    setProperty4Object: sjs_1.setProperty4Object,
+    transformProperty: sjs_1.transformProperty,
+};
+exports.inline = {
+    _gcp: inline_1.gcp,
+    g: inline_1.gcp,
+};
+var style_1 = __webpack_require__(/*! ./style */ "lVIL");
+exports.mediaQueryMatch = style_1.mediaQueryMatch;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "ZLAl":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/statistical-indicator-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "gDcH");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
+
+/***/ }),
+
+/***/ "ZS7F":
+/*!*************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/member.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gcp = void 0;
+function gcp(target, args, isFunction) {
+    var ret = target;
+    var lastArg;
+    for (var _i = 0, args_1 = args; _i < args_1.length; _i++) {
+        var id = args_1[_i];
+        if (!ret) {
+            break;
+        }
+        lastArg = ret;
+        ret = ret[id];
+    }
+    if (isFunction) {
+        if (typeof ret !== 'function') {
+            return noop;
+        }
+        else {
+            return ret.bind(lastArg);
+        }
+    }
+    return ret;
+}
+exports.gcp = gcp;
+function noop() { }
+//# sourceMappingURL=member.js.map
+
+/***/ }),
+
+/***/ "aSrl":
+/*!*********************************************************!*\
+  !*** ./node_modules/@antv/f2-context/esm/context/my.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+// 支付宝小程序的context适配
+var CAPITALIZED_ATTRS_MAP = {
+    fillStyle: 'FillStyle',
+    fontSize: 'FontSize',
+    globalAlpha: 'GlobalAlpha',
+    opacity: 'GlobalAlpha',
+    lineCap: 'LineCap',
+    lineJoin: 'LineJoin',
+    lineWidth: 'LineWidth',
+    miterLimit: 'MiterLimit',
+    strokeStyle: 'StrokeStyle',
+    textAlign: 'TextAlign',
+    textBaseline: 'TextBaseline',
+    shadow: 'Shadow',
+    font: 'Font'
+};
+function strLen(str) {
+    var len = 0;
+    for (var i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 0 && str.charCodeAt(i) < 128) {
+            len++;
+        }
+        else {
+            len += 2;
+        }
+    }
+    return len;
+}
+/* harmony default export */ __webpack_exports__["default"] = (function (ctx) {
+    Object.keys(CAPITALIZED_ATTRS_MAP).map(function (key) {
+        Object.defineProperty(ctx, key, {
+            set: function (value) {
+                // 记录最新设置的值
+                ctx["__" + key] = value;
+                if (key === 'shadow' && ctx.setShadow && Array.isArray(value)) {
+                    ctx.setShadow(value[0], value[1], value[2], value[3]);
+                    return;
+                }
+                var name = 'set' + CAPITALIZED_ATTRS_MAP[key];
+                if (!ctx[name]) {
+                    return;
+                }
+                ctx[name](value);
+            }
+        });
+        return key;
+    });
+    // 钉钉钉钉小程序框架不支持 measureText 方法，用此方法 mock
+    if (!ctx.measureText) {
+        ctx.measureText = function (text) {
+            var fontSize = 12;
+            var font = ctx.__font;
+            if (font) {
+                fontSize = parseInt(font.split(' ')[3], 10);
+            }
+            fontSize /= 2;
+            return {
+                width: strLen(text) * fontSize
+            };
+        };
+    }
+    return ctx;
+});
+
+
+/***/ }),
+
+/***/ "elUV":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "Inku");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
+
+/***/ }),
+
+/***/ "f90g":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@antv/my-f2/es/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: exportNamed, exportDefault, usingComponents */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+
+  
+
+  
+
+  
+
+  var included = {
+    
+  };
+  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
+  var renderContext = {
+    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
+    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
+    s: {},
+    i: included,
+    t: {}
+  };
+
+  var exportNamed = {
+    
+  };
+
+  var exportDefault = {
+    zcomponent: (
+function getComponent($$renderContext_0, $$runtimeContext_0) {
+  var $$helper_0 = $$runtimeContext_0.h;
+  var $$getelement_0 = $$runtimeContext_0.e;
+  var $$element_canvas_0 = $$getelement_0(18);
+  function create_main_block_0($$componentInstance_0, context_0) {
+    var range_touchEnd_0;
+    var range_touchMove_0;
+    var range_touchStart_0;
+    var range_height_0;
+    var range_width_0;
+    var range_f2_canvas_0;
+    var range_f2_canvas__$id_0;
+    var exp_height_0;
+    var exp_width_0;
+    var exp_$id_0;
+    var node_eleme_canvas_2_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_canvas_2_0 = $$helper_0.e($$componentInstance_0, $$element_canvas_0, 89);
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_touchStart_0 = "touchStart";
+        $$helper_0.k(node_eleme_canvas_2_0, "touchStart", 0, range_touchStart_0, $$componentInstance_0);
+        range_touchMove_0 = "touchMove";
+        $$helper_0.k(node_eleme_canvas_2_0, "touchMove", 1, range_touchMove_0, $$componentInstance_0);
+        range_touchEnd_0 = "touchEnd";
+        $$helper_0.k(node_eleme_canvas_2_0, "touchEnd", 2, range_touchEnd_0, $$componentInstance_0);
+        $$helper_0.ie(node_eleme_canvas_2_0 // ;
+        , { //;
+          "touchStart": [range_touchStart_0], //;
+          "touchMove": [range_touchMove_0], //;
+          "touchEnd": [range_touchEnd_0], //;
+        } //;
+        );
+        exp_$id_0 = context_0.$id;
+        range_f2_canvas__$id_0 = "f2-canvas-"+exp_$id_0;
+        $$helper_0.ea(node_eleme_canvas_2_0, "id", range_f2_canvas__$id_0);
+        range_f2_canvas_0 = "f2-canvas";
+        exp_width_0 = context_0.width;
+        range_width_0 = exp_width_0;
+        exp_height_0 = context_0.height;
+        range_height_0 = exp_height_0;
+        assign_class_style_props_0(node_eleme_canvas_2_0, $$componentInstance_0 //;
+        , range_f2_canvas_0 //;
+        , '' //;
+        , { //;
+          "width": range_width_0, //;
+          "height": range_height_0, //;
+        } //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_canvas_2_0, anchor_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_height_0;
+        var changed_exp_width_0;
+        var changed_exp_$id_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["$id"]) {;
+          exp_$id_0 = data_0.$id;
+          changed_exp_$id_0 = true;
+        };
+        if (changed_exp_$id_0) {;
+          var local_changed_0 = range_f2_canvas__$id_0 !== (range_f2_canvas__$id_0 = "f2-canvas-"+exp_$id_0);
+          if (local_changed_0) {;
+            $$helper_0.ea(node_eleme_canvas_2_0, "id", range_f2_canvas__$id_0);
+          };
+        };
+        if (diff_0["width"]) {;
+          exp_width_0 = data_0.width;
+          changed_exp_width_0 = true;
+        };
+        if (diff_0["height"]) {;
+          exp_height_0 = data_0.height;
+          changed_exp_height_0 = true;
+        };
+        if (changed_exp_width_0 || changed_exp_height_0) {;
+          var local_changed_1 = range_width_0 !== (range_width_0 = exp_width_0);
+          var local_changed_2 = range_height_0 !== (range_height_0 = exp_height_0);
+          if (local_changed_1 || local_changed_2) {;
+          };
+        };
+        if (local_changed_1 || local_changed_2) {;
+          $$helper_0.y(node_eleme_canvas_2_0, $$componentInstance_0 //;
+          , range_f2_canvas_0 //;
+          , null //;
+          , { //;
+            "width": range_width_0, //;
+            "height": range_height_0, //;
+          } //;
+          , { //;
+            "width": local_changed_1, //;
+            "height": local_changed_2, //;
+          } //;
+          );
+        };
+      },
+      d: function (root_0) {
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_canvas_2_0);
+        } else { //;
+          $$helper_0.d(node_eleme_canvas_2_0);
+        };
+      },
+    }
+  }
+
+
+  return {
+    fragment: create_main_block_0
+  };
+
+}
+).bind(null, renderContext),
+
+    style: null  
+  };
+
+  var usingComponents = {
+    
+  };
+  
+  
+
+/***/ }),
+
+/***/ "fdNf":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
+/***/ "gDcH":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _sdk = __webpack_require__(/*! ../../api/sdk */ "zTrJ");
+
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+
+$global.$addComponentConfig({
+  componentPath: "components/statistical-indicator-view/index"
+});
+
+
+var dataMap = {
+  'p_1': [{
+    name: '项目1今日',
+    value: 100
+  }, {
+    name: '项目1昨日',
+    value: 95
+  }],
+  'p_2': [{
+    name: '项目2今日',
+    value: 200
+  }, {
+    name: '项目1昨日',
+    value: 180
+  }]
 };
 
+Component({
+  data: {
+    dataSource: dataMap['p_1']
+  },
+  props: {
+    componentName: '',
+    componentProps: {
+      marginBottom: 100,
+      gateWayApi: {}
+    }
+  },
+  didMount: function didMount() {
+    var _this = this;
+
+    (0, _sdk.getLifecycleSdk)().didMount(this.props.componentName);
+
+    this.changeProject = function (selectedProject) {
+      // 发送请求，根据项目获取指标数据
+      _this.setData({
+        dataSource: dataMap[selectedProject.id]
+      });
+    };
+    // 监听项目变更事件 来自 project-select-view
+    (0, _sdk.getSdk)().listenCustomEvent('dingtalk/changeProject', this.changeProject);
+  },
+  didUpdate: function didUpdate(prevProps, prevData) {
+    (0, _sdk.getLifecycleSdk)().didUpdate(this.props.componentName);
+  },
+  didUnmount: function didUnmount() {
+    (0, _sdk.getLifecycleSdk)().didUnmount(this.props.componentName);
+    (0, _sdk.getSdk)().removeCustomEvent('dingtalk/changeProject', this.changeProject);
+  },
+
+  methods: {}
+});
+
+/***/ }),
+
+/***/ "gsve":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HzyB");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "X+ib");
+
+  
+  
+  
+
+  
+
+  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"],_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__["default"]]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "h1YD":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "31k4");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "iMhr":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/statistical-indicator-view/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: exportNamed, exportDefault, usingComponents */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+
+  
+
+  
+
+  
+
+  var included = {
+    
+  };
+  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
+  var renderContext = {
+    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
+    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
+    s: {},
+    i: included,
+    t: {}
+  };
+
+  var exportNamed = {
+    
+  };
+
+  var exportDefault = {
+    zcomponent: (
+function getComponent($$renderContext_0, $$runtimeContext_0) {
+  var $$helper_0 = $$runtimeContext_0.h;
+  var $$getelement_0 = $$runtimeContext_0.e;
+  var $$inlinehelper_0 = $$renderContext_0.l;
+  var $$element_view_0 = $$getelement_0(1);
+  var $$element_text_0 = $$getelement_0(3);
+  function create_main_block_0($$componentInstance_0, context_0) {
+    var range_marginBottom__componentProps_marginBottom_px_0;
+    var range_statistical_indicator_view_0;
+    var exp_componentProps_marginBottom_0;
+    var node_block_3_0;
+    var node_eleme_view_2_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 3);
+        node_block_3_0 = $$helper_0.b(create_each_container_block_0, $$componentInstance_0, context_0);
+        hasNoChildren_1 &= node_block_3_0.c();
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_statistical_indicator_view_0 = "statistical-indicator-view";
+        exp_componentProps_marginBottom_0 = $$inlinehelper_0.g(context_0, ['componentProps', 'marginBottom']);
+        range_marginBottom__componentProps_marginBottom_px_0 = "marginBottom:"+exp_componentProps_marginBottom_0+"px";
+        assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
+        , range_statistical_indicator_view_0 //;
+        , range_marginBottom__componentProps_marginBottom_px_0 //;
+        , null //;
+        , 2 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
+        node_block_3_0.m(node_eleme_view_2_0, null);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_componentProps_marginBottom_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["componentProps"]) {;
+          exp_componentProps_marginBottom_0 = $$inlinehelper_0.g(data_0, ['componentProps', 'marginBottom']);
+          changed_exp_componentProps_marginBottom_0 = true;
+        };
+        if (changed_exp_componentProps_marginBottom_0) {;
+          var local_changed_0 = range_marginBottom__componentProps_marginBottom_px_0 !== (range_marginBottom__componentProps_marginBottom_px_0 = "marginBottom:"+exp_componentProps_marginBottom_0+"px");
+          if (local_changed_0) {;
+          };
+        };
+        if (local_changed_0) {;
+          $$helper_0.X(node_eleme_view_2_0, $$componentInstance_0 //;
+          , range_statistical_indicator_view_0 //;
+          , null //;
+          , range_marginBottom__componentProps_marginBottom_px_0 //;
+          , local_changed_0 //;
+          , null //;
+          , null //;
+          , 2 //;
+          );
+        };
+        hasNoChildren_1 &= node_block_3_0.u(diff_0, data_0);
+      },
+      d: function (root_0) {
+        if (node_block_3_0) {;
+          node_block_3_0.d();
+        };
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_2_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_2_0);
+        };
+      },
+    }
+  }
+
+  var create_each_container_block_0 = (
+    $$helper_0.$E(
+    function () { return create_each_iterator_block_0 }, "item", "index", 
+    function ($$componentInstance_0, context_0) { //
+    var exp_dataSource_0 = context_0.dataSource;
+      return exp_dataSource_0
+    }, //
+    ["dataSource"], // name diff
+    ["dataSource","index"] // name diff
+    , 0
+    , function ($$componentInstance_0, context_0) { //
+    var exp__item____index__0 = "item_" + context_0.index;
+      return exp__item____index__0
+    }
+    ));
+
+
+  function create_each_iterator_block_0($$componentInstance_0, context_0) {
+    var range__item_name_0;
+    var range_x_0;
+    var range__item_value____0;
+    var range_y_0;
+    var range_item_0;
+    var exp_item_name_0;
+    var exp_item_value_0;
+    var node_texte_7_0;
+    var node_texte_6_0;
+    var node_eleme_view_5_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_5_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        node_texte_6_0 = $$helper_0.e($$componentInstance_0, $$element_text_0, 1);
+        node_texte_7_0 = $$helper_0.e($$componentInstance_0, $$element_text_0, 1);
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_item_0 = "item";
+        assign_class_style_props_0(node_eleme_view_5_0, $$componentInstance_0 //;
+        , range_item_0 //;
+        );
+        exp_item_value_0 = $$helper_0.f($$inlinehelper_0.g(context_0, ['item', 'value']));
+        range__item_value____0 = ""+exp_item_value_0+"万元";
+        $$helper_0.n(node_texte_6_0, range__item_value____0);
+        range_y_0 = "y";
+        assign_class_style_props_0(node_texte_6_0, $$componentInstance_0 //;
+        , range_y_0 //;
+        );
+        exp_item_name_0 = $$helper_0.f($$inlinehelper_0.g(context_0, ['item', 'name']));
+        range__item_name_0 = ""+exp_item_name_0;
+        $$helper_0.n(node_texte_7_0, range__item_name_0);
+        range_x_0 = "x";
+        assign_class_style_props_0(node_texte_7_0, $$componentInstance_0 //;
+        , range_x_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_5_0, anchor_0);
+        $$helper_0.a(node_eleme_view_5_0, node_texte_6_0);
+        $$helper_0.a(node_eleme_view_5_0, node_texte_7_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_item_name_0;
+        var changed_exp_item_value_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["item"]) {;
+          exp_item_value_0 = $$helper_0.f($$inlinehelper_0.g(data_0, ['item', 'value']));
+          changed_exp_item_value_0 = true;
+        };
+        if (changed_exp_item_value_0) {;
+          var local_changed_0 = range__item_value____0 !== (range__item_value____0 = ""+exp_item_value_0+"万元");
+          if (local_changed_0) {;
+            $$helper_0.n(node_texte_6_0, range__item_value____0);
+          };
+        };
+        if (diff_0["item"]) {;
+          exp_item_name_0 = $$helper_0.f($$inlinehelper_0.g(data_0, ['item', 'name']));
+          changed_exp_item_name_0 = true;
+        };
+        if (changed_exp_item_name_0) {;
+          var local_changed_1 = range__item_name_0 !== (range__item_name_0 = ""+exp_item_name_0);
+          if (local_changed_1) {;
+            $$helper_0.n(node_texte_7_0, range__item_name_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.d(node_texte_6_0);
+        $$helper_0.d(node_texte_7_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_5_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_5_0);
+        };
+      },
+    }
+  }
+
+
+  return {
+    fragment: create_main_block_0
+  };
+
+}
+).bind(null, renderContext),
+
+    style: null  
+  };
+
+  var usingComponents = {
+    
+  };
+  
+  
+
+/***/ }),
+
+/***/ "ibVU":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/project-select-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HX8I");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "kn8Y":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/project-select-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/project-select-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=8&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "1PYs");
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_8_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
+
+/***/ }),
+
+/***/ "lVIL":
+/*!***********************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/style/index.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mediaQueryMatch = void 0;
+function mediaQueryMatch(querys) {
+    if (querys === void 0) { querys = []; }
+    /**
+     * 参数保护确定是数组
+     * undefined 会被上面处理成默认 []
+     * null boolean number 会返回 false
+     */
+    if (Object.prototype.toString.call(querys) !== '[object Array]') {
+        return false;
+    }
+    /**
+     * 确定是个object
+     */
+    if (typeof WXEnvironment !== 'object' || WXEnvironment === null) {
+        return false;
+    }
+    /**
+     * 转换数据
+     * 如果有单位则会返回 nan
+     */
+    var scale = +WXEnvironment.scale;
+    if (scale === 0 || isNaN(scale)) {
+        return false;
+    }
+    for (var _i = 0, querys_1 = querys; _i < querys_1.length; _i++) {
+        var query = querys_1[_i];
+        /**
+         * 转换数据
+         * 如果有单位则会返回 nan
+         */
+        var rawValue = +WXEnvironment[query.name];
+        // 保证数字
+        if (rawValue === 0 || isNaN(rawValue)) {
+            return false;
+        }
+        var res = rawValue / scale - query.value;
+        // res NAN
+        if (isNaN(res)) {
+            return false;
+        }
+        if (query.op === 0 && Math.abs(res) > 1e-3) {
+            // TODO: 目前只有这种
+            // 要求相等的时候，但是 |差距| 小于 0.001
+            return false;
+        }
+        else if (res * query.op < 0) {
+            // 要求大小于，但是结果不同号，所以要false。
+            return false;
+        }
+    }
+    return true;
+}
+exports.mediaQueryMatch = mediaQueryMatch;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "maHI":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \******************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":["/node_modules/@antv/my-f2/es/index"],"map":{"/node_modules/@antv/my-f2/es/index":1}}
+
+/***/ }),
+
+/***/ "nJgI":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/project-select-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/project-select-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "components/project-select-view/index",
+    options: function () {
+      return __webpack_require__(/*! ./components/project-select-view/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "0Ql3");
+    }
+  });
+  
 
 /***/ }),
 
@@ -22490,15 +20358,22 @@ module.exports = $AppxFramework;
 
 /***/ }),
 
-/***/ "r9NZ":
-/*!*************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/babel-runtime/regenerator/index.js ***!
-  \*************************************************************************/
+/***/ "rAQU":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/statistical-indicator-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/statistical-indicator-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ "/6V8");
 
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "components/statistical-indicator-view/index",
+    options: function () {
+      return __webpack_require__(/*! ./components/statistical-indicator-view/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iMhr");
+    }
+  });
+  
 
 /***/ }),
 
@@ -22538,9 +20413,6 @@ $global.$addComponentConfig({
 });
 
 
-/**
- * 图表使用示例
- */
 Component({
   data: {},
   props: {},
@@ -22608,25 +20480,6 @@ function getRegExp() {
 }
 exports.getRegExp = getRegExp;
 //# sourceMappingURL=identifier.js.map
-
-/***/ }),
-
-/***/ "vDkj":
-/*!******************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/core.get-iterator-method.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var classof = __webpack_require__(/*! ./_classof */ "Q7Ls");
-var ITERATOR = __webpack_require__(/*! ./_wks */ "95QX")('iterator');
-var Iterators = __webpack_require__(/*! ./_iterators */ "jEVu");
-module.exports = __webpack_require__(/*! ./_core */ "37Yt").getIteratorMethod = function (it) {
-  if (it != undefined) return it[ITERATOR]
-    || it['@@iterator']
-    || Iterators[classof(it)];
-};
-
 
 /***/ }),
 
@@ -22768,116 +20621,80 @@ exports.identifier = {
 
 /***/ }),
 
-/***/ "vesQ":
-/*!********************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_property-desc.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-
-/***/ "vx5S":
-/*!*************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_global.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ "wq9V":
-/*!*****************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_to-iobject.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(/*! ./_iobject */ "fwBD");
-var defined = __webpack_require__(/*! ./_defined */ "7SSL");
-module.exports = function (it) {
-  return IObject(defined(it));
-};
-
-
-/***/ }),
-
-/***/ "xtfz":
-/*!******************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_set-species.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "vcfA":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./components/statistical-indicator-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
 
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var core = __webpack_require__(/*! ./_core */ "37Yt");
-var dP = __webpack_require__(/*! ./_object-dp */ "dkmB");
-var DESCRIPTORS = __webpack_require__(/*! ./_descriptors */ "/lLM");
-var SPECIES = __webpack_require__(/*! ./_wks */ "95QX")('species');
-
-module.exports = function (KEY) {
-  var C = typeof core[KEY] == 'function' ? core[KEY] : global[KEY];
-  if (DESCRIPTORS && C && !C[SPECIES]) dP.f(C, SPECIES, {
-    configurable: true,
-    get: function () { return this; }
-  });
-};
-
+internal_style = ".statistical-indicator-view {width:100%;height:100%;min-height:1.26rem;background-color:transparent;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;margin-bottom:0.48rem}.statistical-indicator-view .item {width:50%;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;margin-top:0.48rem}.statistical-indicator-view .item .y {color:#1890ff;font-size:0.4rem}.statistical-indicator-view .item .x {color:#b4b4b4;font-size:0.28rem}";
+/* harmony default export */ __webpack_exports__["default"] = (internal_style);
 
 /***/ }),
 
-/***/ "yWzI":
-/*!*************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_add-to-unscopables.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "wi5S":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/project-select-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = function () { /* empty */ };
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ibVU");
 
+  
+  
+  
+
+  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
 
 /***/ }),
 
-/***/ "z9LK":
-/*!*************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/core-js/library/modules/_shared.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "yoHC":
+/*!***************************************************!*\
+  !*** ./node_modules/@antv/f2-context/esm/util.js ***!
+  \***************************************************/
+/*! exports provided: isWx, isMy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var core = __webpack_require__(/*! ./_core */ "37Yt");
-var global = __webpack_require__(/*! ./_global */ "vx5S");
-var SHARED = '__core-js_shared__';
-var store = global[SHARED] || (global[SHARED] = {});
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isWx", function() { return isWx; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isMy", function() { return isMy; });
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+// weixin miniprogram
+// @ts-ignore
+var isWx = (typeof wx === 'object') && (typeof wx.getSystemInfoSync === 'function');
+// ant miniprogram
+// @ts-ignore
+var isMy = (typeof my === 'object') && (typeof my.getSystemInfoSync === 'function');
 
-(module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: core.version,
-  mode: __webpack_require__(/*! ./_library */ "0b0m") ? 'pure' : 'global',
-  copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
-});
 
 
 /***/ }),

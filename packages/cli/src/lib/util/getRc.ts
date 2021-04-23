@@ -12,9 +12,10 @@ export default (path: string) => {
     const rcStr = fs.readFileSync(path, {
       encoding: 'utf-8',
     });
-    res = JSON.parse(rcStr);
+    if (rcStr) {
+      res = JSON.parse(rcStr);
+    }
   } catch(e) {
-    console.error(e);
     error(`get rc fail. ${e.message}`);
     res = null;
   }

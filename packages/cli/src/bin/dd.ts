@@ -108,6 +108,7 @@ program
       
       buildCp.stdout && buildCp.stdout.on('data', (chunk)=>{
         const msg = chunk.toString();
+        console.log(msg);
         if (msg.indexOf('Built at:') !== -1 && !isInit) {
           spinner.text = 'Starting the development server';
           eventEmitTimer = setTimeout(()=>{
