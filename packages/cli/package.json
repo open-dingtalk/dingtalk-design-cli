@@ -18,6 +18,7 @@
     "ddi": "dist/bin/dd.js"
   },
   "scripts": {
+    "postinstall": "cd ./h5bundle && npm i",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "build": "yarn clean && npm run build:types",
@@ -60,17 +61,11 @@
     "mkdirp": "^1.0.4",
     "open": "^8.0.6",
     "ora": "^5.3.0",
-    "query-string": "^7.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
     "rimraf": "^3.0.2",
     "semver": "^7.3.4",
     "strip-ansi": "^6.0.0",
     "tar": "^6.1.0",
-    "typescript": "^4.1.2",
     "urlencode": "^1.1.0",
-    "web-vitals": "^1.0.1",
     "yeoman-environment": "^2.10.3"
   },
   "publishConfig": {
