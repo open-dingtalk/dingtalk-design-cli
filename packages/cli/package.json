@@ -1,6 +1,6 @@
 {
   "name": "dingtalk-design-cli",
-  "version": "0.11.0-beta.7",
+  "version": "0.11.0-beta.8",
   "description": "dingtalk design cli",
   "workspaces": [
     "h5bundle/*"
