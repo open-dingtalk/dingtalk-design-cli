@@ -7,6 +7,7 @@ import * as path from 'path';
 import tar from 'tar';
 import mkdirp from 'mkdirp';
 import { getGlobalRc, setGlobalRc, } from './globalRc';
+import clean from './clean';
 
 export default async (): Promise<string> => {
   const platform = os.platform();
@@ -15,6 +16,7 @@ export default async (): Promise<string> => {
   const h5ProCurPlatformConfig  = platformConfigs[platform as keyof typeof platformConfigs];
   const supportPlatform = Object.keys(h5ProConfig.platforms);
   if (supportPlatform.indexOf(platform) === -1) {
+    error('当前平台不支持h5pro');
     return '';
   }
 
@@ -26,6 +28,7 @@ export default async (): Promise<string> => {
   const binDownloadPath = h5ProCurPlatformConfig.binDownloadUrl;
   const tarStorePath = os.tmpdir();
 
+  /** builder download */
   try {
     info('builder start download...');
     await download(binDownloadPath, tarStorePath);
@@ -36,18 +39,23 @@ export default async (): Promise<string> => {
     return '';
   }
 
+  /** builder extract */
+  const basename = path.basename(binDownloadPath);
+  const tar = path.join(tarStorePath, basename);
   try {
     info('builder start extracting...');
-    const basename = path.basename(binDownloadPath);
-    await tarExtract(path.join(tarStorePath, basename), h5ProConfig.storeDir);
+    await tarExtract(tar, h5ProConfig.binStoreDir);
     done('builder extract success');
   } catch(e) {
     console.error(e);
     error(`builder unzip fail. ${e.message}`);
     return '';
+  } finally {
+    await clean(tar);
   }
 
-  const binExecPath = path.join(h5ProConfig.storeDir, h5ProCurPlatformConfig.binExtractPath);
+  /** set global builder bin path */
+  const binExecPath = path.join(h5ProConfig.binStoreDir, h5ProCurPlatformConfig.binExtractPath);
   setGlobalRc('h5ProExecPath', binExecPath);
   return binExecPath;
 };

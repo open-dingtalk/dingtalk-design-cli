@@ -22,7 +22,6 @@
     "type-check:watch": "npm run type-check -- --watch",
     "build": "yarn clean && npm run build:types",
     "build:types": "tsc",
-    "test": "jest",
     "clean": "rimraf ./dist",
     "link:generator:global": "cd ../generator && npm link",
     "link:generator:local": "npm run link:generator:global && npm link generator-dd-application"
@@ -40,12 +39,12 @@
     "@types/lodash": "^4.14.168",
     "@types/lru-cache": "^5.1.0",
     "@types/mkdirp": "^1.0.1",
+    "@types/rimraf": "^3.0.0",
     "@types/semver": "^7.3.4",
     "@types/tar": "^4.0.4",
     "@types/urlencode": "^1.1.2",
     "@types/yeoman-environment": "^2.10.2",
-    "cpx": "^1.5.0",
-    "rimraf": "^3.0.2"
+    "cpx": "^1.5.0"
   },
   "dependencies": {
     "chalk": "^4.1.0",
@@ -65,7 +64,14 @@
     "strip-ansi": "^6.0.0",
     "tar": "^6.1.0",
     "urlencode": "^1.1.0",
-    "yeoman-environment": "^2.10.3"
+    "yeoman-environment": "^2.10.3",
+    "query-string": "^7.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1",
+    "rimraf": "^3.0.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

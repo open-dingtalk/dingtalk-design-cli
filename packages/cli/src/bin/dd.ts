@@ -70,9 +70,7 @@ program
     const canPreview = checkCanPreview();
     if (canPreview) {
       const pluginRoot = getPluginRoot();
-      if (!pluginRoot) {
-        process.exit();
-      }
+      if (!pluginRoot) return;
 
       const pluginRc: IPluginRc = getRc(path.join(pluginRoot, '.ddrc'));
       const pcPluginDevOpts: IPcPluginDevOpts = {
@@ -86,6 +84,8 @@ program
       const mockPreviewEnvironmentPath = path.join(__dirname, '../../h5bundle');
       // h5pro可执行路径
       const binPath = await getH5ProBinPath();
+
+      if (!binPath) return;
 
       /** generate component.json */
       try {
@@ -104,36 +104,37 @@ program
       const command = `${binPath} component --watch --input=${pluginRoot} --output=${bundlePath}`;
       const buildCp = exec(command);
       let isInit = false;
-      let eventEmitTimer: NodeJS.Timeout;
+      let firstBuildTimer: NodeJS.Timeout;
       
       buildCp.stdout && buildCp.stdout.on('data', (chunk)=>{
         const msg = chunk.toString();
-        console.log(msg);
         if (msg.indexOf('Built at:') !== -1 && !isInit) {
           spinner.text = 'Starting the development server';
-          eventEmitTimer = setTimeout(()=>{
-            event.emit('first-build-uccess');
+          firstBuildTimer = setTimeout(()=>{
+            event.emit('first-build-success');
           }, 500);
           isInit = true;
         } else if(msg.indexOf('ERROR in') !== -1) {
           error(msg);
           failSpinner('Build fail.');
-          clearTimeout(eventEmitTimer);
+          clearTimeout(firstBuildTimer);
           buildCp.kill();
           process.exit();
         }
       });
 
+      buildCp.stdout?.pipe(process.stdout);
+      buildCp.stderr?.pipe(process.stderr);
+
       buildCp.on('error', (err) => {
         failSpinner('Build fail');
-        error(err.message);
-        clearTimeout(eventEmitTimer);
+        clearTimeout(firstBuildTimer);
         buildCp.kill();
         process.exit();
       });
 
       /** start dev server */
-      event.on('first-build-uccess', startDevServer.bind(null, mockPreviewEnvironmentPath, pcPluginDevOpts));
+      event.on('first-build-success', startDevServer.bind(null, mockPreviewEnvironmentPath, pcPluginDevOpts));
     }
   });
 
@@ -172,10 +173,9 @@ function suggestCommands (unknownCommand: string) {
 
 function startDevServer(mockPreviewEnvironmentPath: string, pcPluginDevOpts: IPcPluginDevOpts) {
   const cp = exec(`cd ${mockPreviewEnvironmentPath} && npm run start`);
-  console.log('mock', mockPreviewEnvironmentPath);
+  debug(mockPreviewEnvironmentPath);
   cp.stdout && cp.stdout.on('data', (chunk)=>{
     const msg = chunk.toString();
-    console.log(msg);
     if (msg.indexOf('Starting the development server') !== -1) {
       stopSpinner();
       console.clear();
@@ -191,6 +191,14 @@ function startDevServer(mockPreviewEnvironmentPath: string, pcPluginDevOpts: IPc
       process.exit();
     }
   });
+
+  cp.stderr && cp.stderr.on('data', (err) => {
+    stopSpinner();
+    error(err.message);
+  });
+
+  cp.stdout?.pipe(process.stdout);
+  cp.stderr?.pipe(process.stderr);
 
   cp.on('error', (err)=>{
     failSpinner('Start dev server fail');
