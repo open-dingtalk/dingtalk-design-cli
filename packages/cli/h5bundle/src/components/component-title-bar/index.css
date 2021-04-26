@@ -1,0 +1,139 @@
+.ddworkspace-title-bar-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1rem;
+  padding: 0 0.32rem;
+  background-color: #fff;
+}
+.ddworkspace-title-bar-area > .main-title {
+  font-family: PingFangSC-Medium, sans-serif;
+  display: flex;
+  align-items: center;
+}
+.ddworkspace-title-bar-area > .main-title .logo {
+  width: 0.4rem;
+  height: 0.4rem;
+  position: relative;
+  margin-right: 0.16rem;
+  border-radius: 20%;
+}
+.ddworkspace-title-bar-area > .main-title .title {
+  font-size: 0.32rem;
+  color: #171A1D;
+  letter-spacing: -0.0082rem;
+  max-width: 5.5rem;
+}
+.ddworkspace-title-bar-area > .main-title .sub-title {
+  font-size: 0.26rem;
+  color: rgba(17, 31, 44, 0.4);
+}
+.ddworkspace-title-bar-area > .main-title .sub-tag {
+  position: relative;
+  display: inline-block;
+  opacity: 0.72;
+  font-size: 0.2rem;
+  -webkit-text-size-adjust: none;
+  color: #50749a;
+  letter-spacing: 0;
+  padding: 0.02rem 0.1rem;
+  line-height: 0.28rem;
+  margin-left: 0.08rem;
+}
+.ddworkspace-title-bar-area > .main-title .sub-tag::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -0.01rem;
+  width: 200%;
+  height: 200%;
+  border-radius: 0.32rem;
+  border: 2rpx solid rgba(80, 116, 154, 0.28);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+}
+.ddworkspace-title-bar-area > .main-title .tips-arrow {
+  margin-left: 0.16rem;
+  flex-shrink: 0;
+  font-size: 0.32rem;
+  color: rgba(17, 31, 44, 0.28);
+}
+.ddworkspace-title-bar-area > .main-title .demo-label-tag {
+  font-family: PingFangSC-Regular;
+  position: relative;
+  display: inline-block;
+  height: 0.32rem;
+  width: 0.64rem;
+  line-height: 0.32rem;
+  font-size: 0.2rem;
+  color: #006AFE;
+  letter-spacing: 0;
+  text-align: center;
+  margin-left: 0.16rem;
+  overflow: visible;
+}
+.ddworkspace-title-bar-area > .main-title .demo-label-tag::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -0.01rem;
+  width: 200%;
+  height: 200%;
+  border-radius: 0.16rem;
+  border: 0.02rem solid #006AFE;
+  transform-origin: 0 0;
+  transform: scale(0.5, 0.5);
+  pointer-events: none;
+}
+.ddworkspace-title-bar-area .extra-area {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ddworkspace-title-bar-area .action {
+  display: flex;
+  align-items: center;
+  margin-left: 0.16rem;
+  flex-shrink: 0;
+}
+.ddworkspace-title-bar-area .action .action-text {
+  font-size: 0.26rem;
+  color: rgba(17, 31, 44, 0.56);
+  letter-spacing: 0.0032rem;
+  text-align: center;
+}
+.ddworkspace-title-bar-area .action .action-icon {
+  width: 0.28rem;
+  height: 0.28rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.ddworkspace-title-bar-area .action .left-icon {
+  margin-right: 0.04rem;
+}
+.ddworkspace-title-bar-area .action .right-icon {
+  margin-left: 0.04rem;
+}
+.ddworkspace-title-bar-area.dark {
+  background-color: #121212
+}
+.ddworkspace-title-bar-area.dark > .main-title .title {
+  color: rgba(255, 255, 255, .96);
+}
+.ddworkspace-title-bar-area.dark > .main-title .sub-title {
+  color: rgba(255, 255, 255, .48);
+}
+.ddworkspace-title-bar-area.dark > .main-title .sub-tag {
+  color: #576A95;
+}
+.ddworkspace-title-bar-area.dark > .main-title .sub-tag::after {
+  border: 0.02rem solid rgba(87,106,149,.4);
+}
+.ddworkspace-title-bar-area.dark > .main-title .tips-arrow {
+  color: rgba(255, 255, 255, .60);
+}
+.ddworkspace-title-bar-area.dark .action .action-text {
+  color: rgba(255, 255, 255, .60);
+}

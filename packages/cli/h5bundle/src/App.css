@@ -1,5 +1,9 @@
+html,body {
+  background-color: #F5F7FA;
+}
+
 .App {
-  width: 800px;
+  width: 7.26rem;
   text-align: center;
   margin: 0 auto;
 }
@@ -22,7 +26,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(0.2rem + 2vmin);
   color: white;
 }
 

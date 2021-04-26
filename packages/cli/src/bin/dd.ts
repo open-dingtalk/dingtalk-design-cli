@@ -6,7 +6,7 @@ import program from 'commander';
 import checkNodeVersion from '../lib/util/checkNodeVersion';
 import yeomanRuntime from 'yeoman-environment';
 import leven from 'leven';
-import { done as doneLog, debug, error, info, } from '../lib/cli-shared-utils/lib/logger';
+import { done as doneLog, debug, error, info, warn, } from '../lib/cli-shared-utils/lib/logger';
 import * as path from 'path';
 import checkCanPreview from '../lib/util/checkCanPreview';
 import getPluginRoot from '../lib/util/getPluginRoot';
@@ -20,6 +20,7 @@ import EventEmitter from 'events';
 import getRc from '../lib/util/getRc';
 import { get, } from 'lodash';
 import { IPcPluginDevOpts, IPluginRc, } from '../lib/common/types';
+import clean from '../lib/util/clean';
 
 const event = new EventEmitter();
 const pkgJson = require('../../package.json');
@@ -66,13 +67,13 @@ program
 program
   .command('preview')
   .action(async (outDir, options)=>{
-    // const rcPath = path.resolve('./', '.ddrc');
-    const canPreview = checkCanPreview();
+    const rcPath = path.resolve('./', '.ddrc');
+    const canPreview = checkCanPreview(rcPath);
     if (canPreview) {
       const pluginRoot = getPluginRoot();
       if (!pluginRoot) return;
 
-      const pluginRc: IPluginRc = getRc(path.join(pluginRoot, '.ddrc'));
+      const pluginRc: IPluginRc = getRc(rcPath);
       const pcPluginDevOpts: IPcPluginDevOpts = {
         corpId: '',
         mode: '',
@@ -171,7 +172,20 @@ function suggestCommands (unknownCommand: string) {
   }
 }
 
-function startDevServer(mockPreviewEnvironmentPath: string, pcPluginDevOpts: IPcPluginDevOpts) {
+async function startDevServer(mockPreviewEnvironmentPath: string, pcPluginDevOpts: IPcPluginDevOpts) {
+  const miniprogramPath = path.resolve('./', 'miniprogram');
+  const symbollink2miniprogram = path.join(__dirname, '../../h5bundle/src/miniprogram');
+
+  if (fs.existsSync(symbollink2miniprogram)) {
+    await clean(symbollink2miniprogram);
+  }
+  
+  try {
+    fs.symlinkSync(miniprogramPath, symbollink2miniprogram);
+  } catch(e) {
+    warn(`mock start fail. ${e.message}`);
+  }
+
   const cp = exec(`cd ${mockPreviewEnvironmentPath} && npm run start`);
   debug(mockPreviewEnvironmentPath);
   cp.stdout && cp.stdout.on('data', (chunk)=>{

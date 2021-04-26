@@ -1,0 +1,32 @@
+.ddworkspace-view-container {
+  position: relative;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 0 0;
+  overflow: hidden;
+}
+
+.ddworkspace-view-container.card-style {
+  /*关键的卡片样式，模拟官方的情况-仅模拟，不代表完全的真实情况*/
+  margin-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #fff;
+}
+
+.ddworkspace-view-container.card-style.dark {
+    background-color: #1E1E1E;
+}
+
+.ddworkspace-view-container.transform-layer {
+    /*
+     * 子元素里有用到transform，渲染时，如果父元素不transform，会导致子元素的图片超出父元素的圆角范围
+     * 与渲染图层有关，实际上父元素的z-index改变也能解
+     */
+    transform: rotate(0);
+}

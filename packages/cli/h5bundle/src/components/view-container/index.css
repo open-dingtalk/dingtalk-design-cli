@@ -1,0 +1,81 @@
+.card-default-height {
+  height: 4rem;
+}
+
+.transform-layer {
+  transform: rotate(0);
+}
+
+.columns-container-view-container.image-mode-scaleToFill{
+  background-size: 100% 100%;
+}
+.columns-container-view-container.image-mode-aspectFill{
+  background-size: cover;
+}
+.columns-container-view-container.image-mode-aspectFit{
+  background-size: contain;
+}
+.columns-container-view-container.image-mode-widthAutoFit{
+  background-size: auto 100%;
+}
+.columns-container-view-container.image-mode-heightAutoFit{
+  background-size: 100%;
+}
+
+.system-groups-view {
+  background-position: center center;
+}
+
+.system-groups-view.image-mode-scaleToFill {
+  background-size: 100% 100%;
+}
+.system-groups-view.image-mode-aspectFill {
+  background-size: cover;
+}
+.system-groups-view.image-mode-aspectFit {
+  background-size: contain;
+}
+.system-groups-view.image-mode-widthAutoFit {
+  background-size: auto 100%;
+}
+.system-groups-view.image-mode-heightAutoFit {
+  background-size: 100%;
+}
+
+.box-shadow {
+  box-shadow: 0 0.16rem 0.48rem rgba(10, 30, 65, 0.12);
+}
+
+.view-container {
+  position: relative;
+  margin-bottom: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 0 0;
+  overflow: hidden;
+}
+
+.no-full-width {
+  margin: 0 0.32rem;
+  border-style: solid;
+  border-color: rgba(25, 31, 37, 0.08);
+  border-width: 0;
+}
+
+.no-full-width.border-radius {
+  border-radius: 0.16rem;
+}
+
+.custom-widget-container.dark .loading {
+  background-image: url(https://gw.alicdn.com/tfs/TB1shvXReL2gK0jSZFmXXc7iXXa-654-344.png);
+  background-size: 100% 100%;
+}
+
+.custom-widget-container .loading {
+  background-image: url(https://gw.alicdn.com/tfs/TB1s9o8Q7L0gK0jSZFtXXXQCXXa-654-344.png);
+      background-size: 100% 100%;
+}
+.custom-widget-container .default-margin {
+  margin: 0 0.32rem;
+}
