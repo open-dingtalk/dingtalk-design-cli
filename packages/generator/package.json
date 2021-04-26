@@ -1,6 +1,6 @@
 {
   "name": "generator-dd-application",
-  "version": "0.11.0-beta.8",
+  "version": "0.11.0-beta.9",
   "description": "This is a generator for DingTalk application.",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json && babel generators -d generators",
