@@ -21,6 +21,7 @@ import getRc from '../lib/util/getRc';
 import { get, } from 'lodash';
 import { IPcPluginDevOpts, IPluginRc, } from '../lib/common/types';
 import clean from '../lib/util/clean';
+import getMiniProjectJson from '../lib/util/getMiniProjectJson';
 
 const event = new EventEmitter();
 const pkgJson = require('../../package.json');
@@ -102,7 +103,9 @@ program
       const spinner = logWithSpinner(' ', 'Building');
       
       /** build */
-      const command = `${binPath} component --watch --input=${pluginRoot} --output=${bundlePath}`;
+      const miniProjectJsonPath = path.resolve('./', 'mini.project.json');
+      const miniProjectJsonCmdOpts = fs.existsSync(miniProjectJsonPath) ? miniProjectJsonPath : '';
+      const command = `${binPath} component --watch --input=${pluginRoot} --output=${bundlePath} --mini-project-json=${miniProjectJsonCmdOpts}`;
       const buildCp = exec(command);
       let isInit = false;
       let firstBuildTimer: NodeJS.Timeout;
