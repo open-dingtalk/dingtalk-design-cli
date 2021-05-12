@@ -41,6 +41,7 @@ export const debug = (msg: string) => {
 };
 
 export const error = (msg: string | Error, tag = null): void => {
+  if (!msg) return;
   stopSpinner();
   console.error(format(chalk.bgRed(' ERROR ') + (tag ? chalkTag(tag) : ''), chalk.red(msg)));
   if (msg instanceof Error) {
