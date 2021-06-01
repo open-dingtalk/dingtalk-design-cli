@@ -19,9 +19,13 @@ import { logWithSpinner, stopSpinner, failSpinner, } from '../lib/cli-shared-uti
 import EventEmitter from 'events';
 import getRc from '../lib/util/getRc';
 import { get, } from 'lodash';
-import { IPcPluginDevOpts, IPluginRc, } from '../lib/common/types';
+import { EAppType, IPcPluginDevOpts, IPluginRc, IWorkspaceRc, } from '../lib/common/types';
 import clean from '../lib/util/clean';
 import getMiniProjectJson from '../lib/util/getMiniProjectJson';
+import checkCanUpload from '../lib/util/checkCanUpload';
+import inquirer from 'inquirer';
+import semver from 'semver';
+import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
 
 const event = new EventEmitter();
 const pkgJson = require('../../package.json');
@@ -68,6 +72,15 @@ program
 program
   .command('preview')
   .action(async (outDir, options)=>{
+    /**
+     * 列举逻辑分支
+     * 拆分逻辑到各个handler
+     * 
+     * 1. pc工作台组件pc端预览
+     * 2. 小程序、插件真机预览，显示预览二维码
+     * 3. 小程序、插件ide预览
+     */
+
     const rcPath = path.resolve('./', '.ddrc');
     const canPreview = checkCanPreview(rcPath);
     if (canPreview) {
@@ -139,6 +152,67 @@ program
 
       /** start dev server */
       event.on('first-build-success', startDevServer.bind(null, mockPreviewEnvironmentPath, pcPluginDevOpts));
+    }
+  });
+
+program
+  .command('upload')
+  .action(async() => {
+    const cwd = path.resolve('./');
+    const rcPath = path.join(cwd, '.ddrc');
+    const canUpload = checkCanUpload(rcPath);
+    if (!canUpload) return;
+    
+    const rcContent: IWorkspaceRc = getRc(rcPath);
+    const answers: {
+      version: string;
+    } = await inquirer.prompt([{
+      type: 'input',
+      name: 'version',
+      message: 'Please input the version to upload, like 1.0.0',
+      validate: (input) => {
+        const isValid = semver.valid(input);
+        if (!isValid) return 'The version you typing is not valid. Just type a version like 1.0.0';
+        
+        if (rcContent && rcContent.version) {
+          const isGt = semver.gt(input, rcContent.version);
+          if (!isGt) return `The version you typing must great than ${rcContent.version}, like ${semver.inc(rcContent.version, 'patch')}`;
+        }
+
+        return true;
+      },
+    }]);
+    
+    await opensdk.miniUpload({
+      project: cwd,
+      miniAppId: rcContent.miniAppId,
+      packageVersion: answers.version,
+      onProgressUpdate: (info)=>console.log(info.status, info.data),
+    });
+
+    // TODO: 上传成功的后置操作
+  });
+
+program
+  .command('lint')
+  .action(async() => {
+    // 列举逻辑分支小程序/h5/插件
+    // 小程序/h5只要eslint就可以，插件需要调接口做本地校验
+    const cwd = path.resolve('./');
+    const rcPath = path.join(cwd, '.ddrc');
+    const rcContent: IWorkspaceRc = getRc(rcPath);
+    if (!rcContent) {
+      error(`Cannot read file ${rcPath}. Please check if the file exist or you have the permission to read.`);
+      return;
+    }
+
+    const appType = rcContent.type;
+    if ([EAppType.H5, EAppType.MP].indexOf(appType) !== -1) {
+      // TODO: 透出eslint版本，拉cwd下的eslintrc去做校验
+    } else if (appType === EAppType.PLUGIN) {
+      // TODO: 调用校验校验，拉接口去校验
+    } else {
+      error(`AppType ${appType} is not support lint.`);
     }
   });
 

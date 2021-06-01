@@ -17,3 +17,17 @@ export interface IPcPluginDevOpts {
   corpId: string;
   mode: string;
 }
+
+export enum EAppType {
+  PLUGIN = 'plugin',
+  MP = 'mp',
+  H5 = 'h5'
+}
+
+// 项目rc配置
+export interface IWorkspaceRc {
+  type: EAppType;
+  miniAppId?: string;
+  apiToken?: string;
+  version?: string;
+}
