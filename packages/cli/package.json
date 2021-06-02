@@ -37,6 +37,7 @@
     "@babel/preset-typescript": "^7.12.7",
     "@types/chalk": "^2.2.0",
     "@types/download": "^6.2.4",
+    "@types/eslint": "^7.2.12",
     "@types/lodash": "^4.14.168",
     "@types/lru-cache": "^5.1.0",
     "@types/mkdirp": "^1.0.1",
@@ -48,10 +49,12 @@
     "cpx": "^1.5.0"
   },
   "dependencies": {
+    "@ali/dingtalk-worktab-plugin-script": "^0.13.1",
     "chalk": "^4.1.0",
     "commander": "^7.0.0",
     "dingtalk-miniapp-opensdk": "1.0.0-beta.6",
     "download": "^8.0.0",
+    "eslint": "^7.27.0",
     "events": "^3.2.0",
     "execa": "^5.0.0",
     "generator-dd-application": "latest",
@@ -68,6 +71,7 @@
     "strip-ansi": "^6.0.0",
     "tar": "^6.1.0",
     "urlencode": "^1.1.0",
+    "urllib": "^2.37.1",
     "yeoman-environment": "^2.10.3"
   },
   "publishConfig": {

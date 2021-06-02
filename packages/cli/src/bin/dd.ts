@@ -18,6 +18,7 @@ import * as fs from 'fs';
 import { logWithSpinner, stopSpinner, failSpinner, } from '../lib/cli-shared-utils/lib/spinner';
 import EventEmitter from 'events';
 import getRc from '../lib/util/getRc';
+import getRcJson from '../lib/util/getRcJson';
 import { get, } from 'lodash';
 import { EAppType, IPcPluginDevOpts, IPluginRc, IWorkspaceRc, } from '../lib/common/types';
 import clean from '../lib/util/clean';
@@ -26,6 +27,10 @@ import checkCanUpload from '../lib/util/checkCanUpload';
 import inquirer from 'inquirer';
 import semver from 'semver';
 import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
+import el from 'eslint';
+import pluginEl from '@ali/dingtalk-worktab-plugin-script';
+import rcJson from './mockRc';
+import urllib from 'urllib';
 
 const event = new EventEmitter();
 const pkgJson = require('../../package.json');
@@ -209,8 +214,36 @@ program
     const appType = rcContent.type;
     if ([EAppType.H5, EAppType.MP].indexOf(appType) !== -1) {
       // TODO: 透出eslint版本，拉cwd下的eslintrc去做校验
+      const rcPath = path.resolve('./', '.ddrc');
+      // TODO: 逻辑不对，要改
+      if (!fs.existsSync(rcPath)) {
+        // 存量
+        const eslinter = new el.ESLint({
+          cwd,
+        });
+        // match in all directories
+        const res = await eslinter.lintFiles(['**']);
+        console.log('eslint result', res);
+      } else {
+        // 增量
+        const cp = exec('npm run lint');
+        cp.stdout && cp.stdout.on('data', (chunk) => {
+          const msg = chunk.toString();
+          console.log(msg);
+        });
+      }
     } else if (appType === EAppType.PLUGIN) {
-      // TODO: 调用校验校验，拉接口去校验
+      const pluginRoot = getPluginRoot();
+      if (!pluginRoot) return;
+      // 获取rcJson
+      const rcJson = await getRcJson();
+      // console.log('rcJson', rcJson);
+
+      // res { result: boolean, data: string }
+      const res = await pluginEl(pluginRoot, rcJson);
+      // 打印校验结果
+      console.log(res.data);
+
     } else {
       error(`AppType ${appType} is not support lint.`);
     }
