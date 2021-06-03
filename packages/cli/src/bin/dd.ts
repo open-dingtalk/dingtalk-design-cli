@@ -215,9 +215,8 @@ program
     if ([EAppType.H5, EAppType.MP].indexOf(appType) !== -1) {
       // TODO: 透出eslint版本，拉cwd下的eslintrc去做校验
       const rcPath = path.resolve('./', '.ddrc');
-      // TODO: 逻辑不对，要改
       if (!fs.existsSync(rcPath)) {
-        // 存量
+        // 存量 前面判断了不存在.ddrc会直接报错
         const eslinter = new el.ESLint({
           cwd,
         });
@@ -237,7 +236,6 @@ program
       if (!pluginRoot) return;
       // 获取rcJson
       const rcJson = await getRcJson();
-      // console.log('rcJson', rcJson);
 
       // res { result: boolean, data: string }
       const res = await pluginEl(pluginRoot, rcJson);

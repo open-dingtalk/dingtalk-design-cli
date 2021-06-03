@@ -6,8 +6,8 @@ import { IWorkspaceRc, } from '../common/types';
 const cwd = path.resolve('./');
 const rcPath = path.join(cwd, '.ddrc');
 const rcContent: IWorkspaceRc = getRc(rcPath);
-const miniAppId = rcContent.miniAppId;
-const apiToken = rcContent.apiToken;
+const miniAppId = rcContent && rcContent.miniAppId;
+const apiToken = rcContent && rcContent.apiToken;
 
 function request(url, headers, cb) {
   const opt = {
