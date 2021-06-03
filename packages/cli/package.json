@@ -49,7 +49,6 @@
     "cpx": "^1.5.0"
   },
   "dependencies": {
-    "@ali/dingtalk-worktab-plugin-script": "^0.13.1",
     "chalk": "^4.1.0",
     "commander": "^7.0.0",
     "dingtalk-miniapp-opensdk": "1.0.0-beta.6",
