@@ -1,7 +1,7 @@
 import config from '../common/config';
 import * as os from 'os';
 import download from 'download';
-import { error, info, done, } from '../cli-shared-utils/lib/logger';
+import { logger, } from '../cli-shared-utils/lib/logger';
 import * as fs from 'fs';
 import * as path from 'path';
 import tar from 'tar';
@@ -16,7 +16,7 @@ export default async (): Promise<string> => {
   const h5ProCurPlatformConfig  = platformConfigs[platform as keyof typeof platformConfigs];
   const supportPlatform = Object.keys(h5ProConfig.platforms);
   if (supportPlatform.indexOf(platform) === -1) {
-    error('当前平台不支持h5pro');
+    logger.error('当前平台不支持h5pro');
     return '';
   }
 
@@ -30,12 +30,11 @@ export default async (): Promise<string> => {
 
   /** builder download */
   try {
-    info('builder start download...');
+    logger.info('builder start download...');
     await download(binDownloadPath, tarStorePath);
-    done('builder download success');
+    logger.success('builder download success');
   } catch(e) {
-    console.error(e);
-    error(`builder download fail. ${e.message}`);
+    logger.error('builder download fail', e);
     return '';
   }
 
@@ -43,12 +42,11 @@ export default async (): Promise<string> => {
   const basename = path.basename(binDownloadPath);
   const tar = path.join(tarStorePath, basename);
   try {
-    info('builder start extracting...');
+    logger.info('builder start extracting...');
     await tarExtract(tar, h5ProConfig.binStoreDir);
-    done('builder extract success');
+    logger.success('builder extract success');
   } catch(e) {
-    console.error(e);
-    error(`builder unzip fail. ${e.message}`);
+    logger.error('builder unzip fail', e);
     return '';
   } finally {
     await clean(tar);

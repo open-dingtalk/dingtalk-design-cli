@@ -19,7 +19,7 @@ describe('Args', ()=>{
   }, 50 * 1000);
 
   test('suggests matching command2', async () => {
-    const { stdout, stderr } = await runAsync(['iint'], {
+    const { stdout, stderr, } = await runAsync(['iint'], {
       reject: false,
     });
     console.log(stdout, stderr);

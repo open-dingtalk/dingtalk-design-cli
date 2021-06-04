@@ -1,11 +1,11 @@
 import config from '../common/config';
 import * as fs from 'fs';
-import { error, } from '../cli-shared-utils/lib/logger';
+import { logger, } from '../cli-shared-utils/lib/logger';
 import { IGlobalRc, } from '../common/types';
 import getRc from './getRc';
 
 export const getGlobalRc = (): null | IGlobalRc => {
-  return getRc(config.rcPath);
+  return getRc(config.rcPath) as null | IGlobalRc;
 };
 
 export const setGlobalRc = (k: keyof IGlobalRc, v: any): void => {
@@ -23,7 +23,6 @@ export const setGlobalRc = (k: keyof IGlobalRc, v: any): void => {
       encoding: 'utf-8',
     });
   } catch(e) {
-    console.error(e);
-    error(`set global rc fail. ${e.message}`);
+    logger.error('set global rc fail', e);
   }
 };

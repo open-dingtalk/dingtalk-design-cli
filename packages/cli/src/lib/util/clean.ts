@@ -1,4 +1,4 @@
-import { debug, } from '../cli-shared-utils/lib/logger';
+import { logger, } from '../cli-shared-utils/lib/logger';
 import rimraf from 'rimraf';
 
 export default async (path: string) => {
@@ -12,8 +12,8 @@ export default async (path: string) => {
         }
       });
     });
-    debug('builder tar cleaned.');
+    logger.debug('builder tar cleaned.');
   } catch(e) {
-    debug(`builder tar cleaned fail. ${e.message}`);
+    logger.debug(`builder tar cleaned fail. ${e.message}`);
   }
 };

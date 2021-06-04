@@ -25,7 +25,9 @@
     "build:types": "tsc",
     "clean": "rimraf ./dist",
     "link:generator:global": "cd ../generator && npm link",
-    "link:generator:local": "npm run link:generator:global && npm link generator-dd-application"
+    "link:generator:local": "npm run link:generator:global && npm link generator-dd-application",
+    "link:opensdk:global": "cd ../opensdk && npm link",
+    "link:opensdk:local": "npm run link:opensdk:global && npm link dingtalk-miniapp-opensdk"
   },
   "author": "lou1swu",
   "license": "MIT",
@@ -48,9 +50,10 @@
     "cpx": "^1.5.0"
   },
   "dependencies": {
+    "cac": "^6.7.3",
     "chalk": "^4.1.0",
     "commander": "^7.0.0",
-    "dingtalk-miniapp-opensdk": "1.0.0-beta.6",
+    "dingtalk-miniapp-opensdk": "1.0.0-beta.7",
     "download": "^8.0.0",
     "events": "^3.2.0",
     "execa": "^5.0.0",
@@ -68,6 +71,7 @@
     "strip-ansi": "^6.0.0",
     "tar": "^6.1.0",
     "urlencode": "^1.1.0",
+    "urllib": "^2.37.1",
     "yeoman-environment": "^2.10.3"
   },
   "publishConfig": {

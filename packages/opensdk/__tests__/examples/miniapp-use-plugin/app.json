@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "defaultTitle": "My App"
+  },
+  "plugins": {
+    "myPlugin": {
+      "provider": "5000000000100101",
+      "version": "*"
+    }
+  }
+}

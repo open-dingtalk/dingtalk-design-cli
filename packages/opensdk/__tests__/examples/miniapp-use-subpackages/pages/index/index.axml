@@ -1,0 +1,6 @@
+<view>
+  Main Page
+  <navigator url="/packageA/pages/b/b" open-type="navigate">
+    <button size="default" type="primary">go to page/b/b</button>
+  </navigator>
+</view>

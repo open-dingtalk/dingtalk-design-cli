@@ -1,0 +1,12 @@
+{
+  "publicComponents": {
+    "version": "components/version/version"
+  },
+  "publicPages": {
+    "hello-page": "pages/index/index"
+  },
+  "pages": [
+    "pages/index/index"
+  ],
+  "main": "index"
+}

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "version": "plugin://myPlugin/version"
+  }
+}

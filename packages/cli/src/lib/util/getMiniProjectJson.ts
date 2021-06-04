@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { error, } from '../cli-shared-utils/lib/logger';
+import { logger, } from '../cli-shared-utils/lib/logger';
 
 export default () => {
   const cwd = path.resolve('./');
@@ -14,8 +14,7 @@ export default () => {
         encoding: 'utf-8',
       });
     } catch(e) {
-      console.log(e);
-      error(`mini.project.json read fail. ${e.message}`);
+      logger.error('mini.project.json read fail', e);
       return null;
     }
     
@@ -24,8 +23,7 @@ export default () => {
       miniProjectJson = JSON.parse(miniProjectJsonStr);
       return miniProjectJson;
     } catch(e) {
-      console.log(e);
-      error(`mini.project.json parse fail. ${e.message}`);
+      logger.error('mini.project.json parse fail', e);
       return null;
     }
   } else {

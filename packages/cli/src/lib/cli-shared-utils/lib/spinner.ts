@@ -2,13 +2,10 @@ import ora from 'ora';
 import chalk from 'chalk';
 
 const spinner = ora();
-let lastMsg: {
-  symbol: string;
-  text: string;
-} | null = null;
+let lastMsg: { symbol: string; text: string } | null = null;
 let isPaused = false;
 
-export const logWithSpinner = (symbol: string, msg?: string): ora.Ora => {
+export function logWithSpinner(symbol: string, msg?: string) {
   if (!msg) {
     msg = symbol;
     symbol = chalk.green('✔');
@@ -19,44 +16,47 @@ export const logWithSpinner = (symbol: string, msg?: string): ora.Ora => {
       text: lastMsg.text,
     });
   }
-  spinner.text = ' ' + msg;
+  spinner.text = ` ${msg}`;
   lastMsg = {
-    symbol: symbol + ' ',
+    symbol: `${symbol} `,
     text: msg,
   };
-  return spinner.start();
-};
+  spinner.start();
+}
 
-export const stopSpinner = (persist?: boolean): void => {
-  if (!spinner.isSpinning) {
-    return;
-  }
-
+export function stopSpinner(text?: string, persist?: boolean) {
   if (lastMsg && persist !== false) {
     spinner.stopAndPersist({
       symbol: lastMsg.symbol,
-      text: lastMsg.text,
+      text: text || lastMsg.text,
     });
   } else {
     spinner.stop();
   }
   lastMsg = null;
-};
+}
 
-export const pauseSpinner = (): void => {
+export function pauseSpinner() {
   if (spinner.isSpinning) {
     spinner.stop();
     isPaused = true;
   }
-};
+}
 
-export const resumeSpinner = (): void => {
+export function resumeSpinner() {
   if (isPaused) {
     spinner.start();
     isPaused = false;
   }
-};
+}
 
-export const failSpinner = (text: string): void => {
+export function successSpinner(text: string) {
+  spinner.stopAndPersist({
+    symbol: lastMsg.symbol,
+    text: text || lastMsg.text,
+  });
+}
+
+export function failSpinner(text: string) {
   spinner.fail(text);
-};
+}

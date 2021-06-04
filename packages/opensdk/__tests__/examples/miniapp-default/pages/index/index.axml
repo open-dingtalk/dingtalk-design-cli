@@ -1,0 +1,11 @@
+<view>
+  <button type="primary" onTap="doHttp" style="margin-bottom: 10px;">
+    httpRequest
+  </button>
+  <button type="primary" onTap="doHttp" style="margin-bottom: 10px;">
+    dtHttpRequest
+  </button>
+  <navigator url="/pages/web-view/web-view" open-type="navigate">
+    <button size="default" type="primary">web-view</button>
+  </navigator>
+</view>

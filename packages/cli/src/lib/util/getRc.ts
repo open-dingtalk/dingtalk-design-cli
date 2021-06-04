@@ -1,24 +1,13 @@
 import * as fs from 'fs';
-import { error, } from '../cli-shared-utils/lib/logger';
+import { logger, } from '../cli-shared-utils/lib/logger';
+import getJson from './getJson';
 
 export default (path: string) => {
-  let res = null;
-
-  if (!fs.existsSync(path)) {
-    return res;
-  }
-
   try {
-    const rcStr = fs.readFileSync(path, {
-      encoding: 'utf-8',
-    });
-    if (rcStr) {
-      res = JSON.parse(rcStr);
-    }
+    const rc = getJson(path, false);
+    return rc;
   } catch(e) {
-    error(`get rc fail. ${e.message}`);
-    res = null;
+    logger.error('get rc fail', e);
+    return null;
   }
-
-  return res;
 };
