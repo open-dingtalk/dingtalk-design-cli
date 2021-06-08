@@ -168,7 +168,7 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
           task_id: task.task_id,
         }).then(result => {
           this.print({
-            status: BuildStatusText[result.finished ? BuildStatusEnum.BUILDING : BuildStatusEnum.SUCCESS],
+            status: BuildStatusText[result.finished ? BuildStatusEnum.SUCCESS : BuildStatusEnum.BUILDING],
             data: null,
           });
 

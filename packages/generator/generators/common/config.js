@@ -12,17 +12,19 @@ exports.REPO_LOCAL_ROOT_PATH = path.join(os.homedir(), '.dd-demo-repo');
 exports.DEFAULT_DIRECTORY_SEPERATOR = '_';
 // 套件配置
 exports.HUBS_CONFIG = [
-{
-    key: constants_1.APP_TYPE_ENUM.PLUGIN,
-    name: '自定义组件',
-    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git' },
-
-{
-    key: constants_1.APP_TYPE_ENUM.MP,
-    name: '小程序',
-    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git' },
-
-{
-    key: constants_1.APP_TYPE_ENUM.H5,
-    name: 'H5微应用',
-    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git' }];
+    {
+        key: constants_1.APP_TYPE_ENUM.PLUGIN,
+        name: '自定义组件',
+        repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git',
+    },
+    {
+        key: constants_1.APP_TYPE_ENUM.MP,
+        name: '小程序',
+        repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git',
+    },
+    {
+        key: constants_1.APP_TYPE_ENUM.H5,
+        name: 'H5微应用',
+        repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git',
+    },
+];

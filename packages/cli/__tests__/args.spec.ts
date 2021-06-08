@@ -14,7 +14,7 @@ describe('Args', ()=>{
       await runAsync(['iint']);
     } catch(e) {
       console.error(e);
-      expect(e.message).toContain('Did you mean init?');
+      expect(e.message).toContain('Did you mean lint?');
     }
   }, 50 * 1000);
 
@@ -24,6 +24,6 @@ describe('Args', ()=>{
     });
     console.log(stdout, stderr);
     // Assertions
-    expect(stdout).toContain('Did you mean init?');
+    expect(stdout).toContain('Did you mean lint?');
   }, 50 * 1000);
 });

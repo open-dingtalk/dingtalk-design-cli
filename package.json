@@ -2,7 +2,8 @@
   "name": "DingTalk-Design-CLI",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/cli",
+    "packages/generator"
   ],
   "version": "0.0.0",
   "scripts": {
@@ -12,9 +13,9 @@
     "build": "node scripts/build.js",
     "release": "npm run build && node scripts/release.js",
     "version": "node scripts/genChangelog.js && git add CHANGELOG.md",
-    "bootstrap": "lerna",
+    "bootstrap": "lerna bootstrap",
     "lint": "eslint packages --ext .ts",
-		"lint:fix": "eslint packages --fix --ext .ts"
+    "lint:fix": "eslint packages --fix --ext .ts"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
@@ -67,5 +68,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@ali/dingtalk-worktab-plugin-script": "^0.13.1"
   }
 }

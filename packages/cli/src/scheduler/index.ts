@@ -1,16 +1,21 @@
 import * as cac from 'cac';
 import * as path from 'path';
+import * as fs from 'fs';
 import chalk from 'chalk';
 import { logger, } from '../lib/cli-shared-utils/lib/logger';
 import { resolveCommand, } from './command/commandLoader';
-import { ECommandConfigProperty, ECommandName, ICommandConfig, ICommandConfigOpts, PlainRecord, ICommandContext, } from '../lib/common/types';
+import { ECommandConfigProperty, ECommandName, ICommandConfig, ICommandConfigOpts, PlainRecord, ICommandContext, IWorkspaceRc, EAppType, IDtdCLIDep, EDtdCLIKeyDep, } from '../lib/common/types';
 import CommandFactory from './command';
 import { isPlainObject, } from 'lodash';
-import { getCliArgsAndOptions, getPackageJson, serializeCommandOption, } from './utils';
+import { getCliArgsAndOptions, getPackageJson, getVersionLog, serializeCommandOption, } from './utils';
 import FrameworkMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import { ELoggerLevel, } from '../lib/cli-shared-utils/lib/logger/types';
 import config from '../lib/common/config';
 import yeomanRuntime from 'yeoman-environment';
+import getJson from '../lib/util/getJson';
+import getMiniProjectJson from '../lib/util/getMiniProjectJson';
+import { Watcher, } from '../lib/cli-shared-utils/lib/watcher';
+import CommandContextFactory from './context';
 
 export interface ISchedulerOpts {
   commandRoot: string;
@@ -26,25 +31,18 @@ export interface ISchedulerOpts {
 export default class Scheduler {
   private opts: ISchedulerOpts
   private program: cac.CAC;
-  private commandContext: ICommandContext;
+  private commandContext: CommandContextFactory;
   public commandList: CommandFactory[];
 
   constructor(opts: ISchedulerOpts) {
     this.opts = opts;
 
-    const commandArgsAndOptions = getCliArgsAndOptions();
-    const monitor = new FrameworkMonitor({
-      yuyanId: opts.yuyanId,
-    });
-    this.commandContext = {
-      commandArgs: commandArgsAndOptions.args,
-      commandOptions: commandArgsAndOptions.options,
-      monitor,
-      cwd: this.opts.cwd || process.cwd(),
-    };
     this.commandList = [];
+    
+    this.commandContext = new CommandContextFactory(opts.cwd || process.cwd(), opts.yuyanId);
 
     logger.debug('scheduler factory opts', this.opts);
+    logger.debug('scheduler commandContext', this.commandContext);
   }
 
   private getWrappedCommandAction(
@@ -126,22 +124,25 @@ export default class Scheduler {
 
   private async logVersion() {
     const pkgJson = require('../../package.json');
-    const pkgName = pkgJson.name;
     const pkgVersion = pkgJson.version;
-    const env = yeomanRuntime.createEnv();
-    const metas = await new Promise(res=>{
-      // @ts-ignore
-      env.lookup(function () {
-        res(env.getGeneratorsMeta());
-      });
-    });
-    const meta = metas[config.generatorNamespace];
-    const generatorPkgJson = getPackageJson(path.join(meta.packagePath, 'package.json'));
+    const deps: IDtdCLIDep[] = [{
+      name: EDtdCLIKeyDep.cli,
+      version: pkgVersion,
+    }, {
+      name: EDtdCLIKeyDep.generator,
+      version: '',
+    }, {
+      name: EDtdCLIKeyDep.opensdk,
+      version: '',
+    }, {
+      name: EDtdCLIKeyDep.validateScript,
+      version: '',
+    }];
 
-    console.log(`- ${pkgName}: ${chalk.yellow(pkgVersion)}`);
-    console.log(`- generator-dd-application: ${chalk.yellow(generatorPkgJson.version || 'N/A')} `);
-
+    const depInfo = await getVersionLog(deps);
+    console.log(`${depInfo.map(dep=> `- ${dep.name}: ${chalk.yellow(dep.version)}`).join('\n')}`);
   }
+
   /**
    * 登记全局options
    * 登记命令
@@ -150,6 +151,8 @@ export default class Scheduler {
   async bootstrap() {
     await this.loadCommand(ECommandName.init);
     await this.loadCommand(ECommandName.upload);
+    await this.loadCommand(ECommandName.lint);
+    await this.loadCommand(ECommandName.dev);
     await this.bootstrapProgram();
   }
 

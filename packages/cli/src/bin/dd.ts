@@ -1,41 +1,13 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-import chalk from 'chalk';
-import config from '../lib/common/config';
-import program from 'commander';
 import checkNodeVersion from '../lib/util/checkNodeVersion';
-import yeomanRuntime from 'yeoman-environment';
-import leven from 'leven';
-// import { done as doneLog, debug, error, info, warn, } from '../lib/cli-shared-utils/lib/logger';
 import * as path from 'path';
-import checkCanPreview from '../lib/util/checkCanPreview';
-import getPluginRoot from '../lib/util/getPluginRoot';
-import { exec, execSync, } from 'child_process';
-import open from 'open';
-import urlencode from 'urlencode';
-import getH5ProBinPath from '../lib/util/getH5ProBinPath';
-import * as fs from 'fs';
-import { logWithSpinner, stopSpinner, failSpinner, } from '../lib/cli-shared-utils/lib/spinner';
-import EventEmitter from 'events';
-import getRc from '../lib/util/getRc';
-import { get, } from 'lodash';
-import { EAppType, IPcPluginDevOpts, IPluginRc, IWorkspaceRc, } from '../lib/common/types';
-import clean from '../lib/util/clean';
-import getMiniProjectJson from '../lib/util/getMiniProjectJson';
-import checkCanUpload from '../lib/util/checkCanUpload';
-import inquirer from 'inquirer';
-import semver from 'semver';
-import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
 import Scheduler from '../scheduler';
 import { getSchedulerOptionsFromProcessArgv, } from '../scheduler/utils';
-import { EBuildTarget, } from 'dingtalk-miniapp-opensdk/dist/types';
-import Monitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 
-const event = new EventEmitter();
 const pkgJson = require('../../package.json');
 const requiredVersion = pkgJson.engines.node;
 const pkgName = pkgJson.name;
-const pkgVersion = pkgJson.version;
 
 checkNodeVersion(requiredVersion, pkgName);
 
@@ -223,21 +195,15 @@ scheduler.bootstrap();
 //       },
 //     }]);
     
-//     opensdk.setConfig({
-//       appKey: '',
-//       appSecret: '',
-//       accessToken: rcContent.apiToken,
-//     });
-
-//     await opensdk.miniUpload({
-//       project: cwd,
-//       miniAppId: rcContent.miniAppId,
-//       packageVersion: answers.version,
-//       onProgressUpdate: (info)=>console.log(info.status, info.data),
-//     });
-
-//     // TODO: 上传成功的后置操作
+//   await opensdk.miniUpload({
+//     project: cwd,
+//     miniAppId: rcContent.miniAppId,
+//     packageVersion: answers.version,
+//     onProgressUpdate: (info)=>console.log(info.status, info.data),
 //   });
+
+//   // TODO: 上传成功的后置操作
+// });
 
 // program
 //   .command('lint')
@@ -255,8 +221,34 @@ scheduler.bootstrap();
 //     const appType = rcContent.type;
 //     if ([EAppType.H5, EAppType.MP].indexOf(appType) !== -1) {
 //       // TODO: 透出eslint版本，拉cwd下的eslintrc去做校验
+//       const rcPath = path.resolve('./', '.ddrc');
+//       if (!fs.existsSync(rcPath)) {
+//         // 存量 前面判断了不存在.ddrc会直接报错
+//         const eslinter = new el.ESLint({
+//           cwd,
+//         });
+//         // match in all directories
+//         const res = await eslinter.lintFiles(['**']);
+//         console.log('eslint result', res);
+//       } else {
+//         // 增量
+//         const cp = exec('npm run lint');
+//         cp.stdout && cp.stdout.on('data', (chunk) => {
+//           const msg = chunk.toString();
+//           console.log(msg);
+//         });
+//       }
 //     } else if (appType === EAppType.PLUGIN) {
-//       // TODO: 调用校验校验，拉接口去校验
+//       const pluginRoot = getPluginRoot();
+//       if (!pluginRoot) return;
+//       // 获取rcJson
+//       const rcJson = await getRcJson();
+
+//       // res { result: boolean, data: string }
+//       const res = await pluginEl(pluginRoot, rcJson);
+//       // 打印校验结果
+//       console.log(res.data);
+
 //     } else {
 //       error(`AppType ${appType} is not support lint.`);
 //     }

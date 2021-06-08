@@ -1,69 +1,75 @@
-import yeomanRuntime from 'yeoman-environment';
 import CommandWrapper from '../../scheduler/command/commandWrapper';
-import config from '../../lib/common/config';
+import { EAppType, } from '../../lib/common/types';
+import eslint from 'eslint';
+import pluginEl from '@ali/dingtalk-worktab-plugin-script';
+import { exec, } from 'child_process';
+import { logWithSpinner, stopSpinner, } from '../../lib/cli-shared-utils/lib/spinner';
+import getValidateRc from '../../lib/util/getValidateRc';
 
 interface ICommandOptions {
-  appType?: string;
-  template?: string;
-  language?: string;
-  'skip-install'?: boolean;
-  outDir?: string;
 }
 
 export default CommandWrapper<ICommandOptions>({
-  name: 'init',
+  name: 'lint',
   registerCommand(ctx) {
     return {
       command: {
-        name: 'init',
-        description: '创建一个钉钉应用，可以是小程序、h5、工作台组件',
-      },
-      options: {
-        appType: {
-          description: '[可选] 指定应用类型，值可以为mp | h5 | plugin',
-          type: 'string',
-          shortcut: 'a',
-        },
-        template: {
-          description: '[可选] 指定模版，模版的key可以从 https://github.com/open-dingtalk/dd-application-template 上查阅',
-          type: 'string',
-          shortcut: 't',
-        },
-        language: {
-          description: '[可选] 指定模版语言，值可以为javascript | typescript（有些模版可能没有typescript语言版本）',
-          type: 'string',
-          shortcut: 'l',
-        },
-        'skip-install': {
-          description: '[可选] 若指定则不自动安装依赖',
-          type: 'string',
-        },
-        outDir: {
-          description: '[可选] 输出目录，若不指定时，将默认在当前目录新建',
-          type: 'string',
-          shortcut: 'o',
-        },
+        name: 'lint',
+        description: '校验钉钉小程序、h5、工作台组件的代码规范和平台要求规范',
       },
       action: async (options) => {
-        ctx.logger.debug('cli options', options);
-        const env = yeomanRuntime.createEnv();
+        // 对于小程序和h5，区分是否有eslintrc的场景
+        // 对于插件，区分是否有miniAppId/token的场景
+        const { dtdConfig, hasOriginDtdConfig, miniProgramConfigContent, } = ctx;
+
+        if (!miniProgramConfigContent) {
+          ctx.logger.error('当前目录下找不到mini.project.json，请在小程序或插件工作目录下运行');
+          return;
+        }
+
         const {
-          outDir,
-        } = options;
-        const done = ()=>{
-          ctx.logger.success('dd init done');
-        };
-        // @ts-ignore
-        env.lookup(function () {
-          ctx.logger.debug('GeneratorsMeta', env.getGeneratorsMeta());
-          env.run(`${config.generatorNamespace} ${outDir || ''}`, {
-            appType: options['appType'],
-            template: options['template'],
-            language: options['language'],
-            outDir: outDir || './',
-            'skip-install': options['skipInstall'],
-          }, done);
-        });
+          type: appType,
+          miniAppId,
+          token,
+        } = dtdConfig;
+        const cwd = ctx.cwd;
+
+        if ([EAppType.H5, EAppType.MP].indexOf(appType) !== -1) {
+          if (!hasOriginDtdConfig) {
+            const eslinter = new eslint.ESLint({
+              cwd,
+            });
+            const res = await eslinter.lintFiles(['**']);
+            ctx.logger.info(res);
+          } else {
+            const cp = exec('npm run lint');
+            cp.stdout && cp.stdout.on('data', (chunk) => {
+              const msg = chunk.toString();
+              ctx.logger.info(msg);
+            });
+          }
+        } else if (appType === EAppType.PLUGIN) {
+          const pluginRoot = miniProgramConfigContent.pluginRoot;
+          if (!pluginRoot) {
+            ctx.logger.error('mini.project.json中没有声明pluginRoot，无法找到插件根目录');
+            return;
+          }
+
+          if (!hasOriginDtdConfig || !miniAppId || !token) {
+            const res = await pluginEl(pluginRoot);
+            ctx.logger.warn('当前项目目录中读取不到miniAppId和token，校验时将使用标准规则');
+            ctx.logger.info(res.data);
+          }
+
+          if (miniAppId && token) {
+            logWithSpinner('正在拉取当前工作台组件的权限包');
+            const rcJson = await getValidateRc(miniAppId, token);
+            logWithSpinner('正在校验');
+            const res = await pluginEl(pluginRoot, rcJson);
+            stopSpinner('校验完成');
+            ctx.logger.info(res.data);
+          }
+        }
       },
     };
   },

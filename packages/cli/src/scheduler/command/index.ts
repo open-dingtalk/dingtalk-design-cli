@@ -16,8 +16,8 @@ export default class Command<CO = PlainRecord> {
 
     this.commandConfig = resolveCommand<CO>(opts.name, opts.root);
     this.commandContext = Object.create(opts.ctx);
-    this.commandContext.commandName = opts.name;
-    this.commandContext.logger = getLogger(`bin/dd ${opts.name}`);
+    this.commandContext.setCommandName(opts.name);
+    this.commandContext.setLogger(getLogger(`bin/dd ${opts.name}`));
 
     const timeEnd = Date.now();
     this.commandContext.logger.debug(`load command ${opts.root}/${opts.name} (${chalk.yellowBright(timeEnd - timeStart)}ms)`);

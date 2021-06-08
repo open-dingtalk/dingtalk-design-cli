@@ -25,21 +25,21 @@ export default CommandWrapper<ICommandOptions>({
       },
       options: {
         miniAppId: {
-          description: '[可选] 钉钉小程序或工作台组件的miniAppId。默认从当前工作目录下的.ddrc中读取',
+          description: `[可选] 钉钉小程序或工作台组件的miniAppId。默认从当前工作目录下的 ${config.workspaceRc} 中读取`,
           type: 'string',
         },
         version: {
-          description: '[可选] 本次上传版本号，格式为x.x.x，需要大于已上传的版本号。默认从当前工作目录下的.ddrc中读取',
+          description: `[可选] 本次上传版本号，格式为x.x.x，需要大于已上传的版本号。默认从当前工作目录下的 ${config.workspaceRc} 中读取`,
           type: 'string',
         },
         token: {
           // TODO: 参考链接修改
-          description: '[可选] 开发者工具密钥，默认从当前工作目录下的.ddrc中读取，密钥生成方式参考 xxx',
+          description: `[可选] 开发者工具密钥，默认从当前工作目录下的 ${config.workspaceRc} 中读取，密钥生成方式参考 xxx`,
           type: 'string',
         },
       },
       action: async (options) => {
-        const rcContent: ICommandOptions = getJson(path.join(ctx.cwd, '.ddrc'), true, {});
+        const rcContent = ctx.dtdConfig;
         
         const miniAppId = options.miniAppId || rcContent.miniAppId;
         const token = options.token || rcContent.token;

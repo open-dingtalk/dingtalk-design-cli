@@ -12,8 +12,8 @@ export default async (path: string) => {
         }
       });
     });
-    logger.debug('builder tar cleaned.');
+    logger.debug(`${path} cleaned.`);
   } catch(e) {
-    logger.debug(`builder tar cleaned fail. ${e.message}`);
+    logger.debug(`${path} clean fail`, e);
   }
 };

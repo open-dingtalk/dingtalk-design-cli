@@ -1,7 +1,9 @@
 import ora from 'ora';
 import chalk from 'chalk';
 
-const spinner = ora();
+const spinner = ora({
+  discardStdin: false,
+});
 let lastMsg: { symbol: string; text: string } | null = null;
 let isPaused = false;
 

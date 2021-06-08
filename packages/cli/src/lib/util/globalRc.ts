@@ -5,10 +5,10 @@ import { IGlobalRc, } from '../common/types';
 import getRc from './getRc';
 
 export const getGlobalRc = (): null | IGlobalRc => {
-  return getRc(config.rcPath) as null | IGlobalRc;
+  return getRc(config.globalRc) as null | IGlobalRc;
 };
 
-export const setGlobalRc = (k: keyof IGlobalRc, v: any): void => {
+export const setGlobalRcItem = (k: keyof IGlobalRc, v: any): void => {
   let rc = getGlobalRc();
   if (!rc) {
     rc = {
@@ -19,7 +19,18 @@ export const setGlobalRc = (k: keyof IGlobalRc, v: any): void => {
 
   const rcStr = JSON.stringify(rc);
   try {
-    fs.writeFileSync(config.rcPath, rcStr, {
+    fs.writeFileSync(config.globalRc, rcStr, {
+      encoding: 'utf-8',
+    });
+  } catch(e) {
+    logger.error('set global rc fail', e);
+  }
+};
+
+export const setGlobalRc = (opts: IGlobalRc): void => {
+  const rcStr = JSON.stringify(opts);
+  try {
+    fs.writeFileSync(config.globalRc, rcStr, {
       encoding: 'utf-8',
     });
   } catch(e) {

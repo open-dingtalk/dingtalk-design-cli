@@ -5,7 +5,8 @@ const homeDir = os.homedir();
 
 export default {
   generatorNamespace: 'dd-application:app',
-  rcPath: path.join(homeDir, '.ddrc'),
+  workspaceRc: 'dtd.config.json',
+  globalRc: path.join(homeDir, '.ddrc'),
   h5pro: {
     binStoreDir: path.join(homeDir, '.dd-h5bundle-bin'),
     platforms: {

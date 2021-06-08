@@ -1,10 +1,10 @@
 "use strict";
-var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
-    function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}
-        function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}
-        function step(result) {result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);}
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -17,7 +17,7 @@ const fs = require("fs");
 const ini = require("ini");
 const cli_shared_utils_1 = require("./cli-shared-utils");
 const logger_1 = require("./logger");
-const errors_1 = require("../common/errors");
+const errors_1 = require("@common/errors");
 const request_1 = require("./request");
 const semver = require("semver");
 // extract the package scope from the full package name
@@ -34,11 +34,11 @@ function getBin() {
     let bin = '';
     if (cli_shared_utils_1.hasYarn()) {
         bin = 'yarn';
-    } else
-    if (cli_shared_utils_1.hasPnpm()) {
+    }
+    else if (cli_shared_utils_1.hasPnpm()) {
         bin = 'pnpm';
-    } else
-    if (cli_shared_utils_1.hasNpm()) {
+    }
+    else if (cli_shared_utils_1.hasNpm()) {
         bin = 'npm';
     }
     return bin;
@@ -71,9 +71,9 @@ function getAuthToken(scope) {
     return __awaiter(this, void 0, void 0, function* () {
         // get npmrc (https://docs.npmjs.com/configuring-npm/npmrc.html#files)
         const possibleRcPaths = [
-        path.resolve(process.cwd(), '.npmrc'),
-        path.resolve(os.homedir(), '.npmrc')];
-
+            path.resolve(process.cwd(), '.npmrc'),
+            path.resolve(os.homedir(), '.npmrc')
+        ];
         if (process.env.PREFIX) {
             possibleRcPaths.push(path.resolve(process.env.PREFIX, '/etc/npmrc'));
         }
@@ -91,9 +91,9 @@ function getAuthToken(scope) {
             }
         }
         const registry = yield getRegistry(scope);
-        const registryWithoutProtocol = registry.
-        replace(/https?:/, '') // remove leading protocol
-        .replace(/([^/])$/, '$1/'); // ensure ending with slash
+        const registryWithoutProtocol = registry
+            .replace(/https?:/, '') // remove leading protocol
+            .replace(/([^/])$/, '$1/'); // ensure ending with slash
         const authTokenKey = `${registryWithoutProtocol}:_authToken`;
         return npmConfig[authTokenKey];
     });

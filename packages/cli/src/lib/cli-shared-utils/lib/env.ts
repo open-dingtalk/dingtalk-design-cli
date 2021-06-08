@@ -3,6 +3,7 @@ import fs from 'fs';
 import * as path from 'path';
 import LRU from 'lru-cache';
 import semver from 'semver';
+import which from 'which';
 
 
 let _hasYarn: boolean;
@@ -17,6 +18,22 @@ const _gitProjects = new LRU<string, boolean>({
 });
 
 // env detection
+export const getGlobalGulp = (): string => {
+  const resolved = which.sync('gulp', {
+    nothrow: true,
+  });
+  return resolved || '';
+};
+
+export const getWorkspaceGulp = (): string => {
+  const cwd = process.cwd();
+  const tscLoc = path.join(cwd, 'node_modules/.bin/gulp');
+  if(fs.existsSync(tscLoc)) {
+    return tscLoc;
+  }
+  return '';
+};
+
 export const hasYarn = () => {
   if (_hasYarn != null) {
     return _hasYarn;

@@ -3,7 +3,7 @@ import * as execa from 'execa';
 import getH5ProBinPath from '../dist/lib/util/getH5ProBinPath';
 import config from '../dist/lib/common/config';
 import * as os from 'os';
-import { setGlobalRc, getGlobalRc, } from '../dist/lib/util/globalRc';
+import { setGlobalRcItem, getGlobalRc, } from '../dist/lib/util/globalRc';
 
 describe('Utils', ()=>{
   test('getH5ProBinPath', async () => {
@@ -25,7 +25,7 @@ describe('Utils', ()=>{
   test('globalRc', () => {
     const key = 'testKey';
     const value = 'testValue';
-    setGlobalRc(key, value);
+    setGlobalRcItem(key, value);
 
     const globalRc = getGlobalRc();
     expect(globalRc).not.toBe(null);
@@ -33,6 +33,6 @@ describe('Utils', ()=>{
       expect(globalRc[key]).toBe(value);
     }
 
-    setGlobalRc(key, '');
+    setGlobalRcItem(key, '');
   });
 });
