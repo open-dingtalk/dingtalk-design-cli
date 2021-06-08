@@ -9,21 +9,21 @@ describe('Args', ()=>{
     execa('chmod', ['755', CLI_PATH]);
   });
 
-  test('suggests matching command1', async () => {
-    try {
-      await runAsync(['iint']);
-    } catch(e) {
-      console.error(e);
-      expect(e.message).toContain('Did you mean lint?');
-    }
-  }, 50 * 1000);
+  // test('suggests matching command1', async () => {
+  //   try {
+  //     await runAsync(['iint']);
+  //   } catch(e) {
+  //     console.error(e);
+  //     expect(e.message).toContain('Did you mean lint?');
+  //   }
+  // }, 50 * 1000);
 
-  test('suggests matching command2', async () => {
-    const { stdout, stderr, } = await runAsync(['iint'], {
-      reject: false,
-    });
-    console.log(stdout, stderr);
-    // Assertions
-    expect(stdout).toContain('Did you mean lint?');
-  }, 50 * 1000);
+  // test('suggests matching command2', async () => {
+  //   const { stdout, stderr, } = await runAsync(['iint'], {
+  //     reject: false,
+  //   });
+  //   console.log(stdout, stderr);
+  //   // Assertions
+  //   expect(stdout).toContain('Did you mean lint?');
+  // }, 50 * 1000);
 });
