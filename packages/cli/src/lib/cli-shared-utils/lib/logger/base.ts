@@ -36,7 +36,7 @@ export class LoggerBase {
    }
  
    public useLogLevel(logLevel: ELoggerLevel, fn: () => void) {
-     if (this.options.logLevel >= logLevel) {
+     if (this.options.logLevel && this.options.logLevel >= logLevel) {
        fn();
      }
    }

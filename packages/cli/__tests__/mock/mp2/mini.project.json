@@ -1,0 +1,5 @@
+{
+  "enableParallelLoader": false,
+  "enableDistFileMinify": true,
+  "enableEnhancedBuild": true
+}

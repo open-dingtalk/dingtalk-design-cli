@@ -34,6 +34,7 @@
     "comma-spacing": 1,
     "object-curly-spacing": ["error", "always"],
     "space-infix-ops": ["error", {"int32Hint": false}],
-    "@typescript-eslint/no-empty-interface": 0
+    "@typescript-eslint/no-empty-interface": 0,
+    "no-empty": 0
   }
 }

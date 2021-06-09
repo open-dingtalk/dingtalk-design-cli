@@ -1,5 +1,5 @@
 import { getLogger, } from '../../lib/cli-shared-utils/lib/logger';
-import { ICommandConfig, ECommandConfigProperty, PlainRecord, ICommandContext, } from '../../lib/common/types';
+import { ICommandConfig, ECommandConfigProperty, PlainRecord, ICommandContext, ECommandName, } from '../../lib/common/types';
 import { resolveCommand, } from './commandLoader';
 import chalk from 'chalk';
 
@@ -8,7 +8,7 @@ export default class Command<CO = PlainRecord> {
   public commandContext: ICommandContext<CO>;
 
   constructor(opts: {
-    name: string;
+    name: ECommandName;
     ctx: ICommandContext<CO>;
     root: string;
   }) {

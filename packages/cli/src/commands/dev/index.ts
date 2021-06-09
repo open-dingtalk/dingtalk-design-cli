@@ -1,7 +1,7 @@
 import yeomanRuntime from 'yeoman-environment';
 import CommandWrapper from '../../scheduler/command/commandWrapper';
 import config from '../../lib/common/config';
-import { EAppType, IWorkspaceRc, } from '../../lib/common/types';
+import { EAppType, ECommandName, IWorkspaceRc, } from '../../lib/common/types';
 import getGulpLocation from '../../lib/util/getGulpLocation';
 import tscInspector from '../../lib/util/gulpInspector';
 import gulpInspector from '../../lib/util/gulpInspector';
@@ -13,16 +13,17 @@ import qrcodeAction from '../../actions/qrcode';
 import pcPreviewAction from '../../actions/pcPreview';
 import getJson from '../../lib/util/getJson';
 import { spawn, } from 'child_process';
+import { isEmpty, } from 'lodash';
 
 interface ICommandOptions {
 }
 
 export default CommandWrapper<ICommandOptions>({
-  name: 'dev',
+  name: ECommandName.dev,
   registerCommand(ctx) {
     return {
       command: {
-        name: 'dev',
+        name: ECommandName.dev,
         description: '创建一个钉钉应用，可以是小程序、h5、工作台组件',
       },
       options: {
@@ -36,15 +37,15 @@ export default CommandWrapper<ICommandOptions>({
         } = ctx;
 
         if (!dtdConfig) {
-          ctx.logger.error('当前目录 ${this.commandContext.cwd} 下没有找到 ${config.workspaceRc} 文件，请先使用init初始化项目');
+          ctx.logger.error(`当前目录 ${cwd} 下没有找到 ${config.workspaceRc} 文件，请先使用init初始化项目`);
           return;
         }
 
         const {
           type,
           typescript,
-          base,
-          outDir,
+          base = '',
+          outDir = '',
         } = dtdConfig;
 
         const dtdConfigPath = path.resolve(ctx.cwd, config.workspaceRc);
@@ -57,8 +58,8 @@ export default CommandWrapper<ICommandOptions>({
         GlobalStdinCommand.bootstrap();
         ctx.watcher.init();
         ctx.watcher.watch([dtdConfigPath], () => {
-          const dtdConfigUpdated: IWorkspaceRc = getJson(dtdConfigPath, true, null);
-          if (dtdConfigUpdated) {
+          const dtdConfigUpdated: IWorkspaceRc = getJson(dtdConfigPath, true);
+          if (!isEmpty(dtdConfigUpdated)) {
             ctx.setDtdConfig(dtdConfigUpdated);
             console.log(GlobalStdinCommand.toString());
           } else {
@@ -102,7 +103,7 @@ export default CommandWrapper<ICommandOptions>({
               },
             });
           } else if (isTs) {
-            const gulpLocation = getGulpLocation();
+            const gulpLocation = getGulpLocation(cwd);
             if (!gulpLocation) {
               ctx.logger.error('当前环境找不到gulp，请先安装gulp');
               return;

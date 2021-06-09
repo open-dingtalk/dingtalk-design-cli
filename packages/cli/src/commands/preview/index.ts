@@ -9,7 +9,7 @@ import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
 import { failSpinner, logWithSpinner, stopSpinner, successSpinner, } from '../../lib/cli-shared-utils/lib/spinner';
 import { EBuildStatusText, } from 'dingtalk-miniapp-opensdk/dist/types';
 import qrcode from '../../actions/qrcode';
-import { EAppType, } from '../../lib/common/types';
+import { EAppType, ECommandName, } from '../../lib/common/types';
 
 interface ICommandOptions {
   miniAppId?: string;
@@ -18,11 +18,11 @@ interface ICommandOptions {
 }
 
 export default CommandWrapper<ICommandOptions>({
-  name: 'preview',
+  name: ECommandName.preview,
   registerCommand(ctx) {
     return {
       command: {
-        name: 'preview',
+        name: ECommandName.preview,
         description: '生成二维码，扫码预览本地构建出来的小程序或插件',
       },
       options: {},
@@ -31,7 +31,7 @@ export default CommandWrapper<ICommandOptions>({
           dtdConfig,
         } = ctx;
 
-        if ([EAppType.MP, EAppType.PLUGIN].indexOf(dtdConfig.type) === -1) {
+        if ([EAppType.MP, EAppType.PLUGIN].indexOf(dtdConfig.type as EAppType) === -1) {
           ctx.logger.error('preview命令只支持小程序或插件');
           return;
         }

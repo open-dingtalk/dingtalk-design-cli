@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
-const config_1 = require("@common/config");
+const config_1 = require("../common/config");
 const DEFAULT_STORE_PATH = config_1.RC_PATH;
 class Store {
     constructor(opts) {
         this.storePath = opts && opts.storePath || DEFAULT_STORE_PATH;
         try {
             const config = JSON.parse(fs.readFileSync(this.storePath, {
-                encoding: 'utf-8',
-            }));
+                encoding: 'utf-8' }));
+
             this.config = config;
         }
         catch (e) {
@@ -19,7 +19,7 @@ class Store {
     set(key, val) {
         // @ts-expect-error
         this.config[key] = val;
-        fs.writeFile(this.storePath, JSON.stringify(this.config), { encoding: 'utf-8', }, (err) => {
+        fs.writeFile(this.storePath, JSON.stringify(this.config), { encoding: 'utf-8' }, err => {
             if (err) {
                 console.error(err);
             }
@@ -27,7 +27,7 @@ class Store {
     }
     setAll(cf) {
         this.config = cf;
-        fs.writeFile(this.storePath, JSON.stringify(this.config), { encoding: 'utf-8', }, (err) => {
+        fs.writeFile(this.storePath, JSON.stringify(this.config), { encoding: 'utf-8' }, err => {
             if (err) {
                 console.error(err);
             }
@@ -38,6 +38,6 @@ class Store {
     }
     getAll() {
         return this.config;
-    }
-}
+    }}
+
 exports.default = Store;

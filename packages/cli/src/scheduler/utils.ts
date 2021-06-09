@@ -6,6 +6,7 @@ import { getLogger, } from '../lib/cli-shared-utils/lib/logger';
 import { ISchedulerOpts, } from './index';
 import getJson from '../lib/util/getJson';
 import config from '../lib/common/config';
+import Environment from 'yeoman-environment';
 
 /**
  * Serialize command option to CAC option.
@@ -33,7 +34,7 @@ export function serializeCommandOption(
   }
   return {
     name: serializedName,
-    description: config.description,
+    description: config.description || '',
     config: {
       default: config.default,
     },
@@ -49,7 +50,7 @@ export function getCliArgsAndOptions() {
   };
 }
 
-export function getSchedulerOptionsFromProcessArgv(commandRoot): ISchedulerOpts {
+export function getSchedulerOptionsFromProcessArgv(commandRoot: string): ISchedulerOpts {
   const logger = getLogger('bin/dd');
   const { args, options, } = getCliArgsAndOptions();
   logger.debug('cli args', args);
@@ -61,20 +62,18 @@ export function getSchedulerOptionsFromProcessArgv(commandRoot): ISchedulerOpts 
   } = options;
 
   return {
-    cwd,
+    cwd: cwd || process.cwd(),
     verbose,
     commandArgs: args,
     commandOptions: options,
     commandRoot,
+    yuyanId: '',
   };
 }
 
 export function getPackageJson(packagePath: string) {
   return getJson(packagePath, true, {});
 }
-
-
-
 
 export async function getVersionLog(pkgs: IDtdCLIDep[]): Promise<{
   name: EDtdCLIKeyDep;
@@ -95,8 +94,9 @@ export async function getVersionLog(pkgs: IDtdCLIDep[]): Promise<{
       };
     } else if (pkg.name === EDtdCLIKeyDep.generator) {
       const yeomanRuntime = require('yeoman-environment');
-      const env = yeomanRuntime.createEnv();
-      const metas = await new Promise(res=>{
+      const env: Environment = yeomanRuntime.createEnv();
+      const metas: Record<string, Environment.GeneratorMeta> = await new Promise(res=>{
+        // @ts-ignore
         env.lookup(function () {
           res(env.getGeneratorsMeta());
         });

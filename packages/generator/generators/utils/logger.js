@@ -5,12 +5,12 @@ const chalk = require("chalk");
 const strip_ansi_1 = require("strip-ansi");
 const format = (label, msg) => {
     return msg.split('\n').map((line, i) => {
-        return i === 0
-            ? `${label} ${line}`
-            : line.padStart(strip_ansi_1.default(label).length);
+        return i === 0 ?
+        `${label} ${line}` :
+        line.padStart(strip_ansi_1.default(label).length);
     }).join('\n');
 };
-const debug = (msg) => {
+const debug = msg => {
     const txt = format(chalk.bgBlue.black(' DEBUG '), msg);
     return process.env.NODE_ENV === '__DEBUG__' && console.log(txt);
 };

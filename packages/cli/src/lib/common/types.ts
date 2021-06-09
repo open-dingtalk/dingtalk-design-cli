@@ -35,7 +35,7 @@ export enum EAppType {
 // 项目rc配置
 export interface IWorkspaceRc {
   /** 通用 */
-  type: EAppType;
+  type: EAppType | '';
   typescript?: boolean;
   base?: string;
   outDir?: string;
@@ -82,22 +82,22 @@ export interface ICommandOptionConfig {
 }
 
 export type ICommandContext<CO = PlainRecord> = {
-  commandName?: string;
+  commandName?: ECommandName | '';
   commandArgs: readonly string[];
   commandOptions: CO;
   monitor: FrameworkMonitor;
-  cwd?: string;
-  dtdConfig?: IWorkspaceRc; // dtd.config.json
-  miniProgramConfigContent?: IMiniProjectJson; // mini.project.json
-  miniProgramConfigPath?: string;
-  hasOriginDtdConfig?: boolean;
-  logger?: Logger;
-  watcher?: Watcher;
-  yuyanId?: string;
+  cwd: string;
+  dtdConfig: IWorkspaceRc; // dtd.config.json
+  miniProgramConfigContent: IMiniProjectJson; // mini.project.json
+  miniProgramConfigPath: string;
+  hasOriginDtdConfig: boolean;
+  logger: Logger;
+  watcher: Watcher;
+  yuyanId: string;
   
-  setDtdConfig?: (config: IWorkspaceRc) => void;
-  setLogger?: (logger: Logger) => void;
-  setCommandName?: (name: string) => void;
+  setDtdConfig: (config: IWorkspaceRc) => void;
+  setLogger: (logger: Logger) => void;
+  setCommandName: (name: ECommandName) => void;
 }
 
 export enum ECommandConfigProperty {
@@ -105,7 +105,7 @@ export enum ECommandConfigProperty {
   registerCommand = 'registerCommand',
 }
 
-export type ICommandConfigName = string;
+export type ICommandConfigName = ECommandName;
 
 /**
  * Interface of command option object.
@@ -114,13 +114,21 @@ export type ICommandOptionConfigMap<T> = {
   [key in keyof T]?: ICommandOptionConfig
 };
 
+/**
+ * 全局命令选项
+ */
+export interface IGlobalOptions {
+  cwd?: string;
+  verbose?: boolean;
+}
+
 export interface ICommandConfigOpts<CO = PlainRecord> {
   command: {
-    name: string;
+    name: ECommandName;
     description: string;
   },
   options?: ICommandOptionConfigMap<CO>,
-  action: (options: CO, ctx: ICommandContext<CO>) => Promise<void>
+  action: (options: CO & IGlobalOptions, ctx: ICommandContext<CO>) => Promise<void>
 }
 
 export interface ICommandConfig<

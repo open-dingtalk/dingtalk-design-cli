@@ -25,8 +25,7 @@ export const getGlobalGulp = (): string => {
   return resolved || '';
 };
 
-export const getWorkspaceGulp = (): string => {
-  const cwd = process.cwd();
+export const getWorkspaceGulp = (cwd: string): string => {
   const tscLoc = path.join(cwd, 'node_modules/.bin/gulp');
   if(fs.existsSync(tscLoc)) {
     return tscLoc;

@@ -1,6 +1,7 @@
 import yeomanRuntime from 'yeoman-environment';
 import CommandWrapper from '../../scheduler/command/commandWrapper';
 import config from '../../lib/common/config';
+import { ECommandName, } from '../../lib/common/types';
 
 interface ICommandOptions {
   appType?: string;
@@ -11,11 +12,11 @@ interface ICommandOptions {
 }
 
 export default CommandWrapper<ICommandOptions>({
-  name: 'init',
+  name: ECommandName.init,
   registerCommand(ctx) {
     return {
       command: {
-        name: 'init',
+        name: ECommandName.init,
         description: '创建一个钉钉应用，可以是小程序、h5、工作台组件',
       },
       options: {

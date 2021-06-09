@@ -25,6 +25,8 @@ export class Watcher {
      readonly opts: IWatcherOptions,
    ) {
      this.inited = false;
+     this.watcher = null as unknown as FSWatcher;
+     this.watchedFiles = [];
    }
  
    /**

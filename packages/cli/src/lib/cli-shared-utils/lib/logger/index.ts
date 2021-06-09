@@ -56,7 +56,7 @@ export class Logger extends LoggerBase {
     color: typeof Color | typeof Modifiers,
     label: string, ...args: ILoggerElement[]
   ) {
-    if (this.options.logLevel >= ELoggerLevel.debug) {
+    if (this.options.logLevel && this.options.logLevel >= ELoggerLevel.debug) {
       this._statuslog(color, label, ...(this.getLogArgsWithPrefix(args)));
     } else {
       this._statuslog(color, label, ...args);

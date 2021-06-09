@@ -1,0 +1,6 @@
+{
+  "type": "mp",
+  "typescript": false,
+  "base": "./",
+  "outDir": "./"
+}

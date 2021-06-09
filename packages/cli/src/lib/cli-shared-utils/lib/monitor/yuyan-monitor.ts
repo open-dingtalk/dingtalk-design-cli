@@ -72,9 +72,9 @@ export default class Monitor implements IMonitor {
     this.requiredFields = opts.requiredFields;
   }
 
-  public async log(logItem: ILogItem): Promise<urllib.HttpClientResponse<any>[]> {
+  public async log(logItem: ILogItem): Promise<void> {
     const itemList = Array.isArray(logItem) ? logItem : [logItem];
-    return Promise.all(itemList.map(item => this._log(item)));
+    Promise.all(itemList.map(item => this._log(item)));
   }
 
   /**

@@ -12,10 +12,7 @@ const pkgName = pkgJson.name;
 checkNodeVersion(requiredVersion, pkgName);
 
 const opts = getSchedulerOptionsFromProcessArgv(path.join(__dirname, '../commands'));
-const scheduler = new Scheduler({
-  ...opts,
-  yuyanId: '',
-});
+const scheduler = new Scheduler(opts);
 scheduler.bootstrap();
 
 // program

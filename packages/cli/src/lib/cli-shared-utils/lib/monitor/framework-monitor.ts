@@ -40,7 +40,7 @@ export default class FrameworkMonitor {
       const normalizedLogItem = logItem;
       if (Array.isArray(normalizedLogItem)) {
         normalizedLogItem.forEach(item => this.log(item, true));
-      } else if (isPlainObject(normalizedLogItem)) {
+      } else if (normalizedLogItem && isPlainObject(normalizedLogItem)) {
         this.log(normalizedLogItem, true);
       }
     }

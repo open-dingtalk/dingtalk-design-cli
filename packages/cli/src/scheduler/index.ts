@@ -1,21 +1,12 @@
 import * as cac from 'cac';
-import * as path from 'path';
-import * as fs from 'fs';
 import chalk from 'chalk';
 import { logger, } from '../lib/cli-shared-utils/lib/logger';
-import { resolveCommand, } from './command/commandLoader';
-import { ECommandConfigProperty, ECommandName, ICommandConfig, ICommandConfigOpts, PlainRecord, ICommandContext, IWorkspaceRc, EAppType, IDtdCLIDep, EDtdCLIKeyDep, } from '../lib/common/types';
+import { ECommandConfigProperty, ECommandName, ICommandConfigOpts, PlainRecord, IDtdCLIDep, EDtdCLIKeyDep, IGlobalOptions, ICommandConfig, } from '../lib/common/types';
 import CommandFactory from './command';
 import { isPlainObject, } from 'lodash';
-import { getCliArgsAndOptions, getPackageJson, getVersionLog, serializeCommandOption, } from './utils';
-import FrameworkMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
-import { ELoggerLevel, } from '../lib/cli-shared-utils/lib/logger/types';
-import config from '../lib/common/config';
-import yeomanRuntime from 'yeoman-environment';
-import getJson from '../lib/util/getJson';
-import getMiniProjectJson from '../lib/util/getMiniProjectJson';
-import { Watcher, } from '../lib/cli-shared-utils/lib/watcher';
+import {  getVersionLog, serializeCommandOption, } from './utils';
 import CommandContextFactory from './context';
+import suggestCommands from '../lib/util/suggestCommands';
 
 export interface ISchedulerOpts {
   commandRoot: string;
@@ -25,32 +16,51 @@ export interface ISchedulerOpts {
   commandOptions: {
     [k: string]: any;
   }
-  yuyanId?: string;
+  yuyanId: string;
 }
 
 export default class Scheduler {
-  private opts: ISchedulerOpts
+  public opts: ISchedulerOpts
   private program: cac.CAC;
-  private commandContext: CommandContextFactory;
+  public commandContext: CommandContextFactory;
   public commandList: CommandFactory[];
 
   constructor(opts: ISchedulerOpts) {
     this.opts = opts;
-
     this.commandList = [];
-    
-    this.commandContext = new CommandContextFactory(opts.cwd || process.cwd(), opts.yuyanId);
+    this.program = cac.cac();
+    this.commandContext = new CommandContextFactory(
+      opts.cwd || process.cwd(), 
+      opts.yuyanId,
+      opts.commandArgs,
+      opts.commandOptions
+    );
 
     logger.debug('scheduler factory opts', this.opts);
     logger.debug('scheduler commandContext', this.commandContext);
   }
 
-  private getWrappedCommandAction(
+  /**
+   * 初始化全局参数默认值
+   * @param originOpts 命令行传入的参数
+   * @returns 
+   */
+  private generateActionOptions(originOpts: {
+    [k: string]: any;
+  } & IGlobalOptions) {
+    return {
+      ...originOpts,
+      cwd: this.commandContext.cwd,
+      verbose: this.opts.verbose,
+    };
+  }
+
+  getWrappedCommandAction(
     command: CommandFactory,
     commandName: ECommandName,
     action: (...args: any[]) => void
   ) {
-    return async (...callbackArgs: any[]) => {
+    return async (...callbackArgs: any[]): Promise<any> => {
       let args: string[];
       let opts: Partial<any> & PlainRecord;
 
@@ -62,29 +72,56 @@ export default class Scheduler {
         opts = callbackArgs[callbackArgs.length - 1];
       }
 
-      opts.cwd = opts.cwd || this.opts.cwd;
+      opts = this.generateActionOptions(opts);
 
-      await action(opts, command.commandContext);
+      logger.debug(`command ${commandName} action options`, opts);
+
+      return await action(opts, command.commandContext);
     };
   }
 
-  private loadCommand(name: ECommandName) {
+  public loadCommand(name: ECommandName): CommandFactory {
     const command = new CommandFactory({
       name, 
       ctx: this.commandContext,
       root: this.opts.commandRoot,
     });
     this.commandList.push(command);
+    return command;
   }
 
-  private applyCommandsHook(name: ECommandConfigProperty) {
+  registerCommandByCac(commandInst: CommandFactory, commandConfig: ICommandConfigOpts) {
+    const { program, } = this;
+    const { command, options, action, } = commandConfig;
+    const currentCommand = program.command(command.name, command.description);
+
+    if (options) {
+      Object.keys(options).forEach(optionName => {
+        const { name: _name, description, config, } = serializeCommandOption(optionName, options[optionName] || {});
+        currentCommand.option(_name, description, config);
+      });
+    }
+
+    const commandName = command.name.split(' ')[0] as ECommandName; // 若 command 配置为 dev [entry], 则 command name 为 dev
+    currentCommand.allowUnknownOptions();
+    currentCommand.action(
+      this.getWrappedCommandAction(
+        commandInst,
+        commandName,
+        action,
+      ),
+    );
+    return program;
+  }
+
+  public applyCommandsHook(name: ECommandConfigProperty): void {
     switch (name) {
     case ECommandConfigProperty.registerCommand:
       this.commandList.forEach(commandInst => {
         const { program, } = this;
 
         if (typeof commandInst.getHook(ECommandConfigProperty.registerCommand) === 'function') {
-          const commandConfigs = commandInst.applyHook<ICommandConfigOpts[]>(
+          const commandConfigs = commandInst.applyHook<ICommandConfigOpts>(
             ECommandConfigProperty.registerCommand,
           );
 
@@ -92,27 +129,7 @@ export default class Scheduler {
               = Array.isArray(commandConfigs) ? commandConfigs : [commandConfigs];
 
           normalizedcommandConfigs.forEach(commandConfig => {
-            const { command, options, action, } = commandConfig;
-            const currentCommand = program.command(command.name, command.description);
-
-            if (isPlainObject(options)) {
-              Object.keys(options).forEach(optionName => {
-                const { name: _name, description, config, } = serializeCommandOption(optionName, options[optionName]);
-                currentCommand.option(_name, description, config);
-              });
-            } else if (Array.isArray(options)) {
-              throw new Error('options has been moved to plain object in minifish.');
-            }
-
-            const commandName = command.name.split(' ')[0] as ECommandName; // 若 command 配置为 dev [entry], 则 command name 为 dev
-            currentCommand.allowUnknownOptions();
-            currentCommand.action(
-              this.getWrappedCommandAction(
-                commandInst,
-                commandName,
-                action,
-              ),
-            );
+            this.registerCommandByCac(commandInst, commandConfig);
           });
         }
       });
@@ -148,24 +165,25 @@ export default class Scheduler {
    * 登记命令
    * 初始化配置和监控等实例
    */
-  async bootstrap() {
+  public async bootstrap(): Promise<void> {
     await this.loadCommand(ECommandName.init);
     await this.loadCommand(ECommandName.upload);
     await this.loadCommand(ECommandName.lint);
     await this.loadCommand(ECommandName.dev);
+    await this.loadCommand(ECommandName.preview);
     await this.bootstrapProgram();
   }
 
   /**
    * 登记全局配置
    */
-  async bootstrapProgram() {
+  private async bootstrapProgram() {
     const pkgJson = require('../../package.json');
     const pkgName = pkgJson.name;
     const pkgVersion = pkgJson.version;
     logger.debug(`${pkgName}@${pkgVersion}`);
-
-    this.program = cac.cac();
+    logger.debug('origin process args', process.argv);
+    
     this.program.name = 'dd';
     this.program.option('--cwd [cwd]', `当前的工作目录, 默认值是 ${chalk.yellow('process.cwd()')}`);
     this.program.option('--verbose', '打开框架日志调试');
@@ -190,7 +208,9 @@ export default class Scheduler {
       }
     } else {
       this.program.outputHelp();
+
+      const commandName = this.commandContext.commandArgs[0];
+      suggestCommands(commandName, this.commandList.map(v => v.commandContext.commandName || ''));
     }
-    
   }
 }

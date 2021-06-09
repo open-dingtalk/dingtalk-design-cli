@@ -1,5 +1,5 @@
 import CommandWrapper from '../../scheduler/command/commandWrapper';
-import { EAppType, } from '../../lib/common/types';
+import { EAppType, ECommandName, } from '../../lib/common/types';
 import eslint from 'eslint';
 import pluginEl from '@ali/dingtalk-worktab-plugin-script';
 import { exec, } from 'child_process';
@@ -10,11 +10,11 @@ interface ICommandOptions {
 }
 
 export default CommandWrapper<ICommandOptions>({
-  name: 'lint',
+  name: ECommandName.lint,
   registerCommand(ctx) {
     return {
       command: {
-        name: 'lint',
+        name: ECommandName.lint,
         description: '校验钉钉小程序、h5、工作台组件的代码规范和平台要求规范',
       },
       action: async (options) => {
@@ -34,7 +34,7 @@ export default CommandWrapper<ICommandOptions>({
         } = dtdConfig;
         const cwd = ctx.cwd;
 
-        if ([EAppType.H5, EAppType.MP].indexOf(appType) !== -1) {
+        if ([EAppType.H5, EAppType.MP].indexOf(appType as EAppType) !== -1) {
           if (!hasOriginDtdConfig) {
             const eslinter = new eslint.ESLint({
               cwd,

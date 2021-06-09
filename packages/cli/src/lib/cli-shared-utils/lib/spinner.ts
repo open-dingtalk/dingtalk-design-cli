@@ -54,8 +54,8 @@ export function resumeSpinner() {
 
 export function successSpinner(text: string) {
   spinner.stopAndPersist({
-    symbol: lastMsg.symbol,
-    text: text || lastMsg.text,
+    symbol: lastMsg ? lastMsg.symbol : '',
+    text: text || (lastMsg ? lastMsg.text : ''),
   });
 }
 

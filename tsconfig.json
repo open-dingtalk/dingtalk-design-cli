@@ -22,7 +22,7 @@
 
     /* Strict Type-Checking Options */
     "strict": true ,                           /* Enable all strict type-checking options. */
-    // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+    "noImplicitAny": false,                 /* Raise error on expressions and declarations with an implied 'any' type. */
     // "strictNullChecks": true,              /* Enable strict null checks. */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
     // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
@@ -43,6 +43,7 @@
     "resolveJsonModule": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
     "typeRoots": [
       "node_modules/@types"
     ],                       /* List of folders to include type definitions from. */

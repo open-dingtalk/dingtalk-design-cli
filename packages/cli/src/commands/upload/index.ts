@@ -8,6 +8,7 @@ import semver from 'semver';
 import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
 import { failSpinner, logWithSpinner, stopSpinner, successSpinner, } from '../../lib/cli-shared-utils/lib/spinner';
 import { EBuildStatusText, } from 'dingtalk-miniapp-opensdk/dist/types';
+import { ECommandName, } from '../../lib/common/types';
 
 interface ICommandOptions {
   miniAppId?: string;
@@ -16,11 +17,11 @@ interface ICommandOptions {
 }
 
 export default CommandWrapper<ICommandOptions>({
-  name: 'upload',
+  name: ECommandName.upload,
   registerCommand(ctx) {
     return {
       command: {
-        name: 'upload',
+        name: ECommandName.upload,
         description: '上传钉钉小程序或工作台组件',
       },
       options: {
