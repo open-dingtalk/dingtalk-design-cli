@@ -53,11 +53,20 @@ export class FrameworkMonitor {
     this.pendingLogItems = [];
   }
 
+  /**
+   * 环境变量 NO_REPORT 控制是否要进行数据上报
+   * 
+   * @param logItem 
+   * @param immediately 
+   * @returns 
+   */
   public async log(logItem: ILogItem, immediately = false): Promise<any> {
     if (immediately) {
       if (this.opts.debug) {
         console.log('log', JSON.stringify(logItem));
       }
+
+      if (process.env.NO_REPORT) return;
 
       try {
         await this.Tracert.log(logItem);

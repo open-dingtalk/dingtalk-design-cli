@@ -46,7 +46,7 @@ export default class Scheduler {
       opts.yuyanId,
       opts.commandArgs,
       opts.commandOptions,
-      opts.verbose,
+      !!opts.verbose,
     );
 
     logger.debug('scheduler factory opts', this.opts);
