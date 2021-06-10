@@ -38,6 +38,5 @@ export default (gulpBin: string, opts: {
   cp.on('error', (err) => {
     logger.debug('gulpInspector exit witch err', err);
     hooks.onError && hooks.onError(err);
-    process.exit(1);
   });
 };

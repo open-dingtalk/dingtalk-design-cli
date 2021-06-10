@@ -2,6 +2,7 @@ import yeomanRuntime from 'yeoman-environment';
 import CommandWrapper from '../../scheduler/command/commandWrapper';
 import config from '../../lib/common/config';
 import { ECommandName, } from '../../lib/common/types';
+import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
 
 interface ICommandOptions {
   appType?: string;
@@ -10,6 +11,8 @@ interface ICommandOptions {
   'skip-install'?: boolean;
   outDir?: string;
 }
+
+const monitor = getMonitor(config.yuyanId);
 
 export default CommandWrapper<ICommandOptions>({
   name: ECommandName.init,
@@ -51,8 +54,12 @@ export default CommandWrapper<ICommandOptions>({
         const {
           outDir,
         } = options;
-        const done = ()=>{
-          ctx.logger.success('dd init done');
+        const done = (err)=>{
+          if (err) {
+            monitor.logJSError(err);
+          } else {
+            ctx.logger.success('dd init done');
+          }
         };
         // @ts-ignore
         env.lookup(function () {

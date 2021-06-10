@@ -14,6 +14,9 @@ import pcPreviewAction from '../../actions/pcPreview';
 import getJson from '../../lib/util/getJson';
 import { spawn, } from 'child_process';
 import { isEmpty, } from 'lodash';
+import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
+
+const monitor = getMonitor(config.yuyanId);
 
 interface ICommandOptions {
 }
@@ -81,8 +84,12 @@ export default CommandWrapper<ICommandOptions>({
           GlobalStdinCommand.subscribe({
             command: 'ide',
             description: '在当前命令行中敲入 「ide + 回车」 在小程序 IDE 中调试',
-            action: () => {
-              launchIDEOnly(path.resolve(outDir), true, projectType);
+            action: async () => {
+              try {
+                await launchIDEOnly(path.resolve(outDir), true, projectType);
+              } catch(e) {
+                monitor.logJSError(e);
+              }
             },
           });
 
@@ -114,6 +121,10 @@ export default CommandWrapper<ICommandOptions>({
               src: path.resolve(base),
               dist: path.resolve(outDir),
               cwd,
+            }, {
+              onError: (err) => {
+                monitor.logJSError(err);
+              },
             });
           }
 
@@ -134,6 +145,7 @@ export default CommandWrapper<ICommandOptions>({
           );
           cp.on('error', (err) => {
             ctx.logger.error('h5项目启动失败', err.message);
+            monitor.logJSError(err);
           });
         }
       },

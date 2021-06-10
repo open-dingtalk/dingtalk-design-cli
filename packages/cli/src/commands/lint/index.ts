@@ -5,9 +5,13 @@ import pluginEl from '@ali/dingtalk-worktab-plugin-script';
 import { exec, } from 'child_process';
 import { logWithSpinner, stopSpinner, } from '../../lib/cli-shared-utils/lib/spinner';
 import getValidateRc from '../../lib/util/getValidateRc';
+import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
+import config from '../../lib/common/config';
 
 interface ICommandOptions {
 }
+
+const monitor = getMonitor(config.yuyanId);
 
 export default CommandWrapper<ICommandOptions>({
   name: ECommandName.lint,
@@ -43,9 +47,13 @@ export default CommandWrapper<ICommandOptions>({
             ctx.logger.info(res);
           } else {
             const cp = exec('npm run lint');
-            cp.stdout && cp.stdout.on('data', (chunk) => {
+            cp.stdout.on('data', (chunk) => {
               const msg = chunk.toString();
               ctx.logger.info(msg);
+            });
+            cp.on('error', (err) => {
+              monitor.logJSError(err);
+              ctx.logger.error('lint执行失败', err);
             });
           }
         } else if (appType === EAppType.PLUGIN) {

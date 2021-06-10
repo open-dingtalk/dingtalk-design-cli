@@ -8,13 +8,16 @@ import semver from 'semver';
 import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
 import { failSpinner, logWithSpinner, stopSpinner, successSpinner, } from '../../lib/cli-shared-utils/lib/spinner';
 import { EBuildStatusText, } from 'dingtalk-miniapp-opensdk/dist/types';
-import { ECommandName, } from '../../lib/common/types';
+import { EApiName, ECommandName, } from '../../lib/common/types';
+import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
 
 interface ICommandOptions {
   miniAppId?: string;
   version?: string;
   token?: string;
 }
+
+const monitor = getMonitor(config.yuyanId);
 
 export default CommandWrapper<ICommandOptions>({
   name: ECommandName.upload,
@@ -77,16 +80,24 @@ export default CommandWrapper<ICommandOptions>({
           host: 'https://pre-oapi.dingtalk.com',
         });
 
+        monitor.logApiInvoke(EApiName.UPLOAD);
+
+        const uploadCommonParams = {
+          project: ctx.cwd,
+          miniAppId: rcContent.miniAppId,
+          packageVersion: answers.version,
+        };
+
         try {
           await opensdk.miniUpload({
-            project: ctx.cwd,
-            miniAppId: rcContent.miniAppId,
-            packageVersion: answers.version,
+            ...uploadCommonParams,
             onProgressUpdate: (info) => {
               const {
                 data,
                 status,
               } = info;
+
+              monitor.logApiInvoke(EApiName.GET_UPLOAD_STATUS);
 
               // @ts-ignore
               const logId = path.basename(data.logUrl);
@@ -103,17 +114,19 @@ export default CommandWrapper<ICommandOptions>({
               } else if (status === EBuildStatusText.overtime) {
                 failSpinner('构建超时，请重试');
                 ctx.logger.error(log);
+                monitor.logApiError(EApiName.GET_UPLOAD_STATUS, EBuildStatusText.overtime, uploadCommonParams, info);
               } else if (status === EBuildStatusText.failed) {
                 failSpinner('构建失败');
                 ctx.logger.error('构建失败，logId: ', logId);
                 ctx.logger.error(log);
-
+                monitor.logApiError(EApiName.GET_UPLOAD_STATUS, EBuildStatusText.failed, uploadCommonParams, info);
               }
             },
           });
         } catch(e) {
           stopSpinner();
           ctx.logger.error('上传失败', e);
+          monitor.logApiError(EApiName.UPLOAD, e.message, uploadCommonParams, e.stack);
         }
       },
     };

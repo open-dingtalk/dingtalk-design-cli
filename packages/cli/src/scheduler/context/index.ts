@@ -1,7 +1,6 @@
 import FrameworkMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import { Watcher, } from '../../lib/cli-shared-utils/lib/watcher';
 import { EAppType, ECommandName, ICommandContext, IMiniProjectJson, IWorkspaceRc, } from '../../lib/common/types';
-import { getCliArgsAndOptions, } from '../utils';
 import * as path from 'path';
 import * as fs from 'fs';
 import getJson from '../../lib/util/getJson';
@@ -10,7 +9,6 @@ import { Logger, logger, } from '../../lib/cli-shared-utils/lib/logger';
 import config from '../../lib/common/config';
 
 export default class CommandContextFactory implements ICommandContext {
-  public monitor: FrameworkMonitor;
   public hasOriginDtdConfig: boolean;
   public watcher: Watcher;
   public miniProgramConfigPath: string;
@@ -42,17 +40,13 @@ export default class CommandContextFactory implements ICommandContext {
     public commandArgs: readonly string[],
     public commandOptions: {
       [k: string]: any;
-    }
+    },
+    public verbose: boolean
   ) {
-    const monitor = new FrameworkMonitor({
-      yuyanId,
-    });
-
     this._commandName = '';
     this._logger = logger;
     this.commandArgs = commandArgs;
     this.commandOptions = commandOptions;
-    this.monitor = monitor;
     
     const { dtdConfig, hasOriginDtdConfig, } = this.getDtdConfig();
     this._dtdConfig = dtdConfig;
@@ -68,6 +62,7 @@ export default class CommandContextFactory implements ICommandContext {
     });
     this.watcher = watcher;
   }
+  monitor: any;
 
   public setDtdConfig(dtdConfig: IWorkspaceRc) {
     this._dtdConfig = dtdConfig;

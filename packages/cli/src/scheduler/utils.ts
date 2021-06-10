@@ -1,5 +1,4 @@
 import { EDtdCLIKeyDep, ICommandOptionConfig, IDtdCLIDep, } from '../lib/common/types';
-import * as cac from 'cac';
 import * as path from 'path';
 import chalk from 'chalk';
 import { getLogger, } from '../lib/cli-shared-utils/lib/logger';
@@ -7,6 +6,8 @@ import { ISchedulerOpts, } from './index';
 import getJson from '../lib/util/getJson';
 import config from '../lib/common/config';
 import Environment from 'yeoman-environment';
+import getCurrentPkgInfo from '../lib/util/getCurrentPkgInfo';
+import getCliArgsAndOptions from '../lib/util/getCliArgsAndOptions';
 
 /**
  * Serialize command option to CAC option.
@@ -41,16 +42,12 @@ export function serializeCommandOption(
   };
 }
 
-export function getCliArgsAndOptions() {
-  const cli = cac.default();
-  const parsed = cli.parse();
-  return {
-    options: parsed.options,
-    args: parsed.args,
-  };
-}
-
-export function getSchedulerOptionsFromProcessArgv(commandRoot: string): ISchedulerOpts {
+export function getSchedulerOptionsFromProcessArgv(): {
+  cwd: string;
+  verbose: boolean;
+  commandArgs: ISchedulerOpts['commandArgs'];
+  commandOptions: ISchedulerOpts['commandOptions'];
+  } {
   const logger = getLogger('bin/dd');
   const { args, options, } = getCliArgsAndOptions();
   logger.debug('cli args', args);
@@ -66,8 +63,6 @@ export function getSchedulerOptionsFromProcessArgv(commandRoot: string): ISchedu
     verbose,
     commandArgs: args,
     commandOptions: options,
-    commandRoot,
-    yuyanId: '',
   };
 }
 
@@ -85,12 +80,10 @@ export async function getVersionLog(pkgs: IDtdCLIDep[]): Promise<{
     }
 
     if (pkg.name === EDtdCLIKeyDep.cli) {
-      const pkgJson = require('../../package.json');
-      const pkgVersion = pkgJson.version;
-
+      const pkgInfo = getCurrentPkgInfo();
       return {
         name: EDtdCLIKeyDep.cli,
-        version: pkgVersion,
+        version: pkgInfo.version,
       };
     } else if (pkg.name === EDtdCLIKeyDep.generator) {
       const yeomanRuntime = require('yeoman-environment');

@@ -85,7 +85,6 @@ export type ICommandContext<CO = PlainRecord> = {
   commandName?: ECommandName | '';
   commandArgs: readonly string[];
   commandOptions: CO;
-  monitor: FrameworkMonitor;
   cwd: string;
   dtdConfig: IWorkspaceRc; // dtd.config.json
   miniProgramConfigContent: IMiniProjectJson; // mini.project.json
@@ -191,4 +190,16 @@ export interface IMiniProjectJson {
   enableUnibuildAndAppxngComplexBundle?: boolean;
   // debugOptions?: IMiniDebugOptions;
   enableHMR?: boolean;
+}
+
+/**
+ * cli使用到的接口名枚举
+ */
+export enum EApiName {
+  PREVIEW, // 预览
+  GET_PREVIEW_STATUS, // 获取预览状态
+  UPLOAD, // 构建上传
+  GET_UPLOAD_STATUS, // 获取上传状态
+  GET_POINT, // 拉取插件权限点
+  GET_RC // 拉取插件权限包和rc
 }

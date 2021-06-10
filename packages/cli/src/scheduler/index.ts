@@ -7,7 +7,17 @@ import { isPlainObject, } from 'lodash';
 import {  getVersionLog, serializeCommandOption, } from './utils';
 import CommandContextFactory from './context';
 import suggestCommands from '../lib/util/suggestCommands';
+import getCurrentPkgInfo from '../lib/util/getCurrentPkgInfo';
+import performance from '../lib/util/performance';
+import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
+import config from '../lib/common/config';
 
+const monitor = getMonitor(config.yuyanId);
+
+export enum EPerformanceEvent {
+  START = 'start',
+  SPLASH_SCREEN = 'splashscreen'
+}
 export interface ISchedulerOpts {
   commandRoot: string;
   cwd?: string;
@@ -26,6 +36,8 @@ export default class Scheduler {
   public commandList: CommandFactory[];
 
   constructor(opts: ISchedulerOpts) {
+    performance.tick(EPerformanceEvent.START);
+
     this.opts = opts;
     this.commandList = [];
     this.program = cac.cac();
@@ -33,7 +45,8 @@ export default class Scheduler {
       opts.cwd || process.cwd(), 
       opts.yuyanId,
       opts.commandArgs,
-      opts.commandOptions
+      opts.commandOptions,
+      opts.verbose,
     );
 
     logger.debug('scheduler factory opts', this.opts);
@@ -61,6 +74,8 @@ export default class Scheduler {
     action: (...args: any[]) => void
   ) {
     return async (...callbackArgs: any[]): Promise<any> => {
+      monitor.logPv();
+
       let args: string[];
       let opts: Partial<any> & PlainRecord;
 
@@ -75,6 +90,8 @@ export default class Scheduler {
       opts = this.generateActionOptions(opts);
 
       logger.debug(`command ${commandName} action options`, opts);
+
+      this.trackSplashScreen();
 
       return await action(opts, command.commandContext);
     };
@@ -139,12 +156,23 @@ export default class Scheduler {
     }
   }
 
+  private trackSplashScreen() {
+    performance.tick(EPerformanceEvent.SPLASH_SCREEN);
+
+    const splashScreenDuration = performance.interval(
+      EPerformanceEvent.START,
+      EPerformanceEvent.SPLASH_SCREEN,
+    );
+
+    logger.debug(chalk.bgRedBright('splashScreenDuration'), splashScreenDuration);
+    monitor.logSplashScreen(splashScreenDuration).lazyFlush();
+  }
+
   private async logVersion() {
-    const pkgJson = require('../../package.json');
-    const pkgVersion = pkgJson.version;
+    const pkgInfo = getCurrentPkgInfo();
     const deps: IDtdCLIDep[] = [{
       name: EDtdCLIKeyDep.cli,
-      version: pkgVersion,
+      version: pkgInfo.version,
     }, {
       name: EDtdCLIKeyDep.generator,
       version: '',
@@ -178,9 +206,9 @@ export default class Scheduler {
    * 登记全局配置
    */
   private async bootstrapProgram() {
-    const pkgJson = require('../../package.json');
-    const pkgName = pkgJson.name;
-    const pkgVersion = pkgJson.version;
+    const pkgInfo = getCurrentPkgInfo();
+    const pkgName = pkgInfo.name;
+    const pkgVersion = pkgInfo.version;
     logger.debug(`${pkgName}@${pkgVersion}`);
     logger.debug('origin process args', process.argv);
     
@@ -196,7 +224,7 @@ export default class Scheduler {
     }
 
     if (options.help || options.h) {
-      // this.tractSplashScreen();
+      this.trackSplashScreen();
       this.program.outputHelp();
     } else if (this.program.matchedCommand) {
       logger.debug('matchedCommand', this.program.matchedCommand.name);
@@ -210,7 +238,7 @@ export default class Scheduler {
       this.program.outputHelp();
 
       const commandName = this.commandContext.commandArgs[0];
-      suggestCommands(commandName, this.commandList.map(v => v.commandContext.commandName || ''));
+      commandName && suggestCommands(commandName, this.commandList.map(v => v.commandContext.commandName || ''));
     }
   }
 }
