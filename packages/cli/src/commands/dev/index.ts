@@ -58,7 +58,6 @@ export default CommandWrapper<ICommandOptions>({
         const isPcPlugin = type === EAppType.PLUGIN && dtdConfig.isPcPlugin;
         const isTs = typescript;
         
-        GlobalStdinCommand.bootstrap();
         ctx.watcher.init();
         ctx.watcher.watch([dtdConfigPath], () => {
           const dtdConfigUpdated: IWorkspaceRc = getJson(dtdConfigPath, true);
@@ -68,7 +67,6 @@ export default CommandWrapper<ICommandOptions>({
           } else {
             ctx.logger.error(`配置文件 ${config.workspaceRc} 读取失败`);
           }
-          
         });
 
         /**
@@ -77,6 +75,8 @@ export default CommandWrapper<ICommandOptions>({
          * 区分语言：ts、js；ts需要先走一遍构建
          */
         if (isMp || isPlugin || isPcPlugin) {
+          GlobalStdinCommand.bootstrap();
+
           let projectType;
           if (isMp) projectType = ProjectType.DINGTALK_BIZ;
           if (isPlugin || isPcPlugin) projectType = ProjectType.DINGTALK_BIZ_WORKTAB_PLUGIN;

@@ -136,6 +136,7 @@ export class FrameworkMonitor {
       d2: this.commandName,
       c1: process.argv,
     }));
+    this.lazyFlush();
     return this;
   }
 
@@ -160,6 +161,7 @@ export class FrameworkMonitor {
       c1: process.argv,
       c2: err.stack,
     }));
+    this.lazyFlush();
     return this;
   }
 
@@ -192,6 +194,7 @@ export class FrameworkMonitor {
       c2: params,
       c3: body,
     }));
+    this.lazyFlush();
     return this;
   }
 
@@ -219,7 +222,7 @@ export class FrameworkMonitor {
       m3: duration,
       c1: process.argv,
     }));
-
+    this.lazyFlush();
     return this;
   }
 
@@ -242,6 +245,7 @@ export class FrameworkMonitor {
       d3: this.commandName,
       c1: process.argv,
     }));
+    this.lazyFlush();
     return this;
   }
 }

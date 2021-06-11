@@ -196,10 +196,10 @@ export interface IMiniProjectJson {
  * cli使用到的接口名枚举
  */
 export enum EApiName {
-  PREVIEW, // 预览
-  GET_PREVIEW_STATUS, // 获取预览状态
-  UPLOAD, // 构建上传
-  GET_UPLOAD_STATUS, // 获取上传状态
-  GET_POINT, // 拉取插件权限点
-  GET_RC // 拉取插件权限包和rc
+  PREVIEW = 'preview', // 预览
+  GET_PREVIEW_STATUS = 'getPreviewStatus', // 获取预览状态
+  UPLOAD = 'upload', // 构建上传
+  GET_UPLOAD_STATUS = 'getUploadStatus', // 获取上传状态
+  GET_POINT = 'getPoint', // 拉取插件权限点
+  GET_RC = 'getRc' // 拉取插件权限包和rc
 }

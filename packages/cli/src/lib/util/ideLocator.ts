@@ -38,11 +38,7 @@ const localConfigPath = config.globalRc;
   * - v1版本mini联动能力需要最低1.19.0的IDE，则compatVersion取1.19.0，实际IDE因为修bug等原因更新到了1.19.3，则version和url均随之更新
   * - v2版本mini联动能力需要最低2.1.0的IDE，则添加一条新记录，compatVersion取2.1.0，version根据实际情况填2.1.1、2.1.2等
   */
-const IDE_VERSIONS_CONFIG_URL
-   // 正式环境链接
-   = 'https://render.alipay.com/p/h5data/mini-ide-config_download-h5data.json';
-// 测试环境链接
-// 'http://render-dev.site.alipay.net/p/h5data_offline/dev_mini-ide-config_download-h5data.json';
+const IDE_VERSIONS_CONFIG_URL = 'https://hudong.alicdn.com/api/data/v2/a50157f4d12e45babf368ca969d2066a.js?t=1623403902942';
  
 const MINI_STUDIO_BIN_PATH_IN_MAC =
   '小程序开发者工具.app/Contents/MacOS/小程序开发者工具';

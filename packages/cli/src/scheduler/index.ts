@@ -165,7 +165,7 @@ export default class Scheduler {
     );
 
     logger.debug(chalk.bgRedBright('splashScreenDuration'), splashScreenDuration);
-    monitor.logSplashScreen(splashScreenDuration).lazyFlush();
+    monitor.logSplashScreen(splashScreenDuration);
   }
 
   private async logVersion() {
