@@ -567,43 +567,39 @@ __webpack_require__.r(__webpack_exports__);
 function getComponent($$renderContext_0, $$runtimeContext_0) {
   var $$helper_0 = $$runtimeContext_0.h;
   var $$getelement_0 = $$runtimeContext_0.e;
+  var $$getcomponent_0 = $$runtimeContext_0.c;
   var $$element_view_0 = $$getelement_0(1);
   function create_main_block_0($$componentInstance_0, context_0) {
-    var range____0;
-    var range__0;
-    var range_onOpen_0;
+    var range_onInitChart_0;
     var range_container_0;
-    var node_texte_4_0;
-    var node_eleme_view_3_0;
+    var node_compo__node_modules__antv_my_f2_es_index_3_0;
     var node_eleme_view_2_0;
+    node_compo__node_modules__antv_my_f2_es_index_3_0 = $$helper_0.l($$getcomponent_0("/node_modules/@antv/my-f2/es/index"), $$componentInstance_0, null //;
+    );
     return {
       c: function () {
         var hasNoChildren_1 = 1;
         node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
-        node_eleme_view_3_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 8);
-        range____0 = "按钮";
-        node_texte_4_0 = $$helper_0.t($$componentInstance_0, range____0);
+        range_onInitChart_0 = "onInitChart";
+        $$helper_0.c(node_compo__node_modules__antv_my_f2_es_index_3_0, { //;
+          "onInit": range_onInitChart_0, //;
+        }, [ //;
+          "onInit" ], 0);
         var assign_class_style_props_0 = $$helper_0.x;
         range_container_0 = "container";
         assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
         , range_container_0 //;
         );
-        range_onOpen_0 = "onOpen";
-        $$helper_0.k(node_eleme_view_3_0, "tap", 0, range_onOpen_0, $$componentInstance_0);
-        assign_class_style_props_0(node_eleme_view_3_0, $$componentInstance_0 //;
-        );
       },
       m: function (target_0, anchor_0) {
         $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
-        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_3_0);
-        $$helper_0.A(node_eleme_view_3_0, node_texte_4_0);
+        $$helper_0.m(node_compo__node_modules__antv_my_f2_es_index_3_0, node_eleme_view_2_0, null);
       },
       u: function () {
         var hasNoChildren_1 = 1;
       },
       d: function (root_0) {
-        $$helper_0.D(node_texte_4_0);
-        $$helper_0.d(node_eleme_view_3_0);
+        $$helper_0.o(node_compo__node_modules__antv_my_f2_es_index_3_0);
         if (root_0) { //;
           $$helper_0.r(node_eleme_view_2_0);
         } else { //;
@@ -18856,11 +18852,6 @@ Component({
   },
 
   methods: {
-    onOpen: function onOpen() {
-      (0, _sdk.getSdk)().openApp({
-        url: 'dingtalk://dingtalkclient/action/open_mini_app?miniAppId=2021001181673660&version=2334807&source=DEBUG&page=page%2Fcomponent%2Findex&deployVersion=0.1.2104281951.44&protocol=1.0'
-      });
-    },
     onInitChart: function onInitChart(F2, config) {
       var chart = new F2.Chart(config);
       var data = [{ value: 63.4, city: 'New York', date: '2011-10-01' }, { value: 62.7, city: 'Alaska', date: '2011-10-01' }, { value: 72.2, city: 'Austin', date: '2011-10-01' }, { value: 58, city: 'New York', date: '2011-10-02' }, { value: 59.9, city: 'Alaska', date: '2011-10-02' }, { value: 67.7, city: 'Austin', date: '2011-10-02' }, { value: 53.3, city: 'New York', date: '2011-10-03' }, { value: 59.1, city: 'Alaska', date: '2011-10-03' }, { value: 69.4, city: 'Austin', date: '2011-10-03' }];

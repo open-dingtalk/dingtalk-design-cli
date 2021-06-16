@@ -24,7 +24,7 @@ After installation, you will have access to the `dd` binary in your command line
 
 You can check you have the right version with this command:
 ```bash
-dd --version
+ding --version
 ```
 
 ### Upgrading
@@ -40,7 +40,7 @@ yarn global upgrade --latest dingtalk-design-cli
 
 To create a new project, run:
 ```bash
-dd init myapp
+ding init myapp
 ```
 
 You will be prompted to pick a appType to create:
@@ -58,10 +58,10 @@ the new project will be initialated to the directory - `myapp`.
 
 The `dd init` command has a number of options and you can explore them all by running:
 ```bash
-dd init --help
+ding init --help
 ```
 ```
-Usage: dd init [options] [outDir]
+Usage: ding init [options] [outDir]
 
 Create a new project
 

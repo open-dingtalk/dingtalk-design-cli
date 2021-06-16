@@ -22,4 +22,5 @@ const jestArgs = [
 
 console.log(`running jest with args: ${jestArgs.join(' ')}`);
 
+process.env.NO_REPORT = true; // 不进行监控上报
 require('jest').run(jestArgs);

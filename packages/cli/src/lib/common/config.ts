@@ -5,7 +5,9 @@ const homeDir = os.homedir();
 
 export default {
   generatorNamespace: 'dd-application:app',
-  rcPath: path.join(homeDir, '.ddrc'),
+  workspaceRcName: 'ding.config.json', // IWorkspaceRc
+  globalRc: path.join(homeDir, '.ddrc'), // IGlobalRc
+  yuyanId: '180020010101199026',
   h5pro: {
     binStoreDir: path.join(homeDir, '.dd-h5bundle-bin'),
     platforms: {

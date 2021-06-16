@@ -1,34 +1,22 @@
 import * as path from 'path';
-import * as fs from 'fs';
-import { error, } from '../cli-shared-utils/lib/logger';
+import getJson from './getJson';
+import { IMiniProjectJson, } from '../common/types';
+import { isEmpty, } from 'lodash';
 
-export default () => {
-  const cwd = path.resolve('./');
+export default (cwd: string): {
+  content: IMiniProjectJson,
+  path: string
+} => {
   const miniProjectJsonPath = path.join(cwd, 'mini.project.json');
-  const hasMiniProjectJson = fs.existsSync(miniProjectJsonPath);
-
-  if (hasMiniProjectJson) {
-    let miniProjectJsonStr = '';
-    try {
-      miniProjectJsonStr = fs.readFileSync(miniProjectJsonPath, {
-        encoding: 'utf-8',
-      });
-    } catch(e) {
-      console.log(e);
-      error(`mini.project.json read fail. ${e.message}`);
-      return null;
-    }
-    
-    let miniProjectJson;
-    try {
-      miniProjectJson = JSON.parse(miniProjectJsonStr);
-      return miniProjectJson;
-    } catch(e) {
-      console.log(e);
-      error(`mini.project.json parse fail. ${e.message}`);
-      return null;
-    }
-  } else {
-    return null;
+  const content = getJson(miniProjectJsonPath, true);
+  if (!isEmpty(content)) {
+    return {
+      content,
+      path: miniProjectJsonPath,
+    };
   }
+  return {
+    content: {},
+    path: '',
+  };
 };

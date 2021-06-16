@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "packageA/pages/b/b"
+  ],
+  "window": {
+    "defaultTitle": "My App"
+  },
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/b/b"
+      ]
+    }
+  ]
+}

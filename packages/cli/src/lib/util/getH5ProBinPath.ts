@@ -1,13 +1,13 @@
 import config from '../common/config';
 import * as os from 'os';
 import download from 'download';
-import { error, info, done, } from '../cli-shared-utils/lib/logger';
-import * as fs from 'fs';
+import { logger, } from '../cli-shared-utils/lib/logger';
 import * as path from 'path';
 import tar from 'tar';
 import mkdirp from 'mkdirp';
-import { getGlobalRc, setGlobalRc, } from './globalRc';
+import { getGlobalRc, setGlobalRcItem, } from './globalRc';
 import clean from './clean';
+import { failSpinner, logWithSpinner, successSpinner, } from '../cli-shared-utils/lib/spinner';
 
 export default async (): Promise<string> => {
   const platform = os.platform();
@@ -16,7 +16,7 @@ export default async (): Promise<string> => {
   const h5ProCurPlatformConfig  = platformConfigs[platform as keyof typeof platformConfigs];
   const supportPlatform = Object.keys(h5ProConfig.platforms);
   if (supportPlatform.indexOf(platform) === -1) {
-    error('当前平台不支持h5pro');
+    logger.error('当前平台不支持编译pc工作台插件，支持的平台', supportPlatform);
     return '';
   }
 
@@ -30,12 +30,12 @@ export default async (): Promise<string> => {
 
   /** builder download */
   try {
-    info('builder start download...');
+    logWithSpinner('本地没找到pc工作台插件构建器，正在下载');
     await download(binDownloadPath, tarStorePath);
-    done('builder download success');
+    successSpinner('pc工作台插件构建器下载成功');
   } catch(e) {
-    console.error(e);
-    error(`builder download fail. ${e.message}`);
+    failSpinner('pc工作台插件构建器下载失败');
+    logger.error(e.message);
     return '';
   }
 
@@ -43,12 +43,11 @@ export default async (): Promise<string> => {
   const basename = path.basename(binDownloadPath);
   const tar = path.join(tarStorePath, basename);
   try {
-    info('builder start extracting...');
+    logger.debug('正在提取h5pro bin文件');
     await tarExtract(tar, h5ProConfig.binStoreDir);
-    done('builder extract success');
+    logger.debug('h5pro bin 提取成功');
   } catch(e) {
-    console.error(e);
-    error(`builder unzip fail. ${e.message}`);
+    logger.debug('h5pro bin 提取失败', e);
     return '';
   } finally {
     await clean(tar);
@@ -56,7 +55,7 @@ export default async (): Promise<string> => {
 
   /** set global builder bin path */
   const binExecPath = path.join(h5ProConfig.binStoreDir, h5ProCurPlatformConfig.binExtractPath);
-  setGlobalRc('h5ProExecPath', binExecPath);
+  setGlobalRcItem('h5ProExecPath', binExecPath);
   return binExecPath;
 };
 

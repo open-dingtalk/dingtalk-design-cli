@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function () {return m[k];} });
+} : function (o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+});
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+} : function (o, v) {
+    o["default"] = v;
+});
+var __importStar = this && this.__importStar || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
     function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,18 +27,21 @@ var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, gene
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = this && this.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable */
-const execa = require("execa");
-const path = require("path");
-const os = require("os");
-const fs = require("fs");
-const ini = require("ini");
+const execa_1 = __importDefault(require("execa"));
+const path = __importStar(require("path"));
+const os = __importStar(require("os"));
+const fs = __importStar(require("fs"));
+const ini = __importStar(require("ini"));
 const cli_shared_utils_1 = require("./cli-shared-utils");
 const logger_1 = require("./logger");
 const errors_1 = require("../common/errors");
-const request_1 = require("./request");
-const semver = require("semver");
+const request_1 = __importDefault(require("./request"));
+const semver = __importStar(require("semver"));
 // extract the package scope from the full package name
 // the result includes the initial @ character
 function extractPackageScope(packageName) {
@@ -53,15 +75,15 @@ function getRegistry(scope) {
         let registry;
         try {
             if (scope) {
-                registry = (yield execa(bin, ['config', 'get', scope + ':registry'])).stdout;
+                registry = (yield execa_1.default(bin, ['config', 'get', scope + ':registry'])).stdout;
             }
             if (!registry || registry === 'undefined') {
-                registry = (yield execa(bin, ['config', 'get', 'registry'])).stdout;
+                registry = (yield execa_1.default(bin, ['config', 'get', 'registry'])).stdout;
             }
         }
         catch (e) {
             // Yarn 2 uses `npmRegistryServer` instead of `registry`
-            registry = (yield execa(bin, ['config', 'get', 'npmRegistryServer'])).stdout;
+            registry = (yield execa_1.default(bin, ['config', 'get', 'npmRegistryServer'])).stdout;
         }
         logger_1.debug(`getRegistry: ${registry}`);
         return registry;
