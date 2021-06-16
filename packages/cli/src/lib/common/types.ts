@@ -150,7 +150,7 @@ export enum EDtdCLIKeyDep {
   cli = 'dingtalk-design-cli',
   generator = 'generator-dd-application',
   opensdk = 'dingtalk-miniapp-opensdk',
-  validateScript = '@ali/dingtalk-worktab-plugin-script'
+  validateScript = 'dingtalk-worktab-plugin-script'
 }
 
 export interface IDtdCLIDep {

@@ -1,6 +1,5 @@
 import md5File from 'md5-file';
 import semver from 'semver';
-// import { tracker } from '@ali/retcodelog';
 import { ECompileType, } from '../types';
 import { getEnableTabBar, getMainPage, getPluginRefs, } from '../config/appConfig';
 import { ApplicationTypeEnum, BuildStatusEnum, BuildStatusText, } from '../types';

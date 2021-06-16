@@ -15,7 +15,7 @@ interface IUnifiedResponse<T> {
   msg?: string;
 }
 
-const HOST = 'https://pre-api.dingtalk.com';
+const HOST = 'https://api.dingtalk.com';
 const monitor = getMonitor(config.yuyanId);
 
 async function request<T>(url: string, opts: RequestOptions): Promise<IUnifiedResponse<T>> {
@@ -60,7 +60,7 @@ export interface PermissionPoint {
 }
 
 export async function getRuleCheckInfos(miniAppId: string, token: string): Promise<IUnifiedResponse<RuleCheckInfos>> {
-  return request(`${HOST}/v1.0/workbench/plugins/ruleCheckInfos?miniAppId=${miniAppId}`, {
+  return request(`${HOST}/v1.0/workbench/plugins/validationRules?miniAppId=${miniAppId}`, {
     headers: {
       'x-acs-dingtalk-access-token': token,
     },
@@ -68,7 +68,7 @@ export async function getRuleCheckInfos(miniAppId: string, token: string): Promi
 }
 
 export function getPermissionPoint(miniAppId: string, token: string): Promise<IUnifiedResponse<PermissionPoint>> {
-  return request(`${HOST}/v1.0/workbench/plugins/permissionpoint?miniAppId=${miniAppId}`, {
+  return request(`${HOST}/v1.0/workbench/plugins/permissions?miniAppId=${miniAppId}`, {
     headers: {
       'x-acs-dingtalk-access-token': token,
     },
