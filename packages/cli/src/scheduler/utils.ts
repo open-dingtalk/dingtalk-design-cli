@@ -73,6 +73,7 @@ export function getPackageJson(packagePath: string) {
 export async function getVersionLog(pkgs: IDtdCLIDep[]): Promise<{
   name: EDtdCLIKeyDep;
   version?: string;
+  path?: string;
 }[]> {
   return await Promise.all(pkgs.map(async pkg => {
     if (pkg.version) {
@@ -100,8 +101,8 @@ export async function getVersionLog(pkgs: IDtdCLIDep[]): Promise<{
       return {
         name: EDtdCLIKeyDep.generator,
         version: generatorPkgJson.version || 'N/A',
+        path: meta.packagePath,
       };
-
     } else {
       const name = path.normalize(pkg.name);
       const mainPath = require.resolve(name, {
@@ -117,6 +118,7 @@ export async function getVersionLog(pkgs: IDtdCLIDep[]): Promise<{
       return {
         name: pkg.name,
         version: pkgJson.version || 'N/A',
+        path: depPath,
       };
     }
   }));

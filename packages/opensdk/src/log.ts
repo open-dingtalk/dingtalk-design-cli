@@ -1,4 +1,3 @@
-// import * as wpo from '@ali/retcodelog';
 
 // // 统计预览、上次成功失败的case
 // // 统计预览、上次的使用量

@@ -185,7 +185,7 @@ export default class Scheduler {
     }];
 
     const depInfo = await getVersionLog(deps);
-    console.log(`${depInfo.map(dep=> `- ${dep.name}: ${chalk.yellow(dep.version)}`).join('\n')}`);
+    console.log(`${depInfo.map(dep=> `- ${dep.name}: ${chalk.yellow(dep.version)} ${dep.path ? `[${dep.path}]` : ''}`).join('\n')}`);
   }
 
   /**
@@ -212,9 +212,9 @@ export default class Scheduler {
     logger.debug(`${pkgName}@${pkgVersion}`);
     logger.debug('origin process args', process.argv);
     
-    this.program.name = 'dd';
-    this.program.option('--cwd [cwd]', `当前的工作目录, 默认值是 ${chalk.yellow('process.cwd()')}`);
-    this.program.option('--verbose', '打开框架日志调试');
+    this.program.name = 'ding';
+    this.program.option('--cwd [cwd]', `[可选] 当前的工作目录, 默认值是 ${chalk.yellow('process.cwd()')}`);
+    this.program.option('--verbose', '[可选] 打开框架日志调试');
 
     await this.applyCommandsHook(ECommandConfigProperty.registerCommand);
 

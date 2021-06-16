@@ -84,7 +84,7 @@ export default CommandWrapper<ICommandOptions>({
 
           if (miniAppId && token) {
             logWithSpinner('正在拉取当前工作台组件的权限包');
-            const rcJson = await getValidateRc(miniAppId, token);
+            const rcJson = await getValidateRc(miniAppId, token, dtdConfig.isPcPlugin);
             logWithSpinner('正在校验');
             const res = await pluginEl(pluginRoot, rcJson);
             stopSpinner('校验完成');

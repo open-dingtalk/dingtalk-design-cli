@@ -2,7 +2,7 @@
  * Module dependencies
  */
 import chokidar, { FSWatcher, } from 'chokidar';
-import debounce from 'lodash.debounce';
+import { debounce, } from 'lodash';
 import { logger, } from './logger';
  
 export interface IWatcherOptions {
