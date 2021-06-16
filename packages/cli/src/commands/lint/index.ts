@@ -1,7 +1,7 @@
 import CommandWrapper from '../../scheduler/command/commandWrapper';
 import { EAppType, ECommandName, } from '../../lib/common/types';
 import eslint from 'eslint';
-import pluginEl from '@ali/dingtalk-worktab-plugin-script';
+import pluginEl from 'dingtalk-worktab-plugin-script';
 import { exec, } from 'child_process';
 import { logWithSpinner, stopSpinner, } from '../../lib/cli-shared-utils/lib/spinner';
 import getValidateRc from '../../lib/util/getValidateRc';
@@ -65,7 +65,7 @@ export default CommandWrapper<ICommandOptions>({
             });
             cp.on('error', (err) => {
               monitor.logJSError(err);
-              ctx.logger.error('lint执行失败', err);
+              ctx.logger.error('lint执行失败', err.message);
             });
           }
         } else if (appType === EAppType.PLUGIN) {
@@ -79,6 +79,7 @@ export default CommandWrapper<ICommandOptions>({
             const res = await pluginEl(pluginRoot);
             ctx.logger.warn('当前项目目录中读取不到miniAppId和token，校验时将使用标准规则');
             ctx.logger.info(res.data);
+            return;
           }
 
           if (miniAppId && token) {

@@ -7,6 +7,7 @@ import { getSchedulerOptionsFromProcessArgv, } from '../scheduler/utils';
 import config from '../lib/common/config';
 import getCurrentPkgInfo from '../lib/util/getCurrentPkgInfo';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
+import { logger, } from '../lib/cli-shared-utils/lib/logger';
 
 const pkgInfo = getCurrentPkgInfo();
 const requiredVersion = pkgInfo.engines.node;
@@ -25,10 +26,12 @@ async function main() {
   const monitor = getMonitor(config.yuyanId);
 
   process.on('uncaughtException', (err) => {
+    logger.debug('uncaughtException', err);
     monitor.logJSError(err);
   });
 
   process.on('unhandledRejection', (reason, promise) => {
+    logger.debug('unhandledRejection', reason);
     monitor.logJSError(new Error(JSON.stringify(reason)));
   });
 

@@ -1,11 +1,7 @@
-import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
-import { BuildStatusEnum, BuildStatusText, EBuildTarget, } from 'dingtalk-miniapp-opensdk/dist/types';
-import { ICommandContext, IPcPluginDevOpts, IWorkspaceRc, } from '../lib/common/types';
-import { logWithSpinner, stopSpinner, failSpinner, successSpinner, } from '../lib/cli-shared-utils/lib/spinner';
+import { ICommandContext, IPcPluginDevOpts, } from '../lib/common/types';
 import { logger, } from '../lib/cli-shared-utils/lib/logger';
 import * as path from 'path';
 import * as fs from 'fs';
-import getJson from '../lib/util/getJson';
 import { get, } from 'lodash';
 import getH5ProBinPath from '../lib/util/getH5ProBinPath';
 import { spawn, } from 'child_process';
@@ -15,6 +11,7 @@ import urlencode from 'urlencode';
 import open from 'open';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
+import stripAnsi from 'strip-ansi';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -154,7 +151,7 @@ export default async (commandContext: ICommandContext) => {
   buildCp.stdout.pipe(process.stdout);
   buildCp.stderr.pipe(process.stderr);
   buildCp.stdout.on('data', (chunk)=>{
-    const msg = chunk.toString();
+    const msg = stripAnsi(chunk.toString());
     if (msg.indexOf('Built at:') !== -1 && !isInit) {
       logger.info('Starting the development server');
       firstBuildTimer = setTimeout(()=>{
@@ -170,7 +167,7 @@ export default async (commandContext: ICommandContext) => {
   });
 
   buildCp.on('error', (err) => {
-    logger.error('pc工作台插件本地构建失败', err);
+    logger.error('pc工作台插件本地构建失败', err.message);
     clearTimeout(firstBuildTimer);
     buildCp.kill();
     monitor.logJSError(err);

@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function () {return m[k];} });
+} : function (o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+});
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+} : function (o, v) {
+    o["default"] = v;
+});
+var __importStar = this && this.__importStar || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
     function adopt(value) {return value instanceof P ? value : new P(function (resolve) {resolve(value);});}
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,42 +27,45 @@ var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, gene
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = this && this.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Generator = require("yeoman-generator");
-const timeInspector_1 = require("../utils/timeInspector");
+const yeoman_generator_1 = __importDefault(require("yeoman-generator"));
+const timeInspector_1 = __importDefault(require("../utils/timeInspector"));
 const errors_1 = require("../common/errors");
-const path = require("path");
+const path = __importStar(require("path"));
 const logger_1 = require("../utils/logger");
-const simple_git_1 = require("simple-git");
+const simple_git_1 = __importDefault(require("simple-git"));
 const config_1 = require("../common/config");
-const fs = require("fs");
-const isValidRepoDirectory_1 = require("../utils/isValidRepoDirectory");
+const isValidRepoDirectory_1 = __importDefault(require("../utils/isValidRepoDirectory"));
+const fs_extra_1 = __importStar(require("fs-extra"));
 const git = simple_git_1.default();
-module.exports = class CustomGenerator extends Generator {
+module.exports = class CustomGenerator extends yeoman_generator_1.default {
     constructor(args, opts) {
         super(args, opts);
         this.answers = {};
-        this.argument('outDir', { type: String, required: false, description: 'If no typing outDir, generator would initialize the project in the current workspace', default: '' });
+        this.argument('outDir', { type: String, required: false, description: 'If no typing outDir, generator would initialize the project in the current workspace', default: './' });
         this.option('force-update-repo', { type: Boolean, description: 'Need to forcely update the demo repo', default: false });
         this.option('skip-install', { type: Boolean, description: 'Skip install the dependencies', default: false });
         this.option('appType', { type: String, description: 'Choose a appType to create', default: '' });
         this.option('template', { type: String, description: 'Choose a template to create', default: '' });
         this.option('language', { type: String, description: 'Choose a language to create', default: '' });
         // @ts-ignore
-        this.outDir = this.args[0] || '';
+        this.outDir = this.args[0] || './';
     }
     // main workflow
     prompting() {
         return __awaiter(this, void 0, void 0, function* () {
             const options = this.options;
             if (options.appType) {
-                this.log(logger_1.info(`You have selected appType: ${options.appType}`, true));
+                this.log(logger_1.info(`已经选择了应用类型: ${options.appType}`, true));
             }
             if (options.template) {
-                this.log(logger_1.info(`You have selected template: ${options.template}`, true));
+                this.log(logger_1.info(`已经选择了模版: ${options.template}`, true));
             }
             if (options.language) {
-                this.log(logger_1.info(`You have selected language: ${options.language}`, true));
+                this.log(logger_1.info(`已经选择了开发语言: ${options.language}`, true));
             }
             /**
                * choose appType
@@ -53,7 +75,7 @@ module.exports = class CustomGenerator extends Generator {
             {
                 type: 'list',
                 name: 'appType',
-                message: 'Choose a appType to create',
+                message: '选择应用类型',
                 choices: config_1.HUBS_CONFIG.map(v => ({
                     name: v.name || v.key,
                     value: v.key })),
@@ -68,52 +90,37 @@ module.exports = class CustomGenerator extends Generator {
                 return this.env.error(new Error(errors_1.ERROR_APP_TYPE_NOT_FOUND));
             }
             const repoLocalPath = path.join(config_1.REPO_LOCAL_ROOT_PATH, appType);
-            if (fs.existsSync(repoLocalPath)) {
-                try {
-                    const res = yield git.
+            if (fs_extra_1.default.existsSync(repoLocalPath)) {
+                fs_extra_1.default.rmdirSync(repoLocalPath, {
+                    recursive: true });
+
+            }
+            try {
+                const opts = {
+                    logger: this.log.bind(this),
+                    fetchingTips: '正在拉取最新模版，请稍后',
+                    timeoutTips: '拉取失败，请检测网络情况',
+                    internal: 10 * 1000 };
+
+                yield timeInspector_1.default(() => __awaiter(this, void 0, void 0, function* () {
+                    yield git.
                     outputHandler((bin, stdout, stderr, args) => {
                         stdout.pipe(process.stdout);
                         stderr.pipe(process.stderr);
                     }).
                     env(Object.assign({}, process.env)).
-                    cwd(repoLocalPath).
-                    pull();
-                    this.log(logger_1.done(res.files.length > 0 ? 'Demo repo update success.' : 'Demo repo is already up-to-date', true));
-                }
-                catch (e) {
-                    console.error(e);
-                    this.log(logger_1.error('Demo repo update fail.', true));
-                    return this.env.error(e);
-                }
-            } else
-            {
-                try {
-                    const opts = {
-                        logger: this.log.bind(this),
-                        fetchingTips: 'Fetching demo from git, please wait for a minute...',
-                        timeoutTips: 'Fetching failed. Please check the network.',
-                        internal: 10 * 1000 };
-
-                    yield timeInspector_1.default(() => __awaiter(this, void 0, void 0, function* () {
-                        yield git.
-                        outputHandler((bin, stdout, stderr, args) => {
-                            stdout.pipe(process.stdout);
-                            stderr.pipe(process.stderr);
-                        }).
-                        env(Object.assign({}, process.env)).
-                        clone(selectedHub.repoRemotePath, repoLocalPath);
-                    }), opts);
-                    this.log(logger_1.done('Demo repo download success.', true));
-                }
-                catch (e) {
-                    console.error(e);
-                    this.log(logger_1.error('Demo repo clone fail.', true));
-                    return this.env.error(e);
-                }
+                    clone(selectedHub.repoRemotePath, repoLocalPath);
+                }), opts);
+                this.log(logger_1.done('模版仓库已成功下载', true));
+            }
+            catch (e) {
+                console.error(e);
+                this.log(logger_1.error('模版仓库下载失败', true));
+                return this.env.error(e);
             }
             let templateList = [];
             try {
-                const originTemplateList = fs.readdirSync(repoLocalPath, {
+                const originTemplateList = fs_extra_1.default.readdirSync(repoLocalPath, {
                     withFileTypes: true });
 
                 const sliceIdx = `${appType}${config_1.DEFAULT_DIRECTORY_SEPERATOR}`.length;
@@ -126,7 +133,7 @@ module.exports = class CustomGenerator extends Generator {
 
                 logger_1.debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
                 if (templateList.length === 0) {
-                    this.log(logger_1.error(`The directory name must start with ${appType}`, true));
+                    this.log(logger_1.error(`模版仓库中，每个模版名必须以 ${appType} 开头`, true));
                     throw errors_1.ERROR_REPO_IS_EMPTY;
                 }
             }
@@ -145,7 +152,7 @@ module.exports = class CustomGenerator extends Generator {
             {
                 type: 'list',
                 name: 'template',
-                message: 'Choose a template',
+                message: '选择模版',
                 choices: templateList,
                 default: templateList[0].name,
                 store: true,
@@ -154,7 +161,7 @@ module.exports = class CustomGenerator extends Generator {
 
             let languageList = [];
             try {
-                languageList = fs.readdirSync(path.join(repoLocalPath, template), {
+                languageList = fs_extra_1.default.readdirSync(path.join(repoLocalPath, template), {
                     withFileTypes: true });
 
                 // filter file which is not seen
@@ -167,7 +174,7 @@ module.exports = class CustomGenerator extends Generator {
                 if (e instanceof Error) {
                     console.error(e.message);
                 }
-                this.log(logger_1.error('Demo repo is not valid.', true));
+                this.log(logger_1.error('模版仓库非法', true));
                 return this.env.error(e);
             }
             /**
@@ -178,7 +185,7 @@ module.exports = class CustomGenerator extends Generator {
             {
                 type: 'list',
                 name: 'language',
-                message: 'Choose a language you like',
+                message: '选择开发语言',
                 choices: languageList,
                 default: languageList[0].name,
                 store: true,
@@ -200,24 +207,33 @@ module.exports = class CustomGenerator extends Generator {
             logger_1.debug(`writing: ${this.outDir}-${appType}-${template}-${language}`);
             let targetDir = path.join(this.contextRoot, this.outDir);
             try {
-                if (fs.existsSync(targetDir) && this.outDir) {
+                yield fs_extra_1.mkdirp(targetDir);
+            }
+            catch (e) {
+                console.error(e);
+                this.log(logger_1.error(e.message, true));
+                return this.env.error(e);
+            }
+            const files = fs_extra_1.default.readdirSync(targetDir, {
+                encoding: 'utf-8' });
+
+            try {
+                if (files.length > 0 && this.outDir) {
                     const answers = yield this.prompt([{
                         type: 'confirm',
                         name: 'override',
-                        message: `${targetDir} is exist, would you override the directory?` }]);
+                        message: `${targetDir} 已存在，是否需要覆盖?` }]);
 
                     logger_1.debug(`writing: canOverride ${answers.override}`);
                     if (answers.override) {
-                        fs.rmdirSync(targetDir, {
-                            recursive: true });
-
+                        fs_extra_1.default.emptyDirSync(targetDir);
                     } else
                     {
                         // retype outDir
                         const answers = yield this.prompt([{
                             type: 'input',
                             name: 'outDir',
-                            message: 'Retype where to create the project' }]);
+                            message: '重新选择初始化的目录' }]);
 
                         this.outDir = answers.outDir;
                         targetDir = path.join(this.contextRoot, this.outDir);
@@ -229,19 +245,23 @@ module.exports = class CustomGenerator extends Generator {
                 return this.env.error(e);
             }
             const demoPath = path.join(config_1.REPO_LOCAL_ROOT_PATH, appType, template, language);
-            if (fs.existsSync(demoPath)) {
+            if (fs_extra_1.default.existsSync(demoPath)) {
                 try {
-                    this.copyDestination(demoPath, targetDir);
+                    this.copyDestination(demoPath, targetDir, {
+                        globOptions: {
+                            dot: true } });
+
+
                 }
                 catch (e) {
-                    this.log(logger_1.error('Demo repo copy failed.' + JSON.stringify(e), true));
+                    this.log(logger_1.error('模版复制失败' + JSON.stringify(e), true));
                     return this.env.error(new Error(errors_1.ERROR_DEMO_COPY));
                 }
             } else
             {
                 return this.env.error(new Error(errors_1.ERROR_REPO_NOT_FOUND));
             }
-            this.log(logger_1.done('Demo repo copy success.', true));
+            this.log(logger_1.done('模版复制成功', true));
         });
     }
     // npm install
@@ -250,7 +270,7 @@ module.exports = class CustomGenerator extends Generator {
         const outDirPath = path.join(this.contextRoot, outDir);
         const pkgJsonPath = path.join(outDirPath, 'package.json');
         const skipInstall = this.options['skip-install'];
-        if (fs.existsSync(pkgJsonPath) && !skipInstall) {
+        if (fs_extra_1.default.existsSync(pkgJsonPath) && !skipInstall) {
             process.chdir(outDirPath);
             this.installDependencies({
                 npm: true,
@@ -263,5 +283,5 @@ module.exports = class CustomGenerator extends Generator {
     end() {
         const outDir = this.outDir;
         const wd = path.join(this.contextRoot, outDir);
-        this.log(logger_1.done(`Congratulations! Your project has been initialated at ${wd}. You can run \`npm run start\` at this directory.`, true));
+        this.log(logger_1.done(`你的项目已经初始化到目录 ${wd} 下。`, true));
     }};

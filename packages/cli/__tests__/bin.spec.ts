@@ -3,6 +3,7 @@ import Scheduler from '../src/scheduler';
 import { ECommandConfigProperty, ECommandName, ICommandConfigOpts, ICommandContext, IGlobalOptions, } from '../src/lib/common/types';
 import { ICommandOptions, } from './mock/fakeCommand';
 import * as cac from 'cac';
+import config from '../src/lib/common/config';
 
 /**
  * Scheduler用例确保通过process.argv转换后，command执行的上下文环境符合预期
@@ -20,9 +21,9 @@ describe('Scheduler', ()=>{
   const { args, options, } = cli.parse(originalArgs);
 
   /**
-   * 场景1: 包含dtd.config.json，但不包含mini.project.json
+   * 场景1: 包含ding.config.json，但不包含mini.project.json
    */
-  describe('Miniprogram with dtd.config.json, without mini.project.json', () => {
+  describe('Miniprogram with ding.config.json, without mini.project.json', () => {
     const cwd = path.join(__dirname, './mock/mp1');
     const schedulerOpts = {
       cwd,
@@ -43,7 +44,7 @@ describe('Scheduler', ()=>{
      * 校验scheduler中command context符合预期
      */
     it('check scheduler commandContext', () => {
-      const dtdConfig = require(path.join(cwd, 'dtd.config.json'));
+      const dtdConfig = require(path.join(cwd, config.workspaceRcName));
 
       expect(scheduler.commandContext.cwd).toEqual(cwd);
       expect(scheduler.commandContext.commandName).toEqual('');
@@ -97,9 +98,9 @@ describe('Scheduler', ()=>{
   });
 
   /**
-   * 场景2: 包含dtd.config.json，同时包含mini.project.json
+   * 场景2: 包含ding.config.json，同时包含mini.project.json
    */
-  describe('Miniprogram with dtd.config.json, with mini.project.json', () => {
+  describe('Miniprogram with ding.config.json, with mini.project.json', () => {
     const cwd = path.join(__dirname, './mock/mp2');
     const schedulerOpts = {
       cwd,
@@ -120,7 +121,7 @@ describe('Scheduler', ()=>{
      * 校验scheduler中command context符合预期
      */
     it('check scheduler commandContext', () => {
-      const dtdConfig = require(path.join(cwd, 'dtd.config.json'));
+      const dtdConfig = require(path.join(cwd, config.workspaceRcName));
       const miniProgramConfigPath = path.join(cwd, 'mini.project.json');
       const miniProgramConfigContent = require(miniProgramConfigPath);
 

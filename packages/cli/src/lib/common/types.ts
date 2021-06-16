@@ -86,7 +86,7 @@ export type ICommandContext<CO = PlainRecord> = {
   commandArgs: readonly string[];
   commandOptions: CO;
   cwd: string;
-  dtdConfig: IWorkspaceRc; // dtd.config.json
+  dtdConfig: IWorkspaceRc; // ding.config.json
   miniProgramConfigContent: IMiniProjectJson; // mini.project.json
   miniProgramConfigPath: string;
   hasOriginDtdConfig: boolean;
@@ -97,6 +97,7 @@ export type ICommandContext<CO = PlainRecord> = {
   setDtdConfig: (config: IWorkspaceRc) => void;
   setLogger: (logger: Logger) => void;
   setCommandName: (name: ECommandName) => void;
+  logTips: (appType: IWorkspaceRc['type'], commandName: EStdioCommands) => void;
 }
 
 export enum ECommandConfigProperty {
@@ -202,4 +203,12 @@ export enum EApiName {
   GET_UPLOAD_STATUS = 'getUploadStatus', // 获取上传状态
   GET_POINT = 'getPoint', // 拉取插件权限点
   GET_RC = 'getRc' // 拉取插件权限包和rc
+}
+
+export enum EStdioCommands {
+  IDE = 'ide', // 打开ide lite版
+  QRCODE = 'qrcode', // 生成预览二维码
+  PC = 'pc', // 在pc端钉钉预览工作台插件
+  UPDATE_CONFIG = 'updateConfig', // 更新ding.config.json里的字段
+  UPLOAD = 'upload', // 上传小程序或工作台插件
 }

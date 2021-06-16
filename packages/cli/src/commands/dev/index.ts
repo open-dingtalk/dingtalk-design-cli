@@ -1,9 +1,7 @@
-import yeomanRuntime from 'yeoman-environment';
 import CommandWrapper from '../../scheduler/command/commandWrapper';
 import config from '../../lib/common/config';
-import { EAppType, ECommandName, IWorkspaceRc, } from '../../lib/common/types';
+import { EAppType, ECommandName, EStdioCommands, IWorkspaceRc, } from '../../lib/common/types';
 import getGulpLocation from '../../lib/util/getGulpLocation';
-import tscInspector from '../../lib/util/gulpInspector';
 import gulpInspector from '../../lib/util/gulpInspector';
 import * as path from 'path';
 import { GlobalStdinCommand, } from './stdioCommands';
@@ -12,9 +10,13 @@ import { ProjectType, } from '../../lib/util/ideLocator';
 import qrcodeAction from '../../actions/qrcode';
 import pcPreviewAction from '../../actions/pcPreview';
 import getJson from '../../lib/util/getJson';
+import { fetchMatchIdeVersionConfig, MIN_IDE_VERSION_REQUIRED, } from '../../lib/util/ideLocator';
 import { spawn, } from 'child_process';
 import { isEmpty, } from 'lodash';
 import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
+import { isMacintosh, isWindows, } from '../../lib/cli-shared-utils';
+import { setJsonItem, } from '../../lib/util/setJson';
+import upload from '../../actions/upload';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -40,7 +42,7 @@ export default CommandWrapper<ICommandOptions>({
         } = ctx;
 
         if (!dtdConfig) {
-          ctx.logger.error(`当前目录 ${cwd} 下没有找到 ${config.workspaceRc} 文件，请先使用init初始化项目`);
+          ctx.logger.error(`当前目录 ${cwd} 下没有找到 ${config.workspaceRcName} 文件，请先使用init初始化项目`);
           return;
         }
 
@@ -51,7 +53,7 @@ export default CommandWrapper<ICommandOptions>({
           outDir = '',
         } = dtdConfig;
 
-        const dtdConfigPath = path.resolve(ctx.cwd, config.workspaceRc);
+        const dtdConfigPath = path.resolve(ctx.cwd, config.workspaceRcName);
         const isMp = type === EAppType.MP;
         const isH5 = type === EAppType.H5;
         const isPlugin = type === EAppType.PLUGIN;
@@ -62,11 +64,23 @@ export default CommandWrapper<ICommandOptions>({
         ctx.watcher.watch([dtdConfigPath], () => {
           const dtdConfigUpdated: IWorkspaceRc = getJson(dtdConfigPath, true);
           if (!isEmpty(dtdConfigUpdated)) {
+            ctx.logger.success('配置已更新');
             ctx.setDtdConfig(dtdConfigUpdated);
-            console.log(GlobalStdinCommand.toString());
+            GlobalStdinCommand.log();
           } else {
-            ctx.logger.error(`配置文件 ${config.workspaceRc} 读取失败`);
+            ctx.logger.error(`配置文件 ${config.workspaceRcName} 读取失败`);
           }
+        });
+
+        GlobalStdinCommand.bootstrap();
+        GlobalStdinCommand.subscribe({
+          command: EStdioCommands.UPDATE_CONFIG,
+          description: `在当前命令行中敲入 「updateConfig <配置文件中的某个字段> <更新后的值> + 回车」 会自动更新${config.workspaceRcName}，如 「updateConfig miniAppId 500000xxxxxx」`,
+          action: async (args) => {
+            const configKey = args[0];
+            const configValue = args[1];
+            setJsonItem(path.join(cwd, config.workspaceRcName), configKey, configValue);
+          },
         });
 
         /**
@@ -75,18 +89,36 @@ export default CommandWrapper<ICommandOptions>({
          * 区分语言：ts、js；ts需要先走一遍构建
          */
         if (isMp || isPlugin || isPcPlugin) {
-          GlobalStdinCommand.bootstrap();
-
           let projectType;
           if (isMp) projectType = ProjectType.DINGTALK_BIZ;
           if (isPlugin || isPcPlugin) projectType = ProjectType.DINGTALK_BIZ_WORKTAB_PLUGIN;
 
           GlobalStdinCommand.subscribe({
-            command: 'ide',
+            command: EStdioCommands.IDE,
             description: '在当前命令行中敲入 「ide + 回车」 在小程序 IDE 中调试',
-            action: async () => {
+            action: async (args) => {
               try {
-                await launchIDEOnly(path.resolve(outDir), true, projectType);
+                // windows下不支持一键启动ide, 因为ide exe的地址无法便捷获取，所以不做自动下载
+                if (isWindows) {
+                  const ideBinPath = args[0];
+                  if (ideBinPath) {
+                    await launchIDEOnly(cwd, true, projectType, ideBinPath);
+                  } else {
+                    ctx.logger.warn(`windows下不支持一键自动启动ide，请手动下载大于 ${MIN_IDE_VERSION_REQUIRED} 版本的ide，在当前命令行敲入「ide <本地ide地址> + 回车」指定本地ide的地址`);
+                    try {
+                      const ideVersionInfo = await fetchMatchIdeVersionConfig();
+                      if (ideVersionInfo.winUrl) {
+                        ctx.logger.info(`建议下载的ide版本: ${ideVersionInfo.version}，下载地址: ${ideVersionInfo.winUrl}`);
+                      }
+                    } catch(e) {
+                      monitor.logJSError(new Error(e));
+                    }
+                  }
+                } else if (isMacintosh) {
+                  await launchIDEOnly(path.resolve(outDir), true, projectType);
+                } else {
+                  ctx.logger.warn('本系统不支持该命令');
+                }
               } catch(e) {
                 monitor.logJSError(e);
               }
@@ -94,17 +126,25 @@ export default CommandWrapper<ICommandOptions>({
           });
 
           GlobalStdinCommand.subscribe({
-            command: 'qrcode',
+            command: EStdioCommands.QRCODE,
             description: '在当前命令行中敲入 「qrcode + 回车」 可以生成预览二维码',
             action: () => {
               qrcodeAction(ctx);
             },
           });
 
+          GlobalStdinCommand.subscribe({
+            command: EStdioCommands.UPLOAD,
+            description: '在当前命令行中敲入 「upload + 回车」 可以上传小程序或工作台插件到开发者后台',
+            action: () => {
+              upload(ctx);
+            },
+          });
+
           if (isPcPlugin) {
             GlobalStdinCommand.subscribe({
-              command: 'pc',
-              description: '在当前命令行中敲入 「p + 回车」 可以本地预览PC端工作台插件',
+              command: EStdioCommands.PC,
+              description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台插件',
               action: () => {
                 pcPreviewAction(ctx);
               },
@@ -125,10 +165,13 @@ export default CommandWrapper<ICommandOptions>({
               onError: (err) => {
                 monitor.logJSError(err);
               },
+              onDone: () => {
+                GlobalStdinCommand.log();
+              },
             });
           }
 
-          console.log(GlobalStdinCommand.toString());
+          GlobalStdinCommand.log();
         } else if (isH5) {
           // h5默认都是react项目
           // TODO: h5的构建流程非标准，得梳理一下或者补充一下代码模版

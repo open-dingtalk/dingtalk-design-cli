@@ -1,6 +1,5 @@
-import FrameworkMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import { Watcher, } from '../../lib/cli-shared-utils/lib/watcher';
-import { EAppType, ECommandName, ICommandContext, IMiniProjectJson, IWorkspaceRc, } from '../../lib/common/types';
+import { EAppType, ECommandName, EStdioCommands, ICommandContext, IMiniProjectJson, IWorkspaceRc, } from '../../lib/common/types';
 import * as path from 'path';
 import * as fs from 'fs';
 import getJson from '../../lib/util/getJson';
@@ -82,7 +81,7 @@ export default class CommandContextFactory implements ICommandContext {
 
   private getDtdConfig() {
     const cwd = this.cwd;
-    const configPath = path.join(cwd, config.workspaceRc);
+    const configPath = path.join(cwd, config.workspaceRcName);
     let hasOriginDtdConfig = false;
     let dtdConfig: IWorkspaceRc;
 
@@ -94,6 +93,7 @@ export default class CommandContextFactory implements ICommandContext {
       dtdConfig = {
         type: '',
       };
+      logger.warn('当前项目不是DingTalk Design CLI初始化的项目，请参照文档xxx新增配置文件');
     }
 
     return {
@@ -106,5 +106,27 @@ export default class CommandContextFactory implements ICommandContext {
     const cwd = this.cwd;
     const miniProjectJson = getMiniProjectJson(cwd);
     return miniProjectJson;
+  }
+
+  /**
+   * 引导客户获取应用的miniAppId和token
+   */
+  public logTips(appType: EAppType, commandName: EStdioCommands): void {
+    if ([EAppType.MP, EAppType.PLUGIN].indexOf(appType) === -1) return;
+
+    this._logger.info(`
+    「如何获取miniAppId」
+    1. 登录开发者后台 https://open-dev.dingtalk.com/
+    ${appType === EAppType.MP 
+    ? '2. 选中一个小程序，在基础信息界面可以看到小程序的miniAppId'
+    : '2. 进入页面 https://open-dev.dingtalk.com/v1/fe/old#/plugin，可以获取插件的miniAppId'}
+    3. 拿到miniAppId后，在当前命令行输入「updateConfig miniAppId <miniAppId> + 回车」进行配置更新
+
+    「如何获取API Token」
+    1. 参考开发者文档 xxx
+    2. 拿到token后，在当前命令行输入「updateConfig token <token> + 回车」进行配置更新
+    
+    在设置好miniAppId和token之后，在当前命令行输入「${commandName} + 回车」 即可正常使用
+    `);
   }
 }

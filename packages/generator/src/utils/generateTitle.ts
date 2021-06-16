@@ -1,6 +1,6 @@
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import * as semver from 'semver';
-import * as boxen from 'boxen';
+import boxen from 'boxen';
 import getVersions from './getVersions';
 import getGlobalInstallCommand from './getGlobalInstallCommand';
 import { debug, } from './logger';

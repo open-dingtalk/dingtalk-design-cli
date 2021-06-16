@@ -24,7 +24,7 @@ export const setGlobalRcItem = (k: keyof IGlobalRc, v: any): void => {
       encoding: 'utf-8',
     });
   } catch(e) {
-    logger.error('set global rc fail', e);
+    logger.error('set global rc fail', e.message);
   }
 };
 
@@ -35,6 +35,6 @@ export const setGlobalRc = (opts: IGlobalRc): void => {
       encoding: 'utf-8',
     });
   } catch(e) {
-    logger.error('set global rc fail', e);
+    logger.error('set global rc fail', e.message);
   }
 };

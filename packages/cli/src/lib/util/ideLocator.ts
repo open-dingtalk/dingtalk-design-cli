@@ -26,7 +26,7 @@ import { URI, } from 'vscode-uri';
 
 const MacDefaultInstallRoot = '/Applications/';
  
-const MIN_IDE_VERSION_REQUIRED = '2.1.0';
+export const MIN_IDE_VERSION_REQUIRED = '2.1.0';
  
 const localConfigPath = config.globalRc;
  
@@ -45,7 +45,7 @@ const MINI_STUDIO_BIN_PATH_IN_MAC =
 
 const MINI_STUDIO_BIN_PATH_IN_WIN = '小程序开发者工具\\小程序开发者工具.exe';
 
-const locateMiniStudioBinPath = (installRoot: string): string =>
+export const locateMiniStudioBinPath = (installRoot: string): string =>
   path.join(
     installRoot,
     isWindows ? MINI_STUDIO_BIN_PATH_IN_WIN : MINI_STUDIO_BIN_PATH_IN_MAC,
@@ -194,7 +194,7 @@ const unParserIDELaunchArgs = (args: unknown): string[] =>
  * 根据ide安装路径，创建一个通过shell启动IDE的launcher，不负责IDE的构建托管
  */
 export const createIdeShellSimpleLauncher = (
-  ideInstallRoot: string,
+  binPath: string,
   options: IDELauncherCreatorOptions = {
     isDebug: false,
   },
@@ -209,7 +209,7 @@ export const createIdeShellSimpleLauncher = (
   logger.debug('ide launch args', launchArgs);
 
   const launchProcess = spawn(
-    locateMiniStudioBinPath(ideInstallRoot),
+    binPath,
     // 为了避免参数被electron处理，应当使用--分割
     [
       '--',
@@ -409,7 +409,7 @@ const updateLocalConfig = (config: Partial<IGlobalRc>): void => {
 /**
   * 从线上拉取符合版本要求的IDE下载地址
   */
-const fetchMatchIdeVersionConfig = async (): Promise<VersionInfo> => {
+export const fetchMatchIdeVersionConfig = async (): Promise<VersionInfo> => {
   try {
     const res = await urllib.request(IDE_VERSIONS_CONFIG_URL, {
       dataType: 'json',

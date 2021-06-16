@@ -29,7 +29,7 @@ export class TaskBase<T extends ITaskOptionBase> {
   protected outputDir: string;
   protected openApi: OpenAPI;
   protected getCompiler: typeof getCompiler;
-  readonly PREVIEW_PACKAGE_SIZE_LIMIT = 5 * 1024 * 1024;
+  readonly PREVIEW_PACKAGE_SIZE_LIMIT = 50 * 1024 * 1024;
   readonly BUILD_PACKAGE_SIZE_LIMIT = 20 * 1024 * 1024;
   readonly SUBPACKAGE_SINGLE_SIZE_LIMIT = 2 * 1024 * 1024; 
   readonly SUBPACKAGE_WHOLE_SIZE_LIMIT = 10 * 1024 * 1024;

@@ -81,7 +81,7 @@ describe('Utils', ()=>{
 
     {
       // 文件存在
-      const filepath = path.join(cwd, './mock/mp1/dtd.config.json');
+      const filepath = path.join(cwd, `./mock/mp1/${config.workspaceRcName}`);
       const content = getJson(filepath);
       console.log(content);
       expect(content).not.toEqual({});

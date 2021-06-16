@@ -1,7 +1,7 @@
 import { OpenAPI, } from '../src/openapi';
 import * as sdkConfig from './sdk-test-config';
 
-const miniAppId = '2018090461243403';
+const miniAppId = '';
 const cfg = sdkConfig.daily; 
 
 describe('openapi', () => {

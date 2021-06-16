@@ -3,6 +3,7 @@ import CommandWrapper from '../../scheduler/command/commandWrapper';
 import config from '../../lib/common/config';
 import { ECommandName, } from '../../lib/common/types';
 import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
+import chalk from 'chalk';
 
 interface ICommandOptions {
   appType?: string;
@@ -24,12 +25,12 @@ export default CommandWrapper<ICommandOptions>({
       },
       options: {
         appType: {
-          description: '[可选] 指定应用类型，值可以为mp | h5 | plugin',
+          description: '[可选] 指定应用类型，值可以为miniprogram | h5 | plugin',
           type: 'string',
           shortcut: 'a',
         },
         template: {
-          description: '[可选] 指定模版，模版的key可以从 https://github.com/open-dingtalk/dd-application-template 上查阅',
+          description: '[可选] 指定模版，模版的key可以从 https://github.com/open-dingtalk/dd-application-template 上查阅，如：plugin_default，则模版key为default',
           type: 'string',
           shortcut: 't',
         },
@@ -58,7 +59,7 @@ export default CommandWrapper<ICommandOptions>({
           if (err) {
             monitor.logJSError(err);
           } else {
-            ctx.logger.success('dd init done');
+            ctx.logger.success(`初始化完成，接下来可以使用 ${chalk.yellow('ding dev')} 进行开发调试`);
           }
         };
         // @ts-ignore

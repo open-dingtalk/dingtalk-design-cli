@@ -4,7 +4,7 @@ import {
   RuleCheckInfos,
   PermissionPoint,
 } from '../sevice/index';
-import { IRcJson, } from '@ali/dingtalk-worktab-plugin-script/dist/src/types/index';
+import { IRcJson, } from 'dingtalk-worktab-plugin-script/dist/src/types/index';
 import { logger, } from '../cli-shared-utils/lib/logger';
 
 export default (miniAppId: string, token: string): Promise<IRcJson> => {

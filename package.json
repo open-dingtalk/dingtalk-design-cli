@@ -68,8 +68,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "@ali/dingtalk-worktab-plugin-script": "^0.13.1"
   }
 }

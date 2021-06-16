@@ -1,7 +1,4 @@
 import urllib, { RequestOptions, } from 'urllib';
-import path from 'path';
-import getRc from '../util/getRc';
-import { IWorkspaceRc, } from '../common/types';
 import { logger, } from '../cli-shared-utils/lib/logger';
 import getMonitor from '../cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../common/config';

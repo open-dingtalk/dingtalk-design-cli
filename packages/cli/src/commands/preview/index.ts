@@ -1,13 +1,4 @@
-import yeomanRuntime from 'yeoman-environment';
 import CommandWrapper from '../../scheduler/command/commandWrapper';
-import config from '../../lib/common/config';
-import getJson from '../../lib/util/getJson';
-import * as path from 'path';
-import inquirer from 'inquirer';
-import semver from 'semver';
-import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
-import { failSpinner, logWithSpinner, stopSpinner, successSpinner, } from '../../lib/cli-shared-utils/lib/spinner';
-import { EBuildStatusText, } from 'dingtalk-miniapp-opensdk/dist/types';
 import qrcode from '../../actions/qrcode';
 import { EAppType, ECommandName, } from '../../lib/common/types';
 

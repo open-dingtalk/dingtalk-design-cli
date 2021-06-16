@@ -7,7 +7,7 @@ export default (path: string) => {
     const rc = getJson(path, false);
     return rc;
   } catch(e) {
-    logger.error('get rc fail', e);
+    logger.error('get rc fail', e.message);
     return null;
   }
 };

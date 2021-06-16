@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import stripAnsi from 'strip-ansi';
 
 const format = (label: string, msg: string) => {
@@ -11,7 +11,7 @@ const format = (label: string, msg: string) => {
 
 export const debug = (msg: string) => {
   const txt = format(chalk.bgBlue.black(' DEBUG '), msg);
-  return process.env.NODE_ENV === '__DEBUG__' &&  console.log(txt);
+  return process.env.DEBUG &&  console.log(txt);
 };
 
 export const info = (msg: string, pure?: boolean): string | void => {

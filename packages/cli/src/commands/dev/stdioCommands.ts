@@ -53,7 +53,7 @@ export class StdinCommand {
        logger.debug('options', options);
  
        // 忽略大小写
-       const matchedCommand = args[0].trim().toLocaleLowerCase();
+       const matchedCommand = args[0].trim();
        const targetSubscriber = this.subscribers.find(s => s.command === matchedCommand);
        if (targetSubscriber) {
          targetSubscriber.action(args.slice(1), options);
@@ -102,6 +102,11 @@ export class StdinCommand {
     }).filter(v => v).join('\n ')
 }
    `;
+   }
+
+   log() {
+     console.log('');
+     console.log(this.toString());
    }
 }
  

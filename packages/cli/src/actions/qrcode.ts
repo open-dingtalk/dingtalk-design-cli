@@ -1,7 +1,7 @@
 import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
 import { BuildStatusEnum, BuildStatusText, EBuildTarget, } from 'dingtalk-miniapp-opensdk/dist/types';
-import { EApiName, ICommandContext, IWorkspaceRc, } from '../lib/common/types';
-import { logWithSpinner, stopSpinner, failSpinner, successSpinner, } from '../lib/cli-shared-utils/lib/spinner';
+import { EApiName, EStdioCommands, ICommandContext, } from '../lib/common/types';
+import { failSpinner, successSpinner, } from '../lib/cli-shared-utils/lib/spinner';
 import { logger, } from '../lib/cli-shared-utils/lib/logger';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
@@ -20,11 +20,11 @@ export default async (commandContext: ICommandContext) => {
   const {
     token,
     miniAppId,
-    type,
   } = dtdConfig;
 
   if (!token || !miniAppId) {
-    logger.error('缺少必要参数 miniAppId 或 token，请参考文档 xxx');
+    logger.error('缺少必要参数 miniAppId 或 token');
+    commandContext.logTips(dtdConfig.type, EStdioCommands.QRCODE);
     return;
   }
 
@@ -32,7 +32,7 @@ export default async (commandContext: ICommandContext) => {
     appKey: '',
     appSecret: '',
     accessToken: token,
-    host: process.env.DEBUG ? 'https://pre-oapi.dingtalk.com' : 'https://oapi.dingtalk.com',
+    host: 'https://oapi.dingtalk.com',
   });
 
   monitor.logApiInvoke(EApiName.PREVIEW);
