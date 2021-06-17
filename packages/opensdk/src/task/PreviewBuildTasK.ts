@@ -9,6 +9,7 @@ import { ITaskOptionBase, TaskBase, } from './TaskBase';
 import * as qrcode from 'qr-image';
 import * as consolePng from 'console-png';
 import superagent from 'superagent';
+import chalk from 'chalk';
 
 consolePng.attachTo(console);
 
@@ -176,8 +177,8 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
             clearInterval(timer);
             const buffer = qrcode.imageSync(result.result_url, {
               size: 1,
-              margin: 3,
             });
+            console.log(chalk.green('scheme:'), result.result_url);
             console['png'](buffer);
             resolve(result.result_url || '');
 

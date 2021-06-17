@@ -211,4 +211,5 @@ export enum EStdioCommands {
   PC = 'pc', // 在pc端钉钉预览工作台插件
   UPDATE_CONFIG = 'updateConfig', // 更新ding.config.json里的字段
   UPLOAD = 'upload', // 上传小程序或工作台插件
+  LINT = 'lint', // 格式/业务校验
 }

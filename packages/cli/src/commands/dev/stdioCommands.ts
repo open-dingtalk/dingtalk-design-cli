@@ -99,7 +99,7 @@ export class StdinCommand {
         return ` - ${whiteHighlight(subscriber.command)}: ${chalk.gray(subscriber.description)}`;
       }
       return '';
-    }).filter(v => v).join('\n ')
+    }).filter(v => v).join('\n  ')
 }
    `;
    }

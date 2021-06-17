@@ -11,6 +11,7 @@ import getCurrentPkgInfo from '../lib/util/getCurrentPkgInfo';
 import performance from '../lib/util/performance';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
+import { logWithSpinner, successSpinner, } from '../lib/cli-shared-utils/lib/spinner';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -194,11 +195,13 @@ export default class Scheduler {
    * 初始化配置和监控等实例
    */
   public async bootstrap(): Promise<void> {
+    logWithSpinner('DingTalk Design CLI 启动中');
     await this.loadCommand(ECommandName.init);
     await this.loadCommand(ECommandName.upload);
     await this.loadCommand(ECommandName.lint);
     await this.loadCommand(ECommandName.dev);
     await this.loadCommand(ECommandName.preview);
+    successSpinner('启动成功');
     await this.bootstrapProgram();
   }
 

@@ -17,6 +17,7 @@ import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor
 import { isMacintosh, isWindows, } from '../../lib/cli-shared-utils';
 import { setJsonItem, } from '../../lib/util/setJson';
 import upload from '../../actions/upload';
+import lint from '../../actions/lint';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -81,6 +82,13 @@ export default CommandWrapper<ICommandOptions>({
             const configKey = args[0];
             const configValue = args[1];
             setJsonItem(path.join(cwd, config.workspaceRcName), configKey, configValue);
+          },
+        });
+        GlobalStdinCommand.subscribe({
+          command: EStdioCommands.LINT,
+          description: '在当前命令行中敲入 「lint + 回车」 会校验当前代码是否符合eslint规范（工作台插件除eslint规范外，会有额外的校验规则）',
+          action: async () => {
+            lint(ctx);
           },
         });
 
