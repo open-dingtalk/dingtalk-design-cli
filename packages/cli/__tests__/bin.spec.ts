@@ -79,7 +79,7 @@ describe('Scheduler', ()=>{
         commandName as ECommandName,
         commandConfigs.action,
       );
-      const cac = scheduler.registerCommandByCac(command, commandConfigs);
+      const cac = scheduler.registerCommand(command, commandConfigs);
       const { options, } = cac.parse(originalArgs, {
         run: false,
       });
@@ -158,7 +158,7 @@ describe('Scheduler', ()=>{
         commandName as ECommandName,
         commandConfigs.action,
       );
-      const cac = scheduler.registerCommandByCac(command, commandConfigs);
+      const cac = scheduler.registerCommand(command, commandConfigs);
       const { options, } = cac.parse(originalArgs, {
         run: false,
       });

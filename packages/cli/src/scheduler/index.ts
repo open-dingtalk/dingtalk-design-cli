@@ -133,27 +133,33 @@ export default class Scheduler {
     return currentCommand;
   }
 
+  public registerCommand(commandInst: CommandFactory, commandConfigs: ICommandConfigOpts) {
+    const commandName = commandConfigs.command.name;
+    let currentCommand = this.registedCommandList.find(cacCommand => cacCommand.name === commandName);
+    if (!currentCommand ) {
+      currentCommand = this.registerCommandOption(commandConfigs);
+      logger.debug('cannot find registed command', commandName);
+    }
+
+    currentCommand.allowUnknownOptions();
+    currentCommand.action(
+      this.getWrappedCommandAction(
+        commandInst,
+        commandName,
+        commandConfigs.action,
+      ),
+    );
+
+    return this.program;
+  }
+
   private registerCommandsAction() {
     this.commandList.forEach(commandInst => {
       if (typeof commandInst.getHook(ECommandConfigProperty.registerCommand) === 'function') {
         const commandConfigs = commandInst.applyHook<ICommandConfigOpts>(
           ECommandConfigProperty.registerCommand,
         );
-        const commandName = commandConfigs.command.name;
-        let currentCommand = this.registedCommandList.find(cacCommand => cacCommand.name === commandName);
-        if (!currentCommand ) {
-          currentCommand = this.registerCommandOption(commandConfigs);
-          logger.debug('cannot find registed command', commandName);
-        }
-
-        currentCommand.allowUnknownOptions();
-        currentCommand.action(
-          this.getWrappedCommandAction(
-            commandInst,
-            commandName,
-            commandConfigs.action,
-          ),
-        );
+        this.registerCommand(commandInst, commandConfigs);
       }
     });
   }
