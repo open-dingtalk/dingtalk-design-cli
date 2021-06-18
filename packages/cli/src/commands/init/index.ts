@@ -60,7 +60,7 @@ export default CommandWrapper<ICommandOptions>({
           if (err) {
             monitor.logJSError(err);
           } else {
-            ctx.logger.success(`初始化完成，请 ${chalk.yellow(`cd ${path.resolve(outDir)}`)} 进入工作目录，接下来可以使用 ${chalk.yellow('ding dev')} 进行开发调试`);
+            ctx.logger.success(`初始化完成，请 ${chalk.yellow(`cd ${path.resolve(ctx.cwd, outDir)}`)} 进入工作目录，接下来可以使用 ${chalk.yellow('ding dev')} 进行开发调试`);
           }
         };
         // @ts-ignore

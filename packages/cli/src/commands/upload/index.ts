@@ -22,8 +22,7 @@ export default CommandWrapper<ICommandOptions>({
         } = ctx;
 
         if (!dtdConfig.type) {
-          // TODO: 文档更新
-          ctx.logger.error(`当前目录 ${cwd} 下没有找到 ${config.workspaceRcName} 文件，请先使用init初始化项目；或者也可以选择手动新增 ${config.workspaceRcName} 配置文件，参考文档xxx`);
+          ctx.logger.error(`当前目录 ${cwd} 下没有找到 ${config.workspaceRcName} 文件，请先使用init初始化项目；或者也可以选择手动新增 ${config.workspaceRcName} 配置文件，参考文档 https://developers.dingtalk.com/document/resourcedownload/dingtalk-design-cli?pnamespace=app`);
           return;
         }
         await upload(ctx, options);

@@ -76,8 +76,7 @@ const commandsConfig: {
         type: 'string',
       },
       token: {
-        // TODO: 参考链接修改
-        description: `[可选] 开发者工具密钥，默认从当前工作目录下的 ${config.workspaceRcName} 中读取，密钥生成方式参考 xxx`,
+        description: `[可选] 开发者工具密钥，默认从当前工作目录下的 ${config.workspaceRcName} 中读取，密钥生成方式参考 https://developers.dingtalk.com/document/resourcedownload/dingtalk-design-cli?pnamespace=app`,
         type: 'string',
       },
     },
