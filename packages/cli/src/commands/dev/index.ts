@@ -18,6 +18,8 @@ import { isMacintosh, isWindows, } from '../../lib/cli-shared-utils';
 import { setJsonItem, } from '../../lib/util/setJson';
 import upload from '../../actions/upload';
 import lint from '../../actions/lint';
+import commmandsConfig from '../commandsConfig';
+import { execSync, } from 'child_process';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -28,12 +30,7 @@ export default CommandWrapper<ICommandOptions>({
   name: ECommandName.dev,
   registerCommand(ctx) {
     return {
-      command: {
-        name: ECommandName.dev,
-        description: '创建一个钉钉应用，可以是小程序、h5、工作台组件',
-      },
-      options: {
-      },
+      ...commmandsConfig.dev,
       action: async (options) => {
         ctx.logger.debug('cli options', options);
         
@@ -68,6 +65,21 @@ export default CommandWrapper<ICommandOptions>({
           if (!isEmpty(dtdConfigUpdated)) {
             ctx.logger.success('配置已更新');
             ctx.setDtdConfig(dtdConfigUpdated);
+
+            if (dtdConfigUpdated.isPcPlugin) {
+              GlobalStdinCommand.subscribe({
+                command: EStdioCommands.PC,
+                description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台插件',
+                action: async () => {
+                  const h5bundle = path.join(__dirname, '../../../h5bundle');
+                  execSync(`cd ${h5bundle} && npm i`, {
+                    stdio: 'inherit',
+                  });
+                  pcPreviewAction(ctx);
+                },
+              });
+            }
+
             GlobalStdinCommand.log();
           } else {
             ctx.logger.error(`配置文件 ${config.workspaceRcName} 读取失败`);
@@ -154,7 +166,11 @@ export default CommandWrapper<ICommandOptions>({
             GlobalStdinCommand.subscribe({
               command: EStdioCommands.PC,
               description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台插件',
-              action: () => {
+              action: async () => {
+                const h5bundle = path.join(__dirname, '../../../h5bundle');
+                execSync(`cd ${h5bundle} && npm i`, {
+                  stdio: 'inherit',
+                });
                 pcPreviewAction(ctx);
               },
             });

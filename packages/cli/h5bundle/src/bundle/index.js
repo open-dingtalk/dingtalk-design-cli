@@ -239,25 +239,6 @@ Component({
 
 /***/ }),
 
-/***/ "/uaY":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _snapshot_toolkit_node_modules_ali_antcube_build_lib_build_loader_engine_shared_javascript_entry_js_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineTypes_zephyr_engineJsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "7+1V");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "8Nfj");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__);
-
-  
-  
-  
-
-/***/ }),
-
 /***/ 0:
 /*!***********************************************************************************************************************!*\
   !*** multi /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!./component.json?jsonAsESM ***!
@@ -265,7 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!/Users/wuzequan/code/dd-application-template/plugin_default/javascript/plugin/component.json?jsonAsESM */"Ly1O");
+module.exports = __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!/Users/wuzequan/Desktop/pluginTest/plugin/component.json?jsonAsESM */"ix9Z");
 
 
 /***/ }),
@@ -282,9 +263,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
 /* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
 /* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
 
   
@@ -532,9 +513,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
 /* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
 /* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
 
   
@@ -1784,7 +1765,7 @@ var global = undefined,
     };
 
     var Global = {
-      version: '3.8.6',
+      version: '3.8.9',
       scales: {},
       widthRatio: {
         column: 1 / 2,
@@ -8569,20 +8550,18 @@ var global = undefined,
       _proto.resetContext = function resetContext(context) {
         var elAttrs = this._attrs.attrs;
 
-        if (!this._attrs.isGroup) {
-          for (var k in elAttrs) {
-            if (SHAPE_ATTRS.indexOf(k) > -1) {
-              var v = elAttrs[k];
+        for (var k in elAttrs) {
+          if (SHAPE_ATTRS.indexOf(k) > -1) {
+            var v = elAttrs[k];
 
-              if ((k === 'fillStyle' || k === 'strokeStyle') && v) {
-                v = parseStyle(v, this, context);
-              }
+            if ((k === 'fillStyle' || k === 'strokeStyle') && v) {
+              v = parseStyle(v, this, context);
+            }
 
-              if (k === 'lineDash' && context.setLineDash && isArray(v)) {
-                context.setLineDash(v);
-              } else {
-                context[k] = v;
-              }
+            if (k === 'lineDash' && context.setLineDash && isArray(v)) {
+              context.setLineDash(v);
+            } else {
+              context[k] = v;
             }
           }
         }
@@ -8928,6 +8907,8 @@ var global = undefined,
       return Rect;
     }(Shape$2);
 
+    var imageCaches = {};
+
     var ImageShape = /*#__PURE__*/function (_Rect) {
       _inheritsLoose(ImageShape, _Rect);
 
@@ -8947,39 +8928,62 @@ var global = undefined,
         this._attrs.type = 'image';
       };
 
-      _proto.createPath = function createPath(context) {
+      _proto.draw = function draw(context) {
         var _this = this;
 
-        var attrs = this.get('attrs');
-        var src = attrs.src;
-
+        // 如果图片还在loading中直接返回，等下次绘制
         if (this.get('loading')) {
           return;
-        }
+        } // 如果已经有image对象，直接绘制，会调用createPath绘制
+
 
         var image = this.get('image');
 
         if (image) {
-          this.drawImage(context, image);
-        } else {
-          if (src && Image) {
-            this.set('loading', true);
+          _Rect.prototype.draw.call(this, context);
 
-            var _image = new Image();
+          return;
+        }
 
-            _image.src = src; // 设置跨域
+        var attrs = this.get('attrs');
+        var src = attrs.src;
 
-            _image.crossOrigin = 'Anonymous';
+        if (src && window.Image) {
+          var cacheImage = this.get('cacheImage'); // 如果有缓存，则直接从缓存中拿
 
-            _image.onload = function () {
-              _this.set('loading', false);
+          if (cacheImage && imageCaches[src]) {
+            this.set('image', imageCaches[src]);
+            this.draw(context);
+            return;
+          }
 
-              _this.set('image', _image);
+          this.set('loading', true);
 
-              _this.drawImage(context, _image);
-            };
+          var _image = new Image(); // 设置跨域, 等同于 image.crossOrigin = 'anonymous'
+
+
+          _image.crossOrigin = '';
+
+          _image.onload = function () {
+            _this.set('loading', false);
+
+            _this.set('image', _image);
+
+            _this.draw(context);
+          }; // src 一定要在 crossOrigin 之后，否则 toDataURL 就会报 SecurityError
+
+
+          _image.src = src; // 设置全局缓存
+
+          if (cacheImage) {
+            imageCaches[src] = _image;
           }
         }
+      };
+
+      _proto.createPath = function createPath(context) {
+        var image = this.get('image');
+        this.drawImage(context, image);
       };
 
       _proto.drawImage = function drawImage(context, image) {
@@ -8999,12 +9003,20 @@ var global = undefined,
             sy = attrs.sy,
             swidth = attrs.swidth,
             sheight = attrs.sheight,
-            radius = attrs.radius;
+            radius = attrs.radius,
+            fillOpacity = attrs.fillOpacity;
 
         if (radius) {
           context.save();
           this.createRadiusPath(context, x, y, width, height, radius);
           context.clip();
+        } // 设置透明度
+
+
+        var originOpacity = context.globalAlpha;
+
+        if (!isNil(fillOpacity)) {
+          context.globalAlpha = fillOpacity;
         }
 
         if (!isNil(sx) && !isNil(sy) && !isNil(swidth) && !isNil(sheight)) {
@@ -9012,6 +9024,8 @@ var global = undefined,
         } else {
           context.drawImage(image, x, y, width, height);
         }
+
+        context.globalAlpha = originOpacity;
 
         if (radius) {
           // 因为 save 和 restore 会一定程度上影响绘图性能，所以只在必要是调用
@@ -18710,6 +18724,17 @@ var global = undefined,
 
 /***/ }),
 
+/***/ "5Kf0":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/project-select-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
 /***/ "5cBC":
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** ./components/statistical-indicator-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
@@ -18719,33 +18744,15 @@ var global = undefined,
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "Djna");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "Djna");
 
   
   
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
-  
-
-/***/ }),
-
-/***/ "7+1V":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "+c1n");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
-
-  
-  
   
 
 /***/ }),
@@ -18877,6 +18884,41 @@ Component({
 
 /***/ }),
 
+/***/ "9W8f":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/statistical-indicator-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "e5m4");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
+
+/***/ }),
+
+/***/ "AQ5x":
+/*!************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/index.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gcp = void 0;
+var member_1 = __webpack_require__(/*! ./member */ "YVRd");
+exports.gcp = member_1.gcp;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ "B8uw":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
@@ -18905,9 +18947,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
 /* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
 /* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
 
   
@@ -19005,12 +19047,12 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "vcfA");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "vcfA");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -19026,8 +19068,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "WGcX");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "WGcX");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
 
   
   $AppxRegistry.registerComponentRenderConfig({
@@ -19037,17 +19079,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   });
   
-
-/***/ }),
-
-/***/ "FAQD":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/statistical-indicator-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
-  \***************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {"keys":[],"map":{}}
 
 /***/ }),
 
@@ -19076,29 +19107,29 @@ internal_style = ".comp-project-select {width:100%;height:100%;background-color:
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "B8uw");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "B8uw");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("node_modules/@antv/my-f2/es/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("node_modules/@antv/my-f2/es/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
 
 /***/ }),
 
-/***/ "JrQV":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/project-select-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "M0jB":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iRtZ");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "oylq");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
 
   
   
@@ -19106,75 +19137,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "K6IH":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/project-select-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
-  \********************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {"keys":[],"map":{}}
-
-/***/ }),
-
-/***/ "Ly1O":
-/*!*****************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!./component.json?jsonAsESM ***!
-  \*****************************************************************************************************************/
+/***/ "Magb":
+/*!***********************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/fixtures/framework.external.fragment.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 
-    module.exports = {
-      __meta__: {
-        version: "0.4.7",
-      },
-      component2: true,
-      main: function () {
-        return __webpack_require__(/*! ./index.js */ "QfWi");
-      },
-      pluginId: undefined,
-      publicComponents: {
-        pluginInfo: null,
-        publicComponents: {
-          "project-select-view": {
-            componentPath: "components/project-select-view/index",
-            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/project-select-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "K6IH")
-          }
-,"statistical-indicator-view": {
-            componentPath: "components/statistical-indicator-view/index",
-            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/statistical-indicator-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "FAQD")
-          }
-,"component-template": {
-            componentPath: "components/component-template/index",
-            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "fdNf")
-          }
-,"chart": {
-            componentPath: "components/chart/index",
-            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "maHI")
-          }
-        },
-        renderType: 32,
-        callback: function () {
-          __webpack_require__(/*! ./components/project-select-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/project-select-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "nJgI");
-__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/statistical-indicator-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rAQU");
-__webpack_require__(/*! ./components/component-template/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/component-template/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "XevS");
-__webpack_require__(/*! ./components/chart/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/chart/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "EtF6");
-          __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/project-select-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "JrQV");
-__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/statistical-indicator-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "X9Hi");
-__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "vcUf");
-__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "/uaY");
-          __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iRtZ");
-__webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "e5m4");
-__webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "oylq");
-__webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "8Nfj");
-          return {
-            style: [__webpack_require__(/*! ./components/project-select-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "wi5S").default,__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "5cBC").default,__webpack_require__(/*! ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "WvET").default,__webpack_require__(/*! ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "gsve").default].join('\n'),
-          };
-        },
-      },
-    };
-    
+if (typeof $AppxFramework === 'undefined') {
+    throw new Error('[APPX][Web] $AppxFramework load fail');
+}
+else {
+}
+module.exports = $AppxFramework;
+//# sourceMappingURL=framework.external.fragment.js.map
 
 /***/ }),
 
@@ -19220,19 +19198,173 @@ function registerWorktab(obj) {
 
 /***/ }),
 
-/***/ "V+xL":
-/*!************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/index.js ***!
-  \************************************************************************************************/
+/***/ "SeYa":
+/*!*********************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/sjs/index.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+// 不能存在 export *, import *
+// tslint:disable
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gcp = void 0;
-var member_1 = __webpack_require__(/*! ./member */ "ZS7F");
-exports.gcp = member_1.gcp;
+exports.identifier = exports.getProperty4Object = exports.transformProperty = exports.setProperty4Object = exports.interpolateExport = exports.interpolateDefault = exports.callProperty4Object = void 0;
+function callProperty4Object(propertyName, object, args) {
+    var result = getProperty4Object(propertyName, object);
+    return result.apply(object, args);
+}
+exports.callProperty4Object = callProperty4Object;
+function interpolateDefault(obj) {
+    return obj && obj.__esModule ? obj.default : obj;
+}
+exports.interpolateDefault = interpolateDefault;
+function interpolateExport(exp) {
+    var obj = exp;
+    var ret = {};
+    if (obj) {
+        if (typeof obj === 'function') {
+            return obj;
+        }
+        Object.keys(obj).forEach(function (key) {
+            var value = obj[key];
+            if (typeof value === 'function') {
+                // 直接改 obj[key] 可能由于 configurable: false 崩溃
+                ret[key] = function () {
+                    var args = Array.prototype.slice.call(arguments).map(function (arg) { return transformProperty(arg); });
+                    return value.apply(null, args);
+                };
+            }
+            else if (value && typeof value === 'object') {
+                // recursive
+                ret[key] = interpolateExport(value);
+            }
+            else {
+                ret[key] = obj[key];
+            }
+        });
+    }
+    return ret;
+}
+exports.interpolateExport = interpolateExport;
+function setProperty4Object(propertyName, object, operator, right) {
+    // 如果设置的属性不是 hasOwnProperty，则不允许设置
+    if (!Object.hasOwnProperty.call(object, propertyName) && propertyName in object) {
+        throw new Error('can not set property to proto in sjs');
+    }
+    switch (operator) {
+        case '=':
+            object[propertyName] = right;
+            break;
+        case '+=':
+            object[propertyName] += right;
+            break;
+        case '-=':
+            object[propertyName] -= right;
+            break;
+        case '*=':
+            object[propertyName] *= right;
+            break;
+        case '/=':
+            object[propertyName] /= right;
+            break;
+        case '%=':
+            object[propertyName] %= right;
+            break;
+        case '<<=':
+            object[propertyName] <<= right;
+            break;
+        case '>>=':
+            object[propertyName] >>= right;
+            break;
+        // case ">>>=": object[propertyName] >>>= right; break;
+        case '|=':
+            object[propertyName] |= right;
+            break;
+        case '^=':
+            object[propertyName] ^= right;
+            break;
+        case '&=':
+            object[propertyName] &= right;
+            break;
+        case '++':
+            object[propertyName]++;
+            break;
+        case '--':
+            object[propertyName]--;
+            break;
+    }
+    return object[propertyName];
+}
+exports.setProperty4Object = setProperty4Object;
+function transformProperty(value) {
+    switch (value) {
+        // 如果属于需要保护的对象，则如下处理
+        case Object:
+            return 'Object';
+        case Function:
+            return 'Function';
+        case Array:
+            return 'Array';
+        case String:
+            return 'String';
+        case Boolean:
+            return 'Boolean';
+        case Date:
+            return 'Date';
+        case RegExp:
+            return 'RegExp';
+        case Number:
+            return 'Number';
+    }
+    return value;
+}
+exports.transformProperty = transformProperty;
+function getProperty4Object(propertName, object) {
+    // 如果报错属于开发者问题
+    var result = object[propertName];
+    return transformProperty(result);
+}
+exports.getProperty4Object = getProperty4Object;
+var identifier_1 = __webpack_require__(/*! ./identifier */ "zucG");
+exports.identifier = {
+    getDate: identifier_1.getDate,
+    getRegExp: identifier_1.getRegExp,
+};
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "TLmQ":
+/*!*****************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/index.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// 不能存在 export *, import *
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mediaQueryMatch = exports.inline = exports.sjs = void 0;
+var inline_1 = __webpack_require__(/*! ./inline */ "AQ5x");
+var sjs_1 = __webpack_require__(/*! ./sjs */ "SeYa");
+exports.sjs = {
+    callProperty4Object: sjs_1.callProperty4Object,
+    getProperty4Object: sjs_1.getProperty4Object,
+    identifier: sjs_1.identifier,
+    interpolateDefault: sjs_1.interpolateDefault,
+    interpolateExport: sjs_1.interpolateExport,
+    setProperty4Object: sjs_1.setProperty4Object,
+    transformProperty: sjs_1.transformProperty,
+};
+exports.inline = {
+    _gcp: inline_1.gcp,
+    g: inline_1.gcp,
+};
+var style_1 = __webpack_require__(/*! ./style */ "kk7D");
+exports.mediaQueryMatch = style_1.mediaQueryMatch;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -19265,13 +19397,13 @@ exports.gcp = member_1.gcp;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "h1YD");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "h1YD");
 
   
   
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -19287,32 +19419,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/chart/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ov+r");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/chart/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ov+r");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
-  
-
-/***/ }),
-
-/***/ "X9Hi":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/statistical-indicator-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "e5m4");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
-
-  
-  
   
 
 /***/ }),
@@ -19396,40 +19510,7 @@ var TEXT_ALIGN_MAP = {
 
 /***/ }),
 
-/***/ "ZFTA":
-/*!*****************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/index.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// 不能存在 export *, import *
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.mediaQueryMatch = exports.inline = exports.sjs = void 0;
-var inline_1 = __webpack_require__(/*! ./inline */ "V+xL");
-var sjs_1 = __webpack_require__(/*! ./sjs */ "vQ11");
-exports.sjs = {
-    callProperty4Object: sjs_1.callProperty4Object,
-    getProperty4Object: sjs_1.getProperty4Object,
-    identifier: sjs_1.identifier,
-    interpolateDefault: sjs_1.interpolateDefault,
-    interpolateExport: sjs_1.interpolateExport,
-    setProperty4Object: sjs_1.setProperty4Object,
-    transformProperty: sjs_1.transformProperty,
-};
-exports.inline = {
-    _gcp: inline_1.gcp,
-    g: inline_1.gcp,
-};
-var style_1 = __webpack_require__(/*! ./style */ "lVIL");
-exports.mediaQueryMatch = style_1.mediaQueryMatch;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "ZS7F":
+/***/ "YVRd":
 /*!*************************************************************************************************!*\
   !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/member.js ***!
   \*************************************************************************************************/
@@ -19652,6 +19733,24 @@ Component({
 
 /***/ }),
 
+/***/ "ei3N":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/project-select-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iRtZ");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
+
+/***/ }),
+
 /***/ "f90g":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/@antv/my-f2/es/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
@@ -19664,9 +19763,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
 /* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
 /* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
 
   
@@ -19823,14 +19922,21 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
 
 /***/ }),
 
-/***/ "fdNf":
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
-  \*******************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "faM0":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = {"keys":[],"map":{}}
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "+c1n");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
 
 /***/ }),
 
@@ -19843,8 +19949,8 @@ module.exports = {"keys":[],"map":{}}
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HzyB");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "X+ib");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HzyB");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "X+ib");
 
   
   
@@ -19852,7 +19958,7 @@ __webpack_require__.r(__webpack_exports__);
 
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"],_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"],_Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -19868,12 +19974,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "31k4");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "31k4");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -19892,9 +19998,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
-/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "ptYa");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
 /* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "ZFTA");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
 /* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
 
   
@@ -20202,19 +20308,110 @@ Component({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HX8I");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HX8I");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
 
 /***/ }),
 
-/***/ "lVIL":
+/***/ "ix9Z":
+/*!*****************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!./component.json?jsonAsESM ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+    module.exports = {
+      __meta__: {
+        version: "0.4.7",
+      },
+      component2: true,
+      main: function () {
+        return __webpack_require__(/*! ./index.js */ "QfWi");
+      },
+      pluginId: undefined,
+      publicComponents: {
+        pluginInfo: null,
+        publicComponents: {
+          "project-select-view": {
+            componentPath: "components/project-select-view/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/project-select-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "5Kf0")
+          }
+,"statistical-indicator-view": {
+            componentPath: "components/statistical-indicator-view/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/statistical-indicator-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "ySu8")
+          }
+,"component-template": {
+            componentPath: "components/component-template/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "j23w")
+          }
+,"chart": {
+            componentPath: "components/chart/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "ugqC")
+          }
+        },
+        renderType: 32,
+        callback: function () {
+          __webpack_require__(/*! ./components/project-select-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/project-select-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "nJgI");
+__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/statistical-indicator-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rAQU");
+__webpack_require__(/*! ./components/component-template/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/component-template/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "XevS");
+__webpack_require__(/*! ./components/chart/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/chart/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "EtF6");
+          __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/project-select-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "ei3N");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/statistical-indicator-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "9W8f");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "M0jB");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "kXMy");
+          __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iRtZ");
+__webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "e5m4");
+__webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "oylq");
+__webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "8Nfj");
+          return {
+            style: [__webpack_require__(/*! ./components/project-select-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "wi5S").default,__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "5cBC").default,__webpack_require__(/*! ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "WvET").default,__webpack_require__(/*! ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "gsve").default].join('\n'),
+          };
+        },
+      },
+    };
+    
+
+/***/ }),
+
+/***/ "j23w":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/component-template/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
+/***/ "kXMy":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _snapshot_toolkit_node_modules_ali_antcube_build_lib_build_loader_engine_shared_javascript_entry_js_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineTypes_zephyr_engineJsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "faM0");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "8Nfj");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+  
+
+/***/ }),
+
+/***/ "kk7D":
 /*!***********************************************************************************************!*\
   !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/style/index.js ***!
   \***********************************************************************************************/
@@ -20279,17 +20476,6 @@ function mediaQueryMatch(querys) {
 }
 exports.mediaQueryMatch = mediaQueryMatch;
 //# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "maHI":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
-  \******************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {"keys":["/node_modules/@antv/my-f2/es/index"],"map":{"/node_modules/@antv/my-f2/es/index":1}}
 
 /***/ }),
 
@@ -20396,25 +20582,6 @@ Component({
 
 /***/ }),
 
-/***/ "ptYa":
-/*!***********************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/fixtures/framework.external.fragment.js ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-if (typeof $AppxFramework === 'undefined') {
-    throw new Error('[APPX][Web] $AppxFramework load fail');
-}
-else {
-}
-module.exports = $AppxFramework;
-//# sourceMappingURL=framework.external.fragment.js.map
-
-/***/ }),
-
 /***/ "rAQU":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./components/statistical-indicator-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/statistical-indicator-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
@@ -20434,190 +20601,14 @@ module.exports = $AppxFramework;
 
 /***/ }),
 
-/***/ "syZI":
-/*!**************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/sjs/identifier.js ***!
-  \**************************************************************************************************/
+/***/ "ugqC":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \******************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRegExp = exports.getDate = void 0;
-function getDate() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    return new (Function.prototype.bind.apply(Date, [Date].concat(args)))();
-}
-exports.getDate = getDate;
-function getRegExp() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    return new (Function.prototype.bind.apply(RegExp, [RegExp].concat(args)))();
-}
-exports.getRegExp = getRegExp;
-//# sourceMappingURL=identifier.js.map
-
-/***/ }),
-
-/***/ "vQ11":
-/*!*********************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/sjs/index.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// 不能存在 export *, import *
-// tslint:disable
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.identifier = exports.getProperty4Object = exports.transformProperty = exports.setProperty4Object = exports.interpolateExport = exports.interpolateDefault = exports.callProperty4Object = void 0;
-function callProperty4Object(propertyName, object, args) {
-    var result = getProperty4Object(propertyName, object);
-    return result.apply(object, args);
-}
-exports.callProperty4Object = callProperty4Object;
-function interpolateDefault(obj) {
-    return obj && obj.__esModule ? obj.default : obj;
-}
-exports.interpolateDefault = interpolateDefault;
-function interpolateExport(exp) {
-    var obj = exp;
-    var ret = {};
-    if (obj) {
-        if (typeof obj === 'function') {
-            return obj;
-        }
-        Object.keys(obj).forEach(function (key) {
-            var value = obj[key];
-            if (typeof value === 'function') {
-                // 直接改 obj[key] 可能由于 configurable: false 崩溃
-                ret[key] = function () {
-                    var args = Array.prototype.slice.call(arguments).map(function (arg) { return transformProperty(arg); });
-                    return value.apply(null, args);
-                };
-            }
-            else if (value && typeof value === 'object') {
-                // recursive
-                ret[key] = interpolateExport(value);
-            }
-            else {
-                ret[key] = obj[key];
-            }
-        });
-    }
-    return ret;
-}
-exports.interpolateExport = interpolateExport;
-function setProperty4Object(propertyName, object, operator, right) {
-    // 如果设置的属性不是 hasOwnProperty，则不允许设置
-    if (!Object.hasOwnProperty.call(object, propertyName) && propertyName in object) {
-        throw new Error('can not set property to proto in sjs');
-    }
-    switch (operator) {
-        case '=':
-            object[propertyName] = right;
-            break;
-        case '+=':
-            object[propertyName] += right;
-            break;
-        case '-=':
-            object[propertyName] -= right;
-            break;
-        case '*=':
-            object[propertyName] *= right;
-            break;
-        case '/=':
-            object[propertyName] /= right;
-            break;
-        case '%=':
-            object[propertyName] %= right;
-            break;
-        case '<<=':
-            object[propertyName] <<= right;
-            break;
-        case '>>=':
-            object[propertyName] >>= right;
-            break;
-        // case ">>>=": object[propertyName] >>>= right; break;
-        case '|=':
-            object[propertyName] |= right;
-            break;
-        case '^=':
-            object[propertyName] ^= right;
-            break;
-        case '&=':
-            object[propertyName] &= right;
-            break;
-        case '++':
-            object[propertyName]++;
-            break;
-        case '--':
-            object[propertyName]--;
-            break;
-    }
-    return object[propertyName];
-}
-exports.setProperty4Object = setProperty4Object;
-function transformProperty(value) {
-    switch (value) {
-        // 如果属于需要保护的对象，则如下处理
-        case Object:
-            return 'Object';
-        case Function:
-            return 'Function';
-        case Array:
-            return 'Array';
-        case String:
-            return 'String';
-        case Boolean:
-            return 'Boolean';
-        case Date:
-            return 'Date';
-        case RegExp:
-            return 'RegExp';
-        case Number:
-            return 'Number';
-    }
-    return value;
-}
-exports.transformProperty = transformProperty;
-function getProperty4Object(propertName, object) {
-    // 如果报错属于开发者问题
-    var result = object[propertName];
-    return transformProperty(result);
-}
-exports.getProperty4Object = getProperty4Object;
-var identifier_1 = __webpack_require__(/*! ./identifier */ "syZI");
-exports.identifier = {
-    getDate: identifier_1.getDate,
-    getRegExp: identifier_1.getRegExp,
-};
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "vcUf":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "oylq");
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
-
-  
-  
-  
+module.exports = {"keys":["/node_modules/@antv/my-f2/es/index"],"map":{"/node_modules/@antv/my-f2/es/index":1}}
 
 /***/ }),
 
@@ -20646,16 +20637,27 @@ internal_style = ".statistical-indicator-view {width:100%;height:100%;min-height
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ibVU");
+/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ibVU");
 
   
   
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", '', [_Users_wuzequan_code_dd_application_template_plugin_default_javascript_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
+
+/***/ }),
+
+/***/ "ySu8":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/statistical-indicator-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
 
 /***/ }),
 
@@ -20752,6 +20754,37 @@ function setLifecycleSdk(sdkObj) {
 function getLifecycleSdk() {
   return lifecycleSdk;
 }
+
+/***/ }),
+
+/***/ "zucG":
+/*!**************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/sjs/identifier.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getRegExp = exports.getDate = void 0;
+function getDate() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    return new (Function.prototype.bind.apply(Date, [Date].concat(args)))();
+}
+exports.getDate = getDate;
+function getRegExp() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    return new (Function.prototype.bind.apply(RegExp, [RegExp].concat(args)))();
+}
+exports.getRegExp = getRegExp;
+//# sourceMappingURL=identifier.js.map
 
 /***/ })
 

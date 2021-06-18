@@ -128,7 +128,7 @@ export interface ICommandConfigOpts<CO = PlainRecord> {
     description: string;
   },
   options?: ICommandOptionConfigMap<CO>,
-  action: (options: CO & IGlobalOptions, ctx: ICommandContext<CO>) => Promise<void>
+  action?: (options: CO & IGlobalOptions, ctx: ICommandContext<CO>) => Promise<void>
 }
 
 export interface ICommandConfig<

@@ -18,6 +18,6 @@ export default (unknownCommand: string, commandNameList: (ECommandName | '')[]):
   if (suggestion) {
     console.log('  ' + chalk.red(`未能找到命令${unknownCommand}，相似的命令有 ${chalk.yellow(suggestion)}`));
   } else {
-    logger.debug(`未找到与 ${unknownCommand} 类似的命令`);
+    logger.debug(`未找到与 ${unknownCommand} 类似的命令`, commandNameList);
   }
 };

@@ -89,11 +89,9 @@ export default class CommandContextFactory implements ICommandContext {
       hasOriginDtdConfig = true;
       dtdConfig = getJson(configPath, true, {});
     } else {
-      // TODO: 不支持存量项目，要提示一下
       dtdConfig = {
         type: '',
       };
-      logger.warn('当前项目不是DingTalk Design CLI初始化的项目，请参照文档xxx新增配置文件');
     }
 
     return {

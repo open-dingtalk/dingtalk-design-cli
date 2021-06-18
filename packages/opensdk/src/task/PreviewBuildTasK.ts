@@ -6,12 +6,10 @@ import { IPreviewBuildParams, ISubPackage, } from '../openapi';
 import { BuildStatusEnum, BuildStatusText, } from '../types';
 import { friendlyPackageSize, } from '../utils';
 import { ITaskOptionBase, TaskBase, } from './TaskBase';
-import * as qrcode from 'qr-image';
-import * as consolePng from 'console-png';
 import superagent from 'superagent';
 import chalk from 'chalk';
+import QRCode from 'qrcode';
 
-consolePng.attachTo(console);
 
 // 6.2.3
 const buildScriptVersion = '6.2.3'; // eslint-disable-line
@@ -175,11 +173,11 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
 
           if (result.finished) {
             clearInterval(timer);
-            const buffer = qrcode.imageSync(result.result_url, {
-              size: 1,
+            QRCode.toString(result.result_url, (err, string) => {
+              if (err) throw err;
+              console.log(string);
+              console.log(chalk.green('scheme:'), result.result_url);
             });
-            console.log(chalk.green('scheme:'), result.result_url);
-            console['png'](buffer);
             resolve(result.result_url || '');
 
             // tracker.retCode(EBuildTarget.Preview, true, Date.now() - startTime, options.miniAppId);
