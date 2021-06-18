@@ -5,11 +5,9 @@ import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
 import { EBuildStatusText, } from 'dingtalk-miniapp-opensdk/dist/types';
 import { ICommandOptions, } from '../commands/upload';
-import inquirer from 'inquirer';
-import semver from 'semver';
 import { get, } from 'lodash';
-import { GlobalStdinCommand, } from '../commands/dev/stdioCommands';
 import * as path from 'path';
+import { setJsonItem, } from '../lib/util/setJson';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -33,27 +31,27 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
 
   // inquirer在输入时会默认输入回车
   // 这里先暂停监听，等inquirer问询结束后再开启监听
-  GlobalStdinCommand.dispose();
+  // GlobalStdinCommand.dispose();
 
-  const answers: {
-    version: string;
-  } = await inquirer.prompt([{
-    type: 'input',
-    name: '本次上传版本号',
-    default: get(options, 'version'),
-    message: '请确认本次上传的版本号',
-    validate: (input) => {
-      const isValid = semver.valid(input);
-      if (!isValid) return '填入的版本号格式非法，需填入格式为x.x.x的版本号';
-      if (dtdConfig && dtdConfig.version) {
-        const isGt = semver.gt(input, dtdConfig.version);
-        if (!isGt) return `填入的版本号小于 ${dtdConfig.version}, 请修改版本号，如: ${semver.inc(dtdConfig.version, 'patch')}`;
-      }
-      return true;
-    },
-  }]);
+  // const answers: {
+  //   version: string;
+  // } = await inquirer.prompt([{
+  //   type: 'input',
+  //   name: '本次上传版本号',
+  //   default: get(options, 'version'),
+  //   message: '请确认本次上传的版本号',
+  //   validate: (input) => {
+  //     const isValid = semver.valid(input);
+  //     if (!isValid) return '填入的版本号格式非法，需填入格式为x.x.x的版本号';
+  //     if (dtdConfig && dtdConfig.version) {
+  //       const isGt = semver.gt(input, dtdConfig.version);
+  //       if (!isGt) return `填入的版本号小于 ${dtdConfig.version}, 请修改版本号，如: ${semver.inc(dtdConfig.version, 'patch')}`;
+  //     }
+  //     return true;
+  //   },
+  // }]);
 
-  GlobalStdinCommand.bootstrap();
+  // GlobalStdinCommand.bootstrap();
 
   opensdk.setConfig({
     appKey: '',
@@ -64,10 +62,11 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
 
   monitor.logApiInvoke(EApiName.UPLOAD);
 
+  let hasDone = false;
   const uploadCommonParams = {
     project: cwd,
     miniAppId,
-    packageVersion: answers.version,
+    packageVersion: '',
   };
 
   try {
@@ -75,7 +74,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
       ...uploadCommonParams,
       onProgressUpdate: (info) => {
         const {
-          data = {},
+          data = {} as any,
           status,
         } = info;
 
@@ -90,9 +89,13 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
 
         // @ts-ignore
         if (status === EBuildStatusText.success) {
-          successSpinner('构建成功');
-          // @ts-ignore
-          commandContext.logger.success('本次上传版本号', data.version);
+          if (!hasDone) {
+            successSpinner('构建成功');
+            // @ts-ignore
+            commandContext.logger.success('本次上传版本号', data.version);
+            setJsonItem(path.join(commandContext.cwd, config.workspaceRcName), 'version', data.version);
+            hasDone = true;
+          }
         } else if (status === EBuildStatusText.building) {
           logWithSpinner(`构建中，正在查询构建结果， logId: ${logId}`);
         } else if (status === EBuildStatusText.overtime) {

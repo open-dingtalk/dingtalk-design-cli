@@ -1,8 +1,9 @@
 import CommandWrapper from '../../scheduler/command/commandWrapper';
 import { ECommandName, } from '../../lib/common/types';
-import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
-import config from '../../lib/common/config';
 import lint from '../../actions/lint';
+import commmandsConfig from '../commandsConfig';
+import config from '../../lib/common/config';
+
 interface ICommandOptions {
 }
 
@@ -22,11 +23,18 @@ export default CommandWrapper<ICommandOptions>({
   name: ECommandName.lint,
   registerCommand(ctx) {
     return {
-      command: {
-        name: ECommandName.lint,
-        description: '校验钉钉小程序、h5、工作台组件的代码规范和平台要求规范',
-      },
+      ...commmandsConfig.lint,
       action: async (options) => {
+        const {
+          cwd,
+          dtdConfig,
+        } = ctx;
+
+        if (!dtdConfig.type) {
+          // TODO: 文档更新
+          ctx.logger.error(`当前目录 ${cwd} 下没有找到 ${config.workspaceRcName} 文件，请先使用init初始化项目；或者也可以选择手动新增 ${config.workspaceRcName} 配置文件，参考文档xxx`);
+          return;
+        }
         await lint(ctx);
       },
     };

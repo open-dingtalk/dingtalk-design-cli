@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "packages/cli",
-    "packages/generator"
+    "packages/generator",
+    "packages/opensdk"
   ],
   "version": "0.0.0",
   "scripts": {

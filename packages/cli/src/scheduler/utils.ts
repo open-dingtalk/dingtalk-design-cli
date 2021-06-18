@@ -105,21 +105,27 @@ export async function getVersionLog(pkgs: IDtdCLIDep[]): Promise<{
       };
     } else {
       const name = path.normalize(pkg.name);
-      const mainPath = require.resolve(name, {
-        paths: [
-          process.cwd(),
-          ...module.paths,
-        ],
-      });
-      const pkgIdx = mainPath.lastIndexOf(name) + name.length;
-      const depPath = mainPath.slice(0, pkgIdx);
-      const pkgJsonPath = path.join(depPath, 'package.json');
-      const pkgJson = getJson(pkgJsonPath, true, {});
-      return {
-        name: pkg.name,
-        version: pkgJson.version || 'N/A',
-        path: depPath,
-      };
+      try {
+        const mainPath = require.resolve(`${name}/package.json`, {
+          paths: [
+            process.cwd(),
+            ...module.paths,
+          ],
+        });
+        const pkgJson = getJson(mainPath, true, {});
+        return {
+          name: pkg.name,
+          version: pkgJson.version || 'N/A',
+          path: path.dirname(mainPath),
+        };
+      } catch(e) {
+        return {
+          name: pkg.name,
+          version: 'N/A',
+          path: '',
+        };
+      }
+      
     }
   }));
 }

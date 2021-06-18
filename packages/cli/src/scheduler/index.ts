@@ -12,6 +12,7 @@ import performance from '../lib/util/performance';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
 import { logWithSpinner, successSpinner, } from '../lib/cli-shared-utils/lib/spinner';
+import commandsConfig from '../commands/commandsConfig';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -35,12 +36,14 @@ export default class Scheduler {
   private program: cac.CAC;
   public commandContext: CommandContextFactory;
   public commandList: CommandFactory[];
+  private registedCommandList: cac.Command[];
 
   constructor(opts: ISchedulerOpts) {
     performance.tick(EPerformanceEvent.START);
 
     this.opts = opts;
     this.commandList = [];
+    this.registedCommandList = [];
     this.program = cac.cac();
     this.commandContext = new CommandContextFactory(
       opts.cwd || process.cwd(), 
@@ -108,9 +111,15 @@ export default class Scheduler {
     return command;
   }
 
-  registerCommandByCac(commandInst: CommandFactory, commandConfig: ICommandConfigOpts) {
+  private registerCommandsWithoutAction() {
+    Object.keys(commandsConfig).forEach(commandName => {
+      this.registerCommandOption(commandsConfig[commandName]);
+    });
+  }
+
+  private registerCommandOption(commandConfig: ICommandConfigOpts) {
+    const { command, options, } = commandConfig;
     const { program, } = this;
-    const { command, options, action, } = commandConfig;
     const currentCommand = program.command(command.name, command.description);
 
     if (options) {
@@ -120,37 +129,39 @@ export default class Scheduler {
       });
     }
 
-    const commandName = command.name.split(' ')[0] as ECommandName; // 若 command 配置为 dev [entry], 则 command name 为 dev
-    currentCommand.allowUnknownOptions();
-    currentCommand.action(
-      this.getWrappedCommandAction(
-        commandInst,
-        commandName,
-        action,
-      ),
-    );
-    return program;
+    this.registedCommandList.push(currentCommand);
+    return currentCommand;
+  }
+
+  private registerCommandsAction() {
+    this.commandList.forEach(commandInst => {
+      if (typeof commandInst.getHook(ECommandConfigProperty.registerCommand) === 'function') {
+        const commandConfigs = commandInst.applyHook<ICommandConfigOpts>(
+          ECommandConfigProperty.registerCommand,
+        );
+        const commandName = commandConfigs.command.name;
+        let currentCommand = this.registedCommandList.find(cacCommand => cacCommand.name === commandName);
+        if (!currentCommand ) {
+          currentCommand = this.registerCommandOption(commandConfigs);
+          logger.debug('cannot find registed command', commandName);
+        }
+
+        currentCommand.allowUnknownOptions();
+        currentCommand.action(
+          this.getWrappedCommandAction(
+            commandInst,
+            commandName,
+            commandConfigs.action,
+          ),
+        );
+      }
+    });
   }
 
   public applyCommandsHook(name: ECommandConfigProperty): void {
     switch (name) {
     case ECommandConfigProperty.registerCommand:
-      this.commandList.forEach(commandInst => {
-        const { program, } = this;
-
-        if (typeof commandInst.getHook(ECommandConfigProperty.registerCommand) === 'function') {
-          const commandConfigs = commandInst.applyHook<ICommandConfigOpts>(
-            ECommandConfigProperty.registerCommand,
-          );
-
-          const normalizedcommandConfigs: ICommandConfigOpts[]
-              = Array.isArray(commandConfigs) ? commandConfigs : [commandConfigs];
-
-          normalizedcommandConfigs.forEach(commandConfig => {
-            this.registerCommandByCac(commandInst, commandConfig);
-          });
-        }
-      });
+      this.registerCommandsAction();
       break;
     default:
       break;
@@ -171,22 +182,27 @@ export default class Scheduler {
 
   private async logVersion() {
     const pkgInfo = getCurrentPkgInfo();
-    const deps: IDtdCLIDep[] = [{
+    let deps: IDtdCLIDep[] = [{
       name: EDtdCLIKeyDep.cli,
       version: pkgInfo.version,
-    }, {
-      name: EDtdCLIKeyDep.generator,
-      version: '',
-    }, {
-      name: EDtdCLIKeyDep.opensdk,
-      version: '',
-    }, {
-      name: EDtdCLIKeyDep.validateScript,
-      version: '',
     }];
+
+    if (this.opts.verbose) {
+      deps = deps.concat([{
+        name: EDtdCLIKeyDep.generator,
+        version: '',
+      }, {
+        name: EDtdCLIKeyDep.opensdk,
+        version: '',
+      }, {
+        name: EDtdCLIKeyDep.validateScript,
+        version: '',
+      }]);
+    }
 
     const depInfo = await getVersionLog(deps);
     console.log(`${depInfo.map(dep=> `- ${dep.name}: ${chalk.yellow(dep.version)} ${dep.path ? `[${dep.path}]` : ''}`).join('\n')}`);
+
   }
 
   /**
@@ -195,42 +211,39 @@ export default class Scheduler {
    * 初始化配置和监控等实例
    */
   public async bootstrap(): Promise<void> {
-    logWithSpinner('DingTalk Design CLI 启动中');
-    await this.loadCommand(ECommandName.init);
-    await this.loadCommand(ECommandName.upload);
-    await this.loadCommand(ECommandName.lint);
-    await this.loadCommand(ECommandName.dev);
-    await this.loadCommand(ECommandName.preview);
-    successSpinner('启动成功');
-    await this.bootstrapProgram();
-  }
-
-  /**
-   * 登记全局配置
-   */
-  private async bootstrapProgram() {
     const pkgInfo = getCurrentPkgInfo();
     const pkgName = pkgInfo.name;
     const pkgVersion = pkgInfo.version;
     logger.debug(`${pkgName}@${pkgVersion}`);
     logger.debug('origin process args', process.argv);
-    
+
     this.program.name = 'ding';
     this.program.option('--cwd [cwd]', `[可选] 当前的工作目录, 默认值是 ${chalk.yellow('process.cwd()')}`);
     this.program.option('--verbose', '[可选] 打开框架日志调试');
-
-    await this.applyCommandsHook(ECommandConfigProperty.registerCommand);
+    this.registerCommandsWithoutAction();
 
     const { options, } = this.program.parse(process.argv, { run: false, });
     if (options.v || options.version) {
-      return this.logVersion();
-    }
-
-    if (options.help || options.h) {
+      this.logVersion();
+    } else if (options.help || options.h) {
       this.trackSplashScreen();
       this.program.outputHelp();
     } else if (this.program.matchedCommand) {
+      /** 1. loadCommand */
+      logWithSpinner('DingTalk Design CLI 启动中 \n');
+      await this.loadCommand(ECommandName.init);
+      await this.loadCommand(ECommandName.upload);
+      await this.loadCommand(ECommandName.lint);
+      await this.loadCommand(ECommandName.dev);
+      await this.loadCommand(ECommandName.preview);
+      successSpinner('启动成功');
+
+      /** 2. registerCommandWithAction */
+      await this.applyCommandsHook(ECommandConfigProperty.registerCommand);
+
       logger.debug('matchedCommand', this.program.matchedCommand.name);
+
+      /** 3. runMatched command */
       try {
         await this.program.runMatchedCommand();
       } catch (error) {
