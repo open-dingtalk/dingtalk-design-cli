@@ -117,7 +117,7 @@ export default class CommandContextFactory implements ICommandContext {
     1. 登录开发者后台 https://open-dev.dingtalk.com/
     ${appType === EAppType.MP 
     ? '2. 选中一个小程序，在基础信息界面可以看到小程序的miniAppId'
-    : '2. 进入页面 https://open-dev.dingtalk.com/v1/fe/old#/plugin，可以获取插件的miniAppId'}
+    : '2. 进入页面 https://open-dev.dingtalk.com/v1/fe/old#/plugin，可以获取工作台组件的miniAppId'}
     3. 拿到miniAppId后，在当前命令行输入「updateConfig miniAppId <miniAppId> + 回车」进行配置更新
 
     「如何获取API Token」

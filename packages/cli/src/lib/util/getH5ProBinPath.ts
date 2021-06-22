@@ -16,7 +16,7 @@ export default async (): Promise<string> => {
   const h5ProCurPlatformConfig  = platformConfigs[platform as keyof typeof platformConfigs];
   const supportPlatform = Object.keys(h5ProConfig.platforms);
   if (supportPlatform.indexOf(platform) === -1) {
-    logger.error('当前平台不支持编译pc工作台插件，支持的平台', supportPlatform);
+    logger.error('当前平台不支持编译pc工作台组件，支持的平台', supportPlatform);
     return '';
   }
 
@@ -30,11 +30,11 @@ export default async (): Promise<string> => {
 
   /** builder download */
   try {
-    logWithSpinner('本地没找到pc工作台插件构建器，正在下载');
+    logWithSpinner('本地没找到pc工作台组件构建器，正在下载');
     await download(binDownloadPath, tarStorePath);
-    successSpinner('pc工作台插件构建器下载成功');
+    successSpinner('pc工作台组件构建器下载成功');
   } catch(e) {
-    failSpinner('pc工作台插件构建器下载失败');
+    failSpinner('pc工作台组件构建器下载失败');
     logger.error(e.message);
     return '';
   }

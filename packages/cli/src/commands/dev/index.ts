@@ -20,6 +20,7 @@ import upload from '../../actions/upload';
 import lint from '../../actions/lint';
 import commmandsConfig from '../commandsConfig';
 import { execSync, } from 'child_process';
+import inquirer from 'inquirer';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -68,7 +69,7 @@ export default CommandWrapper<ICommandOptions>({
             if (dtdConfigUpdated.isPcPlugin) {
               GlobalStdinCommand.subscribe({
                 command: EStdioCommands.PC,
-                description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台插件',
+                description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台组件',
                 action: async () => {
                   const h5bundle = path.join(__dirname, '../../../h5bundle');
                   execSync(`cd ${h5bundle} && npm i`, {
@@ -87,6 +88,14 @@ export default CommandWrapper<ICommandOptions>({
 
         GlobalStdinCommand.bootstrap();
         GlobalStdinCommand.subscribe({
+          command: EStdioCommands.HELP,
+          description: '',
+          serialized: false,
+          action: async () => {
+            GlobalStdinCommand.log();
+          },
+        });
+        GlobalStdinCommand.subscribe({
           command: EStdioCommands.UPDATE_CONFIG,
           description: `在当前命令行中敲入 「updateConfig <配置文件中的某个字段> <更新后的值> + 回车」 会自动更新${config.workspaceRcName}，如 「updateConfig miniAppId 500000xxxxxx」`,
           action: async (args) => {
@@ -97,15 +106,16 @@ export default CommandWrapper<ICommandOptions>({
         });
         GlobalStdinCommand.subscribe({
           command: EStdioCommands.LINT,
-          description: '在当前命令行中敲入 「lint + 回车」 会校验当前代码是否符合eslint规范（工作台插件除eslint规范外，会有额外的校验规则）',
+          description: '在当前命令行中敲入 「lint + 回车」 会校验当前代码是否符合eslint规范（工作台组件除eslint规范外，会有额外的校验规则）',
           action: async () => {
-            lint(ctx);
+            await lint(ctx);
+            GlobalStdinCommand.tips();
           },
         });
 
         /**
          * dev和代码模版是强相关的，不支持非cli创建的项目
-         * 区分场景：小程序、插件、pc工作台插件、h5；不同场景下stdio命令不同
+         * 区分场景：小程序、工作台组件、pc工作台组件、h5；不同场景下stdio命令不同
          * 区分语言：ts、js；ts需要先走一遍构建
          */
         if (isMp || isPlugin || isPcPlugin) {
@@ -142,29 +152,49 @@ export default CommandWrapper<ICommandOptions>({
               } catch(e) {
                 monitor.logJSError(e);
               }
+              GlobalStdinCommand.tips();
             },
           });
 
           GlobalStdinCommand.subscribe({
             command: EStdioCommands.QRCODE,
             description: '在当前命令行中敲入 「qrcode + 回车」 可以生成预览二维码',
-            action: () => {
-              qrcodeAction(ctx);
+            action: async () => {
+              await qrcodeAction(ctx);
+              GlobalStdinCommand.tips();
             },
           });
 
           GlobalStdinCommand.subscribe({
             command: EStdioCommands.UPLOAD,
-            description: '在当前命令行中敲入 「upload + 回车」 可以上传小程序或工作台插件到开发者后台',
-            action: () => {
-              upload(ctx);
+            description: '在当前命令行中敲入 「upload + 回车」 可以上传小程序或工作台组件到开发者后台',
+            action: async () => {
+              let answers = {
+                confirm: true,
+              };
+
+              if (isPlugin || isPcPlugin) {
+                await lint(ctx);
+                ctx.logger.tip('请注意工作台组件务必校验通过后再进行上传');
+
+                answers = await inquirer.prompt([{
+                  type: 'confirm',
+                  name: 'confirm',
+                  message: '请确认是否继续上传',
+                }]);
+              }
+
+              if (answers.confirm) {
+                await upload(ctx);
+                GlobalStdinCommand.tips();
+              }
             },
           });
 
           if (isPcPlugin) {
             GlobalStdinCommand.subscribe({
               command: EStdioCommands.PC,
-              description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台插件',
+              description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台组件',
               action: async () => {
                 const h5bundle = path.join(__dirname, '../../../h5bundle');
                 execSync(`cd ${h5bundle} && npm i`, {

@@ -9,7 +9,7 @@ import config from '../lib/common/config';
 const monitor = getMonitor(config.yuyanId);
 
 /**
- * 小程序与普通工作台插件 - 本地构建、上传debug包、生成预览二维码
+ * 小程序与普通工作台组件 - 本地构建、上传debug包、生成预览二维码
  */
 export default async (commandContext: ICommandContext) => {
   const {

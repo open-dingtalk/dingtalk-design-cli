@@ -45,7 +45,7 @@ export interface IWorkspaceRc {
   isPcPlugin?: boolean;
   corpId?: string;
 
-  /** 专用于pc工作台插件 */
+  /** 专用于pc工作台组件 */
   pcPreviewOptions?: {
     mode?: 'light' | 'dark';
   };
@@ -201,15 +201,16 @@ export enum EApiName {
   GET_PREVIEW_STATUS = 'getPreviewStatus', // 获取预览状态
   UPLOAD = 'upload', // 构建上传
   GET_UPLOAD_STATUS = 'getUploadStatus', // 获取上传状态
-  GET_POINT = 'getPoint', // 拉取插件权限点
-  GET_RC = 'getRc' // 拉取插件权限包和rc
+  GET_POINT = 'getPoint', // 拉取工作台组件权限点
+  GET_RC = 'getRc' // 拉取工作台组件权限包和rc
 }
 
 export enum EStdioCommands {
   IDE = 'ide', // 打开ide lite版
   QRCODE = 'qrcode', // 生成预览二维码
-  PC = 'pc', // 在pc端钉钉预览工作台插件
+  PC = 'pc', // 在pc端钉钉预览工作台组件
   UPDATE_CONFIG = 'updateConfig', // 更新ding.config.json里的字段
-  UPLOAD = 'upload', // 上传小程序或工作台插件
+  UPLOAD = 'upload', // 上传小程序或工作台组件
   LINT = 'lint', // 格式/业务校验
+  HELP = 'help', // 再次输出stdio命令简介
 }

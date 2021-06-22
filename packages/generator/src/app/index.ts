@@ -13,6 +13,7 @@ import simpleGit from 'simple-git';
 import { HUBS_CONFIG, REPO_LOCAL_ROOT_PATH, DEFAULT_DIRECTORY_SEPERATOR,  } from '@common/config';
 import isValidDirectory from '../utils/isValidRepoDirectory';
 import fs, { mkdirp, } from 'fs-extra';
+import getJson from '../utils/getJson';
 
 const git = simpleGit();
 
@@ -136,10 +137,14 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       // filter file which is not seen,
       // 1. get Directory and filter hidden files
       // 2. get Directory which starts with appType
-      templateList = originTemplateList.filter(v=>v.isDirectory() && isValidDirectory(v.name, appType)).map(v=>({
-        name: v.name.slice(sliceIdx),
-        value: v.name,
-      }));
+      templateList = originTemplateList.filter(v=>v.isDirectory() && isValidDirectory(v.name, appType)).map(v=>{
+        const templatePath = path.join(repoLocalPath, v.name, 'config.json');
+        const configJson = getJson(templatePath, true, {});
+        return {
+          name: `${v.name.slice(sliceIdx)} ${configJson.description ? `- ${configJson.description}` : ''}`,
+          value: v.name,
+        };
+      });
       debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
 
       if(templateList.length === 0) {

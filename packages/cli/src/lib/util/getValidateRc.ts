@@ -22,8 +22,8 @@ export default (miniAppId: string, token: string, isPcPlugin: boolean): Promise<
       } = res[1].data as PermissionPoint;
 
       // 拉取到rc后，需要inject supportEnvironments以及apiList
-      // supportEnvironments代表插件支持的运行环境，如["mobile", "pc"]
-      // apiList代表插件具有的权限点
+      // supportEnvironments代表工作台组件支持的运行环境，如["mobile", "pc"]
+      // apiList代表工作台组件具有的权限点
       // 这部分逻辑和plugin-valid项目中的处理保持一致
       const supportEnvironment = ['mobile'];
       if (isPcPlugin) supportEnvironment.push('pc');

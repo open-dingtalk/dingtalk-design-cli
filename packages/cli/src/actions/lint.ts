@@ -8,10 +8,10 @@ import { spawnSync, } from 'child_process';
 
 export default async (commandContext: ICommandContext): Promise<void> => {
   // 对于小程序和h5，区分是否有eslintrc的场景
-  // 对于插件，区分是否有miniAppId/token的场景
+  // 对于工作台组件，区分是否有miniAppId/token的场景
   const { dtdConfig, hasOriginDtdConfig, miniProgramConfigContent, } = commandContext;
   if (!miniProgramConfigContent) {
-    commandContext.logger.error('当前目录下找不到mini.project.json，请在小程序或插件工作目录下运行');
+    commandContext.logger.error('当前目录下找不到mini.project.json，请在小程序或工作台组件工作目录下运行');
     return;
   }
 
@@ -52,7 +52,7 @@ export default async (commandContext: ICommandContext): Promise<void> => {
   } else if (appType === EAppType.PLUGIN) {
     const pluginRoot = miniProgramConfigContent.pluginRoot;
     if (!pluginRoot) {
-      commandContext.logger.error('mini.project.json中没有声明pluginRoot，无法找到插件根目录');
+      commandContext.logger.error('mini.project.json中没有声明pluginRoot，无法找到工作台组件根目录');
       return;
     }
 

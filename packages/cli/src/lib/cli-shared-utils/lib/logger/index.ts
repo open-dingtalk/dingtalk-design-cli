@@ -82,9 +82,9 @@ export class Logger extends LoggerBase {
   }
 }
 
-const cachedLogger = new Map<string, any>();
+const cachedLogger = new Map<string, Logger>();
 
-export const getLogger = (prefix: string) => {
+export const getLogger = (prefix: string): Logger => {
   const cached = cachedLogger.get(prefix);
   if (cached) {
     return cached;

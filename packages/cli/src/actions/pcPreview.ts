@@ -16,7 +16,7 @@ import stripAnsi from 'strip-ansi';
 const monitor = getMonitor(config.yuyanId);
 
 /**
- * 小程序与普通工作台插件 - 本地构建、上传debug包、生成预览二维码
+ * 小程序与普通工作台组件 - 本地构建、上传debug包、生成预览二维码
  */
 export default async (commandContext: ICommandContext) => {
   const {
@@ -32,7 +32,7 @@ export default async (commandContext: ICommandContext) => {
   } = dtdConfig;
   
   if (!miniProgramConfigContent) {
-    logger.error('当前目录下找不到mini.project.json，请在小程序或插件工作目录下运行');
+    logger.error('当前目录下找不到mini.project.json，请在小程序或工作台组件工作目录下运行');
     return;
   }
 
@@ -47,7 +47,7 @@ export default async (commandContext: ICommandContext) => {
   const mockPreviewEnvironmentPath = path.join(__dirname, '../../h5bundle');
   const binPath = await getH5ProBinPath();
   if (!binPath) {
-    logger.error('找不到pc工作台插件构建器');
+    logger.error('找不到pc工作台组件构建器');
     return;
   }
 
@@ -67,7 +67,7 @@ export default async (commandContext: ICommandContext) => {
   const event = new EventEmitter();
   
   /**
-   * 启动mock基座来运行插件
+   * 启动mock基座来运行工作台组件
    * @param mockPreviewEnvironmentPath 
    * @param pcPluginDevOpts 
    */
@@ -85,7 +85,7 @@ export default async (commandContext: ICommandContext) => {
       logger.warn('mock start fail', e.message);
     }
   
-    logger.debug(`pc工作台插件预览，将在${mockPreviewEnvironmentPath}路径下启动create-react-app项目来运行mock基座，预览时的配置信息`, pcPluginDevOpts);
+    logger.debug(`pc工作台组件预览，将在${mockPreviewEnvironmentPath}路径下启动create-react-app项目来运行mock基座，预览时的配置信息`, pcPluginDevOpts);
   
     const cp = spawn(
       'npm',
@@ -118,7 +118,7 @@ export default async (commandContext: ICommandContext) => {
     });
   
     cp.on('error', (err)=>{
-      logger.error('pc工作台插件 dev server启动失败', err.message);
+      logger.error('pc工作台组件 dev server启动失败', err.message);
       monitor.logJSError(err);
     });
   }
@@ -159,7 +159,7 @@ export default async (commandContext: ICommandContext) => {
       }, 500);
       isInit = true;
     } else if(msg.indexOf('ERROR in') !== -1) {
-      logger.error('pc工作台插件本地构建失败', msg);
+      logger.error('pc工作台组件本地构建失败', msg);
       clearTimeout(firstBuildTimer);
       buildCp.kill();
       monitor.logJSError(new Error(msg));
@@ -167,7 +167,7 @@ export default async (commandContext: ICommandContext) => {
   });
 
   buildCp.on('error', (err) => {
-    logger.error('pc工作台插件本地构建失败', err.message);
+    logger.error('pc工作台组件本地构建失败', err.message);
     clearTimeout(firstBuildTimer);
     buildCp.kill();
     monitor.logJSError(err);
@@ -175,7 +175,7 @@ export default async (commandContext: ICommandContext) => {
 
   /**
    * start dev server
-   * 本地启动装载可运行插件的基座
+   * 本地启动装载可运行工作台组件的基座
    */
   event.on('first-build-success', startDevServer.bind(null, mockPreviewEnvironmentPath, pcPluginDevOpts));
 };

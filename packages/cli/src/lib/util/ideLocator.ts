@@ -100,7 +100,7 @@ export enum ProjectType {
   DINTALK_BIZ_ISV = 'dingtalk-biz-isv', // 第三方企业应用
   DINGTALK_BIZ = 'dingtalk-biz', // 企业内部应用
   DINGTALK_BIZ_CUSTOM = 'dingtalk-biz-custom', // 企业定制应用
-  DINGTALK_BIZ_WORKTAB_PLUGIN = 'dingtalk-biz-worktab-plugin' // 工作台插件
+  DINGTALK_BIZ_WORKTAB_PLUGIN = 'dingtalk-biz-worktab-plugin' // 工作台组件
 }
 
 /**
@@ -157,25 +157,6 @@ export type IDELauncher = (ideLaunchArgs: IDELaunchArgs) => Promise<void>;
 type IDELauncherCreatorOptions = {
   isDebug?: boolean;
 };
-
-/**
- * 面向用户端，用户通过driver启动IDE时可供填写的参数
- */
-
-export interface IDELaunchOptions {
-  windowMode: 'lite' | 'default';
-  projectUri: string;
-  projectType: ProjectType;
-  // 使用vol-driver连接IDE的渠道名
-  volDriverChannelName: string;
-  // 对于插件项目，必须传入插件小程序的appId
-  appId?: string;
-  disablePublish?: boolean;
-  // 禁止切换到完整模式
-  forceLite?: boolean;
-  // 远程开发模式，适用于CloudIDE等场景
-  remoteDev?: boolean;
-}
 
 /**
  * 基础款IDE启动器，只负责启动IDE到指定项目，不提供连接功能

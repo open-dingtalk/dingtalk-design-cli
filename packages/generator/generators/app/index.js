@@ -40,6 +40,7 @@ const simple_git_1 = __importDefault(require("simple-git"));
 const config_1 = require("../common/config");
 const isValidRepoDirectory_1 = __importDefault(require("../utils/isValidRepoDirectory"));
 const fs_extra_1 = __importStar(require("fs-extra"));
+const getJson_1 = __importDefault(require("../utils/getJson"));
 const git = simple_git_1.default();
 module.exports = class CustomGenerator extends yeoman_generator_1.default {
     constructor(args, opts) {
@@ -127,10 +128,14 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 // filter file which is not seen,
                 // 1. get Directory and filter hidden files
                 // 2. get Directory which starts with appType
-                templateList = originTemplateList.filter(v => v.isDirectory() && isValidRepoDirectory_1.default(v.name, appType)).map(v => ({
-                    name: v.name.slice(sliceIdx),
-                    value: v.name }));
+                templateList = originTemplateList.filter(v => v.isDirectory() && isValidRepoDirectory_1.default(v.name, appType)).map(v => {
+                    const templatePath = path.join(repoLocalPath, v.name, 'config.json');
+                    const configJson = getJson_1.default(templatePath, true, {});
+                    return {
+                        name: `${v.name.slice(sliceIdx)} ${configJson.description ? `- ${configJson.description}` : ''}`,
+                        value: v.name };
 
+                });
                 logger_1.debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
                 if (templateList.length === 0) {
                     this.log(logger_1.error(`模版仓库中，每个模版名必须以 ${appType} 开头`, true));

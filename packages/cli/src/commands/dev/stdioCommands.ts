@@ -79,6 +79,10 @@ export class StdinCommand {
      this.subscribers.push(subscriber);
    }
  
+   tips(): void {
+     logger.tip('在当前命令行中敲入 「help + 回车」可再次查阅可以使用的Stdin命令');
+   }
+
    unsubscribe(command: string): void {
      const targetIndex = this.subscribers.findIndex(s => s.command === command);
      this.subscribers.splice(targetIndex, 1);
@@ -96,7 +100,7 @@ export class StdinCommand {
     .filter(subscriber => subscriber.serialized)
     .map((subscriber, index) => {
       if (subscriber.description) {
-        return ` - ${whiteHighlight(subscriber.command)}: ${chalk.gray(subscriber.description)}`;
+        return ` - ${whiteHighlight(subscriber.command)}: ${subscriber.description}`;
       }
       return '';
     }).filter(v => v).join('\n  ')

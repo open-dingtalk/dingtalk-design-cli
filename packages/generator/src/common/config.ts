@@ -51,7 +51,7 @@ interface HUB {
 export const HUBS_CONFIG: HUB[] = [
   {
     key: APP_TYPE_ENUM.PLUGIN,
-    name: '自定义组件',
+    name: '工作台组件',
     repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git',
   },
   {

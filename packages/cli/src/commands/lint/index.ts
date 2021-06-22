@@ -11,7 +11,7 @@ interface ICommandOptions {
  * 不直接支持存量项目，但会引导支持，比如如何创建ding.config.json
  * 
  * 校验逻辑：
- * 插件
+ * 工作台组件
  * - 有miniAppId和token，拉取rc和权限点来校验
  * - 无miniAppId或token，用通用rc来校验，参考dingtalk-worktab-plugin-script中的defaultRc
  * 

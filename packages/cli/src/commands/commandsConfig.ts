@@ -10,7 +10,7 @@ const commandsConfig: {
   [ECommandName.dev]: {
     command: {
       name: ECommandName.dev,
-      description: '开发调试小程序、h5微应用和工作台插件，支持预览、上传、本地校验',
+      description: '开发调试小程序、h5微应用和工作台组件，支持预览、上传、本地校验',
     },
   },
 
@@ -57,7 +57,7 @@ const commandsConfig: {
   [ECommandName.preview]: {
     command: {
       name: ECommandName.preview,
-      description: '生成二维码，扫码预览本地构建出来的小程序或插件',
+      description: '生成二维码，扫码预览本地构建出来的小程序或工作台组件',
     },
   },
 

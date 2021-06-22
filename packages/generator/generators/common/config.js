@@ -33,7 +33,7 @@ exports.DEFAULT_DIRECTORY_SEPERATOR = '_';
 exports.HUBS_CONFIG = [
 {
     key: constants_1.APP_TYPE_ENUM.PLUGIN,
-    name: '自定义组件',
+    name: '工作台组件',
     repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git' },
 
 {
