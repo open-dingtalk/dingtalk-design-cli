@@ -2,6 +2,9 @@ import { getOrDownloadIDE, createIdeShellSimpleLauncher, ProjectType, } from './
 import { logWithSpinner, successSpinner, } from '../cli-shared-utils/lib/spinner';
 import sleep from './sleep';
 import { locateMiniStudioBinPath, } from './ideLocator';
+import { URI, } from 'vscode-uri';
+
+export const path2Uri = (p: string): string => URI.file(p).toString();
 
 /**
  * 单纯启动IDE，不进行编译托管
@@ -12,15 +15,21 @@ export const launchIDEOnly = async (
   projectType: ProjectType,
   binPath?: string, // 如果传入binPath则使用binPath指定的ide来启动
 ): Promise<void> => {
-  const ideInstallRoot = await getOrDownloadIDE();
+  let miniStudioBinPath = '';
+  if (binPath) {
+    miniStudioBinPath = binPath;
+  } else {
+    const ideInstallRoot = await getOrDownloadIDE();
+    miniStudioBinPath = locateMiniStudioBinPath(ideInstallRoot);
+  }
+
   logWithSpinner(useLite ? 'IDE Lite模式启动中' : 'IDE启动中');
   
-  const miniStudioBinPath = binPath || locateMiniStudioBinPath(ideInstallRoot);
   createIdeShellSimpleLauncher(miniStudioBinPath, {
     isDebug: !!process.env.DEBUG,
   })({
     windowMode: useLite ? 'lite' : 'default',
-    projectUri: `file://${encodeURI(projectPath)}`,
+    projectUri: path2Uri(projectPath),
     projectType,
     volDriverChannelName: 'mini',
   });

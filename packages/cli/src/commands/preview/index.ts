@@ -27,7 +27,7 @@ export default CommandWrapper<ICommandOptions>({
         }
 
         if ([EAppType.MP, EAppType.PLUGIN].indexOf(dtdConfig.type as EAppType) === -1) {
-          ctx.logger.error('preview命令只支持小程序或工作台组件');
+          ctx.logger.error(`${ECommandName.preview} 命令只支持小程序或工作台组件`);
           return;
         }
 

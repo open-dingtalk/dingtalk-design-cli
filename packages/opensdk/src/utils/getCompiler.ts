@@ -30,7 +30,6 @@ async function getCompiler() {
           options.env.BUILD_PKG_ENGINE = 'tiny';
           options.env.NODE_OPTIONS = undefined;
           options.stdio = ['pipe', 'pipe', 'pipe', 'ipc'];
-          options.shell = process.platform === 'win32';
           return spawn(compilerPath, [type, ...argv], options);
         },
       },
@@ -42,7 +41,6 @@ async function getCompiler() {
           options.env.BUILD_PKG_ENGINE = 'cube';
           options.env.NODE_OPTIONS = undefined;
           options.stdio = ['pipe', 'pipe', 'pipe', 'ipc'];
-          options.shell = process.platform === 'win32';
           return spawn(compilerPath, argv, options);
         },
       },
