@@ -206,11 +206,15 @@ export enum EApiName {
 }
 
 export enum EStdioCommands {
+  /** 小程序/工作台组件通用 */
   IDE = 'ide', // 打开ide lite版
   QRCODE = 'qrcode', // 生成预览二维码
-  PC = 'pc', // 在pc端钉钉预览工作台组件
   UPDATE_CONFIG = 'updateConfig', // 更新ding.config.json里的字段
   UPLOAD = 'upload', // 上传小程序或工作台组件
   LINT = 'lint', // 格式/业务校验
   HELP = 'help', // 再次输出stdio命令简介
+
+  /** 工作台组件独有 */
+  PC = 'pc', // 在pc端钉钉预览工作台组件
+  CREATE_PLUGIN_COMPONENT = 'createPluginComponent', // 创建插件组件
 }

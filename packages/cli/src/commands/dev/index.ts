@@ -21,6 +21,7 @@ import lint from '../../actions/lint';
 import commmandsConfig from '../commandsConfig';
 import { execSync, } from 'child_process';
 import inquirer from 'inquirer';
+import createPluginComponent from '../../actions/createPluginComponent';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -190,6 +191,16 @@ export default CommandWrapper<ICommandOptions>({
               }
             },
           });
+
+          if (isPlugin) {
+            GlobalStdinCommand.subscribe({
+              command: EStdioCommands.CREATE_PLUGIN_COMPONENT,
+              description: '在当前命令行中敲入 「createPluginComponent <componentName> + 回车」 可以在本地快速创建一个组件',
+              action: async (args) => {
+                await createPluginComponent(ctx, args);
+              },
+            });
+          }
 
           if (isPcPlugin) {
             GlobalStdinCommand.subscribe({
