@@ -249,6 +249,7 @@ export default CommandWrapper<ICommandOptions>({
             {
               stdio: 'inherit',
               env: process.env,
+              shell: isWindows,
             }
           );
           cp.on('error', (err) => {

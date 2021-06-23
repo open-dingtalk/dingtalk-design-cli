@@ -1,6 +1,7 @@
 import { spawn, } from 'child_process';
 import { getLogger, } from '../cli-shared-utils/lib/logger';
 import stripAnsi from 'strip-ansi';
+import { isWindows, } from '../cli-shared-utils';
 
 const logger = getLogger('gulpInspector');
 
@@ -33,6 +34,7 @@ export default (gulpBin: string, opts: {
       stdio: 'pipe',
       cwd,
       env: process.env,
+      shell: isWindows,
     }
   );
 
