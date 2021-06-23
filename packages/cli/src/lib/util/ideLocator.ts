@@ -201,6 +201,7 @@ export const createIdeShellSimpleLauncher = (
       detached: true,
       // 非Debug时忽略IDE的输出
       stdio: ['inherit', options.isDebug ? 'inherit' : 'ignore', options.isDebug ? 'inherit' : 'ignore'],
+      shell: isWindows,
     },
   );
   launchProcess.unref();

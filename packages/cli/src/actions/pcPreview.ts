@@ -12,6 +12,7 @@ import open from 'open';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
 import stripAnsi from 'strip-ansi';
+import { isWindows, } from '../lib/cli-shared-utils';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -99,6 +100,7 @@ export default async (commandContext: ICommandContext) => {
         stdio: 'pipe',
         cwd: mockPreviewEnvironmentPath,
         env: process.env,
+        shell: isWindows,
       }
     );
   
@@ -143,6 +145,7 @@ export default async (commandContext: ICommandContext) => {
       stdio: 'pipe',
       cwd,
       env: process.env,
+      shell: isWindows,
     }
   );
   let isInit = false;
