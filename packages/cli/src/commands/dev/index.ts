@@ -196,6 +196,7 @@ export default CommandWrapper<ICommandOptions>({
             GlobalStdinCommand.subscribe({
               command: EStdioCommands.CREATE_PLUGIN_COMPONENT,
               description: '在当前命令行中敲入 「createPluginComponent <componentName> + 回车」 可以在本地快速创建一个组件',
+              serialized: false,
               action: async (args) => {
                 await createPluginComponent(ctx, args);
               },
