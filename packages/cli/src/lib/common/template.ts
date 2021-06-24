@@ -2,19 +2,38 @@ export default {
   pluginComponent: {
     axml: `
     <view class="component-template">
-      这个是组件模板，请复制文件夹创建组件，请在模板代码基础上修改
+      <view>已经成功新建组件模板 <%pluginComponentName%></view>
+      <view>你还需要修改<%&configJsonPath%></view>
+      <view>以及在<%&dtdConfigPath%>中配置组件本地mock数据</view>
+      
+      <view>componentName: {{componentName}}</view>
+      <view>
+      componentProps: 
+        <view a:for="{{componentProps}}" a:for-index="key">
+          {{key}}: {{item}}
+        </view>
+      </view>
+      <view>
+      config: 
+        <view a:for="{{config}}" a:for-index="key">
+          {{key}}: {{item}}
+        </view>
+      </view>
     </view>`,
     acss: `
     .component-template {
       line-height: 32rpx;
       font-size:24rpx;
       padding: 24rpx 36rpx;
+      border: 1px solid;
+      width: 100%;
+      margin-bottom: 20rpx;
     }
     `,
     configJson: `
     {
-      "pluginComponentName": "插件中导出的组件英文名，例如 component-template",
-      "name": "组件模板",
+      "pluginComponentName": "<%pluginComponentName%>",
+      "name": "<%pluginComponentName%>",
       "icon": "组件的icon地址",
       "previewUrl": "组件的预览图CDN地址",
       "previewHeight": 100,

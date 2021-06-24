@@ -15,7 +15,7 @@ import { spawn, } from 'child_process';
 import { isEmpty, } from 'lodash';
 import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import { isMacintosh, isWindows, } from '../../lib/cli-shared-utils';
-import { setJsonItem, } from '../../lib/util/setJson';
+import setJson, { setJsonItem, } from '../../lib/util/setJson';
 import upload from '../../actions/upload';
 import lint from '../../actions/lint';
 import commmandsConfig from '../commandsConfig';
@@ -66,12 +66,14 @@ export default CommandWrapper<ICommandOptions>({
           if (!isEmpty(dtdConfigUpdated)) {
             ctx.logger.success('配置已更新');
             ctx.setDtdConfig(dtdConfigUpdated);
+            // 更改ding.config.json不会触发IDE重新编译，所以需要写一遍mini.project.json来触发重新编译
+            setJson(ctx.miniProgramConfigPath, ctx.miniProgramConfigContent);
 
             if (dtdConfigUpdated.isPcPlugin) {
               GlobalStdinCommand.subscribe({
                 command: EStdioCommands.PC,
                 description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台组件',
-                action: async () => {
+                action: () => {
                   const h5bundle = path.join(__dirname, '../../../h5bundle');
                   execSync(`cd ${h5bundle} && npm i`, {
                     stdio: 'inherit',
@@ -196,7 +198,6 @@ export default CommandWrapper<ICommandOptions>({
             GlobalStdinCommand.subscribe({
               command: EStdioCommands.CREATE_PLUGIN_COMPONENT,
               description: '在当前命令行中敲入 「createPluginComponent <componentName> + 回车」 可以在本地快速创建一个组件',
-              serialized: false,
               action: async (args) => {
                 await createPluginComponent(ctx, args);
               },

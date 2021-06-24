@@ -6,7 +6,7 @@ export function setJsonItem (path: string, key: string, value: any): boolean {
   try {
     const content = getJson(path, false);
     content[key] = value;
-    fs.writeFileSync(path, JSON.stringify(content), {
+    fs.writeFileSync(path, JSON.stringify(content, null, '\t'), {
       encoding: 'utf-8',
     });
     return true;
@@ -18,7 +18,7 @@ export function setJsonItem (path: string, key: string, value: any): boolean {
 
 export default (path: string, value: any) => {
   try {
-    fs.writeFileSync(path, JSON.stringify(value), {
+    fs.writeFileSync(path, JSON.stringify(value, null, '\t'), {
       encoding: 'utf-8',
     });
     return true;
