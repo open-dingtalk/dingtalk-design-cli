@@ -20,7 +20,7 @@ npm install dingtalk-design-cli -g
 yarn global add dingtalk-design-cli
 ```
 
-After installation, you will have access to the `dd` binary in your command line. You can verify that it is properly installed by simply running `dd`, which should present you with a help message listing all available commands.
+After installation, you will have access to the `ding` binary in your command line. You can verify that it is properly installed by simply running `ding`, which should present you with a help message listing all available commands.
 
 You can check you have the right version with this command:
 ```bash
@@ -40,7 +40,7 @@ yarn global upgrade --latest dingtalk-design-cli
 
 To create a new project, run:
 ```bash
-ding init myapp
+ding init -o myapp
 ```
 
 You will be prompted to pick a appType to create:
@@ -56,7 +56,7 @@ Finally you will be prompted to pick a language:
 And you have completed all the initial steps, after installing dependencies, 
 the new project will be initialated to the directory - `myapp`.
 
-The `dd init` command has a number of options and you can explore them all by running:
+The `ding init` command has a number of options and you can explore them all by running:
 ```bash
 ding init --help
 ```
