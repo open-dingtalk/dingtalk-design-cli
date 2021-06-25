@@ -153,9 +153,12 @@ export default (commandContext: ICommandContext, args: any[]): Promise<void> => 
   const parsedJson = parser.parse(pageIndexAxml, parserOpts);
   const injectComponentOpts = {
     attr: {
+      id: `{{componentsData['${componentDirName}'].id}}`,
       componentName: `{{componentsData['${componentDirName}'].componentName}}`,
       componentProps: `{{componentsData['${componentDirName}'].props}}`,
-      config: '{{config}}',
+      config: `{{componentsData['${componentDirName}'].config}}`,
+      mode: `{{componentsData['${componentDirName}'].mode}}`,
+      locale: `{{componentsData['${componentDirName}'].locale}}`,
     },
   };
   const viewOpts = parsedJson['view'];
@@ -176,9 +179,14 @@ export default (commandContext: ICommandContext, args: any[]): Promise<void> => 
   set(dtdConfig, 'devConfig.mock.componentsData', {
     ...get(dtdConfig, 'devConfig.mock.componentsData', {}),
     [componentDirName]: {
-      pluginComponentName: componentDirName,
+      id: '',
+      mode: 'light',
       componentName: componentDirName,
-      props: {},
+      componentProps: {},
+      locale: 'zh_CN',
+      config: {
+        corpId: '',
+      },
     },
   });
   
