@@ -49,6 +49,7 @@ export class FrameworkMonitor {
       yuyanId: opts.yuyanId,
       _appId: opts._appId,
       env: opts.env || getDefaultEnv(),
+      userId: this.username,
     });
     this.pendingLogItems = [];
   }

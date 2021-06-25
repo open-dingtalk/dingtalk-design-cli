@@ -36,6 +36,7 @@ export interface IMonitorOpts {
   yuyanId?: string;
   _appId?: string;
   env?: any;
+  userId?: string;
 }
 
 export default class Monitor implements IMonitor {

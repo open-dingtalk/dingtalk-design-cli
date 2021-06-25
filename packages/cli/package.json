@@ -83,6 +83,7 @@
     "tsc-watch": "^4.4.0",
     "urlencode": "^1.1.0",
     "urllib": "^2.37.1",
+    "username": "^5.1.0",
     "vscode-uri": "^3.0.2",
     "which": "^2.0.2",
     "yargs-unparser": "^2.0.0",

@@ -1,8 +1,8 @@
-import { execSync, } from 'child_process';
+import * as username from 'username';
 
-let me: string;
+let me = '';
 
-export default function whoami() {
-  me = me || execSync('tnpm whoami', { stdio: 'pipe', }).toString().trim();
-  return me;
+export default function whoami(): string {
+  me = me || username.sync();
+  return me || 'N/A';
 }
