@@ -1,16 +1,14 @@
 # DingTalk Design CLI [![Build Status](https://circleci.com/gh/open-dingtalk/dingtalk-design-cli.svg?style=shield)](https://circleci.com/gh/open-dingtalk/dingtalk-design-cli/tree/develop)  [![Windows Build status](https://ci.appveyor.com/api/projects/status/hi7uu5rnbs4x9vas/branch/develop?svg=true)](https://ci.appveyor.com/project/lou1swu/dingtalk-design-cli/branch/develop) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-> DingTalk Design CLI is the Standard Tooling for DingTalk Application Development.
-
+> DingTalk Design CLI 是面向钉钉开放平台小程序、h5微应用、工作台组件的研发命令行工具。提供对小程序、h5微应用、工作台组件的初始化、开发调试、本地校验、构建预览、上传等功能。
 <br/>
 
-## Installation
+## 安装
 <br/>
 
-> **Node Version Requirement**  
-DingDing Cli requires Node.js version 12.15.x or above. You can manage multiple versions of Node on the same machine with [n](https://github.com/tj/n), [nvm](https://github.com/creationix/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+> DingTalk Design CLI需要Nodejs版本不小于12.15.x. 你可以通过 [n](https://github.com/tj/n), [nvm](https://github.com/creationix/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows)来管理本地多个Nodejs版本.
 
-To install the new package, use one of the following commands
+可以通过以下命令来安装 DingTalk Design CLI
 
 ```bash
 npm install dingtalk-design-cli -g
@@ -19,62 +17,53 @@ npm install dingtalk-design-cli -g
 
 yarn global add dingtalk-design-cli
 ```
-
-After installation, you will have access to the `ding` binary in your command line. You can verify that it is properly installed by simply running `ding`, which should present you with a help message listing all available commands.
-
-You can check you have the right version with this command:
+安装后，你可以通过`ding`命令来使用 DingTalk Design CLI 的功能。
+通过以下命令检测 DingTalk Design CLI 已经成功安装:
 ```bash
-ding --version
+ding -v
 ```
 
-### Upgrading
-To upgrade the global DingTalk Design CLI package, you need to run:
+通过以下命令查阅`ding`命令支持的功能：
+```bash
+ding -h
+```
+
+### 更新
+如果你之前已经安装过 DingTalk Design CLI，可以通过以下命令进行升级:
 ```bash
 npm update -g dingtalk-design-cli
 
 # OR
 yarn global upgrade --latest dingtalk-design-cli
 ```
-## Quick Start
+## 快速入门
 <br/>
 
-To create a new project, run:
+首先，通过以下命令初始化一个本地项目:
 ```bash
-ding init -o myapp
+ding init -o mpTest
 ```
 
-You will be prompted to pick a appType to create:
-![https://i01.lw.aliimg.com/media/lALPDgCwRQjFyV3NA8bNBdI_1490_966.png](https://i01.lw.aliimg.com/media/lALPDgCwRQjFyV3NA8bNBdI_1490_966.png)
+1. 以小程序为例，选择应用类型为`小程序`:
+![image](https://user-images.githubusercontent.com/27557494/123395738-2164c500-d5d3-11eb-81a8-d3f63c4edfc1.png)
 
 
-Then you will be prompted to pick a template:
-![https://i01.lw.aliimg.com/media/lALPDetfTSxLX5_NA8bNBdI_1490_966.png](https://i01.lw.aliimg.com/media/lALPDetfTSxLX5_NA8bNBdI_1490_966.png)
+2. 然后选择一个小程序模版`default`:
+![image](https://user-images.githubusercontent.com/27557494/123396681-2d9d5200-d5d4-11eb-9f7e-2ae646d1b524.png)
 
-Finally you will be prompted to pick a language:
-![https://i01.lw.aliimg.com/media/lALPDf0ixn4LtVbNBKTNBbQ_1460_1188.png](https://i01.lw.aliimg.com/media/lALPDf0ixn4LtVbNBKTNBbQ_1460_1188.png)
 
-And you have completed all the initial steps, after installing dependencies, 
-the new project will be initialated to the directory - `myapp`.
+3. 最后选择开发语言为`javascript`:
+![image](https://user-images.githubusercontent.com/27557494/123396721-3aba4100-d5d4-11eb-9eb5-2b08f8c18157.png)
 
-The `ding init` command has a number of options and you can explore them all by running:
-```bash
-ding init --help
-```
-```
-Usage: ding init [options] [outDir]
 
-Create a new project
+4. 到这里，你已经完成了所有初始化步骤，已经初始化了一个项目到`mpTest`目录下了
+![image](https://user-images.githubusercontent.com/27557494/123396313-bff12600-d5d3-11eb-94c7-c6e907b4ba26.png)
 
-Arguments:
-  outDir                         Type where to create the project
 
-Options:
-  -a, --appType [appType]        Skip prompts and use specified appType
-  -t, --template [template]      Skip prompts and use specified template, default etc.
-  -l, --language [language]      Skip prompts and use specified language, js, ts etc.
-  --skip-install [skip-install]  Skip install the dependencies.
-  -h, --help                     display help for command
-```
+5. 最后，进入`mpTest`项目目录，并执行`ding dev`就可以开启调试了
+![image](https://user-images.githubusercontent.com/27557494/123396379-d303f600-d5d3-11eb-988b-baf46d652f3c.png)
+
+
 ## License
 
 [MIT](https://github.com/open-dingtalk/dingtalk-design-cli/blob/develop/LICENSE)
