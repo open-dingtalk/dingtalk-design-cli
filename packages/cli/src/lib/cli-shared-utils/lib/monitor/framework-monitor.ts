@@ -192,7 +192,7 @@ export class FrameworkMonitor {
       d3: this.commandName,
       d4: apiName,
       c1: process.argv,
-      c2: params,
+      c2: JSON.stringify(params),
       c3: body,
     }));
     this.lazyFlush();
