@@ -121,7 +121,7 @@ export default class CommandContextFactory implements ICommandContext {
     3. 拿到miniAppId后，在当前命令行输入「updateConfig miniAppId <miniAppId> + 回车」进行配置更新
 
     「如何获取API Token」
-    1. 参考开发者文档 https://developers.dingtalk.com/document/resourcedownload/dingtalk-design-cli?pnamespace=app
+    1. 参考开发者文档 https://developers.dingtalk.com/document/app/used-to-obtain-the-application-authorization-without-api-token
     2. 拿到token后，在当前命令行输入「updateConfig token <token> + 回车」进行配置更新
     
     在设置好miniAppId和token之后，在当前命令行输入「${commandName} + 回车」 即可正常使用
