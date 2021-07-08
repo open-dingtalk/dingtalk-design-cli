@@ -54,7 +54,7 @@ export default CommandWrapper<ICommandOptions>({
         ctx.logger.debug('cli options', options);
         const env = yeomanRuntime.createEnv();
         const {
-          outDir,
+          outDir = '',
         } = options;
         const done = (err)=>{
           if (err) {

@@ -83,7 +83,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
         monitor.logApiInvoke(EApiName.GET_UPLOAD_STATUS);
 
         // @ts-ignore
-        const logId = path.basename(data.logUrl);
+        const logId = path.basename(data.logUrl || '');
         // @ts-ignore
         const log = data.log;
 
@@ -97,7 +97,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
             hasDone = true;
           }
         } else if (status === EBuildStatusText.building) {
-          logWithSpinner(`构建中，正在查询构建结果， logId: ${logId}`);
+          logWithSpinner(`构建中，正在查询构建结果。 ${logId ? `logId: ${logId}` : ''}`);
         } else if (status === EBuildStatusText.overtime) {
           failSpinner('构建超时，请重试');
           commandContext.logger.error(log);

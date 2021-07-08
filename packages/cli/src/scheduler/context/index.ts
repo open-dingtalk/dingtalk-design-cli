@@ -111,6 +111,7 @@ export default class CommandContextFactory implements ICommandContext {
    */
   public logTips(appType: EAppType, commandName: EStdioCommands): void {
     if ([EAppType.MP, EAppType.PLUGIN].indexOf(appType) === -1) return;
+    const isDevCommand = this._commandName === ECommandName.dev;
 
     this._logger.info(`
     「如何获取miniAppId」
@@ -118,11 +119,11 @@ export default class CommandContextFactory implements ICommandContext {
     ${appType === EAppType.MP 
     ? '2. 选中一个小程序，在基础信息界面可以看到小程序的miniAppId'
     : '2. 进入页面 https://open-dev.dingtalk.com/v1/fe/old#/plugin，可以获取工作台组件的miniAppId'}
-    3. 拿到miniAppId后，在当前命令行输入「updateConfig miniAppId <miniAppId> + 回车」进行配置更新
+    3. 拿到miniAppId后，${isDevCommand ? '在当前命令行输入「updateConfig miniAppId <miniAppId> + 回车」进行配置更新' : `更新配置文件${config.workspaceRcName}中的miniAppId字段`}
 
     「如何获取API Token」
     1. 参考开发者文档 https://developers.dingtalk.com/document/app/used-to-obtain-the-application-authorization-without-api-token
-    2. 拿到token后，在当前命令行输入「updateConfig token <token> + 回车」进行配置更新
+    2. 拿到token后，${isDevCommand ? '在当前命令行输入「updateConfig token <token> + 回车」进行配置更新' : `更新配置文件${config.workspaceRcName}中的token字段`}
     
     在设置好miniAppId和token之后，在当前命令行输入「${commandName} + 回车」 即可正常使用
     `);
