@@ -51,7 +51,7 @@ export class BuildTask extends TaskBase<IBuildTaskParams> {
     const packSourceResult = await compiler.runPackSource({
       input: this.projectDir,
       output: this.outputDir,
-      fileName: 'dist.tar',
+      fileName: 'dist',
     });
 
     if (packSourceResult.size > PREVIEW_PACKAGE_SIZE_LIMIT) {
