@@ -34,14 +34,14 @@ exports.HUBS_CONFIG = [
 {
     key: constants_1.APP_TYPE_ENUM.PLUGIN,
     name: '工作台组件',
-    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git' },
+    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git' },
 
 {
     key: constants_1.APP_TYPE_ENUM.MP,
     name: '小程序',
-    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git' },
+    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git' },
 
 {
     key: constants_1.APP_TYPE_ENUM.H5,
     name: 'H5微应用',
-    repoRemotePath: 'https://github.com/open-dingtalk/dd-application-template.git' }];
+    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git' }];
