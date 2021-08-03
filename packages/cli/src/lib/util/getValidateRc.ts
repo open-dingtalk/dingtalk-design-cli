@@ -6,6 +6,10 @@ import {
 } from '../sevice/index';
 import { IRcJson, } from 'dingtalk-worktab-plugin-script/dist/src/types/index';
 import { logger, } from '../cli-shared-utils/lib/logger';
+import getMonitor from '../cli-shared-utils/lib/monitor/framework-monitor';
+import config from '../common/config';
+
+const monitor = getMonitor(config.yuyanId);
 
 export default (miniAppId: string, token: string, isPcPlugin: boolean): Promise<IRcJson> => {
   const ruleCheckInfosPromise = getRuleCheckInfos(miniAppId, token);
@@ -28,13 +32,18 @@ export default (miniAppId: string, token: string, isPcPlugin: boolean): Promise<
       const supportEnvironment = ['mobile'];
       if (isPcPlugin) supportEnvironment.push('pc');
 
-      const rcJson = pluginRuleCheckDetail.replace(`${packCode}_apiList`, permissionPointList.toString());
-      const packRcJson = JSON.parse(rcJson)[packCode];
-      logger.debug('validate rc', packRcJson);
-      packRcJson.supportEnvironment = supportEnvironment;
-      return packRcJson;
+      const parsedConfig = JSON.parse(pluginRuleCheckDetail);
+      const targetConfig = parsedConfig[packCode] || {};
+      const reg = new RegExp(`"\\$\{${packCode}_apiList}"`);
+
+      targetConfig.supportEnvironment = supportEnvironment;      
+      const rcJson = JSON.stringify(targetConfig).replace(reg, JSON.stringify(permissionPointList));
+      
+      logger.debug('validate rc', rcJson);
+      return JSON.parse(rcJson);
     }).catch(e => {
       logger.debug('getValidateRc fail', e);
+      monitor.logJSError(new Error(e));
       return null;
     });
 };
