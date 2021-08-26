@@ -14,7 +14,7 @@ export default CommandWrapper<ICommandOptions>({
   name: ECommandName.upload,
   registerCommand(ctx) {
     return {
-      ...commmandsConfig.upload,
+      ...commmandsConfig[ECommandName.upload],
       action: async (options) => {
         const {
           dtdConfig,

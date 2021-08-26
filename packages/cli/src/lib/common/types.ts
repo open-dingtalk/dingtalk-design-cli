@@ -209,6 +209,7 @@ export enum EStdioCommands {
   /** 小程序/工作台组件通用 */
   IDE = 'ide', // 打开ide lite版
   QRCODE = 'qrcode', // 生成预览二维码
+  QRCODE_DEBUG = 'qrcode:debug', // 生成真机调试二维码
   UPDATE_CONFIG = 'updateConfig', // 更新ding.config.json里的字段
   UPLOAD = 'upload', // 上传小程序或工作台组件
   LINT = 'lint', // 格式/业务校验
