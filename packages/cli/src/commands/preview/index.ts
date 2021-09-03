@@ -4,10 +4,10 @@ import { EAppType, ECommandName, } from '../../lib/common/types';
 import commmandsConfig from '../commandsConfig';
 import config from '../../lib/common/config';
 
-interface ICommandOptions {
+export interface ICommandOptions {
   miniAppId?: string;
-  version?: string;
   token?: string;
+  debug?: boolean;
 }
 
 export default CommandWrapper<ICommandOptions>({
@@ -31,7 +31,7 @@ export default CommandWrapper<ICommandOptions>({
           return;
         }
 
-        qrcode(ctx);
+        qrcode(ctx, options);
       },
     };
   },

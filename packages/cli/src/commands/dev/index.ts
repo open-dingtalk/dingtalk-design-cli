@@ -169,6 +169,18 @@ export default CommandWrapper<ICommandOptions>({
           });
 
           GlobalStdinCommand.subscribe({
+            command: EStdioCommands.QRCODE_DEBUG,
+            description: '在当前命令行中敲入 「qrcode:debug + 回车」 可以生成真机调试二维码',
+            action: async () => {
+              await qrcodeAction(ctx, {
+                debug: true,
+              });
+              ctx.logger.warn('当前真机调试功能仅支持android端(大于6.0.27版本)小程序、android端(大于6.0.27版本)插件，ios端(大于6.0.1版本)小程序。ios端插件暂不支持');
+              GlobalStdinCommand.tips();
+            },
+          });
+
+          GlobalStdinCommand.subscribe({
             command: EStdioCommands.UPLOAD,
             description: '在当前命令行中敲入 「upload + 回车」 可以上传小程序或工作台组件到开发者后台',
             action: async () => {

@@ -59,6 +59,21 @@ const commandsConfig: {
       name: ECommandName.preview,
       description: '生成二维码，扫码预览本地构建出来的小程序或工作台组件',
     },
+    options: {
+      miniAppId: {
+        description: `[可选] 钉钉小程序或工作台组件的miniAppId。默认从当前工作目录下的 ${config.workspaceRcName} 中读取`,
+        type: 'string',
+      },
+      token: {
+        description: `[可选] API访问凭证，默认从当前工作目录下的 ${config.workspaceRcName} 中读取，生成方式参考 https://developers.dingtalk.com/document/app/used-to-obtain-the-application-authorization-without-api-token`,
+        type: 'string',
+      },
+      debug: {
+        description: '[可选] 生成真机调试二维码，可配合ChromeDevtools进行真机调试',
+        type: 'boolean',
+        shortcut: 'd',
+      },
+    },
   },
 
   [ECommandName.upload]: {

@@ -10,6 +10,7 @@ import superagent from 'superagent';
 import chalk from 'chalk';
 import * as qrcode from 'qr-image';
 import * as consolePng from 'console-png';
+import open from 'open';
 
 consolePng.attachTo(console);
 
@@ -66,7 +67,7 @@ export async function fetchDebugParams(): Promise<IDebugParams> {
 }
 
 export function getWebDevToolsPage({ channelId, tyroId, }: IDebugParams): string {
-  return `https://render.alipay-eco.com/p/s/devtools-web/index.html?ch2=${tyroId}&chInfo=local`;
+  return `https://render.alipay-eco.com/p/s/devtools-web/index.html?ch2=${tyroId}&chInfo=dingtalk-mini-app`;
 }
 
 export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
@@ -125,9 +126,6 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
     if (compileResult.enableSubPack) {
       subPackages = await this.transformSubPackage(compileResult.subPackages);
     }
-
-    // const devUrl = await getWebDevToolsPage(debugParams);
-    // console.log(devUrl);
     
     // runLocalBuildParams
     const previewParams: IPreviewBuildParams = {
@@ -149,13 +147,14 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
       // channel: debugParams.channelId,
       // tyroid: debugParams.tyroId,
     };
-    if (runLocalBuildParams.buildTarget === EBuildTarget.RemoteXLite) {
+    if (runLocalBuildParams.buildTarget === EBuildTarget.RemoteXLite || runLocalBuildParams.buildTarget === EBuildTarget.RemoteX) {
       previewParams.is_remote_x = true;
       previewParams.channel = debugParams.channelId;
       previewParams.tyroid = debugParams.tyroId;
     }
 
     const task = await this.openApi.createPreviewBuildTask(previewParams);
+    const devUrl = await getWebDevToolsPage(debugParams);
 
     return new Promise<string>((resolve, reject) => {
       const start = Date.now();
@@ -181,8 +180,9 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
             });
             console['png'](buffer);
             console.log(chalk.green('scheme:'), result.result_url);
+            console.log(chalk.green('devtools:'), devUrl);
             resolve(result.result_url || '');
-
+            open(devUrl);
             // tracker.retCode(EBuildTarget.Preview, true, Date.now() - startTime, options.miniAppId);
           } else {
             if (duration > timeout) {

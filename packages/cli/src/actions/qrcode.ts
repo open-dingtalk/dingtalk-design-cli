@@ -5,22 +5,25 @@ import { failSpinner, successSpinner, } from '../lib/cli-shared-utils/lib/spinne
 import { logger, } from '../lib/cli-shared-utils/lib/logger';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
+import { ICommandOptions, } from '../commands/preview';
+import { get, } from 'lodash';
 
 const monitor = getMonitor(config.yuyanId);
 
 /**
  * 小程序与普通工作台组件 - 本地构建、上传debug包、生成预览二维码
  */
-export default async (commandContext: ICommandContext) => {
+export default async (
+  commandContext: ICommandContext, 
+  options?: ICommandOptions
+) => {
   const {
     dtdConfig,
     cwd,
   } = commandContext;
 
-  const {
-    token,
-    miniAppId,
-  } = dtdConfig;
+  const miniAppId = get(options, 'miniAppId') || dtdConfig.miniAppId;
+  const token = get(options, 'token') || dtdConfig.token;
 
   if (!token || !miniAppId) {
     logger.error('缺少必要参数 miniAppId 或 token');
@@ -52,6 +55,11 @@ export default async (commandContext: ICommandContext) => {
     ignoreWebViewDomainCheck: true,
     buildTarget: EBuildTarget.Preview,
   };
+
+  if (options?.debug) {
+    previewPlainParams.buildTarget = EBuildTarget.RemoteXLite;
+  }
+
   try {
     await opensdk.previewBuild({
       ...previewPlainParams,
