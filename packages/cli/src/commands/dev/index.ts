@@ -175,7 +175,7 @@ export default CommandWrapper<ICommandOptions>({
               await qrcodeAction(ctx, {
                 debug: true,
               });
-              ctx.logger.warn('当前真机调试功能仅支持小程序及android端插件，ios端插件暂不支持');
+              ctx.logger.warn('当前真机调试功能仅支持android端(大于6.0.27版本)小程序、android端(大于6.0.27版本)插件，ios端(大于6.0.1版本)小程序。ios端插件暂不支持');
               GlobalStdinCommand.tips();
             },
           });
