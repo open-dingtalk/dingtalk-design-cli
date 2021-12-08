@@ -180,9 +180,14 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
             });
             console['png'](buffer);
             console.log(chalk.green('scheme:'), result.result_url);
-            console.log(chalk.green('devtools:'), devUrl);
+
+            // debug模式下才输出devtools链接和打开devtools页面
+            if (previewParams.is_remote_x) {
+              console.log(chalk.green('devtools:'), devUrl);
+              open(devUrl);
+            }
+            
             resolve(result.result_url || '');
-            open(devUrl);
             // tracker.retCode(EBuildTarget.Preview, true, Date.now() - startTime, options.miniAppId);
           } else {
             if (duration > timeout) {
