@@ -109,3 +109,4 @@ package-lock.json
 
 # ide
 .vscode
+.DS_Store
