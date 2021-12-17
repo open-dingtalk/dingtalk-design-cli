@@ -12,11 +12,11 @@ export default {
     binStoreDir: path.join(homeDir, '.dd-h5bundle-bin'),
     platforms: {
       win32: {
-        binDownloadUrl: 'https://aci-store.cn-hangzhou-alipay-b.oss-cdn.aliyun-inc.com/aci/aci-artifacts-20210402165651-55d67c44-943b-4eba-ac2b-2ebcca80ef38/packages/toolkit/bin/h5pro-component-win.exe.tar.gz',
+        binDownloadUrl: 'https://aci-store.cn-hangzhou-alipay-b.oss-cdn.aliyun-inc.com/aci/aci-artifacts-20210831180839-ed8a773c-a870-4d15-867a-6712b045d1e4/packages/toolkit/bin/h5pro-component-win.exe.tar.gz',
         binExtractPath: '',
       },
       darwin: {
-        binDownloadUrl: 'https://aci-store.cn-hangzhou-alipay-b.oss-cdn.aliyun-inc.com/aci/aci-artifacts-20210402165651-55d67c44-943b-4eba-ac2b-2ebcca80ef38/packages/toolkit/bin/h5pro-component-macos.tar.gz',
+        binDownloadUrl: 'https://aci-store.cn-hangzhou-alipay-b.oss-cdn.aliyun-inc.com/aci/aci-artifacts-20210831180839-ed8a773c-a870-4d15-867a-6712b045d1e4/packages/toolkit/bin/h5pro-component-macos.tar.gz',
         binExtractPath: 'home/jenkins/agent/aci/packages/toolkit/bin/h5pro-component-macos',
       },
     },
