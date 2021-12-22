@@ -5,13 +5,13 @@ import rule from './rule';
 function closeProxy() {
   AnyProxy.utils.systemProxyMgr.disableGlobalProxy('https');
 }
-export default function({ miniAppId }) {
+export default function({ miniAppId, cwd }) {
   // 系统全局代理
   AnyProxy.utils.systemProxyMgr.enableGlobalProxy('127.0.0.1', '8001','https');
 
   const options: ProxyOptions = {
     port: 8001,
-    rule: rule({ miniAppId }),
+    rule: rule({ miniAppId, cwd }),
     webInterface: {
       enable: true,
       webPort: 8002

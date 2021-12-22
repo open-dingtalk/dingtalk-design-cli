@@ -70,7 +70,7 @@ export default async (commandContext: ICommandContext) => {
     }).listen(port);
     logger.info(`bundle构建成功，地址: http://localhost:${port}/index.js?pluginId=${miniAppId}`);
     // 本地代理线上地址
-    proxy({ miniAppId });
+    proxy({ miniAppId, cwd });
   }
 
   /**

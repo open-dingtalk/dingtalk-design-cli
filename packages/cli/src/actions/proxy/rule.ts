@@ -1,6 +1,11 @@
+import * as pth from 'path';
+import * as fs from 'fs';
+import * as fse from 'fs-extra';
+
+let bizType = '';
 // 本地代理
 // anyproxy --intercept --rule proxy.js
-export default function ({ miniAppId }) {
+export default function ({ miniAppId, cwd }) {
   return {
     summary: 'a rule to modify response',
     // eslint-disable-next-line require-yield
@@ -35,8 +40,17 @@ export default function ({ miniAppId }) {
           || path.indexOf('aflow.dingtalk.com/dingtalk/web/query/oaDesigner') > -1)
           && newResponse.header['Content-Type']?.indexOf('text/html') > -1
           && reqHeaders.headers['Accept']?.indexOf('html') > -1) {
+
+        if(!bizType) {
+          try {
+            const config = fse.readJsonSync(pth.join(cwd, './src/plugin/components/config.json'));
+            bizType = config.bizType;
+          }catch(e){
+            console.error('config.json读取失败，请检查后重试', e);
+          }   
+        }
         let nRes = newResponse.body.toString();
-        const script = `<script>window.__SUITE_DEV_MINIAPP={miniAppId:'${miniAppId}'}</script>`;
+        const script = `<script>window.__SUITE_DEV_MINIAPP={miniAppId:'${miniAppId}',bizType:'${bizType}'}</script>`;
         nRes = nRes.replace(/<head>/i, function(i: string){
           return i + script;
         });

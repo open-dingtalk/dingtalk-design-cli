@@ -9,7 +9,7 @@ const { green } = chalk;
  * 代理本地代码
  * @param argv
  */
-async function proxy({ miniAppId }): Promise<void> {
+async function proxy({ miniAppId, cwd }): Promise<void> {
   const spinner = ora('本地代理中...');
   spinner.start();
 
@@ -33,7 +33,7 @@ async function proxy({ miniAppId }): Promise<void> {
     spinner.stop();
     return;
   }
-  proxyHttp({ miniAppId });
+  proxyHttp({ miniAppId, cwd });
   spinner.succeed(`${green('本地代理成功')}\n${green('手机端代理地址：' + getIPAdress() +':8001')}`);
 }
 
