@@ -10,6 +10,7 @@ import config from '../lib/common/config';
 import stripAnsi from 'strip-ansi';
 import { isWindows, } from '../lib/cli-shared-utils';
 import server from 'http-server';
+import proxy from './proxy/index';
 const monitor = getMonitor(config.yuyanId);
 
 /**
@@ -67,8 +68,9 @@ export default async (commandContext: ICommandContext) => {
       cors:'true',
       cache: -1,
     }).listen(port);
-    
     logger.info(`bundle构建成功，地址: http://localhost:${port}/index.js?pluginId=${miniAppId}`);
+    // 本地代理线上地址
+    proxy({ miniAppId });
   }
 
   /**

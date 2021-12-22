@@ -9,7 +9,7 @@ import { launchIDEOnly, } from '../../lib/util/connectToIDE';
 import { ProjectType, } from '../../lib/util/ideLocator';
 import qrcodeAction from '../../actions/qrcode';
 import pcPreviewAction from '../../actions/pcPreview';
-import pluginH5BundleAction from '../../actions/pluginH5Bundle';
+import proxyAction from '../../actions/proxy';
 import getJson from '../../lib/util/getJson';
 import { fetchMatchIdeVersionConfig, MIN_IDE_VERSION_REQUIRED, } from '../../lib/util/ideLocator';
 import { spawn, } from 'child_process';
@@ -218,10 +218,10 @@ export default CommandWrapper<ICommandOptions>({
 
             // 生成h5bundle + 本地起服务器代理
             GlobalStdinCommand.subscribe({
-              command: EStdioCommands.PLUGIN_H5_BUNDLE,
-              description: '在当前命令行中敲入 「pluginH5Bundle + 回车」 可以本地访问bundle',
+              command: EStdioCommands.PROXY,
+              description: '在当前命令行中敲入 「proxy + 回车」 可以本地访问bundle',
               action: () => {
-                pluginH5BundleAction(ctx);
+                proxyAction(ctx);
               },
             });
           }
