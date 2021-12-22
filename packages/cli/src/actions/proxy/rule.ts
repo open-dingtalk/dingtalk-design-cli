@@ -23,6 +23,29 @@ export default function ({ miniAppId }) {
           requestOptions: newOption,
         };
       }
+    }, 
+    // eslint-disable-next-line require-yield
+    *beforeSendResponse(requestDetail: any, responseDetail: any) {
+      const path = requestDetail.url;
+      const reqHeaders = requestDetail.requestOptions;
+      const newResponse = responseDetail.response;
+      // 审批侧规则
+      if ((path.indexOf('aflow.dingtalk.com/dingtalk/pc/query/pchomepage.htm') > -1 
+          || path.indexOf('aflow.dingtalk.com/dingtalk/mobile/homepage.htm') > -1 
+          || path.indexOf('aflow.dingtalk.com/dingtalk/web/query/oaDesigner') > -1)
+          && newResponse.header['Content-Type']?.indexOf('text/html') > -1
+          && reqHeaders.headers['Accept']?.indexOf('html') > -1) {
+        let nRes = newResponse.body.toString();
+        const script = `<script>window.__SUITE_DEV_MINIAPP={miniAppId:'${miniAppId}'}</script>`;
+        nRes = nRes.replace(/<head>/i, function(i: string){
+          return i + script;
+        });
+        const buf = Buffer.from(nRes);
+        newResponse.body = buf;
+        return new Promise((resolve) => {
+          resolve({ response: newResponse, });
+        });
+      }
     },
   };
 }
