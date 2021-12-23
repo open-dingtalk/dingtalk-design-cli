@@ -61,10 +61,10 @@ export default async (commandContext: ICommandContext) => {
    * 启动服务器，来访问bundle
    */
   function startDevServer(bundlePath) {
-    const port = '3001';
+    const port = config.h5pro.h5bundlePort;
     server.createServer({
       root: bundlePath,
-      cors:'true',
+      cors: true,
       cache: -1,
     }).listen(port);
     

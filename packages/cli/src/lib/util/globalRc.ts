@@ -6,7 +6,7 @@ import getJson from './getJson';
 import { isEmpty, } from 'lodash';
 
 export const getGlobalRc = (): IGlobalRc => {
-  return getJson(config.globalRc, true) as IGlobalRc;
+  return getJson(config.globalRc, true, {}) as IGlobalRc;
 };
 
 export const setGlobalRcItem = (k: keyof IGlobalRc, v: any): void => {
@@ -29,7 +29,10 @@ export const setGlobalRcItem = (k: keyof IGlobalRc, v: any): void => {
 };
 
 export const setGlobalRc = (opts: IGlobalRc): void => {
-  const rcStr = JSON.stringify(opts);
+  const rcStr = JSON.stringify({
+    ...getGlobalRc(),
+    ...opts,
+  });
   try {
     fs.writeFileSync(config.globalRc, rcStr, {
       encoding: 'utf-8',

@@ -47,20 +47,8 @@ export class StdinCommand {
          '', // executable file path
          ...chunk.toString('utf-8').trim().split(' '),
        ];
- 
        const { args, options, } = cli.parse(argv, { run: false, });
-       logger.debug('args', args);
-       logger.debug('options', options);
- 
-       // 忽略大小写
-       const matchedCommand = args[0].trim();
-       const targetSubscriber = this.subscribers.find(s => s.command === matchedCommand);
-       if (targetSubscriber) {
-         targetSubscriber.action(args.slice(1), options);
-       } else if (matchedCommand) {
-         logger.warn('未找到对应的命令，可尝试下面的命令');
-         logger.info(this.toString());
-       }
+       this.publish(args[0], options);
      };
    }
  
@@ -77,6 +65,30 @@ export class StdinCommand {
        ...subscriber,
      };
      this.subscribers.push(subscriber);
+   }
+
+   getTargetSubscriber(matchedCommand: string) {
+     return this.subscribers.find(s => s.command === matchedCommand);
+   }
+
+   publish(
+     command: string,
+     options: {
+       [k: string]: any;
+     }
+   ): void {
+     logger.debug('command', command);
+     logger.debug('options', options);
+
+     // 忽略大小写
+     const matchedCommand = command;
+     const targetSubscriber = this.getTargetSubscriber(matchedCommand);
+     if (targetSubscriber) {
+       targetSubscriber.action([matchedCommand], options);
+     } else if (matchedCommand) {
+       logger.warn('未找到对应的命令，可尝试下面的命令');
+       logger.info(this.toString());
+     }
    }
  
    tips(): void {

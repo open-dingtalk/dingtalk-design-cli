@@ -23,6 +23,11 @@ import commmandsConfig from '../commandsConfig';
 import { execSync, } from 'child_process';
 import inquirer from 'inquirer';
 import createPluginComponent from '../../actions/createPluginComponent';
+import * as fs from 'fs';
+import server from 'http-server';
+import downloadSimulatorAssets from '../../lib/util/getSimulatorAssetsDir';
+import getSimulatorAssetsDir from '../../lib/util/getSimulatorAssetsDir';
+import open from 'open';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -260,26 +265,65 @@ export default CommandWrapper<ICommandOptions>({
             });
           }
 
-          GlobalStdinCommand.log();
         } else if (isH5) {
           // h5默认都是react项目
           // TODO: h5的构建流程非标准，得梳理一下或者补充一下代码模版
-          const cp = spawn(
-            'npm',
-            [
-              'run',
-              'start',
-            ],
-            {
-              stdio: 'inherit',
-              env: process.env,
-              shell: isWindows,
-            }
-          );
-          cp.on('error', (err) => {
-            ctx.logger.error('h5项目启动失败', err.message);
-            monitor.logJSError(err);
+          GlobalStdinCommand.subscribe({
+            command: EStdioCommands.WEB,
+            description: '在当前命令行中敲入 「web + 回车」 可以在Web浏览器调试H5微应用',
+            action: async () => {
+              // 有这个目录证明已经下载好了，直接挂载这些静态资源
+              const rootDir = await getSimulatorAssetsDir();
+              server.createServer({
+                root: rootDir,
+                cors: true,
+                cache: -1,
+              }).listen(config.webSimulator.assetsPort);
+
+              const frameworkDir = path.join(__dirname, '../../../tpl');
+
+              server.createServer({
+                root: frameworkDir,
+                cors: true,
+                cache: -1,
+              }).listen(config.webSimulator.frameworkPort);
+
+              const cp = spawn(
+                'npm',
+                [
+                  'run',
+                  'start',
+                ],
+                {
+                  stdio: 'inherit',
+                  env: process.env,
+                  shell: isWindows,
+                }
+              );
+              cp.on('error', (err) => {
+                ctx.logger.error('h5项目启动失败', err.message);
+                monitor.logJSError(err);
+              });
+
+              open(`http://0.0.0.0:${config.webSimulator.frameworkPort}/webSimulator.html?lyraBaseUrl=http://0.0.0.0:${config.webSimulator.assetsPort}&targetH5Url=http://0.0.0.0:3003/&proxyServerUrl=http://0.0.0.0:${config.webSimulator.proxyServerPort}`);
+              
+            },
           });
+        }
+
+        const commandArgs = ctx.commandArgs;
+        /**
+         * 获取子命令，如果有子命令的话，执行GlobalStdinCommand.publish来执行子命令
+         */
+        const subCommand = commandArgs[1];
+        if (subCommand) {
+          if (GlobalStdinCommand.getTargetSubscriber(subCommand)) {
+            GlobalStdinCommand.publish(subCommand, ctx.commandOptions);
+          } else {
+            GlobalStdinCommand.tips();
+          }
+        } else {
+          GlobalStdinCommand.log();
         }
       },
     };

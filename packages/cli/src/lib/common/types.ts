@@ -10,6 +10,8 @@ export interface IGlobalRc {
   localDownloadedIdePath?: string;
   /** 本地ide版本 */
   localDownloadedIdeVersion?: string;
+  /** 本地web-simulator-assets目录 */
+  localWebSimulatorAssetsDir?: string;
 }
 
 // plugin rc 配置
@@ -214,6 +216,7 @@ export enum EStdioCommands {
   UPLOAD = 'upload', // 上传小程序或工作台组件
   LINT = 'lint', // 格式/业务校验
   HELP = 'help', // 再次输出stdio命令简介
+  WEB = 'web', // h5模版web调试
 
   /** 工作台组件独有 */
   PC = 'pc', // 在pc端钉钉预览工作台组件

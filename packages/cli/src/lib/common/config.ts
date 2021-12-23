@@ -20,5 +20,13 @@ export default {
         binExtractPath: 'home/jenkins/agent/aci/packages/toolkit/bin/h5pro-component-macos',
       },
     },
+    h5bundlePort: '3001',
+  },
+  webSimulator: {
+    tarUrl: 'https://gw.alipayobjects.com/as/g/lyra/lyra-integration/6.1.27/lyra-web.tgz',
+    storeDir: path.join(homeDir, '.dd-web-simulator-assets'),
+    assetsPort: '8003',
+    frameworkPort: '10003',
+    proxyServerPort: '10005',
   },
 };

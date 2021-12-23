@@ -38,6 +38,7 @@
     "@types/download": "^6.2.4",
     "@types/eslint": "^7.2.12",
     "@types/he": "^1.1.1",
+    "@types/http-server": "^0.12.1",
     "@types/lodash": "^4.14.168",
     "@types/lru-cache": "^5.1.0",
     "@types/mkdirp": "^1.0.1",
