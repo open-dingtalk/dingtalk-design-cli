@@ -1,15 +1,16 @@
-import AnyProxy, { ProxyOptions } from 'anyproxy';
-import { execSync } from 'child_process';
+import AnyProxy from 'anyproxy';
+import { execSync, } from 'child_process';
 import chalk from 'chalk';
 import ora from 'ora';
 import proxyHttp from './proxy';
-const { green } = chalk;
+const { green, } = chalk;
+import { IProxyParams, } from '../../lib/common/types';
 
 /**
  * 代理本地代码
  * @param argv
  */
-async function proxy({ miniAppId, cwd }): Promise<void> {
+async function proxy({ miniAppId, cwd, }: IProxyParams): Promise<void> {
   const spinner = ora('本地代理中...');
   spinner.start();
 
@@ -19,6 +20,7 @@ async function proxy({ miniAppId, cwd }): Promise<void> {
       // let users to trust this CA before using proxy
       if (!error) {
         const certDir = require('path').dirname(keyPath);
+        // eslint-disable-next-line no-console
         console.log('The cert is generated at', certDir);
         const isWin = /^win/.test(process.platform);
         if (isWin) {
@@ -33,8 +35,8 @@ async function proxy({ miniAppId, cwd }): Promise<void> {
     spinner.stop();
     return;
   }
-  proxyHttp({ miniAppId, cwd });
-  spinner.succeed(`${green('本地代理成功')}\n${green('手机端代理地址：' + getIPAdress() +':8001')}`);
+  proxyHttp({ miniAppId, cwd, });
+  spinner.succeed(`${green('本地代理成功')}\n${green('手机端代理地址:' + getIPAdress() + ':8001')}`);
 }
 
 // 获取本机电脑IP
