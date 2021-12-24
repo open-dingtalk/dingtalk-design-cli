@@ -220,3 +220,7 @@ export enum EStdioCommands {
   CREATE_PLUGIN_COMPONENT = 'createPluginComponent', // 创建插件组件
   PROXY = 'proxy', // 生成bundle+本地服务3001端口
 }
+export interface IProxyParams{
+  miniAppId: string;
+  cwd: string;
+}
