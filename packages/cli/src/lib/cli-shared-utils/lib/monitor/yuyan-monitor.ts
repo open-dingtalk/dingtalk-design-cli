@@ -74,7 +74,7 @@ export default class Monitor implements IMonitor {
   }
 
   public async log(logItem: ILogItem): Promise<void> {
-    const itemList = Array.isArray(logItem) ? logItem : [logItem];
+    const itemList: any[] = Array.isArray(logItem) ? logItem : [logItem];
     Promise.all(itemList.map(item => this._log(item)));
   }
 
