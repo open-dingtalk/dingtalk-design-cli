@@ -65,7 +65,7 @@ export default async (commandContext: ICommandContext) => {
     const port = '3001';
     server.createServer({
       root: bundlePath,
-      cors:'true',
+      cors: true,
       cache: -1,
     }).listen(port);
     logger.info(`bundle构建成功，地址: http://localhost:${port}/index.js?pluginId=${miniAppId}`);
