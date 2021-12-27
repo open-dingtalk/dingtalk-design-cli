@@ -272,7 +272,7 @@ export default CommandWrapper<ICommandOptions>({
             command: EStdioCommands.WEB,
             description: '在当前命令行中敲入 「web + 回车」 可以在Web浏览器调试H5微应用',
             action: async () => {
-              // 有这个目录证明已经下载好了，直接挂载这些静态资源
+              // 挂载lyraBase静态资源
               const rootDir = await getSimulatorAssetsDir();
               server.createServer({
                 root: rootDir,
@@ -282,12 +282,35 @@ export default CommandWrapper<ICommandOptions>({
 
               const frameworkDir = path.join(__dirname, '../../../tpl');
 
+              // 挂载web模拟器框架
               server.createServer({
                 root: frameworkDir,
                 cors: true,
                 cache: -1,
               }).listen(config.webSimulator.frameworkPort);
 
+              // 启动本地代理服务器
+              const proxyServerScript = path.join(__dirname, '../../../server/simulatorProxyServer.js');
+              const proxyServerCp = spawn(
+                'node',
+                [
+                  proxyServerScript,
+                ],
+                {
+                  stdio: 'ignore',
+                  env: {
+                    ...process.env,
+                    PORT: config.webSimulator.proxyServerPort,
+                  },
+                  shell: isWindows,
+                }
+              );
+              proxyServerCp.on('error', (err) => {
+                ctx.logger.error('本地代理服务器启动失败', err);
+                monitor.logJSError(err);
+              });
+
+              // 挂载目标H5
               const cp = spawn(
                 'npm',
                 [
@@ -301,7 +324,7 @@ export default CommandWrapper<ICommandOptions>({
                 }
               );
               cp.on('error', (err) => {
-                ctx.logger.error('h5项目启动失败', err.message);
+                ctx.logger.error('h5项目启动失败', err);
                 monitor.logJSError(err);
               });
 
