@@ -25,9 +25,9 @@ import inquirer from 'inquirer';
 import createPluginComponent from '../../actions/createPluginComponent';
 import * as fs from 'fs';
 import server from 'http-server';
-import downloadSimulatorAssets from '../../lib/util/getSimulatorAssetsDir';
 import getSimulatorAssetsDir from '../../lib/util/getSimulatorAssetsDir';
 import open from 'open';
+import { choosePort, } from '../../lib/cli-shared-utils/lib/network';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -272,23 +272,88 @@ export default CommandWrapper<ICommandOptions>({
             command: EStdioCommands.WEB,
             description: '在当前命令行中敲入 「web + 回车」 可以在Web浏览器调试H5微应用',
             action: async () => {
-              // 挂载lyraBase静态资源
               const rootDir = await getSimulatorAssetsDir();
+              const DEFAULT_HOST = '0.0.0.0';
+
+              /**
+               * 挂载目标h5
+               */
+              let targetH5Port = config.webSimulator.targetH5Port;
+              try {
+                targetH5Port = await choosePort(DEFAULT_HOST, targetH5Port);
+              } catch(e) {
+                ctx.logger.error('H5页面启动失败', e);
+                monitor.logJSError(e);
+                return;
+              }
+              const cp = spawn(
+                'npm',
+                [
+                  'run',
+                  'start',
+                ],
+                {
+                  stdio: 'inherit',
+                  env: {
+                    ...process.env,
+                    BROWSER: 'none', // react项目，配置了这个才不会自动打开浏览器
+                    PORT: String(targetH5Port),
+                  },
+                  shell: isWindows,
+                }
+              );
+              cp.on('error', (err) => {
+                ctx.logger.error('h5项目启动失败', err);
+                monitor.logJSError(err);
+              });
+
+              /**
+               * lyraBase静态资源挂载
+               */
+              let assetsPort = config.webSimulator.assetsPort;
+              try {
+                assetsPort = await choosePort(DEFAULT_HOST, assetsPort);
+              } catch(e) {
+                ctx.logger.error('模拟器静态资源启动失败', e);
+                monitor.logJSError(e);
+                return;
+              }
               server.createServer({
                 root: rootDir,
                 cors: true,
                 cache: -1,
-              }).listen(config.webSimulator.assetsPort);
+              }).listen(assetsPort);
 
-              const frameworkDir = path.join(__dirname, '../../../tpl');
-
+              /**
+               * 模拟器框架挂载
+               */
+              let frameworkPort = config.webSimulator.frameworkPort;
+              try {
+                frameworkPort = await choosePort(DEFAULT_HOST, frameworkPort);
+              } catch(e) {
+                ctx.logger.error('模拟器框架启动失败', e);
+                monitor.logJSError(e);
+                return;
+              }
               // 挂载web模拟器框架
+              const frameworkDir = path.join(__dirname, '../../../tpl');
               server.createServer({
                 root: frameworkDir,
                 cors: true,
                 cache: -1,
-              }).listen(config.webSimulator.frameworkPort);
+              }).listen(frameworkPort);
 
+              /**
+               * 模拟器本地代理服务挂载
+               */
+              let proxyServerPort = config.webSimulator.proxyServerPort;
+              try {
+                proxyServerPort = await choosePort(DEFAULT_HOST, proxyServerPort);
+              } catch(e) {
+                ctx.logger.error('模拟器本地服务器代理启动失败', e);
+                monitor.logJSError(e);
+                return;
+              }
               // 启动本地代理服务器
               const proxyServerScript = path.join(__dirname, '../../../server/simulatorProxyServer.js');
               const proxyServerCp = spawn(
@@ -300,7 +365,7 @@ export default CommandWrapper<ICommandOptions>({
                   stdio: 'ignore',
                   env: {
                     ...process.env,
-                    PORT: config.webSimulator.proxyServerPort,
+                    PORT: String(proxyServerPort),
                   },
                   shell: isWindows,
                 }
@@ -309,27 +374,7 @@ export default CommandWrapper<ICommandOptions>({
                 ctx.logger.error('本地代理服务器启动失败', err);
                 monitor.logJSError(err);
               });
-
-              // 挂载目标H5
-              const cp = spawn(
-                'npm',
-                [
-                  'run',
-                  'start',
-                ],
-                {
-                  stdio: 'inherit',
-                  env: process.env,
-                  shell: isWindows,
-                }
-              );
-              cp.on('error', (err) => {
-                ctx.logger.error('h5项目启动失败', err);
-                monitor.logJSError(err);
-              });
-
-              open(`http://0.0.0.0:${config.webSimulator.frameworkPort}/webSimulator.html?lyraBaseUrl=http://0.0.0.0:${config.webSimulator.assetsPort}&targetH5Url=http://0.0.0.0:3003/&proxyServerUrl=http://0.0.0.0:${config.webSimulator.proxyServerPort}`);
-              
+              open(`http://0.0.0.0:${frameworkPort}/webSimulator.html?lyraBaseUrl=http://0.0.0.0:${assetsPort}&targetH5Url=http://0.0.0.0:${targetH5Port}/&proxyServerUrl=http://0.0.0.0:${proxyServerPort}`);
             },
           });
         }

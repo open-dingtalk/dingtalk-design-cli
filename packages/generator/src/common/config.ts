@@ -47,21 +47,22 @@ interface HUB {
   postInit?: Promise<void>;
 }
 
+const DEFAULT_REPO_REMOTE_PATH = process.env.REPO_REMOTE_PATH || 'https://gitee.com/open-dingtalk/dd-application-template.git';
 // 套件配置
 export const HUBS_CONFIG: HUB[] = [
   {
     key: APP_TYPE_ENUM.PLUGIN,
     name: '工作台组件',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
   {
     key: APP_TYPE_ENUM.MP,
     name: '小程序',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
   {
     key: APP_TYPE_ENUM.H5,
     name: 'H5微应用',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
 ];

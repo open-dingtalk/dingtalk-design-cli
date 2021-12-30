@@ -25,8 +25,9 @@ export default {
   webSimulator: {
     tarUrl: 'https://gw.alipayobjects.com/as/g/lyra/lyra-integration/6.1.27/lyra-web.tgz',
     storeDir: path.join(homeDir, '.dd-web-simulator-assets'),
-    assetsPort: '8003',
-    frameworkPort: '10003',
-    proxyServerPort: '10005',
+    assetsPort: 8003,
+    frameworkPort: 10003,
+    proxyServerPort: 10005,
+    targetH5Port: 3000,
   },
 };
