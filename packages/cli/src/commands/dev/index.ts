@@ -36,8 +36,8 @@ export default CommandWrapper<ICommandOptions>({
       ...commmandsConfig.dev,
       action: async (options) => {
         ctx.logger.debug('cli options', options);
-        
-        const { 
+
+        const {
           dtdConfig,
           cwd,
         } = ctx;
@@ -60,7 +60,7 @@ export default CommandWrapper<ICommandOptions>({
         const isPlugin = type === EAppType.PLUGIN;
         const isPcPlugin = type === EAppType.PLUGIN && dtdConfig.isPcPlugin;
         const isTs = typescript;
-        
+
         ctx.watcher.init();
         ctx.watcher.watch([dtdConfigPath], () => {
           const dtdConfigUpdated: IWorkspaceRc = getJson(dtdConfigPath, true);
@@ -118,7 +118,7 @@ export default CommandWrapper<ICommandOptions>({
         });
 
         /**
-         * dev和代码模版是强相关的，不支持非cli创建的项目
+         * dev和代码模板是强相关的，不支持非cli创建的项目
          * 区分场景：小程序、工作台组件、pc工作台组件、h5；不同场景下stdio命令不同
          * 区分语言：ts、js；ts需要先走一遍构建
          */
@@ -263,7 +263,7 @@ export default CommandWrapper<ICommandOptions>({
           GlobalStdinCommand.log();
         } else if (isH5) {
           // h5默认都是react项目
-          // TODO: h5的构建流程非标准，得梳理一下或者补充一下代码模版
+          // TODO: h5的构建流程非标准，得梳理一下或者补充一下代码模板
           const cp = spawn(
             'npm',
             [

@@ -26,12 +26,12 @@ const commandsConfig: {
         shortcut: 'a',
       },
       template: {
-        description: '[可选] 指定模版，模版的key可以从 https://github.com/open-dingtalk/dd-application-template 上查阅，如：plugin_default，则模版key为default',
+        description: '[可选] 指定模板，模板的key可以从 https://github.com/open-dingtalk/dd-application-template 上查阅，如：plugin_default，则模板key为default',
         type: 'string',
         shortcut: 't',
       },
       language: {
-        description: '[可选] 指定模版语言，值可以为javascript | typescript（有些模版可能没有typescript语言版本）',
+        description: '[可选] 指定模板语言，值可以为javascript | typescript（有些模板可能没有typescript语言版本）',
         type: 'string',
         shortcut: 'l',
       },

@@ -48,7 +48,7 @@ ding init -o mpTest
 ![image](https://user-images.githubusercontent.com/27557494/123395738-2164c500-d5d3-11eb-81a8-d3f63c4edfc1.png)
 
 
-2. 然后选择一个小程序模版`default`:
+2. 然后选择一个小程序模板`default`:
 ![image](https://user-images.githubusercontent.com/27557494/123396681-2d9d5200-d5d4-11eb-9f7e-2ae646d1b524.png)
 
 
