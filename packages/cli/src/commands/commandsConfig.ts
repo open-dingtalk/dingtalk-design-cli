@@ -12,6 +12,12 @@ const commandsConfig: {
       name: ECommandName.dev,
       description: '开发调试小程序、h5微应用和工作台组件，支持预览、上传、本地校验',
     },
+    options: {
+      targetH5Url: {
+        description: '[可选] 在H5微应用场景下，用于指定本地调试的页面地址',
+        type: 'string',
+      },
+    },
   },
 
   [ECommandName.init]: {

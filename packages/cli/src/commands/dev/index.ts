@@ -32,6 +32,7 @@ import { choosePort, } from '../../lib/cli-shared-utils/lib/network';
 const monitor = getMonitor(config.yuyanId);
 
 interface ICommandOptions {
+  targetH5Url?: string;
 }
 
 export default CommandWrapper<ICommandOptions>({
@@ -279,33 +280,40 @@ export default CommandWrapper<ICommandOptions>({
                * 挂载目标h5
                */
               let targetH5Port = config.webSimulator.targetH5Port;
-              try {
-                targetH5Port = await choosePort(DEFAULT_HOST, targetH5Port);
-              } catch(e) {
-                ctx.logger.error('H5页面启动失败', e);
-                monitor.logJSError(e);
-                return;
-              }
-              const cp = spawn(
-                'npm',
-                [
-                  'run',
-                  'start',
-                ],
-                {
-                  stdio: 'inherit',
-                  env: {
-                    ...process.env,
-                    BROWSER: 'none', // react项目，配置了这个才不会自动打开浏览器
-                    PORT: String(targetH5Port),
-                  },
-                  shell: isWindows,
+              let targetH5Url = '';
+
+              if (ctx.commandOptions.targetH5Url) {
+                targetH5Url = ctx.commandOptions.targetH5Url;
+              } else {
+                try {
+                  targetH5Port = await choosePort(DEFAULT_HOST, targetH5Port);
+                  targetH5Url = `http://0.0.0.0:${targetH5Port}`;
+                } catch(e) {
+                  ctx.logger.error('H5页面启动失败', e);
+                  monitor.logJSError(e);
+                  return;
                 }
-              );
-              cp.on('error', (err) => {
-                ctx.logger.error('h5项目启动失败', err);
-                monitor.logJSError(err);
-              });
+                const cp = spawn(
+                  'npm',
+                  [
+                    'run',
+                    'start',
+                  ],
+                  {
+                    stdio: 'inherit',
+                    env: {
+                      ...process.env,
+                      BROWSER: 'none', // react项目，配置了这个才不会自动打开浏览器
+                      PORT: String(targetH5Port),
+                    },
+                    shell: isWindows,
+                  }
+                );
+                cp.on('error', (err) => {
+                  ctx.logger.error('h5项目启动失败', err);
+                  monitor.logJSError(err);
+                });
+              }
 
               /**
                * lyraBase静态资源挂载
@@ -374,7 +382,7 @@ export default CommandWrapper<ICommandOptions>({
                 ctx.logger.error('本地代理服务器启动失败', err);
                 monitor.logJSError(err);
               });
-              open(`http://0.0.0.0:${frameworkPort}/webSimulator.html?lyraBaseUrl=http://0.0.0.0:${assetsPort}&targetH5Url=http://0.0.0.0:${targetH5Port}/&proxyServerUrl=http://0.0.0.0:${proxyServerPort}`);
+              open(`http://0.0.0.0:${frameworkPort}/webSimulator.html?lyraBaseUrl=http://0.0.0.0:${assetsPort}&targetH5Url=${targetH5Url}/&proxyServerUrl=http://0.0.0.0:${proxyServerPort}`);
             },
           });
         }
