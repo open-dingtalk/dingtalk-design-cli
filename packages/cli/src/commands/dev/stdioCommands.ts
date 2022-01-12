@@ -32,13 +32,19 @@ export interface IStdinCommandSubscriber {
     */
    serialized?: boolean;
  }
+
+export enum EMode {
+  MAIN_COMMAND = 'mainCommand',
+  SUB_COMMAND = 'subCommand',
+}
  
 export class StdinCommand {
    subscribers: Array<IStdinCommandSubscriber>;
- 
+   private mode: EMode;
    private stdinListener: (chunk: Buffer) => void;
  
    constructor() {
+     this.mode = EMode.MAIN_COMMAND;
      this.subscribers = [];
      this.stdinListener = (chunk: Buffer): void => {
        const cli = cac();
@@ -48,7 +54,7 @@ export class StdinCommand {
          ...chunk.toString('utf-8').trim().split(' '),
        ];
        const { args, options, } = cli.parse(argv, { run: false, });
-       this.publish(args[0], options);
+       this.publish(args[0], args.slice(1), options);
      };
    }
  
@@ -71,8 +77,13 @@ export class StdinCommand {
      return this.subscribers.find(s => s.command === matchedCommand);
    }
 
+   setMode(mode: EMode) {
+     this.mode = mode;
+   }
+
    publish(
      command: string,
+     args: string[],
      options: {
        [k: string]: any;
      }
@@ -84,7 +95,7 @@ export class StdinCommand {
      const matchedCommand = command;
      const targetSubscriber = this.getTargetSubscriber(matchedCommand);
      if (targetSubscriber) {
-       targetSubscriber.action([matchedCommand], options);
+       targetSubscriber.action(args, options);
      } else if (matchedCommand) {
        logger.warn('未找到对应的命令，可尝试下面的命令');
        logger.info(this.toString());
@@ -92,7 +103,11 @@ export class StdinCommand {
    }
  
    tips(): void {
-     logger.tip('在当前命令行中敲入 「help + 回车」可再次查阅可以使用的Stdin命令');
+     if (this.mode === EMode.MAIN_COMMAND) {
+       logger.tip('在当前命令行中敲入 「help + 回车」可再次查阅可以使用的子命令');
+     } else if (this.mode === EMode.SUB_COMMAND) {
+       logger.tip(`该子命令不支持，可以支持的子命令有 ${this.subscribers.map(subscriber => subscriber.command).join(',')}`);
+     }
    }
 
    unsubscribe(command: string): void {
@@ -101,6 +116,7 @@ export class StdinCommand {
    }
  
    dispose(): void {
+     process.stdin.destroy();
      process.stdin && process.stdin.removeListener('data', this.stdinListener);
    }
  
