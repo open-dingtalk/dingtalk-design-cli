@@ -67,7 +67,7 @@
     "events": "^3.2.0",
     "execa": "^5.0.0",
     "fast-xml-parser": "^3.19.0",
-    "generator-dd-application": "latest",
+    "generator-dd-application": "^0.20.3-beta.8",
     "he": "^1.2.0",
     "http-server": "^14.0.0",
     "import-global": "^0.1.0",
