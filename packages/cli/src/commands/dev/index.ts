@@ -293,7 +293,7 @@ export default CommandWrapper<ICommandOptions>({
               } else {
                 try {
                   targetH5Port = await choosePort(DEFAULT_HOST, targetH5Port);
-                  targetH5Url = `http://0.0.0.0:${targetH5Port}`;
+                  targetH5Url = `http://127.0.0.1:${targetH5Port}`;
                 } catch(e) {
                   ctx.logger.error('H5页面启动失败', e);
                   monitor.logJSError(e);
@@ -388,7 +388,7 @@ export default CommandWrapper<ICommandOptions>({
                 ctx.logger.error('本地代理服务器启动失败', err);
                 monitor.logJSError(err);
               });
-              open(`http://0.0.0.0:${frameworkPort}/webSimulator.html?lyraBaseUrl=http://0.0.0.0:${assetsPort}&targetH5Url=${targetH5Url}/&proxyServerUrl=http://0.0.0.0:${proxyServerPort}`);
+              open(`http://127.0.0.1:${frameworkPort}/webSimulator.html?lyraBaseUrl=http://127.0.0.1:${assetsPort}&targetH5Url=${targetH5Url}/&proxyServerUrl=http://127.0.0.1:${proxyServerPort}`);
             },
           });
         }
