@@ -29,5 +29,6 @@ export default {
     frameworkPort: 10003,
     proxyServerPort: 10005,
     targetH5Port: 3000,
+    sdkCloudConfigPath: 'http://mt2.alibaba-inc.com/core/data/dataEntityMock.do?id=208906&t=1642127821581',
   },
 };
