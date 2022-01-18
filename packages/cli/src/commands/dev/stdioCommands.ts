@@ -106,7 +106,7 @@ export class StdinCommand {
      if (this.mode === EMode.MAIN_COMMAND) {
        logger.tip('在当前命令行中敲入 「help + 回车」可再次查阅可以使用的子命令');
      } else if (this.mode === EMode.SUB_COMMAND) {
-       logger.tip(`该子命令不支持，可以支持的子命令有 ${this.subscribers.map(subscriber => subscriber.command).join(',')}`);
+       logger.tip(`可以支持的子命令有 ${this.subscribers.map(subscriber => subscriber.command).join(',')}`);
      }
    }
 
