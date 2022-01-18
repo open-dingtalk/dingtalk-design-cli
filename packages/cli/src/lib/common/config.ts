@@ -22,6 +22,7 @@ export default {
     },
     h5bundlePort: '3001',
   },
+  mt2Config: 'https://hudong.alicdn.com/api/data/v2/7334dc6bc97b408c9cdf0884f6fb01d4.js?t=1642494634940',
   webSimulator: {
     tarUrl: 'https://gw.alipayobjects.com/as/g/lyra/lyra-integration/6.1.27/lyra-web.tgz',
     storeDir: path.join(homeDir, '.dd-web-simulator-assets'),
@@ -29,6 +30,7 @@ export default {
     frameworkPort: 10003,
     proxyServerPort: 10005,
     targetH5Port: 3000,
-    sdkCloudConfigPath: 'http://mt2.alibaba-inc.com/core/data/dataEntityMock.do?id=208906&t=1642127821581',
+    webSimulatorFrameworkStoreDir: path.join(homeDir, '.webSimulatorFramework'),
+    webSimulatorFrameworkHtmlName: 'webSimulator.html',
   },
 };

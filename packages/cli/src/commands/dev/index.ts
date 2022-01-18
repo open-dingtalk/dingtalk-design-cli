@@ -28,6 +28,7 @@ import server from 'http-server';
 import getSimulatorAssetsDir from '../../lib/util/getSimulatorAssetsDir';
 import open from 'open';
 import { choosePort, } from '../../lib/cli-shared-utils/lib/network';
+import getSimulatorFrameworkStoreDir from '../../lib/util/getSimulatorFrameworkStoreDir';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -350,7 +351,7 @@ export default CommandWrapper<ICommandOptions>({
                 return;
               }
               // 挂载web模拟器框架
-              const frameworkDir = path.join(__dirname, '../../../tpl');
+              const frameworkDir = await getSimulatorFrameworkStoreDir();
               server.createServer({
                 root: frameworkDir,
                 cors: true,
@@ -388,7 +389,7 @@ export default CommandWrapper<ICommandOptions>({
                 ctx.logger.error('本地代理服务器启动失败', err);
                 monitor.logJSError(err);
               });
-              open(`http://127.0.0.1:${frameworkPort}/webSimulator.html?lyraBaseUrl=http://127.0.0.1:${assetsPort}&targetH5Url=${targetH5Url}/&proxyServerUrl=http://127.0.0.1:${proxyServerPort}`);
+              open(`http://127.0.0.1:${frameworkPort}/${config.webSimulator.webSimulatorFrameworkHtmlName}?lyraBaseUrl=http://127.0.0.1:${assetsPort}&targetH5Url=${targetH5Url}/&proxyServerUrl=http://127.0.0.1:${proxyServerPort}`);
             },
           });
         }
