@@ -1,6 +1,6 @@
 {
   "name": "dingtalk-design-cli",
-  "version": "0.20.4",
+  "version": "0.20.5-beta.1",
   "description": "dingtalk design cli",
   "keywords": [
     "DingTalk",
@@ -59,7 +59,7 @@
     "commander": "^7.0.0",
     "detect-port": "^1.3.0",
     "detect-port-alt": "^1.1.6",
-    "dingtalk-miniapp-opensdk": "^0.20.4",
+    "dingtalk-miniapp-opensdk": "^0.20.5-beta.1",
     "dingtalk-worktab-plugin-script": "^0.16.0",
     "download": "^8.0.0",
     "easydl": "^1.0.1",
@@ -67,7 +67,7 @@
     "events": "^3.2.0",
     "execa": "^5.0.0",
     "fast-xml-parser": "^3.19.0",
-    "generator-dd-application": "^0.20.4",
+    "generator-dd-application": "^0.20.5-beta.1",
     "he": "^1.2.0",
     "http-server": "^14.0.0",
     "import-global": "^0.1.0",
