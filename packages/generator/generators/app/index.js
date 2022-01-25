@@ -63,7 +63,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 this.log(logger_1.info(`已经选择了应用类型: ${options.appType}`, true));
             }
             if (options.template) {
-                this.log(logger_1.info(`已经选择了模版: ${options.template}`, true));
+                this.log(logger_1.info(`已经选择了模板: ${options.template}`, true));
             }
             if (options.language) {
                 this.log(logger_1.info(`已经选择了开发语言: ${options.language}`, true));
@@ -99,7 +99,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
             try {
                 const opts = {
                     logger: this.log.bind(this),
-                    fetchingTips: '正在拉取最新模版，请稍后',
+                    fetchingTips: '正在拉取最新模板，请稍后',
                     timeoutTips: '拉取失败，请检测网络情况',
                     internal: 10 * 1000 };
 
@@ -112,11 +112,11 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                     env(Object.assign({}, process.env)).
                     clone(selectedHub.repoRemotePath, repoLocalPath);
                 }), opts);
-                this.log(logger_1.done('模版仓库已成功下载', true));
+                this.log(logger_1.done('模板仓库已成功下载', true));
             }
             catch (e) {
                 console.error(e);
-                this.log(logger_1.error('模版仓库下载失败', true));
+                this.log(logger_1.error('模板仓库下载失败', true));
                 return this.env.error(e);
             }
             let templateList = [];
@@ -138,7 +138,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 });
                 logger_1.debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
                 if (templateList.length === 0) {
-                    this.log(logger_1.error(`模版仓库中，每个模版名必须以 ${appType} 开头`, true));
+                    this.log(logger_1.error(`模板仓库中，每个模板名必须以 ${appType} 开头`, true));
                     throw errors_1.ERROR_REPO_IS_EMPTY;
                 }
             }
@@ -157,7 +157,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
             {
                 type: 'list',
                 name: 'template',
-                message: '选择模版',
+                message: '选择模板',
                 choices: templateList,
                 default: templateList[0].name,
                 store: true,
@@ -179,7 +179,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 if (e instanceof Error) {
                     console.error(e.message);
                 }
-                this.log(logger_1.error('模版仓库非法', true));
+                this.log(logger_1.error('模板仓库非法', true));
                 return this.env.error(e);
             }
             /**
@@ -259,14 +259,14 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
 
                 }
                 catch (e) {
-                    this.log(logger_1.error('模版复制失败' + JSON.stringify(e), true));
+                    this.log(logger_1.error('模板复制失败' + JSON.stringify(e), true));
                     return this.env.error(new Error(errors_1.ERROR_DEMO_COPY));
                 }
             } else
             {
                 return this.env.error(new Error(errors_1.ERROR_REPO_NOT_FOUND));
             }
-            this.log(logger_1.done('模版复制成功', true));
+            this.log(logger_1.done('模板复制成功', true));
         });
     }
     // npm install
