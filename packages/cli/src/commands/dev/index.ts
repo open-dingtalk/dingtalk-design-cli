@@ -9,7 +9,7 @@ import { launchIDEOnly, } from '../../lib/util/connectToIDE';
 import { ProjectType, } from '../../lib/util/ideLocator';
 import qrcodeAction from '../../actions/qrcode';
 import pcPreviewAction from '../../actions/pcPreview';
-import pluginH5BundleAction from '../../actions/pluginH5Bundle';
+import proxyAction from '../../actions/proxy';
 import getJson from '../../lib/util/getJson';
 import { fetchMatchIdeVersionConfig, MIN_IDE_VERSION_REQUIRED, } from '../../lib/util/ideLocator';
 import { spawn, } from 'child_process';
@@ -44,8 +44,8 @@ export default CommandWrapper<ICommandOptions>({
       ...commmandsConfig.dev,
       action: async (options) => {
         ctx.logger.debug('cli options', options);
-        
-        const { 
+
+        const {
           dtdConfig,
           cwd,
         } = ctx;
@@ -68,7 +68,7 @@ export default CommandWrapper<ICommandOptions>({
         const isPlugin = type === EAppType.PLUGIN;
         const isPcPlugin = type === EAppType.PLUGIN && dtdConfig.isPcPlugin;
         const isTs = typescript;
-        
+
         ctx.watcher.init();
         ctx.watcher.watch([dtdConfigPath], () => {
           const dtdConfigUpdated: IWorkspaceRc = getJson(dtdConfigPath, true);
@@ -127,7 +127,7 @@ export default CommandWrapper<ICommandOptions>({
         });
 
         /**
-         * dev和代码模版是强相关的，不支持非cli创建的项目
+         * dev和代码模板是强相关的，不支持非cli创建的项目
          * 区分场景：小程序、工作台组件、pc工作台组件、h5；不同场景下stdio命令不同
          * 区分语言：ts、js；ts需要先走一遍构建
          */
@@ -228,10 +228,10 @@ export default CommandWrapper<ICommandOptions>({
 
             // 生成h5bundle + 本地起服务器代理
             GlobalStdinCommand.subscribe({
-              command: EStdioCommands.PLUGIN_H5_BUNDLE,
-              description: '在当前命令行中敲入 「pluginH5Bundle + 回车」 可以本地访问bundle',
+              command: EStdioCommands.PROXY,
+              description: '在当前命令行中敲入 「proxy + 回车」 可以本地访问bundle',
               action: () => {
-                pluginH5BundleAction(ctx);
+                proxyAction(ctx);
               },
             });
           }

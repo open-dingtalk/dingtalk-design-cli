@@ -25,9 +25,9 @@ interface IArguments {
 interface IOptions {
   'force-update-repo'?: string;
   'skip-install'?: string;
-  // 模版种类
+  // 模板种类
   appType: string;
-  // 模版名称
+  // 模板名称
   template: string;
   // js/ts
   language: string;
@@ -36,9 +36,9 @@ interface IOptions {
 interface Answers {
   // 输出目录
   outDir: string;
-  // 模版种类
+  // 模板种类
   appType: string;
-  // 模版名称
+  // 模板名称
   template: string;
   // js/ts
   language: string;
@@ -57,7 +57,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     this.option('appType', { type: String, description: 'Choose a appType to create', default: '', });
     this.option('template', { type: String, description: 'Choose a template to create', default: '', });
     this.option('language', { type: String, description: 'Choose a language to create', default: '', });
-   
+
     // @ts-ignore
     this.outDir = this.args[0] || './';
   }
@@ -68,7 +68,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       this.log(info(`已经选择了应用类型: ${options.appType}`, true));
     }
     if(options.template) {
-      this.log(info(`已经选择了模版: ${options.template}`, true));
+      this.log(info(`已经选择了模板: ${options.template}`, true));
     }
     if(options.language) {
       this.log(info(`已经选择了开发语言: ${options.language}`, true));
@@ -79,7 +79,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
      */
     let { appType, } = await this.prompt([
       // 选择应用类型
-      { 
+      {
         type: 'list',
         name: 'appType',
         message: '选择应用类型',
@@ -108,7 +108,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     try {
       const opts = {
         logger: this.log.bind(this),
-        fetchingTips: '正在拉取最新模版，请稍后',
+        fetchingTips: '正在拉取最新模板，请稍后',
         timeoutTips: '拉取失败，请检测网络情况',
         internal: 10 * 1000,
       };
@@ -121,13 +121,13 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
           .env({ ...process.env, })
           .clone(selectedHub.repoRemotePath, repoLocalPath);
       }, opts);
-      this.log(done('模版仓库已成功下载', true));
+      this.log(done('模板仓库已成功下载', true));
     } catch(e) {
       console.error(e);
-      this.log(error('模版仓库下载失败', true));
+      this.log(error('模板仓库下载失败', true));
       return this.env.error(e);
     }
-    
+
     let templateList = [];
     try {
       const originTemplateList = fs.readdirSync(repoLocalPath, {
@@ -148,7 +148,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
 
       if(templateList.length === 0) {
-        this.log(error(`模版仓库中，每个模版名必须以 ${appType} 开头`, true));
+        this.log(error(`模板仓库中，每个模板名必须以 ${appType} 开头`, true));
         throw ERROR_REPO_IS_EMPTY;
       }
     } catch(e) {
@@ -164,10 +164,10 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
      */
     let { template, } = await this.prompt([
       // 选择应用类型
-      { 
+      {
         type: 'list',
         name: 'template',
-        message: '选择模版',
+        message: '选择模板',
         choices: templateList,
         default: templateList[0].name,
         store: true,
@@ -189,7 +189,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       if(e instanceof Error) {
         console.error(e.message);
       }
-      this.log(error('模版仓库非法', true));
+      this.log(error('模板仓库非法', true));
       return this.env.error(e);
     }
 
@@ -198,7 +198,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
      */
     let { language, } = await this.prompt([
       // 选择应用类型
-      { 
+      {
         type: 'list',
         name: 'language',
         message: '选择开发语言',
@@ -273,14 +273,14 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
           },
         });
       } catch(e) {
-        this.log(error('模版复制失败' + JSON.stringify(e), true));
+        this.log(error('模板复制失败' + JSON.stringify(e), true));
         return this.env.error(new Error(ERROR_DEMO_COPY));
       }
     } else {
       return this.env.error(new Error(ERROR_REPO_NOT_FOUND));
     }
 
-    this.log(done('模版复制成功', true));
+    this.log(done('模板复制成功', true));
   }
   // npm install
   install() {

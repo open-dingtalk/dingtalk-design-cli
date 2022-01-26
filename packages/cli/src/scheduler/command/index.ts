@@ -20,7 +20,7 @@ export default class Command<CO = PlainRecord> {
     this.commandContext.setLogger(getLogger(`bin/dd ${opts.name}`));
 
     const timeEnd = Date.now();
-    this.commandContext.logger.debug(`load command ${opts.root}/${opts.name} (${chalk.yellowBright(timeEnd - timeStart)}ms)`);
+    this.commandContext.logger.debug(`load command ${opts.root}/${opts.name} (${chalk.yellowBright('' + (timeEnd - timeStart))}ms)`);
   }
 
   /**

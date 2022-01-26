@@ -1,4 +1,4 @@
-import { ICommandContext, IPcPluginDevOpts, } from '../lib/common/types';
+import { ICommandContext, } from '../lib/common/types';
 import { logger, } from '../lib/cli-shared-utils/lib/logger';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -10,12 +10,13 @@ import config from '../lib/common/config';
 import stripAnsi from 'strip-ansi';
 import { isWindows, } from '../lib/cli-shared-utils';
 import server from 'http-server';
+import proxy from './proxy/index';
 const monitor = getMonitor(config.yuyanId);
 
 /**
  * 小程序与普通工作台组件 - 本地构建、上传debug包、生成预览二维码
  */
-export default async (commandContext: ICommandContext) => {
+export default async (commandContext: ICommandContext): Promise<void> => {
   const {
     dtdConfig,
     cwd,
@@ -24,7 +25,6 @@ export default async (commandContext: ICommandContext) => {
   } = commandContext;
 
   const {
-    corpId,
     miniAppId,
   } = dtdConfig;
   // cwd为项目根目录
@@ -67,8 +67,9 @@ export default async (commandContext: ICommandContext) => {
       cors: true,
       cache: -1,
     }).listen(port);
-    
     logger.info(`bundle构建成功，地址: http://localhost:${port}/index.js?pluginId=${miniAppId}`);
+    // 本地代理线上地址
+    proxy({ miniAppId, cwd, });
   }
 
   /**

@@ -221,5 +221,9 @@ export enum EStdioCommands {
   /** 工作台组件独有 */
   PC = 'pc', // 在pc端钉钉预览工作台组件
   CREATE_PLUGIN_COMPONENT = 'createPluginComponent', // 创建插件组件
-  PLUGIN_H5_BUNDLE = 'pluginH5Bundle', // 生成bundle+本地服务3001端口
+  PROXY = 'proxy', // 生成bundle+本地服务3001端口
+}
+export interface IProxyParams{
+  miniAppId: string;
+  cwd: string;
 }

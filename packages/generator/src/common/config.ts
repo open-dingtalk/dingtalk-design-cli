@@ -1,6 +1,6 @@
 import * as os from 'os';
 import * as path from 'path';
-import { APP_TYPE_ENUM, } from './constants'; 
+import { APP_TYPE_ENUM, } from './constants';
 
 // 配置文件
 export const RC_PATH = path.join(os.homedir(), '.dd-cli-rc.json');
@@ -12,7 +12,7 @@ export const DEFAULT_DIRECTORY_SEPERATOR = '_';
 interface HUB {
   /**
    * 套件名称
-   * 用于问询环节以及模版配置文件中
+   * 用于问询环节以及模板配置文件中
    */
   name?: string;
 
@@ -20,14 +20,14 @@ interface HUB {
    * 套件标识
    */
   key: string;
-   
+
   /**
    * 套件的代码仓库地址
    * git ssh
    * 仓库的层级为template->language，必须要严格按照此标准
    */
   repoRemotePath: string;
-  
+
   /**
    * 套件描述
    */
