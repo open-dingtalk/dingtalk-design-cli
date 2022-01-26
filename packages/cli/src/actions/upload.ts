@@ -22,6 +22,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
         
   const miniAppId = get(options, 'miniAppId') || dtdConfig.miniAppId;
   const token = get(options, 'token') || dtdConfig.token;
+  const host = get(options, 'host');
 
   if (!miniAppId || !token) {
     commandContext.logger.error('缺少必要参数 miniAppId 或 token');
@@ -57,7 +58,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
     appKey: '',
     appSecret: '',
     accessToken: token,
-    host: 'https://oapi.dingtalk.com',
+    host: host || 'https://oapi.dingtalk.com',
   });
 
   monitor.logApiInvoke(EApiName.UPLOAD);
