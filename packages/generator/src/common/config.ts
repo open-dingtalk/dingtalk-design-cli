@@ -52,7 +52,7 @@ const DEFAULT_REPO_REMOTE_PATH = process.env.REPO_REMOTE_PATH || 'https://gitee.
 export const HUBS_CONFIG: HUB[] = [
   {
     key: APP_TYPE_ENUM.PLUGIN,
-    name: '工作台组件',
+    name: '插件',
     repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
   {

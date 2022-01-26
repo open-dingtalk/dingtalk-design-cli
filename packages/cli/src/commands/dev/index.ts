@@ -311,10 +311,10 @@ export default CommandWrapper<ICommandOptions>({
           } else {
             GlobalStdinCommand.tips();
           }
+          GlobalStdinCommand.dispose();
         } else {
           GlobalStdinCommand.log();
         }
-        GlobalStdinCommand.dispose();
       },
     };
   },
