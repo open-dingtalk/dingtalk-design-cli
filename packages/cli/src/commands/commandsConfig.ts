@@ -102,6 +102,27 @@ const commandsConfig: {
       },
     },
   },
+
+  [ECommandName.ngrok]: {
+    command: {
+      name: ECommandName.ngrok,
+      description: '内网穿透之HTTP穿透',
+    },
+    options: {
+      config: {
+        description: '[可选] 内网穿透的配置文件，按照命令示例固定为钉钉提供的./ding.cfg，无需修改',
+        type: 'string',
+      },
+      subdomain: {
+        description: '[可选] 您需要使用的域名前缀，该前缀将会匹配到“vaiwan.com”前面，例如你的subdomain是abcde，启动工具后会将abc.vaiwan.com映射到本地。',
+        type: 'string',
+      },
+      port: {
+        description: '[可选] 您需要代理的本地服务http-server端口，例如你本地端口为8080等',
+        type: 'string',
+      },
+    },
+  },
 };
 
 export default commandsConfig;

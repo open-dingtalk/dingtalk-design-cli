@@ -33,4 +33,19 @@ export default {
     webSimulatorFrameworkStoreDir: path.join(homeDir, '.webSimulatorFramework'),
     webSimulatorFrameworkHtmlName: 'webSimulator.html',
   },
+  ngrok: {
+    binStoreDir: path.join(homeDir, '.dd-ngrok-bin'),
+    platforms: {
+      win32: {
+        binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/ae844ce0-bc58-43bd-ab09-2b3eebbff962.gz',
+        binBaseName: 'ding_win64.tar.gz',
+        binExtractPath: '',
+      },
+      darwin: {
+        binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/29771d24-a266-437e-a529-b0b42e5c6c38.gz',
+        binBaseName: 'ding_mac.tar.gz',
+        binExtractPath: 'ding',
+      },
+    },
+  },
 };

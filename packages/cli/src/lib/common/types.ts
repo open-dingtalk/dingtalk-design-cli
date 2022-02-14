@@ -12,6 +12,8 @@ export interface IGlobalRc {
   localDownloadedIdeVersion?: string;
   /** 本地web-simulator-assets目录 */
   localWebSimulatorAssetsDir?: string;
+  /** 钉钉ngrok 执行地址 */
+  ngrokExecPath?: string;
 }
 
 // plugin rc 配置
@@ -145,7 +147,8 @@ export enum ECommandName {
   lint = 'lint',
   preview = 'preview',
   upload = 'upload',
-  dev = 'dev'
+  dev = 'dev',
+  ngrok = 'ngrok'
 }
 
 export enum EDtdCLIKeyDep {

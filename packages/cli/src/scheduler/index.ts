@@ -242,6 +242,7 @@ export default class Scheduler {
       await this.loadCommand(ECommandName.lint);
       await this.loadCommand(ECommandName.dev);
       await this.loadCommand(ECommandName.preview);
+      await this.loadCommand(ECommandName.ngrok);
       successSpinner('启动成功');
 
       /** 2. registerCommandWithAction */
