@@ -54,6 +54,6 @@ export default async (): Promise<string> => {
 
   /** set global builder bin path */
   const binExecPath = path.join(ngrokConfig.binStoreDir, ngrokCurPlatformConfig.binExtractPath);
-  setGlobalRcItem('h5ProExecPath', binExecPath);
+  setGlobalRcItem('ngrokExecPath', binExecPath);
   return binExecPath;
 };
