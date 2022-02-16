@@ -3,6 +3,8 @@
 > DingTalk Design CLI 是面向钉钉开放平台小程序、h5微应用、工作台组件的研发命令行工具。提供对小程序、h5微应用、工作台组件的初始化、开发调试、本地校验、构建预览、上传等功能。
 <br/>
 
+详情请查看：[DingTalk Design CLI操作指南](https://open.dingtalk.com/document/resourcedownload/introduction)
+
 ## 安装
 <br/>
 
