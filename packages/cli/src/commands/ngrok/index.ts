@@ -41,7 +41,7 @@ export default CommandWrapper<ICommandOptions>({
         const ngrokCp = spawn(
           require.resolve(ngrokBinPath),
           [
-            `-config=${config || path.join(__dirname, './ding.cfg')}`,
+            `-config=${config || path.join(__dirname, '../../../assets/ding.cfg')}`,
             `-subdomain=${subdomain}`,
             port,
           ],
