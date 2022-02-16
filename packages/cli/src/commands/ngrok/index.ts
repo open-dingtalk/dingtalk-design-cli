@@ -39,7 +39,7 @@ export default CommandWrapper<ICommandOptions>({
         ctx.logger.debug('ngrokBinPath', ngrokBinPath);
      
         const ngrokCp = spawn(
-          require.resolve(ngrokBinPath),
+          ngrokBinPath,
           [
             `-config=${config || path.join(__dirname, '../../../assets/ding.cfg')}`,
             `-subdomain=${subdomain}`,

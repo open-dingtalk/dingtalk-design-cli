@@ -39,7 +39,7 @@ export default {
       win32: {
         binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/ae844ce0-bc58-43bd-ab09-2b3eebbff962.gz',
         binBaseName: 'ding_win64.tar.gz',
-        binExtractPath: '',
+        binExtractPath: 'ding.exe',
       },
       darwin: {
         binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/29771d24-a266-437e-a529-b0b42e5c6c38.gz',
