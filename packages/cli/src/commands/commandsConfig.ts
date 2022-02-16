@@ -123,6 +123,125 @@ const commandsConfig: {
       },
     },
   },
+  [ECommandName.login]: {
+    command: {
+      name: ECommandName.login,
+      description: '钉钉inside小程序登录',
+    },
+    options: {},
+    needRegister: (options): boolean => {
+      if (options.inside) return true;
+      return false;
+    },
+  },
+  [ECommandName.remoteDebug]: {
+    command: {
+      name: ECommandName.remoteDebug,
+      description: '钉钉inside小程序真机调试',
+    },
+    options: {
+      'auto-push': {
+        description: '[可选] 自动推送到客户端, 默认打开, 使用 --no-auto-push 来关 (default: true)',
+        type: 'boolean',
+      },
+      'ignore-http-domain-check': {
+        description: '[可选] 忽略 http 请求白名单校验',
+        type: 'boolean',
+      },
+      'ignore-webview-domain-check': {
+        description: '[可选] 忽略 webview 加载域名白名单校验',
+        type: 'boolean',
+      },
+      'app-id': {
+        description: '[必填] 小程序应用 id',
+        type: 'string',
+        shortcut: 'a',
+      },
+      'client-type': {
+        description: '[可选] 端类型',
+        type: 'string',
+        shortcut: 'c',
+      },
+      page: {
+        description: '[可选] 入口页面',
+        type: 'string',
+      },
+      'page-query': {
+        description: '[可选] 页面参数, 可在当前页面的 onLoad 中取得，如: name=vendor&color=black',
+        type: 'string',
+      },
+      query: {
+        description: '[可选] 全局参数，app.js 的 onLaunch 中取得，如: name=vendor&color=black',
+        type: 'string',
+      },
+      scene: {
+        description: '[可选] 进入场景值',
+        type: 'string',
+      },
+      'bundle-id': {
+        description: '[可选] <高级> 开放平台 bundleId, 此项会覆盖 clientType 的效果',
+        type: 'string',
+      },
+    },
+    needRegister: (options): boolean => {
+      if (options.inside) return true;
+      return false;
+    },
+  },
+  [ECommandName.previewInside]: {
+    command: {
+      name: ECommandName.previewInside,
+      description: '钉钉inside小程序生成预览二维码',
+    },
+    options: {
+      'auto-push': {
+        description: '[可选] 自动推送到客户端, 默认打开, 使用 --no-auto-push 来关 (default: true)',
+        type: 'boolean',
+      },
+      'ignore-http-domain-check': {
+        description: '[可选] 忽略 http 请求白名单校验',
+        type: 'boolean',
+      },
+      'ignore-webview-domain-check': {
+        description: '[可选] 忽略 webview 加载域名白名单校验',
+        type: 'boolean',
+      },
+      'app-id': {
+        description: '[必填] 小程序应用 id',
+        type: 'string',
+        shortcut: 'a',
+      },
+      'client-type': {
+        description: '[可选] 端类型',
+        type: 'string',
+        shortcut: 'c',
+      },
+      page: {
+        description: '[可选] 入口页面',
+        type: 'string',
+      },
+      'page-query': {
+        description: '[可选] 页面参数, 可在当前页面的 onLoad 中取得，如: name=vendor&color=black',
+        type: 'string',
+      },
+      query: {
+        description: '[可选] 全局参数，app.js 的 onLaunch 中取得，如: name=vendor&color=black',
+        type: 'string',
+      },
+      scene: {
+        description: '[可选] 进入场景值',
+        type: 'string',
+      },
+      'bundle-id': {
+        description: '[可选] <高级> 开放平台 bundleId, 此项会覆盖 clientType 的效果',
+        type: 'string',
+      },
+    },
+    needRegister: (options): boolean => {
+      if (options.inside) return true;
+      return false;
+    },
+  },
 };
 
 export default commandsConfig;

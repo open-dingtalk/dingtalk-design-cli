@@ -112,8 +112,15 @@ export default class Scheduler {
   }
 
   private registerCommandsWithoutAction() {
+    const { options, } = this.program.parse(process.argv, { run: false, });
     Object.keys(commandsConfig).forEach(commandName => {
-      this.registerCommandOption(commandsConfig[commandName]);
+      if (commandsConfig[commandName].needRegister && options) {
+        if (commandsConfig[commandName].needRegister(options)) {
+          this.registerCommandOption(commandsConfig[commandName]);
+        }
+      } else {
+        this.registerCommandOption(commandsConfig[commandName]);
+      }
     });
   }
 
@@ -226,9 +233,11 @@ export default class Scheduler {
     this.program.name = 'ding';
     this.program.option('--cwd [cwd]', `[可选] 当前的工作目录, 默认值是 ${chalk.yellow('process.cwd()')}`);
     this.program.option('--verbose', '[可选] 打开框架日志调试');
+
     this.registerCommandsWithoutAction();
 
     const { options, } = this.program.parse(process.argv, { run: false, });
+
     if (options.v || options.version) {
       this.logVersion();
     } else if (options.help || options.h) {
@@ -243,6 +252,14 @@ export default class Scheduler {
       await this.loadCommand(ECommandName.dev);
       await this.loadCommand(ECommandName.preview);
       await this.loadCommand(ECommandName.ngrok);
+
+      // 特供于支付宝-钉钉小程序
+      // 参考：https://yuque.antfin.com/docs/share/f5fdcc3d-e6ec-4f00-b598-0bda87a55aa0?#
+      if (options.inside) {
+        await this.loadCommand(ECommandName.login);
+        await this.loadCommand(ECommandName.remoteDebug);
+        await this.loadCommand(ECommandName.previewInside);
+      }
       successSpinner('启动成功');
 
       /** 2. registerCommandWithAction */

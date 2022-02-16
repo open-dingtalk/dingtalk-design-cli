@@ -124,6 +124,11 @@ export type ICommandOptionConfigMap<T> = {
 export interface IGlobalOptions {
   cwd?: string;
   verbose?: boolean;
+  /**
+   * 特供于支付宝-钉钉小程序
+   * 参考：https://yuque.antfin.com/docs/share/f5fdcc3d-e6ec-4f00-b598-0bda87a55aa0?#
+   */
+  inside?: boolean;
 }
 
 export interface ICommandConfigOpts<CO = PlainRecord> {
@@ -133,6 +138,9 @@ export interface ICommandConfigOpts<CO = PlainRecord> {
   },
   options?: ICommandOptionConfigMap<CO>,
   action?: (options: CO & IGlobalOptions, ctx: ICommandContext<CO>) => Promise<void>
+  needRegister?: (options: {
+    [k: string]: any;
+  }) => boolean
 }
 
 export interface ICommandConfig<
@@ -148,7 +156,13 @@ export enum ECommandName {
   preview = 'preview',
   upload = 'upload',
   dev = 'dev',
-  ngrok = 'ngrok'
+  ngrok = 'ngrok',
+  /** 支付宝登录。for 钉钉小程序inside */
+  login = 'login',
+  /** 支付宝真机调试。for 钉钉小程序inside */
+  'remoteDebug' = 'remote-debug',
+  /** 支付宝预览。for 钉钉小程序inside */
+  'previewInside' = 'preview-inside',
 }
 
 export enum EDtdCLIKeyDep {
