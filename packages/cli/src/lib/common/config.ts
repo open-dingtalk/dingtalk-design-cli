@@ -46,6 +46,11 @@ export default {
         binBaseName: 'ding_mac.tar.gz',
         binExtractPath: 'ding',
       },
+      m1: {
+        binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/146ec2d7-7ab6-442e-b742-fa999c62c82a.gz',
+        binBaseName: 'ding_mac.tar.gz',
+        binExtractPath: 'ding',
+      },
     },
   },
 };

@@ -7,9 +7,18 @@ import { getGlobalRc, setGlobalRcItem, } from './globalRc';
 import clean from './clean';
 import { failSpinner, logWithSpinner, successSpinner, } from '../cli-shared-utils/lib/spinner';
 import tarExtract from './tarExtract';
+import isMacM1 from './isMacM1';
 
 export default async (): Promise<string> => {
-  const platform = os.platform();
+  let platform: any = os.platform();
+
+  /**
+   * ngrok m1机型需要用特定的执行文件
+   */
+  if (isMacM1()) {
+    platform = 'm1';
+  }
+
   const ngrokConfig = config.ngrok;
   const platformConfigs = ngrokConfig.platforms;
   const ngrokCurPlatformConfig  = platformConfigs[platform as keyof typeof platformConfigs];
