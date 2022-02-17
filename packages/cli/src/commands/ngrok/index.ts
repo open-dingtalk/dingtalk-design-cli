@@ -61,6 +61,10 @@ export default CommandWrapper<ICommandOptions>({
           ngrokCp.kill();
           monitor.logJSError(err);
         });
+
+        if (isWindows) {
+          ctx.logger.success('Forwarding', `http://${subdomain}.vaiwan.cn -> http://127.0.0.1:${port}`);
+        }
       },
     };
   },
