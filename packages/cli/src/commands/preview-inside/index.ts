@@ -37,7 +37,7 @@ export default CommandWrapper<ICommandOptions>({
           pageQuery: options.pageQuery,
           query: options['query'],
           scene: options['scene'],
-          bundleId: options.bundleId,
+          bundleId: options.bundleId || 'com.alibaba.dingtalk',
         };
         
         try {

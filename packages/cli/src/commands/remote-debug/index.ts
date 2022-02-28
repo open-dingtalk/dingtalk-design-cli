@@ -7,7 +7,7 @@
 import CommandWrapper from '../../scheduler/command/commandWrapper';
 import { ECommandName, } from '../../lib/common/types';
 import commandsConfig from '../commandsConfig';
-import { minidev, } from 'minidev';
+import { IRemoteDebugArgs, minidev, } from 'minidev';
  
 interface ICommandOptions {
   'appId': string;
@@ -30,18 +30,9 @@ export default CommandWrapper<ICommandOptions>({
       action: async (options) => {
         ctx.logger.debug('cli options', options);
         
-        const devServerBuild = await minidev.dev({
-          project: options.cwd,
-          appId: options['app-id'],
-          // output: '~/.dingtalk-degisn-cli/dist',
-          parallel: true,
-          sourceMap: true,
-          hmr: false,
-          minify: false,
-        });
-        
-        const debugParams = {
+        const debugParams: IRemoteDebugArgs = {
           appId:  options.appId,
+          project: options.cwd,
           autoPush: options.autoPush || false,
           clientType: options.clientType || 'alipay',
           ignoreHttpDomainCheck: options.ignoreHttpDomainCheck || true,
@@ -50,7 +41,8 @@ export default CommandWrapper<ICommandOptions>({
           pageQuery: options.pageQuery,
           query: options['query'],
           scene: options['scene'],
-          bundleId: options.bundleId,
+          bundleId: options.bundleId || 'com.alibaba.dingtalk',
+          autoOpenDevtool: true,
         };
 
         ctx.logger.debug('remoteDebugParams', debugParams);
@@ -59,7 +51,7 @@ export default CommandWrapper<ICommandOptions>({
           const { 
             qrcodeUrl, 
             debugUrl, 
-          } = await minidev.devRemoteDebug(debugParams, devServerBuild);
+          } = await minidev.remoteDebug(debugParams);
   
           ctx.logger.debug('qrcodeUrl', qrcodeUrl);
   
