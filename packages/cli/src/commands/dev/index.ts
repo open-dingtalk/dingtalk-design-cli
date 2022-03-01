@@ -30,6 +30,7 @@ import open from 'open';
 import { choosePort, } from '../../lib/cli-shared-utils/lib/network';
 import getSimulatorFrameworkStoreDir from '../../lib/util/getSimulatorFrameworkStoreDir';
 import openWebSImulator from '../../actions/openWebSImulator';
+import updateConfig from '../../actions/updateConfig';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -48,6 +49,7 @@ export default CommandWrapper<ICommandOptions>({
         const {
           dtdConfig,
           cwd,
+          miniProgramConfigContent,
         } = ctx;
 
         if (!dtdConfig.type) {
@@ -113,8 +115,19 @@ export default CommandWrapper<ICommandOptions>({
           action: async (args) => {
             const configKey = args[0];
             const configValue = args[1];
-            if(setJsonItem(path.join(cwd, config.workspaceRcName), configKey, configValue)) {
-              ctx.logger.success('更新配置文件成功', `配置文件中 ${configKey} 字段被设置为 ${configValue}`);
+            updateConfig({
+              configKey,
+              configValue,
+              cwd,
+            });
+
+            // 插件场景下，写入miniAppId时同步将pluginId写入plugin.json
+            if (type === EAppType.PLUGIN && configKey === 'miniAppId') {
+              setJsonItem(
+                path.resolve(miniProgramConfigContent.pluginRoot, 'plugin.json'),
+                'pluginId',
+                configValue,
+              );
             }
           },
         });

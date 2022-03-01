@@ -8,6 +8,7 @@ export interface ICommandOptions {
   miniAppId?: string;
   version?: string;
   token?: string;
+  override?: boolean;
 }
 
 export default CommandWrapper<ICommandOptions>({

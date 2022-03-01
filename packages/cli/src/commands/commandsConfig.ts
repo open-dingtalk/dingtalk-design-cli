@@ -100,6 +100,10 @@ const commandsConfig: {
         description: `[可选] API访问凭证，默认从当前工作目录下的 ${config.workspaceRcName} 中读取，生成方式参考 https://developers.dingtalk.com/document/app/used-to-obtain-the-application-authorization-without-api-token`,
         type: 'string',
       },
+      override: {
+        description: '[可选] 将miniAppId, token, version覆盖写入到ding.config.json',
+        type: 'boolean',
+      },
     },
   },
 

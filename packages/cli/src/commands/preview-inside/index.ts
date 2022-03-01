@@ -38,6 +38,7 @@ export default CommandWrapper<ICommandOptions>({
           query: options['query'],
           scene: options['scene'],
           bundleId: options.bundleId || 'com.alibaba.dingtalk',
+          project: options.cwd,
         };
         
         try {
