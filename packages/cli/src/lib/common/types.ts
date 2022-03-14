@@ -10,6 +10,10 @@ export interface IGlobalRc {
   localDownloadedIdePath?: string;
   /** 本地ide版本 */
   localDownloadedIdeVersion?: string;
+  /** 本地web-simulator-assets目录 */
+  localWebSimulatorAssetsDir?: string;
+  /** 钉钉ngrok 执行地址 */
+  ngrokExecPath?: string;
 }
 
 // plugin rc 配置
@@ -120,6 +124,11 @@ export type ICommandOptionConfigMap<T> = {
 export interface IGlobalOptions {
   cwd?: string;
   verbose?: boolean;
+  /**
+   * 特供于支付宝-钉钉小程序
+   * 参考：https://yuque.antfin.com/docs/share/f5fdcc3d-e6ec-4f00-b598-0bda87a55aa0?#
+   */
+  inside?: boolean;
 }
 
 export interface ICommandConfigOpts<CO = PlainRecord> {
@@ -129,6 +138,9 @@ export interface ICommandConfigOpts<CO = PlainRecord> {
   },
   options?: ICommandOptionConfigMap<CO>,
   action?: (options: CO & IGlobalOptions, ctx: ICommandContext<CO>) => Promise<void>
+  needRegister?: (options: {
+    [k: string]: any;
+  }) => boolean
 }
 
 export interface ICommandConfig<
@@ -143,7 +155,14 @@ export enum ECommandName {
   lint = 'lint',
   preview = 'preview',
   upload = 'upload',
-  dev = 'dev'
+  dev = 'dev',
+  ngrok = 'ngrok',
+  /** 支付宝登录。for 钉钉小程序inside */
+  login = 'login',
+  /** 支付宝真机调试。for 钉钉小程序inside */
+  'remoteDebug' = 'remote-debug',
+  /** 支付宝预览。for 钉钉小程序inside */
+  'previewInside' = 'preview-inside',
 }
 
 export enum EDtdCLIKeyDep {
@@ -214,6 +233,7 @@ export enum EStdioCommands {
   UPLOAD = 'upload', // 上传小程序或工作台组件
   LINT = 'lint', // 格式/业务校验
   HELP = 'help', // 再次输出stdio命令简介
+  WEB = 'web', // h5模版web调试
 
   /** 工作台组件独有 */
   PC = 'pc', // 在pc端钉钉预览工作台组件

@@ -29,19 +29,20 @@ exports.RC_PATH = path.join(os.homedir(), '.dd-cli-rc.json');
 exports.REPO_LOCAL_ROOT_PATH = path.join(os.homedir(), '.dd-demo-repo');
 // 代码仓库目录名分隔符，合格的目录名格式: ${appType}${seperator}${desc}
 exports.DEFAULT_DIRECTORY_SEPERATOR = '_';
+const DEFAULT_REPO_REMOTE_PATH = process.env.REPO_REMOTE_PATH || 'https://gitee.com/open-dingtalk/dd-application-template.git';
 // 套件配置
 exports.HUBS_CONFIG = [
 {
     key: constants_1.APP_TYPE_ENUM.PLUGIN,
-    name: '工作台组件',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git' },
+    name: '插件',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH },
 
 {
     key: constants_1.APP_TYPE_ENUM.MP,
     name: '小程序',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git' },
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH },
 
 {
     key: constants_1.APP_TYPE_ENUM.H5,
     name: 'H5微应用',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git' }];
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH }];

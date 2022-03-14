@@ -43,13 +43,13 @@ exports.default = filePath => __awaiter(void 0, void 0, void 0, function* () {
         console.warn(`Clean a directory: ${filePath}`);
     }
     try {
-        child_process_1.execSync(`ls ${filePath}`);
+        (0, child_process_1.execSync)(`ls ${filePath}`);
     }
     catch (e) {
         console.warn(`ll exec failed. filePath: ${filePath}`);
     }
     try {
-        child_process_1.execSync(`rm -r ${filePath}`);
+        (0, child_process_1.execSync)(`rm -r ${filePath}`);
         console.log(`Clean success. filePath: ${filePath}`);
     }
     catch (e) {

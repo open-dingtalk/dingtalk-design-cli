@@ -24,7 +24,7 @@ const child_process_1 = require("child_process");
 const semver = __importStar(require("semver"));
 function hasYarn() {
     try {
-        child_process_1.execSync('yarn --version', { stdio: 'ignore' });
+        (0, child_process_1.execSync)('yarn --version', { stdio: 'ignore' });
         return true;
     }
     catch (e) {
@@ -34,7 +34,7 @@ function hasYarn() {
 exports.hasYarn = hasYarn;
 function hasNpm() {
     try {
-        child_process_1.execSync('npm --version', { stdio: 'ignore' });
+        (0, child_process_1.execSync)('npm --version', { stdio: 'ignore' });
         return true;
     }
     catch (e) {
@@ -44,7 +44,7 @@ function hasNpm() {
 exports.hasNpm = hasNpm;
 function hasPnpm() {
     try {
-        child_process_1.execSync('npm --version', { stdio: 'ignore' });
+        (0, child_process_1.execSync)('npm --version', { stdio: 'ignore' });
         return true;
     }
     catch (e) {
@@ -55,7 +55,7 @@ exports.hasPnpm = hasPnpm;
 function getPnpmVersion() {
     let pnpmversion;
     try {
-        pnpmversion = child_process_1.execSync('pnpm --version', {
+        pnpmversion = (0, child_process_1.execSync)('pnpm --version', {
             stdio: ['pipe', 'pipe', 'ignore'] }).
         toString();
         // there's a critical bug in pnpm 2

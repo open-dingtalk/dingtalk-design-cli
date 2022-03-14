@@ -1,5 +1,5 @@
 import { sdk as opensdk, } from 'dingtalk-miniapp-opensdk';
-import { EApiName, EStdioCommands, ICommandContext, } from '../lib/common/types';
+import { EApiName, EAppType, EStdioCommands, ICommandContext, } from '../lib/common/types';
 import { failSpinner, successSpinner, logWithSpinner, stopSpinner, } from '../lib/cli-shared-utils/lib/spinner';
 import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
@@ -7,6 +7,7 @@ import { EBuildStatusText, } from 'dingtalk-miniapp-opensdk/dist/types';
 import { ICommandOptions, } from '../commands/upload';
 import { get, } from 'lodash';
 import * as path from 'path';
+import * as fs from 'fs';
 import { setJsonItem, } from '../lib/util/setJson';
 
 const monitor = getMonitor(config.yuyanId);
@@ -18,15 +19,25 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
   const {
     dtdConfig,
     cwd,
+    miniProgramConfigContent,
   } = commandContext;
         
   const miniAppId = get(options, 'miniAppId') || dtdConfig.miniAppId;
   const token = get(options, 'token') || dtdConfig.token;
+  const host = get(options, 'host');
 
   if (!miniAppId || !token) {
     commandContext.logger.error('缺少必要参数 miniAppId 或 token');
     commandContext.logTips(dtdConfig.type, EStdioCommands.UPLOAD);
     return;
+  }
+
+  const version = get(options, 'version') || dtdConfig.version;
+  if (options.override) {
+    const dtdConfigPath = path.join(cwd, config.workspaceRcName);
+    setJsonItem(dtdConfigPath, 'miniAppId', miniAppId);
+    setJsonItem(dtdConfigPath, 'token', token);
+    setJsonItem(dtdConfigPath, 'version', version);
   }
 
   // inquirer在输入时会默认输入回车
@@ -53,11 +64,20 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
 
   // GlobalStdinCommand.bootstrap();
 
+  // 插件场景下校验有没有存在component.json，要提示开发者删除，否则云构建可能报错
+  if (dtdConfig.type === EAppType.PLUGIN) {
+    const componentJson = path.resolve(miniProgramConfigContent.pluginRoot, 'component.json');
+    if(fs.existsSync(componentJson)) {
+      commandContext.logger.error(`${componentJson}存在，可能导致该插件云构建异常，请手动删除。`);
+      return;
+    }
+  }
+
   opensdk.setConfig({
     appKey: '',
     appSecret: '',
     accessToken: token,
-    host: 'https://oapi.dingtalk.com',
+    host: host || 'https://oapi.dingtalk.com',
   });
 
   monitor.logApiInvoke(EApiName.UPLOAD);

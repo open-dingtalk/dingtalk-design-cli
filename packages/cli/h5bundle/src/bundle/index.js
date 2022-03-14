@@ -179,11 +179,15 @@ Component({
   didMount: function didMount() {
     var _this = this;
 
-    var id = 'f2-canvas-' + this.$id;
-    var myCtx = my.createCanvasContext(id);
+    var pageId = this.$page && this.$page.$id || 0;
+    var id = 'f2-canvas-' + pageId + '-' + this.$id;
+    var myCtx = my.createCanvasContext(id, { page: this.$page });
     var context = (0, _f2Context.my)(myCtx);
 
-    var query = my.createSelectorQuery();
+    this.setData({
+      $pageId: pageId
+    });
+    var query = my.createSelectorQuery({ page: this.$page });
     query.select('#' + id).boundingClientRect().exec(function (res) {
       // 获取画布实际宽高, 用props的宽高做失败兜底
       var _ref = res && res[0] ? res[0] : _this.props,
@@ -239,6 +243,38 @@ Component({
 
 /***/ }),
 
+/***/ "+ljF":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./components/testCreate/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_testCreate_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/testCreate/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "Ik/V");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("components/testCreate/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_components_testCreate_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "/cxF":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/testCreate/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
 /***/ 0:
 /*!***********************************************************************************************************************!*\
   !*** multi /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!./component.json?jsonAsESM ***!
@@ -246,7 +282,7 @@ Component({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!/Users/wuzequan/Desktop/pluginTest/plugin/component.json?jsonAsESM */"ix9Z");
+module.exports = __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/fragment.js!/Users/lou1swu/Desktop/pluginTest/plugin/component.json?jsonAsESM */"ix9Z");
 
 
 /***/ }),
@@ -480,6 +516,24 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
   var usingComponents = {
     
   };
+  
+  
+
+/***/ }),
+
+/***/ "0VoQ":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/createPluginComponent/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/createPluginComponent/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_createPluginComponent_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_createPluginComponent_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/createPluginComponent?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/createPluginComponent/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "7Euj");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_createPluginComponent_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_createPluginComponent_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_components_createPluginComponent_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_createPluginComponent_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
   
   
 
@@ -18724,6 +18778,339 @@ var global = undefined,
 
 /***/ }),
 
+/***/ "4sJH":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/test/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: exportNamed, exportDefault, usingComponents */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+
+  
+
+  
+
+  
+
+  var included = {
+    
+  };
+  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
+  var renderContext = {
+    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
+    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
+    s: {},
+    i: included,
+    t: {}
+  };
+
+  var exportNamed = {
+    
+  };
+
+  var exportDefault = {
+    zcomponent: (
+function getComponent($$renderContext_0, $$runtimeContext_0) {
+  var $$helper_0 = $$runtimeContext_0.h;
+  var $$getelement_0 = $$runtimeContext_0.e;
+  var $$element_view_0 = $$getelement_0(1);
+  function create_main_block_0($$componentInstance_0, context_0) {
+    var range_config__0;
+    var range__5;
+    var range_componentProps__0;
+    var range__4;
+    var range_componentName___componentName_0;
+    var range__3;
+    var range____ding_config_json_______mock___0;
+    var range__2;
+    var range_______plugin_components_test_config_json_0;
+    var range__1;
+    var range____________test_0;
+    var range__0;
+    var range_component_template_0;
+    var exp_componentName_0;
+    var node_block_19_0;
+    var node_texte_18_0;
+    var node_eleme_view_17_0;
+    var node_block_13_0;
+    var node_texte_12_0;
+    var node_eleme_view_11_0;
+    var node_texte_10_0;
+    var node_eleme_view_9_0;
+    var node_texte_8_0;
+    var node_eleme_view_7_0;
+    var node_texte_6_0;
+    var node_eleme_view_5_0;
+    var node_texte_4_0;
+    var node_eleme_view_3_0;
+    var node_eleme_view_2_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        node_eleme_view_3_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range____________test_0 = "已经成功新建组件模板 test";
+        node_texte_4_0 = $$helper_0.t($$componentInstance_0, range____________test_0);
+        node_eleme_view_5_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_______plugin_components_test_config_json_0 = "你还需要修改plugin/components/test/config.json";
+        node_texte_6_0 = $$helper_0.t($$componentInstance_0, range_______plugin_components_test_config_json_0);
+        node_eleme_view_7_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range____ding_config_json_______mock___0 = "以及在ding.config.json中配置组件本地mock数据";
+        node_texte_8_0 = $$helper_0.t($$componentInstance_0, range____ding_config_json_______mock___0);
+        node_eleme_view_9_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_componentName_0 = $$helper_0.f(context_0.componentName);
+        range_componentName___componentName_0 = "componentName: "+exp_componentName_0;
+        node_texte_10_0 = $$helper_0.t($$componentInstance_0, range_componentName___componentName_0);
+        node_eleme_view_11_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_componentProps__0 = "componentProps:";
+        node_texte_12_0 = $$helper_0.t($$componentInstance_0, range_componentProps__0);
+        node_block_13_0 = $$helper_0.b(create_each_container_block_0, $$componentInstance_0, context_0);
+        hasNoChildren_1 &= node_block_13_0.c();
+        node_eleme_view_17_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_config__0 = "config:";
+        node_texte_18_0 = $$helper_0.t($$componentInstance_0, range_config__0);
+        node_block_19_0 = $$helper_0.b(create_each_container_block_1, $$componentInstance_0, context_0);
+        hasNoChildren_1 &= node_block_19_0.c();
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_component_template_0 = "component-template";
+        assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
+        , range_component_template_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_3_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_5_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_7_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_9_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_11_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_17_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_3_0);
+        $$helper_0.A(node_eleme_view_3_0, node_texte_4_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_5_0);
+        $$helper_0.A(node_eleme_view_5_0, node_texte_6_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_7_0);
+        $$helper_0.A(node_eleme_view_7_0, node_texte_8_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_9_0);
+        $$helper_0.A(node_eleme_view_9_0, node_texte_10_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_11_0);
+        $$helper_0.A(node_eleme_view_11_0, node_texte_12_0);
+        node_block_13_0.m(node_eleme_view_11_0, null);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_17_0);
+        $$helper_0.A(node_eleme_view_17_0, node_texte_18_0);
+        node_block_19_0.m(node_eleme_view_17_0, null);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_componentName_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["componentName"]) {;
+          exp_componentName_0 = $$helper_0.f(data_0.componentName);
+          changed_exp_componentName_0 = true;
+        };
+        if (changed_exp_componentName_0) {;
+          var local_changed_0 = range_componentName___componentName_0 !== (range_componentName___componentName_0 = "componentName: "+exp_componentName_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_10_0, range_componentName___componentName_0);
+          };
+        };
+        hasNoChildren_1 &= node_block_13_0.u(diff_0, data_0);
+        hasNoChildren_1 &= node_block_19_0.u(diff_0, data_0);
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_4_0);
+        $$helper_0.d(node_eleme_view_3_0);
+        $$helper_0.D(node_texte_6_0);
+        $$helper_0.d(node_eleme_view_5_0);
+        $$helper_0.D(node_texte_8_0);
+        $$helper_0.d(node_eleme_view_7_0);
+        $$helper_0.D(node_texte_10_0);
+        $$helper_0.d(node_eleme_view_9_0);
+        $$helper_0.D(node_texte_12_0);
+        if (node_block_13_0) {;
+          node_block_13_0.d();
+        };
+        $$helper_0.d(node_eleme_view_11_0);
+        $$helper_0.D(node_texte_18_0);
+        if (node_block_19_0) {;
+          node_block_19_0.d();
+        };
+        $$helper_0.d(node_eleme_view_17_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_2_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_2_0);
+        };
+      },
+    }
+  }
+
+  var create_each_container_block_0 = (
+    $$helper_0.$E(
+    function () { return create_each_iterator_block_0 }, "item", "key", 
+    function ($$componentInstance_0, context_0) { //
+    var exp_componentProps_0 = context_0.componentProps;
+      return exp_componentProps_0
+    }, //
+    ["componentProps"], // name diff
+    ["componentProps"] // name diff
+    ));
+
+
+  function create_each_iterator_block_0($$componentInstance_0, context_0) {
+    var range__key____item_0;
+    var range__0;
+    var exp_item_0;
+    var exp_key_0;
+    var node_texte_16_0;
+    var node_eleme_view_15_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_15_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_key_0 = $$helper_0.f(context_0.key);
+        exp_item_0 = $$helper_0.f(context_0.item);
+        range__key____item_0 = ""+exp_key_0+": "+exp_item_0;
+        node_texte_16_0 = $$helper_0.t($$componentInstance_0, range__key____item_0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        assign_class_style_props_0(node_eleme_view_15_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_15_0, anchor_0);
+        $$helper_0.A(node_eleme_view_15_0, node_texte_16_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_item_0;
+        var changed_exp_key_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["key"]) {;
+          exp_key_0 = $$helper_0.f(data_0.key);
+          changed_exp_key_0 = true;
+        };
+        if (diff_0["item"]) {;
+          exp_item_0 = $$helper_0.f(data_0.item);
+          changed_exp_item_0 = true;
+        };
+        if (changed_exp_key_0 || changed_exp_item_0) {;
+          var local_changed_0 = range__key____item_0 !== (range__key____item_0 = ""+exp_key_0+": "+exp_item_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_16_0, range__key____item_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_16_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_15_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_15_0);
+        };
+      },
+    }
+  }
+
+  var create_each_container_block_1 = (
+    $$helper_0.$E(
+    function () { return create_each_iterator_block_1 }, "item", "key", 
+    function ($$componentInstance_0, context_0) { //
+    var exp_config_0 = context_0.config;
+      return exp_config_0
+    }, //
+    ["config"], // name diff
+    ["config"] // name diff
+    ));
+
+
+  function create_each_iterator_block_1($$componentInstance_0, context_0) {
+    var range__key____item_0;
+    var range__0;
+    var exp_item_0;
+    var exp_key_0;
+    var node_texte_22_0;
+    var node_eleme_view_21_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_21_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_key_0 = $$helper_0.f(context_0.key);
+        exp_item_0 = $$helper_0.f(context_0.item);
+        range__key____item_0 = ""+exp_key_0+": "+exp_item_0;
+        node_texte_22_0 = $$helper_0.t($$componentInstance_0, range__key____item_0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        assign_class_style_props_0(node_eleme_view_21_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_21_0, anchor_0);
+        $$helper_0.A(node_eleme_view_21_0, node_texte_22_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_item_0;
+        var changed_exp_key_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["key"]) {;
+          exp_key_0 = $$helper_0.f(data_0.key);
+          changed_exp_key_0 = true;
+        };
+        if (diff_0["item"]) {;
+          exp_item_0 = $$helper_0.f(data_0.item);
+          changed_exp_item_0 = true;
+        };
+        if (changed_exp_key_0 || changed_exp_item_0) {;
+          var local_changed_0 = range__key____item_0 !== (range__key____item_0 = ""+exp_key_0+": "+exp_item_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_22_0, range__key____item_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_22_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_21_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_21_0);
+        };
+      },
+    }
+  }
+
+
+  return {
+    fragment: create_main_block_0
+  };
+
+}
+).bind(null, renderContext),
+
+    style: null  
+  };
+
+  var usingComponents = {
+    
+  };
+  
+  
+
+/***/ }),
+
 /***/ "5Kf0":
 /*!********************************************************************************************************************************************************************************************************!*\
   !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/project-select-view/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
@@ -18744,16 +19131,136 @@ module.exports = {"keys":[],"map":{}}
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "Djna");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "Djna");
 
   
   
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", '', [_Users_lou1swu_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
+
+/***/ }),
+
+/***/ "70Sx":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/test?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/test/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+
+$global.$addComponentConfig({
+  componentPath: "components/test/index"
+});
+
+Component({
+  data: {},
+  props: {
+    componentName: '',
+    componentProps: {// config.json文件中定义的props可以从componentProps中获取，这里可以设置默认值。如果有在设计器里修改，则会被新值覆盖。
+
+    },
+    config: {
+      corpId: '' // 可以通过this.props.config.corpId 获取当前工作台用户的企业corpId
+    }
+  },
+  didMount: function didMount() {
+    // 业务代码写到下方
+
+  },
+  didUpdate: function didUpdate() {
+    // 业务代码写到下方
+  },
+  didUnmount: function didUnmount() {
+    // 业务代码写到下方
+  },
+
+  methods: {}
+});
+
+/***/ }),
+
+/***/ "7Euj":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/createPluginComponent?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/createPluginComponent/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+
+$global.$addComponentConfig({
+  componentPath: "components/createPluginComponent/index"
+});
+
+Component({
+  data: {},
+  props: {
+    componentName: '',
+    componentProps: {// config.json文件中定义的props可以从componentProps中获取，这里可以设置默认值。如果有在设计器里修改，则会被新值覆盖。
+
+    },
+    config: {
+      corpId: '' // 可以通过this.props.config.corpId 获取当前工作台用户的企业corpId
+    }
+  },
+  didMount: function didMount() {
+    // 业务代码写到下方
+
+  },
+  didUpdate: function didUpdate() {
+    // 业务代码写到下方
+  },
+  didUnmount: function didUnmount() {
+    // 业务代码写到下方
+  },
+
+  methods: {}
+});
 
 /***/ }),
 
@@ -18893,8 +19400,8 @@ Component({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "e5m4");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "e5m4");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_statistical_indicator_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
 
   
   
@@ -18919,6 +19426,339 @@ exports.gcp = member_1.gcp;
 
 /***/ }),
 
+/***/ "B6MM":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/createPluginComponent/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: exportNamed, exportDefault, usingComponents */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+
+  
+
+  
+
+  
+
+  var included = {
+    
+  };
+  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
+  var renderContext = {
+    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
+    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
+    s: {},
+    i: included,
+    t: {}
+  };
+
+  var exportNamed = {
+    
+  };
+
+  var exportDefault = {
+    zcomponent: (
+function getComponent($$renderContext_0, $$runtimeContext_0) {
+  var $$helper_0 = $$runtimeContext_0.h;
+  var $$getelement_0 = $$runtimeContext_0.e;
+  var $$element_view_0 = $$getelement_0(1);
+  function create_main_block_0($$componentInstance_0, context_0) {
+    var range_config__0;
+    var range__5;
+    var range_componentProps__0;
+    var range__4;
+    var range_componentName___componentName_0;
+    var range__3;
+    var range____ding_config_json_______mock___0;
+    var range__2;
+    var range_______plugin_components_createPluginComponent_config_json_0;
+    var range__1;
+    var range____________createPluginComponent_0;
+    var range__0;
+    var range_component_template_0;
+    var exp_componentName_0;
+    var node_block_19_0;
+    var node_texte_18_0;
+    var node_eleme_view_17_0;
+    var node_block_13_0;
+    var node_texte_12_0;
+    var node_eleme_view_11_0;
+    var node_texte_10_0;
+    var node_eleme_view_9_0;
+    var node_texte_8_0;
+    var node_eleme_view_7_0;
+    var node_texte_6_0;
+    var node_eleme_view_5_0;
+    var node_texte_4_0;
+    var node_eleme_view_3_0;
+    var node_eleme_view_2_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        node_eleme_view_3_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range____________createPluginComponent_0 = "已经成功新建组件模板 createPluginComponent";
+        node_texte_4_0 = $$helper_0.t($$componentInstance_0, range____________createPluginComponent_0);
+        node_eleme_view_5_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_______plugin_components_createPluginComponent_config_json_0 = "你还需要修改plugin/components/createPluginComponent/config.json";
+        node_texte_6_0 = $$helper_0.t($$componentInstance_0, range_______plugin_components_createPluginComponent_config_json_0);
+        node_eleme_view_7_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range____ding_config_json_______mock___0 = "以及在ding.config.json中配置组件本地mock数据";
+        node_texte_8_0 = $$helper_0.t($$componentInstance_0, range____ding_config_json_______mock___0);
+        node_eleme_view_9_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_componentName_0 = $$helper_0.f(context_0.componentName);
+        range_componentName___componentName_0 = "componentName: "+exp_componentName_0;
+        node_texte_10_0 = $$helper_0.t($$componentInstance_0, range_componentName___componentName_0);
+        node_eleme_view_11_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_componentProps__0 = "componentProps:";
+        node_texte_12_0 = $$helper_0.t($$componentInstance_0, range_componentProps__0);
+        node_block_13_0 = $$helper_0.b(create_each_container_block_0, $$componentInstance_0, context_0);
+        hasNoChildren_1 &= node_block_13_0.c();
+        node_eleme_view_17_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_config__0 = "config:";
+        node_texte_18_0 = $$helper_0.t($$componentInstance_0, range_config__0);
+        node_block_19_0 = $$helper_0.b(create_each_container_block_1, $$componentInstance_0, context_0);
+        hasNoChildren_1 &= node_block_19_0.c();
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_component_template_0 = "component-template";
+        assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
+        , range_component_template_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_3_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_5_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_7_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_9_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_11_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_17_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_3_0);
+        $$helper_0.A(node_eleme_view_3_0, node_texte_4_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_5_0);
+        $$helper_0.A(node_eleme_view_5_0, node_texte_6_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_7_0);
+        $$helper_0.A(node_eleme_view_7_0, node_texte_8_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_9_0);
+        $$helper_0.A(node_eleme_view_9_0, node_texte_10_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_11_0);
+        $$helper_0.A(node_eleme_view_11_0, node_texte_12_0);
+        node_block_13_0.m(node_eleme_view_11_0, null);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_17_0);
+        $$helper_0.A(node_eleme_view_17_0, node_texte_18_0);
+        node_block_19_0.m(node_eleme_view_17_0, null);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_componentName_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["componentName"]) {;
+          exp_componentName_0 = $$helper_0.f(data_0.componentName);
+          changed_exp_componentName_0 = true;
+        };
+        if (changed_exp_componentName_0) {;
+          var local_changed_0 = range_componentName___componentName_0 !== (range_componentName___componentName_0 = "componentName: "+exp_componentName_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_10_0, range_componentName___componentName_0);
+          };
+        };
+        hasNoChildren_1 &= node_block_13_0.u(diff_0, data_0);
+        hasNoChildren_1 &= node_block_19_0.u(diff_0, data_0);
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_4_0);
+        $$helper_0.d(node_eleme_view_3_0);
+        $$helper_0.D(node_texte_6_0);
+        $$helper_0.d(node_eleme_view_5_0);
+        $$helper_0.D(node_texte_8_0);
+        $$helper_0.d(node_eleme_view_7_0);
+        $$helper_0.D(node_texte_10_0);
+        $$helper_0.d(node_eleme_view_9_0);
+        $$helper_0.D(node_texte_12_0);
+        if (node_block_13_0) {;
+          node_block_13_0.d();
+        };
+        $$helper_0.d(node_eleme_view_11_0);
+        $$helper_0.D(node_texte_18_0);
+        if (node_block_19_0) {;
+          node_block_19_0.d();
+        };
+        $$helper_0.d(node_eleme_view_17_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_2_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_2_0);
+        };
+      },
+    }
+  }
+
+  var create_each_container_block_0 = (
+    $$helper_0.$E(
+    function () { return create_each_iterator_block_0 }, "item", "key", 
+    function ($$componentInstance_0, context_0) { //
+    var exp_componentProps_0 = context_0.componentProps;
+      return exp_componentProps_0
+    }, //
+    ["componentProps"], // name diff
+    ["componentProps"] // name diff
+    ));
+
+
+  function create_each_iterator_block_0($$componentInstance_0, context_0) {
+    var range__key____item_0;
+    var range__0;
+    var exp_item_0;
+    var exp_key_0;
+    var node_texte_16_0;
+    var node_eleme_view_15_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_15_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_key_0 = $$helper_0.f(context_0.key);
+        exp_item_0 = $$helper_0.f(context_0.item);
+        range__key____item_0 = ""+exp_key_0+": "+exp_item_0;
+        node_texte_16_0 = $$helper_0.t($$componentInstance_0, range__key____item_0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        assign_class_style_props_0(node_eleme_view_15_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_15_0, anchor_0);
+        $$helper_0.A(node_eleme_view_15_0, node_texte_16_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_item_0;
+        var changed_exp_key_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["key"]) {;
+          exp_key_0 = $$helper_0.f(data_0.key);
+          changed_exp_key_0 = true;
+        };
+        if (diff_0["item"]) {;
+          exp_item_0 = $$helper_0.f(data_0.item);
+          changed_exp_item_0 = true;
+        };
+        if (changed_exp_key_0 || changed_exp_item_0) {;
+          var local_changed_0 = range__key____item_0 !== (range__key____item_0 = ""+exp_key_0+": "+exp_item_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_16_0, range__key____item_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_16_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_15_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_15_0);
+        };
+      },
+    }
+  }
+
+  var create_each_container_block_1 = (
+    $$helper_0.$E(
+    function () { return create_each_iterator_block_1 }, "item", "key", 
+    function ($$componentInstance_0, context_0) { //
+    var exp_config_0 = context_0.config;
+      return exp_config_0
+    }, //
+    ["config"], // name diff
+    ["config"] // name diff
+    ));
+
+
+  function create_each_iterator_block_1($$componentInstance_0, context_0) {
+    var range__key____item_0;
+    var range__0;
+    var exp_item_0;
+    var exp_key_0;
+    var node_texte_22_0;
+    var node_eleme_view_21_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_21_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_key_0 = $$helper_0.f(context_0.key);
+        exp_item_0 = $$helper_0.f(context_0.item);
+        range__key____item_0 = ""+exp_key_0+": "+exp_item_0;
+        node_texte_22_0 = $$helper_0.t($$componentInstance_0, range__key____item_0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        assign_class_style_props_0(node_eleme_view_21_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_21_0, anchor_0);
+        $$helper_0.A(node_eleme_view_21_0, node_texte_22_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_item_0;
+        var changed_exp_key_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["key"]) {;
+          exp_key_0 = $$helper_0.f(data_0.key);
+          changed_exp_key_0 = true;
+        };
+        if (diff_0["item"]) {;
+          exp_item_0 = $$helper_0.f(data_0.item);
+          changed_exp_item_0 = true;
+        };
+        if (changed_exp_key_0 || changed_exp_item_0) {;
+          var local_changed_0 = range__key____item_0 !== (range__key____item_0 = ""+exp_key_0+": "+exp_item_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_22_0, range__key____item_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_22_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_21_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_21_0);
+        };
+      },
+    }
+  }
+
+
+  return {
+    fragment: create_main_block_0
+  };
+
+}
+).bind(null, renderContext),
+
+    style: null  
+  };
+
+  var usingComponents = {
+    
+  };
+  
+  
+
+/***/ }),
+
 /***/ "B8uw":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
@@ -18932,6 +19772,44 @@ __webpack_require__.r(__webpack_exports__);
 
 internal_style = ".f2-canvas {width:100%;height:100%}";
 /* harmony default export */ __webpack_exports__["default"] = (internal_style);
+
+/***/ }),
+
+/***/ "BdKg":
+/*!***********************************************************************************************************************************************************!*\
+  !*** ./components/test/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \***********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
+
+internal_style = ".component-template {line-height:0.32rem;font-size:0.24rem;padding:0.24rem 0.36rem;border:1px solid;width:100%;margin-bottom:0.2rem}";
+/* harmony default export */ __webpack_exports__["default"] = (internal_style);
+
+/***/ }),
+
+/***/ "C72R":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/test/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_test_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/test/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "vYN6");
+
+  
+  
+  
+
+  var stylesheet = $AppxStyleRegistry.createStyle("components/test/index.acss", '', [_Users_lou1swu_Desktop_pluginTest_plugin_components_test_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
 
 /***/ }),
 
@@ -19047,15 +19925,31 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "vcfA");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/statistical-indicator-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "vcfA");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/statistical-indicator-view/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_components_statistical_indicator_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
+
+/***/ }),
+
+/***/ "DvIe":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./components/createPluginComponent/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
+
+internal_style = ".component-template {line-height:0.32rem;font-size:0.24rem;padding:0.24rem 0.36rem;border:1px solid;width:100%;margin-bottom:0.2rem}";
+/* harmony default export */ __webpack_exports__["default"] = (internal_style);
 
 /***/ }),
 
@@ -19068,8 +19962,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "WGcX");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=/node_modules/@antv/my-f2/es/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "WGcX");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineType_zephyr_axmlType_component_sideType_client_engineTypes_zephyr_componentIs_node_modules_antv_my_f2_es_index_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
 
   
   $AppxRegistry.registerComponentRenderConfig({
@@ -19107,15 +20001,31 @@ internal_style = ".comp-project-select {width:100%;height:100%;background-color:
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "B8uw");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "B8uw");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("node_modules/@antv/my-f2/es/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("node_modules/@antv/my-f2/es/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
+
+/***/ }),
+
+/***/ "Ik/V":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./components/testCreate/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*ACSSCompileContext:{"atImports":[]}*/var internal_style;
+
+internal_style = ".component-template {line-height:0.32rem;font-size:0.24rem;padding:0.24rem 0.36rem;border:1px solid;width:100%;margin-bottom:0.2rem}";
+/* harmony default export */ __webpack_exports__["default"] = (internal_style);
 
 /***/ }),
 
@@ -19128,8 +20038,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "oylq");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "oylq");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_components_component_template_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_component_template_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
 
   
   
@@ -19388,6 +20298,25 @@ exports.mediaQueryMatch = style_1.mediaQueryMatch;
 
 /***/ }),
 
+/***/ "WhjV":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/testCreate/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/testCreate/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "components/testCreate/index",
+    options: function () {
+      return __webpack_require__(/*! ./components/testCreate/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "tt+k");
+    }
+  });
+  
+
+/***/ }),
+
 /***/ "WvET":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
@@ -19397,13 +20326,13 @@ exports.mediaQueryMatch = style_1.mediaQueryMatch;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "h1YD");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "h1YD");
 
   
   
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", '', [_Users_lou1swu_Desktop_pluginTest_plugin_components_component_template_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -19419,12 +20348,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/chart/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ov+r");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/chart/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ov+r");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_components_chart_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -19510,6 +20439,85 @@ var TEXT_ALIGN_MAP = {
 
 /***/ }),
 
+/***/ "Xs0C":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/testCreate?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/testCreate/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var global = undefined,
+    self = undefined,
+    window = undefined,
+    document = undefined,
+    location = undefined,
+    XMLHttpRequest = undefined,
+    AlipayJSBridge = undefined,
+    importScript = undefined,
+    importScripts = undefined,
+    AFAppX = undefined,
+    fetch = undefined,
+    $AppxFramework = undefined,
+    $AppxRuntime = undefined,
+    mqEnvironment = undefined,
+    wxEnvironment = undefined,
+    __CUBE_KERNEL__ = undefined,
+    $AppxRegistry = undefined,
+    $AppxStyleRegistry = undefined;
+
+$global.$addComponentConfig({
+  componentPath: "components/testCreate/index"
+});
+
+Component({
+  data: {},
+  props: {
+    componentName: '',
+    componentProps: {// config.json文件中定义的props可以从componentProps中获取，这里可以设置默认值。如果有在设计器里修改，则会被新值覆盖。
+
+    },
+    config: {
+      corpId: '' // 可以通过this.props.config.corpId 获取当前工作台用户的企业corpId
+    }
+  },
+  didMount: function didMount() {
+    // 业务代码写到下方
+
+  },
+  didUpdate: function didUpdate() {
+    // 业务代码写到下方
+  },
+  didUnmount: function didUnmount() {
+    // 业务代码写到下方
+  },
+
+  methods: {}
+});
+
+/***/ }),
+
+/***/ "Y+sr":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/createPluginComponent/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/createPluginComponent/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "components/createPluginComponent/index",
+    options: function () {
+      return __webpack_require__(/*! ./components/createPluginComponent/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "B6MM");
+    }
+  });
+  
+
+/***/ }),
+
 /***/ "YVRd":
 /*!*************************************************************************************************!*\
   !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/babel/helper/inline/member.js ***!
@@ -19545,6 +20553,24 @@ function gcp(target, args, isFunction) {
 exports.gcp = gcp;
 function noop() { }
 //# sourceMappingURL=member.js.map
+
+/***/ }),
+
+/***/ "ZA/K":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/test/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/test/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_test_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_test_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/test?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/test/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "70Sx");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_test_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_test_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_components_test_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_test_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
+  
 
 /***/ }),
 
@@ -19742,8 +20768,8 @@ Component({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iRtZ");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iRtZ");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_components_project_select_view_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_project_select_view_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
 
   
   
@@ -19798,46 +20824,64 @@ __webpack_require__.r(__webpack_exports__);
 function getComponent($$renderContext_0, $$runtimeContext_0) {
   var $$helper_0 = $$runtimeContext_0.h;
   var $$getelement_0 = $$runtimeContext_0.e;
-  var $$element_canvas_0 = $$getelement_0(18);
-  function create_main_block_0($$componentInstance_0, context_0) {
+  var $$element_canvas_0 = $$getelement_0(18);  var create_main_block_0 = (
+    $$helper_0.$B(function () { return create_condition_container_block_0 }));
+
+  function create_condition_container_block_0_select_index_function_0($$componentInstance_0, context_0) {
+    if ( context_0.$pageId >= 0 ) { return 1 }
+  }
+  function create_condition_container_block_0_select_block_array_0(index) {
+    switch(index) {
+    case 1: return create_condition_branch_block_0
+    }
+  }var create_condition_container_block_0 = (
+    $$helper_0.$C(function ($$componentInstance_0, context_0) {
+      var index = create_condition_container_block_0_select_index_function_0($$componentInstance_0, context_0);
+      return create_condition_container_block_0_select_block_array_0(index);
+    }, 0, 1, create_condition_container_block_0_select_index_function_0, create_condition_container_block_0_select_block_array_0));
+
+
+  function create_condition_branch_block_0($$componentInstance_0, context_0) {
     var range_touchEnd_0;
     var range_touchMove_0;
     var range_touchStart_0;
     var range_height_0;
     var range_width_0;
     var range_f2_canvas_0;
-    var range_f2_canvas__$id_0;
+    var range_f2_canvas__$pageId___$id_0;
     var exp_height_0;
     var exp_width_0;
     var exp_$id_0;
-    var node_eleme_canvas_2_0;
+    var exp_$pageId_0;
+    var node_eleme_canvas_4_0;
     return {
       c: function () {
         var hasNoChildren_1 = 1;
-        node_eleme_canvas_2_0 = $$helper_0.e($$componentInstance_0, $$element_canvas_0, 89);
+        node_eleme_canvas_4_0 = $$helper_0.e($$componentInstance_0, $$element_canvas_0, 89);
         var assign_class_style_props_0 = $$helper_0.x;
         range_touchStart_0 = "touchStart";
-        $$helper_0.k(node_eleme_canvas_2_0, "touchStart", 0, range_touchStart_0, $$componentInstance_0);
+        $$helper_0.k(node_eleme_canvas_4_0, "touchStart", 0, range_touchStart_0, $$componentInstance_0);
         range_touchMove_0 = "touchMove";
-        $$helper_0.k(node_eleme_canvas_2_0, "touchMove", 1, range_touchMove_0, $$componentInstance_0);
+        $$helper_0.k(node_eleme_canvas_4_0, "touchMove", 1, range_touchMove_0, $$componentInstance_0);
         range_touchEnd_0 = "touchEnd";
-        $$helper_0.k(node_eleme_canvas_2_0, "touchEnd", 2, range_touchEnd_0, $$componentInstance_0);
-        $$helper_0.ie(node_eleme_canvas_2_0 // ;
+        $$helper_0.k(node_eleme_canvas_4_0, "touchEnd", 2, range_touchEnd_0, $$componentInstance_0);
+        $$helper_0.ie(node_eleme_canvas_4_0 // ;
         , { //;
           "touchStart": [range_touchStart_0], //;
           "touchMove": [range_touchMove_0], //;
           "touchEnd": [range_touchEnd_0], //;
         } //;
         );
+        exp_$pageId_0 = context_0.$pageId;
         exp_$id_0 = context_0.$id;
-        range_f2_canvas__$id_0 = "f2-canvas-"+exp_$id_0;
-        $$helper_0.ea(node_eleme_canvas_2_0, "id", range_f2_canvas__$id_0);
+        range_f2_canvas__$pageId___$id_0 = "f2-canvas-"+exp_$pageId_0+"-"+exp_$id_0;
+        $$helper_0.ea(node_eleme_canvas_4_0, "id", range_f2_canvas__$pageId___$id_0);
         range_f2_canvas_0 = "f2-canvas";
         exp_width_0 = context_0.width;
         range_width_0 = exp_width_0;
         exp_height_0 = context_0.height;
         range_height_0 = exp_height_0;
-        assign_class_style_props_0(node_eleme_canvas_2_0, $$componentInstance_0 //;
+        assign_class_style_props_0(node_eleme_canvas_4_0, $$componentInstance_0 //;
         , range_f2_canvas_0 //;
         , '' //;
         , { //;
@@ -19847,21 +20891,26 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
         );
       },
       m: function (target_0, anchor_0) {
-        $$helper_0.i(target_0, node_eleme_canvas_2_0, anchor_0);
+        $$helper_0.i(target_0, node_eleme_canvas_4_0, anchor_0);
       },
       u: function (diff_0, data_0) {
         var changed_exp_height_0;
         var changed_exp_width_0;
         var changed_exp_$id_0;
+        var changed_exp_$pageId_0;
         var hasNoChildren_1 = 1;
+        if (diff_0["$pageId"]) {;
+          exp_$pageId_0 = data_0.$pageId;
+          changed_exp_$pageId_0 = true;
+        };
         if (diff_0["$id"]) {;
           exp_$id_0 = data_0.$id;
           changed_exp_$id_0 = true;
         };
-        if (changed_exp_$id_0) {;
-          var local_changed_0 = range_f2_canvas__$id_0 !== (range_f2_canvas__$id_0 = "f2-canvas-"+exp_$id_0);
+        if (changed_exp_$pageId_0 || changed_exp_$id_0) {;
+          var local_changed_0 = range_f2_canvas__$pageId___$id_0 !== (range_f2_canvas__$pageId___$id_0 = "f2-canvas-"+exp_$pageId_0+"-"+exp_$id_0);
           if (local_changed_0) {;
-            $$helper_0.ea(node_eleme_canvas_2_0, "id", range_f2_canvas__$id_0);
+            $$helper_0.ea(node_eleme_canvas_4_0, "id", range_f2_canvas__$pageId___$id_0);
           };
         };
         if (diff_0["width"]) {;
@@ -19879,7 +20928,7 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
           };
         };
         if (local_changed_1 || local_changed_2) {;
-          $$helper_0.y(node_eleme_canvas_2_0, $$componentInstance_0 //;
+          $$helper_0.y(node_eleme_canvas_4_0, $$componentInstance_0 //;
           , range_f2_canvas_0 //;
           , null //;
           , { //;
@@ -19895,9 +20944,9 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
       },
       d: function (root_0) {
         if (root_0) { //;
-          $$helper_0.r(node_eleme_canvas_2_0);
+          $$helper_0.r(node_eleme_canvas_4_0);
         } else { //;
-          $$helper_0.d(node_eleme_canvas_2_0);
+          $$helper_0.d(node_eleme_canvas_4_0);
         };
       },
     }
@@ -19931,8 +20980,8 @@ function getComponent($$renderContext_0, $$runtimeContext_0) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "+c1n");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "+c1n");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
 
   
   
@@ -19949,8 +20998,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HzyB");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "X+ib");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@antv/my-f2/es/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HzyB");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "X+ib");
 
   
   
@@ -19958,7 +21007,7 @@ __webpack_require__.r(__webpack_exports__);
 
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"],_Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/chart/index.acss", '', [_Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"],_Users_lou1swu_Desktop_pluginTest_plugin_components_chart_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_1__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -19974,12 +21023,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "31k4");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/component-template/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "31k4");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/component-template/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_components_component_template_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -20293,9 +21342,34 @@ Component({
       var selectedProject = dataSource[arrIndex];
       // // 选择项目，广播通知其他组件项目变更
       (0, _sdk.getSdk)().triggerCustomEvent("dingtalk/changeProject", selectedProject);
+
+      (0, _sdk.getSdk)().request(this.props.componentProps.gateWayApi, {
+        linkUrl: 'http://www.baidu.com'
+      });
+      (0, _sdk.getSdk)().logger && (0, _sdk.getSdk)().logger.log('log', '123');
+      (0, _sdk.getSdk)().logger && (0, _sdk.getSdk)().logger.error('error', '123');
     }
   }
 });
+
+/***/ }),
+
+/***/ "iVkr":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/test/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/test/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+  
+  $AppxRegistry.registerComponentRenderConfig({
+    componentPath: "components/test/index",
+    options: function () {
+      return __webpack_require__(/*! ./components/test/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "4sJH");
+    }
+  });
+  
 
 /***/ }),
 
@@ -20308,12 +21382,12 @@ Component({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HX8I");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "HX8I");
 
   
     
   
-  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_components_project_select_view_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
@@ -20356,6 +21430,18 @@ __webpack_require__.r(__webpack_exports__);
             componentPath: "components/chart/index",
             allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "ugqC")
           }
+,"createPluginComponent": {
+            componentPath: "components/createPluginComponent/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/createPluginComponent/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "mXk8")
+          }
+,"test": {
+            componentPath: "components/test/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/test/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "jk1B")
+          }
+,"testCreate": {
+            componentPath: "components/testCreate/index",
+            allComponents: __webpack_require__(/*! !/snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/testCreate/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull */ "/cxF")
+          }
         },
         renderType: 32,
         callback: function () {
@@ -20363,16 +21449,25 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./components/statistical-indicator-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/statistical-indicator-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "rAQU");
 __webpack_require__(/*! ./components/component-template/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/component-template/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "XevS");
 __webpack_require__(/*! ./components/chart/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/chart/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "EtF6");
+__webpack_require__(/*! ./components/createPluginComponent/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/createPluginComponent/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "Y+sr");
+__webpack_require__(/*! ./components/test/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/test/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iVkr");
+__webpack_require__(/*! ./components/testCreate/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/testCreate/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "WhjV");
           __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/project-select-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "ei3N");
 __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/statistical-indicator-view/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "9W8f");
 __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/component-template/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "M0jB");
 __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "kXMy");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/createPluginComponent/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/createPluginComponent/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "0VoQ");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/test/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/test/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "ZA/K");
+__webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/testCreate/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/testCreate/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "y3kv");
           __webpack_require__(/*! ./components/project-select-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/project-select-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "iRtZ");
 __webpack_require__(/*! ./components/statistical-indicator-view?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/statistical-indicator-view/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "e5m4");
 __webpack_require__(/*! ./components/component-template?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/component-template/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "oylq");
 __webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "8Nfj");
+__webpack_require__(/*! ./components/createPluginComponent?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/createPluginComponent/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "7Euj");
+__webpack_require__(/*! ./components/test?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/test/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "70Sx");
+__webpack_require__(/*! ./components/testCreate?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/testCreate/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "Xs0C");
           return {
-            style: [__webpack_require__(/*! ./components/project-select-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "wi5S").default,__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "5cBC").default,__webpack_require__(/*! ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "WvET").default,__webpack_require__(/*! ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "gsve").default].join('\n'),
+            style: [__webpack_require__(/*! ./components/project-select-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "wi5S").default,__webpack_require__(/*! ./components/statistical-indicator-view/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "5cBC").default,__webpack_require__(/*! ./components/component-template/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "WvET").default,__webpack_require__(/*! ./components/chart/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "gsve").default,__webpack_require__(/*! ./components/createPluginComponent/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "op70").default,__webpack_require__(/*! ./components/test/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "C72R").default,__webpack_require__(/*! ./components/testCreate/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "st5k").default].join('\n'),
           };
         },
       },
@@ -20392,6 +21487,17 @@ module.exports = {"keys":[],"map":{}}
 
 /***/ }),
 
+/***/ "jk1B":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/test/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
 /***/ "kXMy":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/chart/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
@@ -20401,9 +21507,9 @@ module.exports = {"keys":[],"map":{}}
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _snapshot_toolkit_node_modules_ali_antcube_build_lib_build_loader_engine_shared_javascript_entry_js_Users_wuzequan_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineTypes_zephyr_engineJsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "faM0");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "8Nfj");
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Users_wuzequan_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _snapshot_toolkit_node_modules_ali_antcube_build_lib_build_loader_engine_shared_javascript_entry_js_Users_lou1swu_Desktop_pluginTest_plugin_node_modules_antv_my_f2_es_index_axml_engineTypes_zephyr_engineJsType_component_componentIs_node_modules_antv_my_f2_es_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./node_modules/@antv/my-f2/es/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=/node_modules/@antv/my-f2/es/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "faM0");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/chart?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/chart/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "8Nfj");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_components_chart_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_chart_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_1__);
 
   
   
@@ -20479,6 +21585,17 @@ exports.mediaQueryMatch = mediaQueryMatch;
 
 /***/ }),
 
+/***/ "mXk8":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/createPluginComponent/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"keys":[],"map":{}}
+
+/***/ }),
+
 /***/ "nJgI":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./components/project-select-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/project-select-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
@@ -20494,6 +21611,28 @@ exports.mediaQueryMatch = mediaQueryMatch;
       return __webpack_require__(/*! ./components/project-select-view/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "0Ql3");
     }
   });
+  
+
+/***/ }),
+
+/***/ "op70":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/createPluginComponent/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_createPluginComponent_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/createPluginComponent/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "pKT5");
+
+  
+  
+  
+
+  var stylesheet = $AppxStyleRegistry.createStyle("components/createPluginComponent/index.acss", '', [_Users_lou1swu_Desktop_pluginTest_plugin_components_createPluginComponent_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
   
 
 /***/ }),
@@ -20582,6 +21721,27 @@ Component({
 
 /***/ }),
 
+/***/ "pKT5":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/createPluginComponent/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_createPluginComponent_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/createPluginComponent/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "DvIe");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("components/createPluginComponent/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_components_createPluginComponent_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
 /***/ "rAQU":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./components/statistical-indicator-view/index.axml?engineType=zephyr&axmlType=component&sideType=client&engineTypes[]=zephyr&componentIs=components/statistical-indicator-view/index&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
@@ -20601,6 +21761,361 @@ Component({
 
 /***/ }),
 
+/***/ "st5k":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/testCreate/index.axml?acssEntryType=pagecomponents&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_testCreate_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/testCreate/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "+ljF");
+
+  
+  
+  
+
+  var stylesheet = $AppxStyleRegistry.createStyle("components/testCreate/index.acss", '', [_Users_lou1swu_Desktop_pluginTest_plugin_components_testCreate_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "tt+k":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./components/testCreate/index.axml?compileType=component&sideType=client&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: exportNamed, exportDefault, usingComponents */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportNamed", function() { return exportNamed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exportDefault", function() { return exportDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usingComponents", function() { return usingComponents; });
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @internal/appx-runtime */ "Magb");
+/* harmony import */ var _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @internal/inline-helper */ "TLmQ");
+/* harmony import */ var _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__);
+
+  
+  
+
+  
+
+  
+
+  
+
+  var included = {
+    
+  };
+  var $$helper = /*#__PURE__*/ _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"];
+  var renderContext = {
+    l: _internal_inline_helper__WEBPACK_IMPORTED_MODULE_1__["inline"],
+    h: _internal_appx_runtime__WEBPACK_IMPORTED_MODULE_0__["helper"],
+    s: {},
+    i: included,
+    t: {}
+  };
+
+  var exportNamed = {
+    
+  };
+
+  var exportDefault = {
+    zcomponent: (
+function getComponent($$renderContext_0, $$runtimeContext_0) {
+  var $$helper_0 = $$runtimeContext_0.h;
+  var $$getelement_0 = $$runtimeContext_0.e;
+  var $$element_view_0 = $$getelement_0(1);
+  function create_main_block_0($$componentInstance_0, context_0) {
+    var range_config__0;
+    var range__5;
+    var range_componentProps__0;
+    var range__4;
+    var range_componentName___componentName_0;
+    var range__3;
+    var range____ding_config_json_______mock___0;
+    var range__2;
+    var range_______plugin_components_testCreate_config_json_0;
+    var range__1;
+    var range____________testCreate_0;
+    var range__0;
+    var range_component_template_0;
+    var exp_componentName_0;
+    var node_block_19_0;
+    var node_texte_18_0;
+    var node_eleme_view_17_0;
+    var node_block_13_0;
+    var node_texte_12_0;
+    var node_eleme_view_11_0;
+    var node_texte_10_0;
+    var node_eleme_view_9_0;
+    var node_texte_8_0;
+    var node_eleme_view_7_0;
+    var node_texte_6_0;
+    var node_eleme_view_5_0;
+    var node_texte_4_0;
+    var node_eleme_view_3_0;
+    var node_eleme_view_2_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_2_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 1);
+        node_eleme_view_3_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range____________testCreate_0 = "已经成功新建组件模板 testCreate";
+        node_texte_4_0 = $$helper_0.t($$componentInstance_0, range____________testCreate_0);
+        node_eleme_view_5_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_______plugin_components_testCreate_config_json_0 = "你还需要修改plugin/components/testCreate/config.json";
+        node_texte_6_0 = $$helper_0.t($$componentInstance_0, range_______plugin_components_testCreate_config_json_0);
+        node_eleme_view_7_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range____ding_config_json_______mock___0 = "以及在ding.config.json中配置组件本地mock数据";
+        node_texte_8_0 = $$helper_0.t($$componentInstance_0, range____ding_config_json_______mock___0);
+        node_eleme_view_9_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_componentName_0 = $$helper_0.f(context_0.componentName);
+        range_componentName___componentName_0 = "componentName: "+exp_componentName_0;
+        node_texte_10_0 = $$helper_0.t($$componentInstance_0, range_componentName___componentName_0);
+        node_eleme_view_11_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_componentProps__0 = "componentProps:";
+        node_texte_12_0 = $$helper_0.t($$componentInstance_0, range_componentProps__0);
+        node_block_13_0 = $$helper_0.b(create_each_container_block_0, $$componentInstance_0, context_0);
+        hasNoChildren_1 &= node_block_13_0.c();
+        node_eleme_view_17_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        range_config__0 = "config:";
+        node_texte_18_0 = $$helper_0.t($$componentInstance_0, range_config__0);
+        node_block_19_0 = $$helper_0.b(create_each_container_block_1, $$componentInstance_0, context_0);
+        hasNoChildren_1 &= node_block_19_0.c();
+        var assign_class_style_props_0 = $$helper_0.x;
+        range_component_template_0 = "component-template";
+        assign_class_style_props_0(node_eleme_view_2_0, $$componentInstance_0 //;
+        , range_component_template_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_3_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_5_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_7_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_9_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_11_0, $$componentInstance_0 //;
+        );
+        assign_class_style_props_0(node_eleme_view_17_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_2_0, anchor_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_3_0);
+        $$helper_0.A(node_eleme_view_3_0, node_texte_4_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_5_0);
+        $$helper_0.A(node_eleme_view_5_0, node_texte_6_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_7_0);
+        $$helper_0.A(node_eleme_view_7_0, node_texte_8_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_9_0);
+        $$helper_0.A(node_eleme_view_9_0, node_texte_10_0);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_11_0);
+        $$helper_0.A(node_eleme_view_11_0, node_texte_12_0);
+        node_block_13_0.m(node_eleme_view_11_0, null);
+        $$helper_0.a(node_eleme_view_2_0, node_eleme_view_17_0);
+        $$helper_0.A(node_eleme_view_17_0, node_texte_18_0);
+        node_block_19_0.m(node_eleme_view_17_0, null);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_componentName_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["componentName"]) {;
+          exp_componentName_0 = $$helper_0.f(data_0.componentName);
+          changed_exp_componentName_0 = true;
+        };
+        if (changed_exp_componentName_0) {;
+          var local_changed_0 = range_componentName___componentName_0 !== (range_componentName___componentName_0 = "componentName: "+exp_componentName_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_10_0, range_componentName___componentName_0);
+          };
+        };
+        hasNoChildren_1 &= node_block_13_0.u(diff_0, data_0);
+        hasNoChildren_1 &= node_block_19_0.u(diff_0, data_0);
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_4_0);
+        $$helper_0.d(node_eleme_view_3_0);
+        $$helper_0.D(node_texte_6_0);
+        $$helper_0.d(node_eleme_view_5_0);
+        $$helper_0.D(node_texte_8_0);
+        $$helper_0.d(node_eleme_view_7_0);
+        $$helper_0.D(node_texte_10_0);
+        $$helper_0.d(node_eleme_view_9_0);
+        $$helper_0.D(node_texte_12_0);
+        if (node_block_13_0) {;
+          node_block_13_0.d();
+        };
+        $$helper_0.d(node_eleme_view_11_0);
+        $$helper_0.D(node_texte_18_0);
+        if (node_block_19_0) {;
+          node_block_19_0.d();
+        };
+        $$helper_0.d(node_eleme_view_17_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_2_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_2_0);
+        };
+      },
+    }
+  }
+
+  var create_each_container_block_0 = (
+    $$helper_0.$E(
+    function () { return create_each_iterator_block_0 }, "item", "key", 
+    function ($$componentInstance_0, context_0) { //
+    var exp_componentProps_0 = context_0.componentProps;
+      return exp_componentProps_0
+    }, //
+    ["componentProps"], // name diff
+    ["componentProps"] // name diff
+    ));
+
+
+  function create_each_iterator_block_0($$componentInstance_0, context_0) {
+    var range__key____item_0;
+    var range__0;
+    var exp_item_0;
+    var exp_key_0;
+    var node_texte_16_0;
+    var node_eleme_view_15_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_15_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_key_0 = $$helper_0.f(context_0.key);
+        exp_item_0 = $$helper_0.f(context_0.item);
+        range__key____item_0 = ""+exp_key_0+": "+exp_item_0;
+        node_texte_16_0 = $$helper_0.t($$componentInstance_0, range__key____item_0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        assign_class_style_props_0(node_eleme_view_15_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_15_0, anchor_0);
+        $$helper_0.A(node_eleme_view_15_0, node_texte_16_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_item_0;
+        var changed_exp_key_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["key"]) {;
+          exp_key_0 = $$helper_0.f(data_0.key);
+          changed_exp_key_0 = true;
+        };
+        if (diff_0["item"]) {;
+          exp_item_0 = $$helper_0.f(data_0.item);
+          changed_exp_item_0 = true;
+        };
+        if (changed_exp_key_0 || changed_exp_item_0) {;
+          var local_changed_0 = range__key____item_0 !== (range__key____item_0 = ""+exp_key_0+": "+exp_item_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_16_0, range__key____item_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_16_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_15_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_15_0);
+        };
+      },
+    }
+  }
+
+  var create_each_container_block_1 = (
+    $$helper_0.$E(
+    function () { return create_each_iterator_block_1 }, "item", "key", 
+    function ($$componentInstance_0, context_0) { //
+    var exp_config_0 = context_0.config;
+      return exp_config_0
+    }, //
+    ["config"], // name diff
+    ["config"] // name diff
+    ));
+
+
+  function create_each_iterator_block_1($$componentInstance_0, context_0) {
+    var range__key____item_0;
+    var range__0;
+    var exp_item_0;
+    var exp_key_0;
+    var node_texte_22_0;
+    var node_eleme_view_21_0;
+    return {
+      c: function () {
+        var hasNoChildren_1 = 1;
+        node_eleme_view_21_0 = $$helper_0.e($$componentInstance_0, $$element_view_0, 0);
+        exp_key_0 = $$helper_0.f(context_0.key);
+        exp_item_0 = $$helper_0.f(context_0.item);
+        range__key____item_0 = ""+exp_key_0+": "+exp_item_0;
+        node_texte_22_0 = $$helper_0.t($$componentInstance_0, range__key____item_0);
+        var assign_class_style_props_0 = $$helper_0.x;
+        assign_class_style_props_0(node_eleme_view_21_0, $$componentInstance_0 //;
+        );
+      },
+      m: function (target_0, anchor_0) {
+        $$helper_0.i(target_0, node_eleme_view_21_0, anchor_0);
+        $$helper_0.A(node_eleme_view_21_0, node_texte_22_0);
+      },
+      u: function (diff_0, data_0) {
+        var changed_exp_item_0;
+        var changed_exp_key_0;
+        var hasNoChildren_1 = 1;
+        if (diff_0["key"]) {;
+          exp_key_0 = $$helper_0.f(data_0.key);
+          changed_exp_key_0 = true;
+        };
+        if (diff_0["item"]) {;
+          exp_item_0 = $$helper_0.f(data_0.item);
+          changed_exp_item_0 = true;
+        };
+        if (changed_exp_key_0 || changed_exp_item_0) {;
+          var local_changed_0 = range__key____item_0 !== (range__key____item_0 = ""+exp_key_0+": "+exp_item_0);
+          if (local_changed_0) {;
+            $$helper_0.N(node_texte_22_0, range__key____item_0);
+          };
+        };
+      },
+      d: function (root_0) {
+        $$helper_0.D(node_texte_22_0);
+        if (root_0) { //;
+          $$helper_0.r(node_eleme_view_21_0);
+        } else { //;
+          $$helper_0.d(node_eleme_view_21_0);
+        };
+      },
+    }
+  }
+
+
+  return {
+    fragment: create_main_block_0
+  };
+
+}
+).bind(null, renderContext),
+
+    style: null  
+  };
+
+  var usingComponents = {
+    
+  };
+  
+  
+
+/***/ }),
+
 /***/ "ugqC":
 /*!******************************************************************************************************************************************************************************************!*\
   !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/all-using-components.js!./components/chart/index.axml?seriableContext[]=128%3Anull&seriableContext[]=256%3Anull ***!
@@ -20609,6 +22124,27 @@ Component({
 /***/ (function(module, exports) {
 
 module.exports = {"keys":["/node_modules/@antv/my-f2/es/index"],"map":{"/node_modules/@antv/my-f2/es/index":1}}
+
+/***/ }),
+
+/***/ "vYN6":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./components/test/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_test_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/test/index.acss?target=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "BdKg");
+
+  
+    
+  
+  var stylesheet = $AppxStyleRegistry.createStyle("components/test/index.acss", _Users_lou1swu_Desktop_pluginTest_plugin_components_test_index_acss_target_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  
+  /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
 
 /***/ }),
 
@@ -20637,15 +22173,33 @@ internal_style = ".statistical-indicator-view {width:100%;height:100%;min-height
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ibVU");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/project-select-view/index.acss?acssEntryType=route&engineType=zephyr&acssTarget=web&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=512%3A0&engineTypes[]=zephyr */ "ibVU");
 
   
   
   
 
-  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", '', [_Users_wuzequan_Desktop_pluginTest_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+  var stylesheet = $AppxStyleRegistry.createStyle("components/project-select-view/index.acss", '', [_Users_lou1swu_Desktop_pluginTest_plugin_components_project_select_view_index_acss_acssEntryType_route_engineType_zephyr_acssTarget_web_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_512_3A0_engineTypes_zephyr__WEBPACK_IMPORTED_MODULE_0__["default"]]);
   
   /* harmony default export */ __webpack_exports__["default"] = (stylesheet);
+  
+
+/***/ }),
+
+/***/ "y3kv":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /snapshot/toolkit/node_modules/@ali/antcube-build/lib/build/loader/engine/shared/javascript/entry.js!./components/testCreate/index.axml?engineTypes[]=zephyr&engineJsType=component&componentIs=components/testCreate/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_testCreate_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_testCreate_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/testCreate?engineTypes[]=zephyr&engineJsType=component&jsType=component&componentIs=components/testCreate/index&pageRenderType=32&seriableContext[]=32%3A%7B%22o%22%3A%7B%22g%22%3Afalse%7D%7D&seriableContext[]=128%3Anull&seriableContext[]=256%3Anull&seriableContext[]=512%3A0 */ "Xs0C");
+/* harmony import */ var _Users_lou1swu_Desktop_pluginTest_plugin_components_testCreate_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_testCreate_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Users_lou1swu_Desktop_pluginTest_plugin_components_testCreate_index_js_engineTypes_zephyr_engineJsType_component_jsType_component_componentIs_components_testCreate_index_pageRenderType_32_seriableContext_32_3A_7B_22o_22_3A_7B_22g_22_3Afalse_7D_7D_seriableContext_128_3Anull_seriableContext_256_3Anull_seriableContext_512_3A0__WEBPACK_IMPORTED_MODULE_0__);
+
+  
+  
   
 
 /***/ }),

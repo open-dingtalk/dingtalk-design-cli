@@ -77,7 +77,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     /**
      * choose appType
      */
-    const { appType, } = await this.prompt([
+    let { appType, } = await this.prompt([
       // 选择应用类型
       {
         type: 'list',
@@ -91,7 +91,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
         when: !options.appType,
       },
     ]) as Answers;
-
+    appType = appType || options.appType;
     const selectedHub = HUBS_CONFIG.find(v=>v.key === appType);
     if(!selectedHub) {
       this.log(error(ERROR_APP_TYPE_NOT_FOUND, true));
@@ -162,7 +162,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     /**
      * choose template
      */
-    const { template, } = await this.prompt([
+    let { template, } = await this.prompt([
       // 选择应用类型
       {
         type: 'list',
@@ -174,7 +174,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
         when: !options.template,
       },
     ]) as Answers;
-
+    template = options.template || template;
     let languageList = [];
     try {
       languageList = fs.readdirSync(path.join(repoLocalPath, template), {
@@ -196,7 +196,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
     /**
      * choose language
      */
-    const { language, } = await this.prompt([
+    let { language, } = await this.prompt([
       // 选择应用类型
       {
         type: 'list',
@@ -208,7 +208,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
         when: !options.language,
       },
     ]) as Answers;
-
+    language = options.language || language;
     this.answers = {
       outDir: this.answers.outDir,
       appType: options.appType || appType,

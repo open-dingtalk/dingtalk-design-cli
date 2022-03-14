@@ -3,11 +3,10 @@ import * as os from 'os';
 import download from 'download';
 import { logger, } from '../cli-shared-utils/lib/logger';
 import * as path from 'path';
-import tar from 'tar';
-import mkdirp from 'mkdirp';
 import { getGlobalRc, setGlobalRcItem, } from './globalRc';
 import clean from './clean';
 import { failSpinner, logWithSpinner, successSpinner, } from '../cli-shared-utils/lib/spinner';
+import tarExtract from './tarExtract';
 
 export default async (): Promise<string> => {
   const platform = os.platform();
@@ -58,11 +57,3 @@ export default async (): Promise<string> => {
   setGlobalRcItem('h5ProExecPath', binExecPath);
   return binExecPath;
 };
-
-async function tarExtract(source: string, dest: string) {
-  await mkdirp(dest);
-  await tar.x({
-    file: source,
-    C: dest,
-  });
-}
