@@ -54,7 +54,10 @@ export default async (commandContext: ICommandContext): Promise<void> => {
     return;
   }
 
-  const bundlePath = path.join(cwd, './dist');
+  // dist目录和plugin源码目录在同一个文件夹导致热更新失败
+  // const bundlePath = path.join(cwd, './dist');
+
+  const bundlePath = path.join(cwd, './public');
   const event = new EventEmitter();
   
   /**
@@ -117,6 +120,8 @@ export default async (commandContext: ICommandContext): Promise<void> => {
       clearTimeout(firstBuildTimer);
       buildCp.kill();
       monitor.logJSError(new Error(msg));
+    } else {
+      logger.info(msg);
     }
   });
 
