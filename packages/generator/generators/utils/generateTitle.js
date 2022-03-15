@@ -39,16 +39,16 @@ const getGlobalInstallCommand_1 = __importDefault(require("./getGlobalInstallCom
 const logger_1 = require("./logger");
 function generateTitle(checkUpdate) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { current, latest, error } = yield getVersions_1.default();
+        const { current, latest, error } = yield (0, getVersions_1.default)();
         let title = chalk_1.default.bold.blue(`Dingding Worktab-Plugin v${current}`);
         if (error) {
-            logger_1.debug(error);
+            (0, logger_1.debug)(error);
             title += '\n' + chalk_1.default.red('Failed to check for updates');
         }
         if (checkUpdate && semver.gt(latest, current)) {
             let upgradeMessage = `New version available ${chalk_1.default.magenta(current)} → ${chalk_1.default.green(latest)}`;
             try {
-                const command = getGlobalInstallCommand_1.default();
+                const command = (0, getGlobalInstallCommand_1.default)();
                 let name = require("../../package.json").name;
                 if (semver.prerelease(latest)) {
                     name += '@next';
@@ -62,7 +62,7 @@ function generateTitle(checkUpdate) {
             catch (e) {
             } finally
             {
-                const upgradeBox = boxen_1.default(upgradeMessage, {
+                const upgradeBox = (0, boxen_1.default)(upgradeMessage, {
                     align: 'center',
                     borderColor: 'green',
                     dimBorder: true,

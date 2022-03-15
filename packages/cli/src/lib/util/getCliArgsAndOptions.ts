@@ -1,4 +1,5 @@
 import * as cac from 'cac';
+import { logger, } from '../cli-shared-utils/lib/logger';
 
 let cliArgsAndOptions: {
   options: {

@@ -4,7 +4,7 @@ import { EAppType, ECommandName, EStdioCommands, IWorkspaceRc, } from '../../lib
 import getGulpLocation from '../../lib/util/getGulpLocation';
 import gulpInspector from '../../lib/util/gulpInspector';
 import * as path from 'path';
-import { GlobalStdinCommand, } from './stdioCommands';
+import { EMode, GlobalStdinCommand, } from './stdioCommands';
 import { launchIDEOnly, } from '../../lib/util/connectToIDE';
 import { ProjectType, } from '../../lib/util/ideLocator';
 import qrcodeAction from '../../actions/qrcode';
@@ -23,10 +23,19 @@ import commmandsConfig from '../commandsConfig';
 import { execSync, } from 'child_process';
 import inquirer from 'inquirer';
 import createPluginComponent from '../../actions/createPluginComponent';
+import * as fs from 'fs';
+import server from 'http-server';
+import getSimulatorAssetsDir from '../../lib/util/getSimulatorAssetsDir';
+import open from 'open';
+import { choosePort, } from '../../lib/cli-shared-utils/lib/network';
+import getSimulatorFrameworkStoreDir from '../../lib/util/getSimulatorFrameworkStoreDir';
+import openWebSImulator from '../../actions/openWebSImulator';
+import updateConfig from '../../actions/updateConfig';
 
 const monitor = getMonitor(config.yuyanId);
 
 interface ICommandOptions {
+  targetH5Url?: string;
 }
 
 export default CommandWrapper<ICommandOptions>({
@@ -36,10 +45,11 @@ export default CommandWrapper<ICommandOptions>({
       ...commmandsConfig.dev,
       action: async (options) => {
         ctx.logger.debug('cli options', options);
-        
-        const { 
+
+        const {
           dtdConfig,
           cwd,
+          miniProgramConfigContent,
         } = ctx;
 
         if (!dtdConfig.type) {
@@ -60,7 +70,7 @@ export default CommandWrapper<ICommandOptions>({
         const isPlugin = type === EAppType.PLUGIN;
         const isPcPlugin = type === EAppType.PLUGIN && dtdConfig.isPcPlugin;
         const isTs = typescript;
-        
+
         ctx.watcher.init();
         ctx.watcher.watch([dtdConfigPath], () => {
           const dtdConfigUpdated: IWorkspaceRc = getJson(dtdConfigPath, true);
@@ -105,7 +115,20 @@ export default CommandWrapper<ICommandOptions>({
           action: async (args) => {
             const configKey = args[0];
             const configValue = args[1];
-            setJsonItem(path.join(cwd, config.workspaceRcName), configKey, configValue);
+            updateConfig({
+              configKey,
+              configValue,
+              cwd,
+            });
+
+            // 插件场景下，写入miniAppId时同步将pluginId写入plugin.json
+            if (type === EAppType.PLUGIN && configKey === 'miniAppId') {
+              setJsonItem(
+                path.resolve(miniProgramConfigContent.pluginRoot, 'plugin.json'),
+                'pluginId',
+                configValue,
+              );
+            }
           },
         });
         GlobalStdinCommand.subscribe({
@@ -113,12 +136,11 @@ export default CommandWrapper<ICommandOptions>({
           description: '在当前命令行中敲入 「lint + 回车」 会校验当前代码是否符合eslint规范（工作台组件除eslint规范外，会有额外的校验规则）',
           action: async () => {
             await lint(ctx);
-            GlobalStdinCommand.tips();
           },
         });
 
         /**
-         * dev和代码模版是强相关的，不支持非cli创建的项目
+         * dev和代码模板是强相关的，不支持非cli创建的项目
          * 区分场景：小程序、工作台组件、pc工作台组件、h5；不同场景下stdio命令不同
          * 区分语言：ts、js；ts需要先走一遍构建
          */
@@ -185,7 +207,7 @@ export default CommandWrapper<ICommandOptions>({
             command: EStdioCommands.UPLOAD,
             description: '在当前命令行中敲入 「upload + 回车」 可以上传小程序或工作台组件到开发者后台',
             action: async () => {
-              let answers = {
+              const answers = {
                 confirm: true,
               };
 
@@ -193,11 +215,11 @@ export default CommandWrapper<ICommandOptions>({
                 await lint(ctx);
                 ctx.logger.tip('请注意工作台组件务必校验通过后再进行上传');
 
-                answers = await inquirer.prompt([{
-                  type: 'confirm',
-                  name: 'confirm',
-                  message: '请确认是否继续上传',
-                }]);
+                // answers = await inquirer.prompt([{
+                //   type: 'confirm',
+                //   name: 'confirm',
+                //   message: '请确认是否继续上传',
+                // }]);
               }
 
               if (answers.confirm) {
@@ -212,6 +234,7 @@ export default CommandWrapper<ICommandOptions>({
               command: EStdioCommands.CREATE_PLUGIN_COMPONENT,
               description: '在当前命令行中敲入 「createPluginComponent <componentName> + 回车」 可以在本地快速创建一个组件',
               action: async (args) => {
+                ctx.logger.debug('createPluginComponent', args);
                 await createPluginComponent(ctx, args);
               },
             });
@@ -232,10 +255,14 @@ export default CommandWrapper<ICommandOptions>({
               description: '在当前命令行中敲入 「pc + 回车」 可以本地预览PC端工作台组件',
               action: async () => {
                 const h5bundle = path.join(__dirname, '../../../h5bundle');
-                execSync(`cd ${h5bundle} && npm i`, {
-                  stdio: 'inherit',
-                });
-                pcPreviewAction(ctx);
+                try {
+                  execSync(`cd ${h5bundle} && npm i`, {
+                    stdio: 'inherit',
+                  });
+                } catch(e) {
+                  ctx.logger.error(e);
+                }
+                await pcPreviewAction(ctx);
               },
             });
           } else if (isTs) {
@@ -260,26 +287,46 @@ export default CommandWrapper<ICommandOptions>({
             });
           }
 
-          GlobalStdinCommand.log();
         } else if (isH5) {
           // h5默认都是react项目
           // TODO: h5的构建流程非标准，得梳理一下或者补充一下代码模版
-          const cp = spawn(
-            'npm',
-            [
-              'run',
-              'start',
-            ],
-            {
-              stdio: 'inherit',
-              env: process.env,
-              shell: isWindows,
-            }
-          );
-          cp.on('error', (err) => {
-            ctx.logger.error('h5项目启动失败', err.message);
-            monitor.logJSError(err);
+          GlobalStdinCommand.subscribe({
+            command: EStdioCommands.WEB,
+            description: '在当前命令行中敲入 「web + 回车」 可以在Web浏览器调试H5微应用',
+            action: async () => {
+              const assetDir = await getSimulatorAssetsDir();
+              const frameworkDir = await getSimulatorFrameworkStoreDir();
+              const webSimulator = await openWebSImulator({
+                targetH5Url: ctx.commandOptions.targetH5Url,
+                assetDir,
+                frameworkDir,
+                proxyServerScript: path.join(__dirname, '../../../server/simulatorProxyServer.js'),
+              });
+              if (webSimulator && webSimulator.webSimulatorUrl) {
+                open(webSimulator.webSimulatorUrl);
+              }
+            },
           });
+        }
+
+        const commandArgs = ctx.commandArgs;
+        /**
+         * 获取子命令，如果有子命令的话，执行GlobalStdinCommand.publish来执行子命令
+         */
+        const subCommand = commandArgs[1];
+        if (subCommand) {
+          // 子命令模式下，不监听配置文件变更，要让子命令执行完成后退出进程
+          ctx.watcher.close();
+          GlobalStdinCommand.setMode(EMode.SUB_COMMAND);
+
+          if (GlobalStdinCommand.getTargetSubscriber(subCommand)) {
+            GlobalStdinCommand.publish(subCommand, ctx.commandArgs.slice(2), ctx.commandOptions);
+          } else {
+            GlobalStdinCommand.tips();
+          }
+          GlobalStdinCommand.dispose();
+        } else {
+          GlobalStdinCommand.log();
         }
       },
     };

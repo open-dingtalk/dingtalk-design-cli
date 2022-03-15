@@ -1,6 +1,6 @@
 import * as os from 'os';
 import * as path from 'path';
-import { APP_TYPE_ENUM, } from './constants'; 
+import { APP_TYPE_ENUM, } from './constants';
 
 // 配置文件
 export const RC_PATH = path.join(os.homedir(), '.dd-cli-rc.json');
@@ -12,7 +12,7 @@ export const DEFAULT_DIRECTORY_SEPERATOR = '_';
 interface HUB {
   /**
    * 套件名称
-   * 用于问询环节以及模版配置文件中
+   * 用于问询环节以及模板配置文件中
    */
   name?: string;
 
@@ -20,14 +20,14 @@ interface HUB {
    * 套件标识
    */
   key: string;
-   
+
   /**
    * 套件的代码仓库地址
    * git ssh
    * 仓库的层级为template->language，必须要严格按照此标准
    */
   repoRemotePath: string;
-  
+
   /**
    * 套件描述
    */
@@ -47,21 +47,22 @@ interface HUB {
   postInit?: Promise<void>;
 }
 
+const DEFAULT_REPO_REMOTE_PATH = process.env.REPO_REMOTE_PATH || 'https://gitee.com/open-dingtalk/dd-application-template.git';
 // 套件配置
 export const HUBS_CONFIG: HUB[] = [
   {
     key: APP_TYPE_ENUM.PLUGIN,
-    name: '工作台组件',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git',
+    name: '插件',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
   {
     key: APP_TYPE_ENUM.MP,
     name: '小程序',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
   {
     key: APP_TYPE_ENUM.H5,
     name: 'H5微应用',
-    repoRemotePath: 'https://gitee.com/open-dingtalk/dd-application-template.git',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
 ];

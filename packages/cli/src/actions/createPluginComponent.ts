@@ -37,14 +37,14 @@ export default (commandContext: ICommandContext, args: any[]): Promise<void> => 
   const appJsonPath = path.join(cwd, miniprogramRoot, 'app.json');
   const miniprogramAppJson = getJson(appJsonPath, true, {});
   const dtdConfigPath = path.join(cwd, config.workspaceRcName);
-  
+
   // 该组件名作用于多个地方
   // 1. 组件目录名，以及组件目录下config.json中的pluginComponentName字段
   // 2. ${miniprogramRoot}/page/index/index.json中usingComponents插入的组件名称和路径
   // 3. ${miniprogramRoot}/page/index/index.axml中插入的标签名
   const componentDirName = args[0];
-  
-  /** 1. ${pluginRoot}/components目录下新增组件模版 */
+
+  /** 1. ${pluginRoot}/components目录下新增组件模板 */
   const componentDirPath = path.join(pluginComponentsPath, componentDirName);
   if (!fs.existsSync(componentDirPath)) {
     try {
@@ -130,7 +130,7 @@ export default (commandContext: ICommandContext, args: any[]): Promise<void> => 
   const pageIndexAxml = fs.readFileSync(pageIndexAxmlPath, {
     encoding: 'utf-8',
   });
-  
+
   const parserOpts = {
     attributeNamePrefix : '',
     attrNodeName: 'attr', //default is 'false'
@@ -189,6 +189,6 @@ export default (commandContext: ICommandContext, args: any[]): Promise<void> => 
       },
     },
   });
-  
+
   setJson(dtdConfigPath, dtdConfig);
 };
