@@ -2,6 +2,7 @@ import * as pth from 'path';
 import * as fse from 'fs-extra';
 import { IProxyParams, } from '../../lib/common/types';
 import { RequestDetail, ResponseDetail, RuleModule, } from 'anyproxy';
+import config from '../../lib/common/config';
 
 let bizType = '';
 // 本地代理
@@ -18,9 +19,10 @@ export default function ({ miniAppId, cwd, }: IProxyParams): RuleModule {
       // package.dingtalk.com/5000000001616274/static/JhkXYZcbLh/index.js?pluginId=5000000001616274
       const reg = new RegExp(`.*package\\.dingtalk\\.com/${miniAppId}/static/(\\w*)/index\\.js`, 'i');
       if (path.match(reg) || path.match(/.*dev\.dingtalk\.com\/main\.bundle\.js/)) {
+        const port = config.h5pro.h5bundlePort;
         const newOption = Object.assign({}, requestDetail.requestOptions, {
           hostname: '127.0.0.1', // 本地ip
-          port: 3001,
+          port: port,
           headers: { ...headers, },
           path: '/index.js',
         });
