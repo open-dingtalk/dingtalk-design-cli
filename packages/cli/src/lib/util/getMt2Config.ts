@@ -1,5 +1,5 @@
 import urllib from 'urllib';
-import { logger } from '../cli-shared-utils/lib/logger';
+import { logger, } from '../cli-shared-utils/lib/logger';
 import getMonitor from '../cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../common/config';
 
