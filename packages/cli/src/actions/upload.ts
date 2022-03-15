@@ -22,7 +22,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
     miniProgramConfigContent,
   } = commandContext;
         
-  const miniAppId = get(options, 'miniAppId') || dtdConfig.miniAppId;
+  const miniAppId = get(options, 'miniAppId') + '' || dtdConfig.miniAppId;
   const token = get(options, 'token') || dtdConfig.token;
   const host = get(options, 'host');
   const override = get(options, 'override');
