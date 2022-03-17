@@ -10,6 +10,8 @@ export default {
   yuyanId: '180020010101199026',
   h5pro: {
     binStoreDir: path.join(homeDir, '.dd-h5bundle-bin'),
+    //FIXME:xhf-文件地址
+    // https://yuyan.antfin-inc.com/h5pro/file/detail/6232f1f382a92304d2dde640?page=1&type=others
     platforms: {
       win32: {
         binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/a74da956-33fc-46cb-b76b-10b0d1618ba8.gz',
