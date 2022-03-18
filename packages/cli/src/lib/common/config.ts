@@ -22,7 +22,9 @@ export default {
     },
     h5bundlePort: '3001',
   },
-  mt2Config: 'https://hudong.alicdn.com/api/data/v2/7334dc6bc97b408c9cdf0884f6fb01d4.js?t=1642494634940',
+  // mt2Config: 'https://hudong.alicdn.com/api/data/v2/7334dc6bc97b408c9cdf0884f6fb01d4.js?t=1642494634940',
+  // TODO：预发测试环境
+  mt2Config: 'http://mt2.alibaba-inc.com/core/data/dataEntityMock.do?id=212422&t=1647569656976',
   webSimulator: {
     tarUrl: 'https://gw.alipayobjects.com/as/g/lyra/lyra-integration/6.1.27/lyra-web.tgz',
     storeDir: path.join(homeDir, '.dd-web-simulator-assets'),
@@ -32,6 +34,15 @@ export default {
     targetH5Port: 3000,
     webSimulatorFrameworkStoreDir: path.join(homeDir, '.webSimulatorFramework'),
     webSimulatorFrameworkHtmlName: 'webSimulator.html',
+  },
+  miniAppWebSimulator: {
+    project: process.cwd(),
+    frameworkPort: 10007,
+    proxyServerPort: 10009,
+    simulatorPort: 8345,
+    webSimulatorFrameworkHtmlName: 'miniAppWebSimulator.html',
+    extendPort: 3020,
+    webSimulatorFrameworkStoreDir: path.join(homeDir, '.miniAppWebSimulatorFramework'),
   },
   ngrok: {
     binStoreDir: path.join(homeDir, '.dd-ngrok-bin'),

@@ -13,22 +13,26 @@ import getMonitor from '../cli-shared-utils/lib/monitor/framework-monitor';
 
 const monitor = getMonitor(config.yuyanId);
 
-export default async () => {
+export default async (isMiniApp?: boolean): Promise<string> => {
+  console.log('__dirname', __dirname);
   const DEFAULT_SIMULATOR_FRAMEWORK_DIR = path.join(__dirname, '../../../tpl');
 
+  const configType = isMiniApp ? 'miniAppWebSimulator' : 'webSimulator';
   /** get mt2Config */
   const mt2Config = await getMt2Config();
+  console.log('mt2Config', mt2Config);
+
   if (!mt2Config) return DEFAULT_SIMULATOR_FRAMEWORK_DIR;
 
   /** simulator framework download */
-  const htmlPath = mt2Config.frameworkConfig.html;
+  const htmlPath = isMiniApp ? mt2Config.frameworkConfig.miniAppHtml : mt2Config.frameworkConfig.h5Html;
   try {
     logWithSpinner('检查模拟器框架版本...');
-    await download(htmlPath, config.webSimulator.webSimulatorFrameworkStoreDir, {
-      filename: config.webSimulator.webSimulatorFrameworkHtmlName,
+    await download(htmlPath, config[configType].webSimulatorFrameworkStoreDir, {
+      filename: config[configType].webSimulatorFrameworkHtmlName,
     });
     successSpinner('模拟器框架更新成功');
-    return config.webSimulator.webSimulatorFrameworkStoreDir;
+    return config[configType].webSimulatorFrameworkStoreDir;
   } catch(e) {
     failSpinner('模拟器框架更新失败');
     logger.error(e.message);

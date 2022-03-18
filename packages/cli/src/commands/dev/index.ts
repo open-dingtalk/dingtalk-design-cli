@@ -30,12 +30,15 @@ import open from 'open';
 import { choosePort, } from '../../lib/cli-shared-utils/lib/network';
 import getSimulatorFrameworkStoreDir from '../../lib/util/getSimulatorFrameworkStoreDir';
 import openWebSImulator from '../../actions/openWebSImulator';
+import openMiniAppWebSimulator from '../../actions/openMiniAppSimulator';
 import updateConfig from '../../actions/updateConfig';
 
 const monitor = getMonitor(config.yuyanId);
 
 interface ICommandOptions {
   targetH5Url?: string;
+  appId?: string;
+  page?: string;
 }
 
 export default CommandWrapper<ICommandOptions>({
@@ -225,6 +228,23 @@ export default CommandWrapper<ICommandOptions>({
               if (answers.confirm) {
                 await upload(ctx);
                 GlobalStdinCommand.tips();
+              }
+            },
+          });
+
+          GlobalStdinCommand.subscribe({
+            command: EStdioCommands.WEB,
+            description: '在当前命令行中敲入 「web + 回车」 可以在Web浏览器调试小程序',
+            action: async () => {
+              console.log('dingtalk 小程序 web调试');
+              const webSimulator = await openMiniAppWebSimulator({
+                proxyServerScript: path.join(__dirname, '../../../server/simulatorProxyServer.js'),
+
+              });
+              console.log('构建webSimulator成功', webSimulator);
+
+              if (webSimulator && webSimulator.webSimulatorUrl) {
+                open(webSimulator.webSimulatorUrl);
               }
             },
           });
