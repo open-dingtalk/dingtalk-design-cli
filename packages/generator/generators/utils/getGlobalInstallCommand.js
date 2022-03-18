@@ -26,13 +26,13 @@ const cli_shared_utils_1 = require("./cli-shared-utils");
                                                            * `__dirname` is wrong
                                                            */
 function getGlobalInstallCommand() {
-    if ((0, cli_shared_utils_1.hasYarn)()) {
+    if (cli_shared_utils_1.hasYarn()) {
         const { stdout: yarnGlobalDir } = execa.sync('yarn', ['global', 'dir']);
         if (__dirname.includes(yarnGlobalDir)) {
             return 'yarn global add';
         }
     }
-    if ((0, cli_shared_utils_1.hasPnpm3OrLater)()) {
+    if (cli_shared_utils_1.hasPnpm3OrLater()) {
         const { stdout: pnpmGlobalPrefix } = execa.sync('pnpm', ['config', 'get', 'prefix']);
         if (__dirname.includes(pnpmGlobalPrefix) && __dirname.includes('pnpm-global')) {
             return 'pnpm i -g';

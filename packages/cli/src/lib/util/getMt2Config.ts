@@ -18,7 +18,6 @@ export default async (): Promise<IMt2Config> => {
       method: 'GET',
       dataType: 'json',
     });
-    console.log('res', res);
     return res.data;
   } catch(e) {
     logger.debug('请求mt2Config失败', e);

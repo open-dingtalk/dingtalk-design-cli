@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+// superagent会被注入到上下文环境
 const injectJsapiScripts = `
 // lyra支持153个
 window.SUPPORTED_ALIPAY_LYRA_JSAPI = ['setBackgroundAudioOption', 'getBackgroundAudioOption', 'startMonitorBackgroundAudio', 'stopMonitorBackgroundAudio', 'getBackgroundAudioPlayerState', 'seekBackgroundAudio', 'playBackgroundAudio', 'pauseBackgroundAudio', 'stopBackgroundAudio', 'destoryBackgroundAudio', 'fsManage', 'fsManageSync', 'saveFile', 'getSavedFileList', 'getSavedFileInfo', 'getFileInfo', 'removeSavedFile', 'openDocument', 'setTinyLocalStorage', 'getTinyLocalStorage', 'getTinyLocalStorageInfo', 'removeTinyLocalStorage', 'clearTinyLocalStorage', 'setScreenAutolock', 'getDeviceInfo', 'getRunScene', 'navigateToMiniProgram', 'addEventCal', 'navigateBackMiniProgram', 'getServerTime', 'getNetworkType', 'hideKeyboard', 'getCurrentLocation', 'vibrate', 'vibrateLong', 'vibrateShort', 'watchShake', 'scan', 'startMonitorMemoryWarning', 'stopMonitorMemoryWarning', 'addScreenshotListener', 'setScreenBrightness', 'getScreenBrightness', 'setClipboard', 'getClipboard', 'getBatteryInfo', 'getSystemInfo', 'tyroRequest', 'tyroRequestAsync', 'showRemoteDebugPanel', 'showRemoteDebugMask', 'request', 'httpRequest', 'operateRequestTask', 'downloadFile', 'operateDownloadTask', 'uploadFile', 'operateUploadTask', 'rsa', 'getAppInfo', 'makePhoneCall', 'appxrpc', 'shareTinyAppMsg', 'getBusinessAuth', 'getLocalResourceAbsolutePath', 'internal_clearFileCache', 'internal_reLaunchApp', 'measureText', 'sendMtop', 'mtop', 'getTitleAndStatusbarHeight', 'setTitle', 'setTitleColor', 'setBarBottomLineColor', 'getTitleColor', 'showTitleLoading', 'hideTitleLoading', 'setTransparentTitle', 'setBackButton', 'hideOptionMenuItem', 'hideShareMenu', 'setCustomPopMenu', 'setOptionMenu', 'showOptionMenu', 'setTAOptionMenu', 'showTAOptionMenu', 'showBackToHomepage', 'isCollected', 'queryIsFavorite', 'add2Favorite', 'cancelKeepFavorite', 'favoriteNotify', 'enableLeaveConfirm', 'disableLeaveConfirm', 'setBackgroundColor', 'setBackgroundTextStyle', 'setCanPullDown', 'startPullDownRefresh', 'restorePullToRefresh', 'loadCanvasFontFace', 'getBackgroundFetchData', 'setTabBar', 'getOpenUserData', 'startAudioRecord', 'stopAudioRecord', 'pauseAudioRecord', 'resumeAudioRecord', 'rpc', 'connectSocket', 'sendSocketMessage', 'closeSocket', 'lyraInternal_closeAllSockets', 'actionSheet', 'navigateToAlipayPage', 'updateAlipayClient', 'getAuthCode', 'getComponentAuth', 'showAuthGuide', 'getUserInfo', 'getAuthUserInfo', 'startBizService', 'getCities', 'chooseContact', 'contact', 'APSocialNebulaPlugin.selectContactJSAPI', 'addPhoneContact', 'alert', 'confirm', 'prompt', 'imageViewer', 'getImageInfo', 'chooseImage', 'saveImage', 'compressImage', 'generateImageFromCode', 'showLoading', 'hideLoading', 'beehiveGetPOI', 'openLocation', 'tradePay', 'datePicker', 'beehiveOptionsPicker', 'beehiveMultilevelSelect', 'getSetting', 'openSetting', 'startShare', 'startApp', 'toast', 'hideToast', 'registerUpdateManager', 'applyUpdate', 'saveVideoToPhotosAlbum', 'chooseVideo'];
@@ -113,9 +115,8 @@ function isSupport(method = '') {
 const event = new Event('WebViewJavascriptBridgeReady');
 document.dispatchEvent(event);
 
-`
+`;
 // eslint-disable-next-line no-undef
-console.log('11111');
 const proxyServerUrl = 'http://127.0.0.1:8333';
 
 function isString(obj) {
@@ -127,7 +128,6 @@ window.lyraRendererExtendBridge.beforeMount((options) => {
     ...options,
     ipc: async (params) => {
       if (params.name === 'sendMsg') {
-        console.log('xingying test sendMsg', params, superagent);
         const fetchUrl = `${decodeURIComponent(proxyServerUrl)}/sendLwpMsg`;
         let res;
         try {
@@ -142,34 +142,30 @@ window.lyraRendererExtendBridge.beforeMount((options) => {
           console.error('ipc error', e);
         }
         const decodedRes = JSON.parse(res.text);
-        console.log('inner ipc', decodedRes, params);
         return decodedRes;
       } else if (params.name === 'biz.user.get') {
         const fetchUrl = `${decodeURIComponent(proxyServerUrl)}/getUserInfo`;
         const res = await superagent.get(fetchUrl);
         const decodedRes = JSON.parse(res.text);
-        // console.log('inner ipc', decodedRes, params);
         return decodedRes.data.userProfileExtensionModel;
       } else if (params.name === 'getProfile') {
         const fetchUrl = `${decodeURIComponent(proxyServerUrl)}/getProfile`;
         const res = await superagent.get(fetchUrl);
         const decodedRes = JSON.parse(res.text);
-        // console.log('inner ipc', decodedRes, params);
         return decodedRes.data;
       } else if (params.name === 'getMySpaceId') {
         const fetchUrl = `${decodeURIComponent(proxyServerUrl)}/getMySpaceId`;
         const res = await superagent.get(fetchUrl);
         const decodedRes = JSON.parse(res.text);
-        // console.log('inner ipc', decodedRes, params);
         return decodedRes.data;
       }
     },
     ext: [
-       'https://gw.alipayobjects.com/as/g/lyra/official-extension/0.0.10/',
-       `https://g.alicdn.com/dingding/lyra-dingtalk/0.0.2/`,
-     ],
-     inlineRenderScripts: [
-        injectJsapiScripts
-     ],
+      'https://gw.alipayobjects.com/as/g/lyra/official-extension/0.0.10/',
+      'https://g.alicdn.com/dingding/lyra-dingtalk/0.0.2/',
+    ],
+    inlineRenderScripts: [
+      injectJsapiScripts
+    ],
   };
 });

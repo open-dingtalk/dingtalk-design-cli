@@ -10,7 +10,7 @@ const format = (label, msg) => {
     return msg.split('\n').map((line, i) => {
         return i === 0 ?
         `${label} ${line}` :
-        line.padStart((0, strip_ansi_1.default)(label).length);
+        line.padStart(strip_ansi_1.default(label).length);
     }).join('\n');
 };
 const debug = msg => {

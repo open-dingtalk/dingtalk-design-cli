@@ -53,7 +53,7 @@ function getVersions() {
                 res.latest = semver.gt(localConfig.latestVersion, pkgVersion) ? localConfig.latestVersion : pkgVersion;
             } else
             {
-                const latestVersion = yield (0, getRemoteVersion_1.default)(pkgName);
+                const latestVersion = yield getRemoteVersion_1.default(pkgName);
                 localStore.setAll({
                     lastUpdateCheck: Date.now(),
                     latestVersion });

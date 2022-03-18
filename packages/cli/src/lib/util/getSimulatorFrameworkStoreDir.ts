@@ -8,31 +8,41 @@ import { failSpinner, logWithSpinner, successSpinner, } from '../cli-shared-util
 import download from 'download';
 import { logger, } from '../cli-shared-utils/lib/logger';
 import path from 'path';
+// import fs from 'fs';
+// import { spawn, } from 'child_process';
+
 import getMt2Config from './getMt2Config';
 import getMonitor from '../cli-shared-utils/lib/monitor/framework-monitor';
 
 const monitor = getMonitor(config.yuyanId);
 
 export default async (isMiniApp?: boolean): Promise<string> => {
-  console.log('__dirname', __dirname);
   const DEFAULT_SIMULATOR_FRAMEWORK_DIR = path.join(__dirname, '../../../tpl');
 
   const configType = isMiniApp ? 'miniAppWebSimulator' : 'webSimulator';
   /** get mt2Config */
   const mt2Config = await getMt2Config();
-  console.log('mt2Config', mt2Config);
 
   if (!mt2Config) return DEFAULT_SIMULATOR_FRAMEWORK_DIR;
 
   /** simulator framework download */
   const htmlPath = isMiniApp ? mt2Config.frameworkConfig.miniAppHtml : mt2Config.frameworkConfig.h5Html;
+  const frameworkDir = config[configType].webSimulatorFrameworkStoreDir;
+  // if (isMiniApp) {
+  //   try {
+  //     fs.writeFileSync(path.join(frameworkDir, 'extend.js'), fs.readFileSync('./extend.js'));
+  //     // spawn('cp', ['./extend.js', path.join(frameworkDir, 'extend.js')]);
+  //   } catch(e) {
+  //     console.error('extend.js write fail:', e);
+  //   }
+  // }
   try {
     logWithSpinner('检查模拟器框架版本...');
-    await download(htmlPath, config[configType].webSimulatorFrameworkStoreDir, {
+    await download(htmlPath, frameworkDir, {
       filename: config[configType].webSimulatorFrameworkHtmlName,
     });
     successSpinner('模拟器框架更新成功');
-    return config[configType].webSimulatorFrameworkStoreDir;
+    return frameworkDir;
   } catch(e) {
     failSpinner('模拟器框架更新失败');
     logger.error(e.message);

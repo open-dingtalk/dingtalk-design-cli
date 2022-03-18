@@ -25,50 +25,50 @@ const DEFAULT_HOST = '0.0.0.0';
 export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
 	
   let proxyServerUrl = '';
-	if (opts.proxyServerUrl) {
-		proxyServerUrl = opts.proxyServerUrl;
-	} else {
-		/**
+  if (opts.proxyServerUrl) {
+    proxyServerUrl = opts.proxyServerUrl;
+  } else {
+    /**
 		 * 模拟器本地代理服务挂载
 		 */
-		let proxyServerPort = config.webSimulator.proxyServerPort;
+    let proxyServerPort = config.miniAppWebSimulator.proxyServerPort;
 
-		try {
-			proxyServerPort = await choosePort(DEFAULT_HOST, proxyServerPort);
-		} catch(e) {
-			logger.error('模拟器本地服务器代理启动失败', e);
-			monitor.logJSError(e);
-			return;
-		}
+    try {
+      proxyServerPort = await choosePort(DEFAULT_HOST, proxyServerPort);
+    } catch(e) {
+      logger.error('模拟器本地服务器代理启动失败', e);
+      monitor.logJSError(e);
+      return;
+    }
 
-		// 启动本地代理服务器
-		if (!opts.proxyServerScript) {
-			logger.error('模拟器本地服务器代理启动失败，请配置模拟器本地服务器代理服务脚本地址');
-			return;
-		}
-		const proxyServerScript = opts.proxyServerScript;
-		const appType = 'miniApp';
-		const proxyServerCp = spawn(
-			'node',
-			[
-				proxyServerScript,
-				appType,
-			],
-			{
-				stdio: 'ignore',
-				env: {
-					...process.env,
-					PORT: String(proxyServerPort),
-				},
-				shell: isWindows,
-			}
-		);
-		proxyServerCp.on('error', (err) => {
-			logger.error('本地代理服务器启动失败', err);
-			monitor.logJSError(err);
-		});
-		proxyServerUrl = `http://127.0.0.1:${proxyServerPort}`;
-	}
+    // 启动本地代理服务器
+    if (!opts.proxyServerScript) {
+      logger.error('模拟器本地服务器代理启动失败，请配置模拟器本地服务器代理服务脚本地址');
+      return;
+    }
+    const proxyServerScript = opts.proxyServerScript;
+    const appType = 'miniApp';
+    const proxyServerCp = spawn(
+      'node',
+      [
+        proxyServerScript,
+        appType,
+      ],
+      {
+        stdio: 'ignore',
+        env: {
+          ...process.env,
+          PORT: String(proxyServerPort),
+        },
+        shell: isWindows,
+      }
+    );
+    proxyServerCp.on('error', (err) => {
+      logger.error('本地代理服务器启动失败', err);
+      monitor.logJSError(err);
+    });
+    proxyServerUrl = `http://127.0.0.1:${proxyServerPort}`;
+  }
 
   return {
     proxyServerUrl,

@@ -54,13 +54,13 @@ function extractPackageScope(packageName) {
 }
 function getBin() {
     let bin = '';
-    if ((0, cli_shared_utils_1.hasYarn)()) {
+    if (cli_shared_utils_1.hasYarn()) {
         bin = 'yarn';
     } else
-    if ((0, cli_shared_utils_1.hasPnpm)()) {
+    if (cli_shared_utils_1.hasPnpm()) {
         bin = 'pnpm';
     } else
-    if ((0, cli_shared_utils_1.hasNpm)()) {
+    if (cli_shared_utils_1.hasNpm()) {
         bin = 'npm';
     }
     return bin;
@@ -69,23 +69,23 @@ function getRegistry(scope) {
     return __awaiter(this, void 0, void 0, function* () {
         const bin = getBin();
         if (!bin) {
-            (0, logger_1.error)(errors_1.ERROR_PM_NOT_FOUND);
+            logger_1.error(errors_1.ERROR_PM_NOT_FOUND);
             throw errors_1.ERROR_PM_NOT_FOUND;
         }
         let registry;
         try {
             if (scope) {
-                registry = (yield (0, execa_1.default)(bin, ['config', 'get', scope + ':registry'])).stdout;
+                registry = (yield execa_1.default(bin, ['config', 'get', scope + ':registry'])).stdout;
             }
             if (!registry || registry === 'undefined') {
-                registry = (yield (0, execa_1.default)(bin, ['config', 'get', 'registry'])).stdout;
+                registry = (yield execa_1.default(bin, ['config', 'get', 'registry'])).stdout;
             }
         }
         catch (e) {
             // Yarn 2 uses `npmRegistryServer` instead of `registry`
-            registry = (yield (0, execa_1.default)(bin, ['config', 'get', 'npmRegistryServer'])).stdout;
+            registry = (yield execa_1.default(bin, ['config', 'get', 'npmRegistryServer'])).stdout;
         }
-        (0, logger_1.debug)(`getRegistry: ${registry}`);
+        logger_1.debug(`getRegistry: ${registry}`);
         return registry;
     });
 }
@@ -144,7 +144,7 @@ function getMetadata(packageName, { full = false } = {}) {
             return metadata;
         }
         catch (e) {
-            (0, logger_1.error)(`Failed to get response from ${url}`);
+            logger_1.error(`Failed to get response from ${url}`);
             throw e;
         }
     });
