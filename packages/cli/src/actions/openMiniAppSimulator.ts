@@ -3,14 +3,10 @@ import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import { choosePort, } from '../lib/cli-shared-utils/lib/network';
 import config from '../lib/common/config';
 import server from 'http-server';
-// import * as os from 'os';
-// import * as path from 'path';
-// import * as fs from 'fs';
 import getSimulatorProxyServer from './simulatorProxyServer';
 import getSimulatorFrameworkStoreDir from '../lib/util/getSimulatorFrameworkStoreDir';
 import { v4, } from 'uuid';
 import replaceUuid from '../lib/util/replaceUuid';
-import express from 'express';
 
 interface IOpts {
   /** 鉴权代理服务脚本地址 */
@@ -30,33 +26,13 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
   
   const { minidev, } = require('@ali/minidev-rc');
 
-  const app = express();
   const {
     proxyServerScript,
   } = opts;
   const { 
-    extendPort,
     project,
     simulatorPort,
   } = config.miniAppWebSimulator;
-  app.listen(extendPort);
-  app.use('/', express.static(__dirname));
-  // 挂载lyra-dingtalk扩展
-  // const extendServer = server.createServer({
-  //   root: path.join(os.homedir(), '.extend'),
-  //   cors: true,
-  //   cache: -1,
-  //   logFn: (req, res) => {
-  //     fs.readFile('./extend.js', (err, data) => {
-  //       if (err) {
-  //         console.error(err);
-  //       } else {
-  //         res.end(data.toString());
-  //       }
-  //     });
-  //   },
-  // });
-  // extendServer.listen(extendPort);
 
   let webSimulatorUrl;
   const devServerBuild = await minidev.dev({
@@ -74,9 +50,10 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
       const { separated, } = await minidev.devWebSimulator({
         autoOpen: false,
         lyraParams: {
+          // inlineRenderScripts: 'window.proxy_server_port=xxx',
           rendererExtend: [
             'https://g.alicdn.com/dingtalk-developer-about/superagent_cdn/0.0.1/superagent.min.js',
-            `http://127.0.0.1:${extendPort}/extend.js`,
+            'https://g.alicdn.com/dingtalk-developer-about/miniapp-simulator-extend/0.0.1/index.js',
           ],
         },
       }, devServerBuild);

@@ -31,10 +31,16 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
     /**
 		 * 模拟器本地代理服务挂载
 		 */
-    let proxyServerPort = config.miniAppWebSimulator.proxyServerPort;
+    const proxyServerPort = config.miniAppWebSimulator.proxyServerPort;
 
     try {
-      proxyServerPort = await choosePort(DEFAULT_HOST, proxyServerPort);
+      const detectProxyServerPort = await choosePort(DEFAULT_HOST, proxyServerPort);
+      if (detectProxyServerPort !== proxyServerPort) {
+        // 依赖的扩展extend.js中约定端口必须为8333
+        const error = `端口${proxyServerPort}被其他服务占用，模拟器本地服务器代理启动失败`;
+        logger.error(error);
+        monitor.logJSError(new Error(error));
+      }
     } catch(e) {
       logger.error('模拟器本地服务器代理启动失败', e);
       monitor.logJSError(e);
