@@ -22,7 +22,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
     miniProgramConfigContent,
   } = commandContext;
         
-  const miniAppId = get(options, 'miniAppId') + '' || dtdConfig.miniAppId;
+  const miniAppId = get(options, 'miniAppId') || dtdConfig.miniAppId;
   const token = get(options, 'token') || dtdConfig.token;
   const host = get(options, 'host');
   const override = get(options, 'override');
@@ -36,7 +36,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
   const version = get(options, 'version') || dtdConfig.version;
   if (override) {
     const dtdConfigPath = path.join(cwd, config.workspaceRcName);
-    setJsonItem(dtdConfigPath, 'miniAppId', miniAppId);
+    setJsonItem(dtdConfigPath, 'miniAppId', miniAppId + '');
     setJsonItem(dtdConfigPath, 'token', token);
     setJsonItem(dtdConfigPath, 'version', version);
   }
@@ -89,6 +89,8 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
     miniAppId,
     packageVersion: '',
   };
+
+  commandContext.logger.debug('uploadCommonParams', uploadCommonParams);
 
   try {
     await opensdk.miniUpload({
