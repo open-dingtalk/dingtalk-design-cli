@@ -69,7 +69,7 @@ export default function ({ miniAppId, cwd, }: IProxyParams): RuleModule {
         `);
         newResponse.body = buf;
         return new Promise((resolve, reject) => {
-            resolve({ response: newResponse, });
+          resolve({ response: newResponse, });
         });
       }
       // 审批侧规则

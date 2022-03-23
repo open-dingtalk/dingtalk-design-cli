@@ -14,6 +14,6 @@
     "cacheDir": ".changelog"
   },
   "npmClient": "yarn",
-  "version": "0.20.9-beta.2",
+  "version": "0.20.9-beta.7",
   "useWorkspaces": true
 }

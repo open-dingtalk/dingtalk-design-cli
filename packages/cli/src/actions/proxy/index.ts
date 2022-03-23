@@ -24,9 +24,9 @@ async function proxy({ miniAppId, cwd, }: IProxyParams): Promise<void> {
         console.log('The cert is generated at', certDir);
         const isWin = /^win/.test(process.platform);
         if (isWin) {
-          execSync('start .', { cwd: certDir });
+          execSync('start .', { cwd: certDir, });
         } else {
-          execSync('open .', { cwd: certDir });
+          execSync('open .', { cwd: certDir, });
         }
       } else {
         console.error('error when generating rootCA', error);

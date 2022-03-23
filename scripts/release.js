@@ -33,16 +33,16 @@ const release = async () => {
   const bumps = ['patch', 'minor', 'major', 'prerelease'];
   const versions = {};
   bumps.forEach(b => { versions[b] = semver.inc(curVersion, b); });
-  const bumpChoices = bumps.map(b => ({ name: `${b} (${versions[b]})`, value: b }));
+  const bumpChoices = bumps.map(b => ({ name: `${b} (${versions[b]})`, value: b, }));
 
-  const { bump, customVersion } = cliOptions['local-registry']
-    ? { bump: 'minor' }
+  const { bump, customVersion, } = cliOptions['local-registry']
+    ? { bump: 'minor', }
     : await inquirer.prompt([
       {
         name: 'bump',
         message: 'Select release type:',
         type: 'list',
-        choices: [...bumpChoices, { name: 'custom', value: 'custom' }],
+        choices: [...bumpChoices, { name: 'custom', value: 'custom', }],
       },
       {
         name: 'customVersion',
@@ -95,12 +95,13 @@ const release = async () => {
   ];
   // keep all packages' versions in sync
   lernaArgs.push('--force-publish');
+  lernaArgs.push('--no-commit-hooks');
 
   if (cliOptions['local-registry']) {
     lernaArgs.push('--no-git-tag-version', '--no-commit-hooks', '--no-push', '--yes');
   }
 
-  await execa(require.resolve('lerna/cli'), lernaArgs, { stdio: 'inherit' });
+  await execa(require.resolve('lerna/cli'), lernaArgs, { stdio: 'inherit', });
 };
 
 release().catch(err => {

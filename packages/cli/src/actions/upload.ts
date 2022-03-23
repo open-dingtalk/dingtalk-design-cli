@@ -25,6 +25,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
   const miniAppId = get(options, 'miniAppId') || dtdConfig.miniAppId;
   const token = get(options, 'token') || dtdConfig.token;
   const host = get(options, 'host');
+  const override = get(options, 'override');
 
   if (!miniAppId || !token) {
     commandContext.logger.error('缺少必要参数 miniAppId 或 token');
@@ -33,9 +34,9 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
   }
 
   const version = get(options, 'version') || dtdConfig.version;
-  if (options.override) {
+  if (override) {
     const dtdConfigPath = path.join(cwd, config.workspaceRcName);
-    setJsonItem(dtdConfigPath, 'miniAppId', miniAppId);
+    setJsonItem(dtdConfigPath, 'miniAppId', miniAppId + '');
     setJsonItem(dtdConfigPath, 'token', token);
     setJsonItem(dtdConfigPath, 'version', version);
   }
@@ -88,6 +89,8 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
     miniAppId,
     packageVersion: '',
   };
+
+  commandContext.logger.debug('uploadCommonParams', uploadCommonParams);
 
   try {
     await opensdk.miniUpload({
