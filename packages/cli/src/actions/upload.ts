@@ -69,8 +69,8 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
   if (dtdConfig.type === EAppType.PLUGIN) {
     const componentJson = path.resolve(miniProgramConfigContent.pluginRoot, 'component.json');
     if(fs.existsSync(componentJson)) {
-      commandContext.logger.error(`${componentJson}存在，可能导致该插件云构建异常，请手动删除。`);
-      return;
+      fs.unlinkSync(componentJson);
+      commandContext.logger.info(`${componentJson}已删除，如果本地调试异常，请重新执行ding dev命令`);
     }
   }
 
