@@ -38,7 +38,7 @@ export default async (commandContext: ICommandContext): Promise<void> => {
 
   const binPath = await getH5ProBinPath();
   if (!binPath) {
-    logger.error('找不到pc工作台组件构建器');
+    logger.error('找不到套件构建器');
     return;
   }
 

@@ -26,11 +26,15 @@ export default async (): Promise<string> => {
 
   const binDownloadPath = h5ProCurPlatformConfig.binDownloadUrl;
   const tarStorePath = os.tmpdir();
+  /** builder extract */
+  const basename = path.basename(binDownloadPath);
+  const tar = path.join(tarStorePath, basename);
 
   /** builder download */
+ 
   try {
     logWithSpinner('本地没找到pc工作台组件构建器，正在下载');
-    await download(binDownloadPath, tarStorePath);
+    await download(binDownloadPath, tar);
     successSpinner('pc工作台组件构建器下载成功');
   } catch(e) {
     failSpinner('pc工作台组件构建器下载失败');
@@ -38,12 +42,9 @@ export default async (): Promise<string> => {
     return '';
   }
 
-  /** builder extract */
-  const basename = path.basename(binDownloadPath);
-  const tar = path.join(tarStorePath, basename);
   try {
     logger.debug('正在提取h5pro bin文件');
-    await tarExtract(tar, h5ProConfig.binStoreDir);
+    await tarExtract(path.join(tar, h5ProCurPlatformConfig.binName), h5ProConfig.binStoreDir);
     logger.debug('h5pro bin 提取成功');
   } catch(e) {
     logger.debug('h5pro bin 提取失败', e);

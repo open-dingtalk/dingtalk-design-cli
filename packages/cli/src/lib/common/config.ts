@@ -14,12 +14,14 @@ export default {
     // https://yuyan.antfin-inc.com/h5pro/file/detail/6232f1f382a92304d2dde640?page=1&type=others
     platforms: {
       win32: {
-        binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/a74da956-33fc-46cb-b76b-10b0d1618ba8.gz',
-        binExtractPath: '',
+        binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/fe83afd2-0288-4c44-b984-326a3a4326d9.gz',
+        binName:'h5pro-component-win.tar.gz',
+        binExtractPath: 'h5pro-component-win.exe',
       },
       darwin: {
-        binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/5887bca1-9e8d-49c8-882d-be09199f312c.gz',
-        binExtractPath: 'home/jenkins/agent/aci/packages/toolkit/bin/h5pro-component-macos',
+        binDownloadUrl: 'https://gw.alipayobjects.com/os/bmw-prod/117fa8aa-33cf-48ec-9590-0d6cbe8bb704.gz',
+        binName:'h5pro-component-macos.tar.gz',
+        binExtractPath: 'h5pro-component-macos',
       },
     },
     h5bundlePort: '3001',
