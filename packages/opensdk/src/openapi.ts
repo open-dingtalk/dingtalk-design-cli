@@ -228,6 +228,7 @@ export class OpenAPI {
       accessKeyId: accessToken.accessid,
       accessKeySecret: accessToken.access_key_secret,
       stsToken: accessToken.security_token,
+      timeout: 30 * 60 * 1000,
     });
 
     await store.put(storeName, src);
