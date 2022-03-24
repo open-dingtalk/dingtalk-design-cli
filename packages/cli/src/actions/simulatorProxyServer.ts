@@ -18,6 +18,7 @@ interface IOpts {
 
 interface IResponse {
   proxyServerUrl: string;
+	proxyServerPort: number;
 }
 
 const DEFAULT_HOST = '0.0.0.0';
@@ -25,22 +26,17 @@ const DEFAULT_HOST = '0.0.0.0';
 export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
 	
   let proxyServerUrl = '';
+  let proxyServerPort = config.miniAppWebSimulator.proxyServerPort;
+
   if (opts.proxyServerUrl) {
     proxyServerUrl = opts.proxyServerUrl;
   } else {
+
     /**
 		 * 模拟器本地代理服务挂载
 		 */
-    const proxyServerPort = config.miniAppWebSimulator.proxyServerPort;
-
     try {
-      const detectProxyServerPort = await choosePort(DEFAULT_HOST, proxyServerPort);
-      if (detectProxyServerPort !== proxyServerPort) {
-        // 依赖的扩展extend.js中约定端口必须为8333
-        const error = `端口${proxyServerPort}被其他服务占用，模拟器本地服务器代理启动失败`;
-        logger.error(error);
-        monitor.logJSError(new Error(error));
-      }
+      proxyServerPort = await choosePort(DEFAULT_HOST, proxyServerPort);
     } catch(e) {
       logger.error('模拟器本地服务器代理启动失败', e);
       monitor.logJSError(e);
@@ -78,5 +74,6 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
 
   return {
     proxyServerUrl,
+    proxyServerPort,
   };
 };

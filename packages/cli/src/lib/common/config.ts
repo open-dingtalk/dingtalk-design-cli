@@ -37,11 +37,12 @@ export default {
   },
   miniAppWebSimulator: {
     project: process.cwd(),
-    frameworkPort: 10007,
+    frameworkPort: 10008,
     proxyServerPort: 8333, // 依赖的扩展extend.js中约定端口必须为8333
     simulatorPort: 8345,
     webSimulatorFrameworkHtmlName: 'miniAppWebSimulator.html',
     webSimulatorFrameworkStoreDir: path.join(homeDir, '.miniAppWebSimulatorFramework'),
+    assetsPort: 3200,
   },
   ngrok: {
     binStoreDir: path.join(homeDir, '.dd-ngrok-bin'),

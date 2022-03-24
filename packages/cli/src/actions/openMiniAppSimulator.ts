@@ -6,7 +6,9 @@ import server from 'http-server';
 import getSimulatorProxyServer from './simulatorProxyServer';
 import getSimulatorFrameworkStoreDir from '../lib/util/getSimulatorFrameworkStoreDir';
 import { v4, } from 'uuid';
+import express from 'express';
 import replaceUuid from '../lib/util/replaceUuid';
+import writePortFile from '../lib/util/writePortFile';
 
 interface IOpts {
   /** 鉴权代理服务脚本地址 */
@@ -23,8 +25,6 @@ const monitor = getMonitor(config.yuyanId);
 
 export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
   logger.debug('mp simulator start');
-  
-  const { minidev, } = require('@ali/minidev-rc');
 
   const {
     proxyServerScript,
@@ -32,7 +32,39 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
   const { 
     project,
     simulatorPort,
+    assetsPort,
   } = config.miniAppWebSimulator;
+
+  /**
+   * 模拟器本地代理服务挂载
+   */
+  const {
+    proxyServerUrl,
+    proxyServerPort,
+  }  = await getSimulatorProxyServer({
+    proxyServerScript,
+  });
+
+  // 挂载port
+  let assetsFinalPort;
+  try {
+    assetsFinalPort = await choosePort(DEFAULT_HOST, assetsPort);
+  } catch(e) {
+    logger.error('assetsPort choose fail', e);
+    monitor.logJSError(e);
+    return;
+  }
+
+  // write port file
+  writePortFile(proxyServerPort);
+  logger.success('port file written');
+  const app = express();
+  app.listen(assetsFinalPort);
+  logger.info('debug', __dirname);
+  app.use('/', express.static(__dirname));
+
+  // 启动minidev
+  const { minidev, } = require('@ali/minidev-rc');
 
   let webSimulatorUrl;
   const devServerBuild = await minidev.dev({
@@ -50,10 +82,10 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
       const { separated, } = await minidev.devWebSimulator({
         autoOpen: false,
         lyraParams: {
-          // inlineRenderScripts: 'window.proxy_server_port=xxx',
           rendererExtend: [
             'https://g.alicdn.com/dingtalk-developer-about/superagent_cdn/0.0.1/superagent.min.js',
-            'https://g.alicdn.com/dingtalk-developer-about/miniapp-simulator-extend/0.0.1/index.js',
+            'https://dev.g.alicdn.com/dingtalk-developer-about/miniapp-simulator-extend/0.0.2/index.js',
+            `http://localhost:${assetsFinalPort}/port.js`,
           ],
         },
       }, devServerBuild);
@@ -83,12 +115,6 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
       });
       frameworkServer.listen(frameworkPort);
   
-      /**
-       * 模拟器本地代理服务挂载
-       */
-      const { proxyServerUrl, }  = await getSimulatorProxyServer({
-        proxyServerScript,
-      });
       webSimulatorUrl = `http://127.0.0.1:${frameworkPort}/${config.miniAppWebSimulator.webSimulatorFrameworkHtmlName}?simulator=${encodeURIComponent(simulator)}&devtool=${encodeURIComponent(devtool)}&proxyServerUrl=${encodeURIComponent(proxyServerUrl)}`;
       res('');
     });
