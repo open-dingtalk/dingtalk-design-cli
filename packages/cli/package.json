@@ -68,7 +68,6 @@
     "eslint": "^7.27.0",
     "events": "^3.2.0",
     "execa": "^5.0.0",
-    "express": "^4.17.3",
     "fast-xml-parser": "^3.19.0",
     "generator-dd-application": "^0.20.9-beta.1",
     "he": "^1.2.0",

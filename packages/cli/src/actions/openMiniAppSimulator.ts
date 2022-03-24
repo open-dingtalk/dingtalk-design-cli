@@ -6,7 +6,6 @@ import server from 'http-server';
 import getSimulatorProxyServer from './simulatorProxyServer';
 import getSimulatorFrameworkStoreDir from '../lib/util/getSimulatorFrameworkStoreDir';
 import { v4, } from 'uuid';
-// import express from 'express';
 import replaceUuid from '../lib/util/replaceUuid';
 import writePortFile from '../lib/util/writePortFile';
 import getMt2Config from '../lib/util/getMt2Config';
@@ -66,9 +65,6 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
     cache: -1,
   });
   assetsServer.listen(assetsFinalPort);
-  // const app = express();
-  // app.listen(assetsFinalPort);
-  // app.use('/', express.static(__dirname));
 
   // 启动minidev
   const { minidev, } = require('minidev');
