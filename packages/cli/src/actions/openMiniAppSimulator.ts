@@ -9,6 +9,8 @@ import { v4, } from 'uuid';
 import express from 'express';
 import replaceUuid from '../lib/util/replaceUuid';
 import writePortFile from '../lib/util/writePortFile';
+import getMt2Config from '../lib/util/getMt2Config';
+import _get from 'lodash/get';
 
 interface IOpts {
   /** 鉴权代理服务脚本地址 */
@@ -60,7 +62,6 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
   logger.success('port file written');
   const app = express();
   app.listen(assetsFinalPort);
-  logger.info('debug', __dirname);
   app.use('/', express.static(__dirname));
 
   // 启动minidev
@@ -76,6 +77,9 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
     minify: false,
   });
 
+  // get extend url from mt2 config
+  const mt2Config = await getMt2Config();
+
   await new Promise((res) => {
     devServerBuild.devServer.once('done', async () => {
       // devServer 构建完成后启动 模拟器
@@ -84,7 +88,7 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
         lyraParams: {
           rendererExtend: [
             'https://g.alicdn.com/dingtalk-developer-about/superagent_cdn/0.0.1/superagent.min.js',
-            'https://dev.g.alicdn.com/dingtalk-developer-about/miniapp-simulator-extend/0.0.2/index.js',
+            _get(mt2Config, 'frameworkConfig.extend'),
             `http://localhost:${assetsFinalPort}/port.js`,
           ],
         },

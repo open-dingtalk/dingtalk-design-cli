@@ -8,8 +8,6 @@ import { failSpinner, logWithSpinner, successSpinner, } from '../cli-shared-util
 import download from 'download';
 import { logger, } from '../cli-shared-utils/lib/logger';
 import path from 'path';
-// import fs from 'fs';
-// import { spawn, } from 'child_process';
 
 import getMt2Config from './getMt2Config';
 import getMonitor from '../cli-shared-utils/lib/monitor/framework-monitor';
@@ -28,14 +26,7 @@ export default async (isMiniApp?: boolean): Promise<string> => {
   /** simulator framework download */
   const htmlPath = isMiniApp ? mt2Config.frameworkConfig.miniAppHtml : mt2Config.frameworkConfig.h5Html;
   const frameworkDir = config[configType].webSimulatorFrameworkStoreDir;
-  // if (isMiniApp) {
-  //   try {
-  //     fs.writeFileSync(path.join(frameworkDir, 'extend.js'), fs.readFileSync('./extend.js'));
-  //     // spawn('cp', ['./extend.js', path.join(frameworkDir, 'extend.js')]);
-  //   } catch(e) {
-  //     console.error('extend.js write fail:', e);
-  //   }
-  // }
+
   try {
     logWithSpinner('检查模拟器框架版本...');
     await download(htmlPath, frameworkDir, {

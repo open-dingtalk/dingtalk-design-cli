@@ -9,6 +9,7 @@ interface IMt2Config {
   frameworkConfig: {
     miniAppHtml: string;
     h5Html: string;
+    extend: string;
   }
 }
 
