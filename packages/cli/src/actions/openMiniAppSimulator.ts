@@ -65,7 +65,7 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
   app.use('/', express.static(__dirname));
 
   // 启动minidev
-  const { minidev, } = require('@ali/minidev-rc');
+  const { minidev, } = require('minidev');
 
   let webSimulatorUrl;
   const devServerBuild = await minidev.dev({
@@ -79,7 +79,6 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
 
   // get extend url from mt2 config
   const mt2Config = await getMt2Config();
-
   await new Promise((res) => {
     devServerBuild.devServer.once('done', async () => {
       // devServer 构建完成后启动 模拟器
