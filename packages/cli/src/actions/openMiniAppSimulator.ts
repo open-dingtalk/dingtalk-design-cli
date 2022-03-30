@@ -58,7 +58,14 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
   }
 
   // write port file
-  writePortFile(proxyServerPort);
+  try {
+    writePortFile(proxyServerPort);
+  } catch (e) {
+    logger.error('port.js write fail', e);
+    return;
+  }
+  logger.success('port file written');
+  
   const assetsServer = server.createServer({
     root: path.join(__dirname, './'),
     cors: true,
