@@ -7,7 +7,9 @@ const monitor = getMonitor(config.yuyanId);
 
 interface IMt2Config {
   frameworkConfig: {
-    html: string;
+    miniAppHtml: string;
+    h5Html: string;
+    extend: string;
   }
 }
 

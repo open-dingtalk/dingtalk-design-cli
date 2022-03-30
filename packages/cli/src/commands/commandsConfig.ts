@@ -17,6 +17,14 @@ const commandsConfig: {
         description: '[可选] 在H5微应用场景下，用于指定本地调试的页面地址',
         type: 'string',
       },
+      appId: {
+        description: '[可选] 在小程序场景下，用于指定web模拟调试的appId',
+        type: 'string',
+      },
+      page: {
+        description: '[可选] 在小程序场景下，用于指定项目中web模拟调试的某一页面',
+        type: 'string',
+      },
     },
   },
 

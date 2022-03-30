@@ -26,7 +26,7 @@ const path = __importStar(require("path"));
                                              */
 exports.default = (source, dest) => {
     try {
-        (0, child_process_1.execSync)(`cp -af ${path.join(source, '/')} ${dest}`);
+        child_process_1.execSync(`cp -af ${path.join(source, '/')} ${dest}`);
     }
     catch (e) {
         console.error('exec cp error', e);

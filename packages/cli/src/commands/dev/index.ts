@@ -12,7 +12,6 @@ import pcPreviewAction from '../../actions/pcPreview';
 import proxyAction from '../../actions/proxy';
 import getJson from '../../lib/util/getJson';
 import { fetchMatchIdeVersionConfig, MIN_IDE_VERSION_REQUIRED, } from '../../lib/util/ideLocator';
-import { spawn, } from 'child_process';
 import { isEmpty, } from 'lodash';
 import getMonitor from '../../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import { isMacintosh, isWindows, } from '../../lib/cli-shared-utils';
@@ -21,21 +20,20 @@ import upload from '../../actions/upload';
 import lint from '../../actions/lint';
 import commmandsConfig from '../commandsConfig';
 import { execSync, } from 'child_process';
-import inquirer from 'inquirer';
 import createPluginComponent from '../../actions/createPluginComponent';
-import * as fs from 'fs';
-import server from 'http-server';
 import getSimulatorAssetsDir from '../../lib/util/getSimulatorAssetsDir';
 import open from 'open';
-import { choosePort, } from '../../lib/cli-shared-utils/lib/network';
 import getSimulatorFrameworkStoreDir from '../../lib/util/getSimulatorFrameworkStoreDir';
 import openWebSImulator from '../../actions/openWebSImulator';
+import openMiniAppWebSimulator from '../../actions/openMiniAppSimulator';
 import updateConfig from '../../actions/updateConfig';
 
 const monitor = getMonitor(config.yuyanId);
 
 interface ICommandOptions {
   targetH5Url?: string;
+  appId?: string;
+  page?: string;
 }
 
 export default CommandWrapper<ICommandOptions>({
@@ -225,6 +223,20 @@ export default CommandWrapper<ICommandOptions>({
               if (answers.confirm) {
                 await upload(ctx);
                 GlobalStdinCommand.tips();
+              }
+            },
+          });
+
+          GlobalStdinCommand.subscribe({
+            command: EStdioCommands.WEB,
+            description: '在当前命令行中敲入 「web + 回车」 可以在Web浏览器调试小程序',
+            action: async () => {
+              const webSimulator = await openMiniAppWebSimulator({
+                proxyServerScript: path.join(__dirname, '../../../server/simulatorProxyServer.js'),
+
+              });
+              if (webSimulator && webSimulator.webSimulatorUrl) {
+                open(webSimulator.webSimulatorUrl);
               }
             },
           });

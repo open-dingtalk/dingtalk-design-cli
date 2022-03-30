@@ -5,7 +5,6 @@ import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import { choosePort, } from '../lib/cli-shared-utils/lib/network';
 import config from '../lib/common/config';
 import server from 'http-server';
-import path from 'path';
 import * as http from 'http';
 
 const monitor = getMonitor(config.yuyanId);

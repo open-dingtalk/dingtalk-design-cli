@@ -103,7 +103,7 @@ export default class Scheduler {
 
   public loadCommand(name: ECommandName): CommandFactory {
     const command = new CommandFactory({
-      name, 
+      name,
       ctx: this.commandContext,
       root: this.opts.commandRoot,
     });

@@ -42,6 +42,7 @@ export default async (options: IOpts): Promise<IResponse> => {
         language: options['language'],
         outDir: outDir || './',
         'skip-install': options['skipInstall'],
+        // @ts-ignore
       }, done);
     });
   });
