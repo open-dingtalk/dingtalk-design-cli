@@ -87,6 +87,14 @@ const commandsConfig: {
         type: 'boolean',
         shortcut: 'd',
       },
+      page: {
+        description: '[可选] 钉钉小程序或工作台组件预览时的页面配置。',
+        type: 'string',
+      },
+      query: {
+        description: '[可选] 钉钉小程序或工作台组件预览时的全局参数配置。',
+        type: 'string',
+      },
     },
   },
 

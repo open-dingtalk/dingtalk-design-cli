@@ -43,11 +43,15 @@ export interface IWorkspaceRc {
   typescript?: boolean;
   base?: string;
   outDir?: string;
-  miniAppId?: string;
   token?: string;
+  corpId?: string;
+
+  /** 用于小程序或插件 */
+  miniAppId?: string;
   version?: string;
   isPcPlugin?: boolean;
-  corpId?: string;
+  page?: string; // 页面参数
+  query?: string; // 全局参数
 
   /** 专用于pc工作台组件 */
   pcPreviewOptions?: {

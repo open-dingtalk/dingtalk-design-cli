@@ -47,9 +47,9 @@ export default async (
     /** 小程序ID， 必填 */
     miniAppId,
     /** 起始页，选填 */
-    // page: "pages/index/index",
+    page: options?.page || dtdConfig.page || 'pages/index/index',
     /** App.onLaunch中的参数 */
-    // query: "a=2&b=2",
+    query: options?.query || dtdConfig.query || 'a=2&b=2',
     /** 忽略http请求安全域名校验，仅在调试模拟生效 */
     ignoreHttpReqPermission: true,
     /** 忽略web-view安全域名校验，仅在调试模式生效 */

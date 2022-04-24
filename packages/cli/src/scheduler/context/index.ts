@@ -11,6 +11,7 @@ export default class CommandContextFactory implements ICommandContext {
   public hasOriginDtdConfig: boolean;
   public watcher: Watcher;
   public miniProgramConfigPath: string;
+  public cwd: string;
 
   private _commandName: ECommandName | '';
   private _logger: Logger;
@@ -34,7 +35,7 @@ export default class CommandContextFactory implements ICommandContext {
   }
 
   constructor(
-    public cwd: string,
+    public originCwd: string,
     public yuyanId: string,
     public commandArgs: readonly string[],
     public commandOptions: {
@@ -48,6 +49,7 @@ export default class CommandContextFactory implements ICommandContext {
     this.commandOptions = commandOptions;
     
     const { dtdConfig, hasOriginDtdConfig, } = this.getDtdConfig();
+    this.cwd = path.join(originCwd, dtdConfig.base);
     this._dtdConfig = dtdConfig;
     this.hasOriginDtdConfig = hasOriginDtdConfig;
 
@@ -56,7 +58,7 @@ export default class CommandContextFactory implements ICommandContext {
     this.miniProgramConfigPath = mpConfig.path;
 
     const watcher = new Watcher({
-      cwd,
+      cwd: this.cwd,
       files: [],
     });
     this.watcher = watcher;
@@ -80,8 +82,8 @@ export default class CommandContextFactory implements ICommandContext {
   }
 
   private getDtdConfig() {
-    const cwd = this.cwd;
-    const configPath = path.join(cwd, config.workspaceRcName);
+    const originCwd = this.originCwd;
+    const configPath = path.join(originCwd, config.workspaceRcName);
     let hasOriginDtdConfig = false;
     let dtdConfig: IWorkspaceRc;
 

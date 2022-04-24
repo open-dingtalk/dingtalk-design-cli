@@ -8,6 +8,8 @@ export interface ICommandOptions {
   miniAppId?: string;
   token?: string;
   debug?: boolean;
+  page?: string;
+  query?: string;
 }
 
 export default CommandWrapper<ICommandOptions>({
