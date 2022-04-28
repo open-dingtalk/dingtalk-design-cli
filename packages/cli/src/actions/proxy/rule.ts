@@ -42,7 +42,9 @@ export default function ({ miniAppId, cwd, }: IProxyParams): RuleModule {
       // h5 调试，因为h5，rocket代理，不走http，导致无法通过 html代理，
       // 也不能代理已存在js，因为有dd_cache
       // 只能在页面中加载错误js，来这里调试，通过灰度key来控制js加载
-      if (path.match(/.*dev\.dingtalk\.com\/main\.bundle\.js/)) {
+      if (path.match(/.*dev\.dingtalk\.com\/main\.bundle\.js/) ||
+          path.match(/.*g\.alicdn\.com\/code\/npm\/\@ali\/dsuite\-center\/0\.0\.3\/config\/index\.js/)
+      ) {
         if(!bizType) {
           try {
             const config = fse.readJsonSync(pth.join(cwd, './src/plugin/components/config.json'));
