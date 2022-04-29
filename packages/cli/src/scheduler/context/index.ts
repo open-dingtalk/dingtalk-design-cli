@@ -49,7 +49,7 @@ export default class CommandContextFactory implements ICommandContext {
     this.commandOptions = commandOptions;
     
     const { dtdConfig, hasOriginDtdConfig, } = this.getDtdConfig();
-    this.cwd = path.join(originCwd, dtdConfig.base);
+    this.cwd = path.join(originCwd, dtdConfig.base || './');
     this._dtdConfig = dtdConfig;
     this.hasOriginDtdConfig = hasOriginDtdConfig;
 
