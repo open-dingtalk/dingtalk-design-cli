@@ -104,7 +104,10 @@ export default class CommandContextFactory implements ICommandContext {
     
   private getMiniProgramConfig() {
     const cwd = this.cwd;
-    const miniProjectJson = getMiniProjectJson(cwd);
+    let miniProjectJson = getMiniProjectJson(cwd);
+    if (!miniProjectJson.path) {
+      miniProjectJson = getMiniProjectJson(this.originCwd);
+    }
     return miniProjectJson;
   }
 

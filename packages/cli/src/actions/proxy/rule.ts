@@ -43,7 +43,7 @@ export default function ({ miniAppId, cwd, }: IProxyParams): RuleModule {
       // 也不能代理已存在js，因为有dd_cache
       // 只能在页面中加载错误js，来这里调试，通过灰度key来控制js加载
       if (path.match(/.*dev\.dingtalk\.com\/main\.bundle\.js/) ||
-          path.match(/.*g\.alicdn\.com\/code\/npm\/\@ali\/dsuite\-center\/0\.0\.3\/config\/index\.js/)
+          path.match(/.*g\.alicdn\.com\/code\/npm\/@ali\/dsuite-center\/0\.0\.3\/config\/index\.js/)
       ) {
         if(!bizType) {
           try {
