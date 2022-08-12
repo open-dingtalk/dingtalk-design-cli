@@ -24,7 +24,7 @@ describe('Scheduler', ()=>{
    * 场景1: 包含ding.config.json，但不包含mini.project.json
    */
   describe('Miniprogram with ding.config.json, without mini.project.json', () => {
-    const cwd = path.join(__dirname, './mock/mp1');
+    const cwd = path.join(__dirname, './mock/mp1/');
     const schedulerOpts = {
       cwd,
       verbose: true,
@@ -101,7 +101,7 @@ describe('Scheduler', ()=>{
    * 场景2: 包含ding.config.json，同时包含mini.project.json
    */
   describe('Miniprogram with ding.config.json, with mini.project.json', () => {
-    const cwd = path.join(__dirname, './mock/mp2');
+    const cwd = path.join(__dirname, './mock/mp2/');
     const schedulerOpts = {
       cwd,
       verbose: true,
