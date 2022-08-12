@@ -41,7 +41,7 @@ const config_1 = require("../common/config");
 const isValidRepoDirectory_1 = __importDefault(require("../utils/isValidRepoDirectory"));
 const fs_extra_1 = __importStar(require("fs-extra"));
 const getJson_1 = __importDefault(require("../utils/getJson"));
-const git = simple_git_1.default();
+const git = (0, simple_git_1.default)();
 module.exports = class CustomGenerator extends yeoman_generator_1.default {
     constructor(args, opts) {
         super(args, opts);
@@ -60,13 +60,13 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
         return __awaiter(this, void 0, void 0, function* () {
             const options = this.options;
             if (options.appType) {
-                this.log(logger_1.info(`已经选择了应用类型: ${options.appType}`, true));
+                this.log((0, logger_1.info)(`已经选择了应用类型: ${options.appType}`, true));
             }
             if (options.template) {
-                this.log(logger_1.info(`已经选择了模板: ${options.template}`, true));
+                this.log((0, logger_1.info)(`已经选择了模板: ${options.template}`, true));
             }
             if (options.language) {
-                this.log(logger_1.info(`已经选择了开发语言: ${options.language}`, true));
+                this.log((0, logger_1.info)(`已经选择了开发语言: ${options.language}`, true));
             }
             /**
                * choose appType
@@ -88,7 +88,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
             appType = appType || options.appType;
             const selectedHub = config_1.HUBS_CONFIG.find(v => v.key === appType);
             if (!selectedHub) {
-                this.log(logger_1.error(errors_1.ERROR_APP_TYPE_NOT_FOUND, true));
+                this.log((0, logger_1.error)(errors_1.ERROR_APP_TYPE_NOT_FOUND, true));
                 return this.env.error(new Error(errors_1.ERROR_APP_TYPE_NOT_FOUND));
             }
             const repoLocalPath = path.join(config_1.REPO_LOCAL_ROOT_PATH, appType);
@@ -104,7 +104,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                     timeoutTips: '拉取失败，请检测网络情况',
                     internal: 10 * 1000 };
 
-                yield timeInspector_1.default(() => __awaiter(this, void 0, void 0, function* () {
+                yield (0, timeInspector_1.default)(() => __awaiter(this, void 0, void 0, function* () {
                     yield git.
                     outputHandler((bin, stdout, stderr, args) => {
                         stdout.pipe(process.stdout);
@@ -113,11 +113,11 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                     env(Object.assign({}, process.env)).
                     clone(selectedHub.repoRemotePath, repoLocalPath);
                 }), opts);
-                this.log(logger_1.done('模板仓库已成功下载', true));
+                this.log((0, logger_1.done)('模板仓库已成功下载', true));
             }
             catch (e) {
                 console.error(e);
-                this.log(logger_1.error('模板仓库下载失败', true));
+                this.log((0, logger_1.error)('模板仓库下载失败', true));
                 return this.env.error(e);
             }
             let templateList = [];
@@ -129,17 +129,17 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 // filter file which is not seen,
                 // 1. get Directory and filter hidden files
                 // 2. get Directory which starts with appType
-                templateList = originTemplateList.filter(v => v.isDirectory() && isValidRepoDirectory_1.default(v.name, appType)).map(v => {
+                templateList = originTemplateList.filter(v => v.isDirectory() && (0, isValidRepoDirectory_1.default)(v.name, appType)).map(v => {
                     const templatePath = path.join(repoLocalPath, v.name, 'config.json');
-                    const configJson = getJson_1.default(templatePath, true, {});
+                    const configJson = (0, getJson_1.default)(templatePath, true, {});
                     return {
                         name: `${v.name.slice(sliceIdx)} ${configJson.description ? `- ${configJson.description}` : ''}`,
                         value: v.name };
 
                 });
-                logger_1.debug(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
+                (0, logger_1.debug)(`originTemplateList: ${JSON.stringify(originTemplateList)}. templateList: ${JSON.stringify(templateList)}`);
                 if (templateList.length === 0) {
-                    this.log(logger_1.error(`模板仓库中，每个模板名必须以 ${appType} 开头`, true));
+                    this.log((0, logger_1.error)(`模板仓库中，每个模板名必须以 ${appType} 开头`, true));
                     throw errors_1.ERROR_REPO_IS_EMPTY;
                 }
             }
@@ -147,7 +147,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 if (e instanceof Error) {
                     console.error(e.message);
                 }
-                this.log(logger_1.error(errors_1.ERROR_REPO_NOT_VALID, true));
+                this.log((0, logger_1.error)(errors_1.ERROR_REPO_NOT_VALID, true));
                 return this.env.error(e);
             }
             /**
@@ -175,13 +175,13 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 languageList = languageList.filter(v => v.isDirectory() && !v.name.startsWith('.')).map(v => ({
                     name: v.name }));
 
-                logger_1.debug(`languageList: ${JSON.stringify(languageList)}`);
+                (0, logger_1.debug)(`languageList: ${JSON.stringify(languageList)}`);
             }
             catch (e) {
                 if (e instanceof Error) {
                     console.error(e.message);
                 }
-                this.log(logger_1.error('模板仓库非法', true));
+                this.log((0, logger_1.error)('模板仓库非法', true));
                 return this.env.error(e);
             }
             /**
@@ -212,14 +212,14 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
     writing() {
         return __awaiter(this, void 0, void 0, function* () {
             const { template, language, appType } = this.answers;
-            logger_1.debug(`writing: ${this.outDir}-${appType}-${template}-${language}`);
+            (0, logger_1.debug)(`writing: ${this.outDir}-${appType}-${template}-${language}`);
             let targetDir = path.join(this.contextRoot, this.outDir);
             try {
-                yield fs_extra_1.mkdirp(targetDir);
+                yield (0, fs_extra_1.mkdirp)(targetDir);
             }
             catch (e) {
                 console.error(e);
-                this.log(logger_1.error(e.message, true));
+                this.log((0, logger_1.error)(e.message, true));
                 return this.env.error(e);
             }
             const files = fs_extra_1.default.readdirSync(targetDir, {
@@ -232,7 +232,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                         name: 'override',
                         message: `${targetDir} 已存在，是否需要覆盖?` }]);
 
-                    logger_1.debug(`writing: canOverride ${answers.override}`);
+                    (0, logger_1.debug)(`writing: canOverride ${answers.override}`);
                     if (answers.override) {
                         fs_extra_1.default.emptyDirSync(targetDir);
                     } else
@@ -249,7 +249,7 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 }
             }
             catch (e) {
-                this.log(logger_1.error(e.toString(), true));
+                this.log((0, logger_1.error)(e.toString(), true));
                 return this.env.error(e);
             }
             const demoPath = path.join(config_1.REPO_LOCAL_ROOT_PATH, appType, template, language);
@@ -262,14 +262,14 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
 
                 }
                 catch (e) {
-                    this.log(logger_1.error('模板复制失败' + JSON.stringify(e), true));
+                    this.log((0, logger_1.error)('模板复制失败' + JSON.stringify(e), true));
                     return this.env.error(new Error(errors_1.ERROR_DEMO_COPY));
                 }
             } else
             {
                 return this.env.error(new Error(errors_1.ERROR_REPO_NOT_FOUND));
             }
-            this.log(logger_1.done('模板复制成功', true));
+            this.log((0, logger_1.done)('模板复制成功', true));
         });
     }
     // npm install
@@ -291,5 +291,5 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
     end() {
         const outDir = this.outDir;
         const wd = path.join(this.contextRoot, outDir);
-        this.log(logger_1.done(`你的项目已经初始化到目录 ${wd} 下。`, true));
+        this.log((0, logger_1.done)(`你的项目已经初始化到目录 ${wd} 下。`, true));
     }};

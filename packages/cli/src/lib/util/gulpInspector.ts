@@ -22,9 +22,8 @@ export default (gulpBin: string, opts: {
   } = opts;
 
   const cp = spawn(
-    'node', 
+    require.resolve(gulpBin), 
     [
-      require.resolve(gulpBin),
       '--gulpfile', gulpfile,
       '--src', src,
       '--dist', dist,
@@ -34,7 +33,7 @@ export default (gulpBin: string, opts: {
       stdio: 'pipe',
       cwd,
       env: process.env,
-      shell: isWindows,
+      shell: true,
     }
   );
 

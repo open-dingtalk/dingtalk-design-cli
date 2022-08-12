@@ -284,11 +284,12 @@ export default CommandWrapper<ICommandOptions>({
               return;
             }
 
+            const originCwd = process.cwd();
             gulpInspector(gulpLocation, {
-              gulpfile: path.join(cwd, 'gulpfile.js'),
+              gulpfile: path.join(originCwd, 'gulpfile.js'),
               src: path.resolve(base),
               dist: path.resolve(outDir),
-              cwd,
+              cwd: originCwd,
             }, {
               onError: (err) => {
                 monitor.logJSError(err);
