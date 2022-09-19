@@ -65,4 +65,9 @@ export const HUBS_CONFIG: HUB[] = [
     name: 'H5微应用',
     repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
+  {
+    key: APP_TYPE_ENUM.H5_IMMERSION_PAGE,
+    name: 'H5沉浸式页面',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
+  },
 ];
