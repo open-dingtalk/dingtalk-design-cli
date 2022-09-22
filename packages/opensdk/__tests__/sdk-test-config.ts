@@ -11,8 +11,8 @@ export const pre = {
 export const daily = {
   appKey: '',
   appSecret: '',
-  accessToken: '',
-  host: '',
+  accessToken: 'df2d563fbfe736dc9600c6acde55e512',
+  host: 'https://pre-api.dingtalk.com',
   miniAppId: '',
-  agentId: '',
+  agentId: '1781914446',
 };
