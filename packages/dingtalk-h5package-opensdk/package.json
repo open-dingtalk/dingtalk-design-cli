@@ -1,0 +1,44 @@
+{
+  "name": "dingtalk-h5package-opensdk",
+  "version": "1.0.7",
+  "description": "H5离线包OpenSDK",
+  "author": "vularr <vularr@hotmail.com>",
+  "homepage": "https://github.com/open-dingtalk/dingtalk-design-cli#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "directories": {
+    "dist": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-dingtalk/dingtalk-design-cli.git"
+  },
+  "scripts": {
+    "build": "tsc ",
+    "lint": "eslint src",
+    "test": "jest -i",
+    "prepublishOnly": "npm run lint && npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/open-dingtalk/dingtalk-design-cli/issues"
+  },
+  "devDependencies": {
+    "@types/archiver": "^5.3.1",
+    "@types/node": "^18.7.18",
+    "@types/uuid": "^8.3.4",
+    "decompress": "^4.2.1"
+  },
+  "dependencies": {
+    "ali-oss": "^6.17.1",
+    "archiver": "^5.3.1",
+    "axios": "^0.27.2",
+    "uuid": "^9.0.0"
+  }
+}
