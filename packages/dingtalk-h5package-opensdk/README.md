@@ -1,15 +1,15 @@
-# `dingtalk-opensdk-h5package`
+# `dingtalk-h5package-opensdk`
 
 > H5离线包OpenSDK
 
 ## 用法
 
 ```
-import { sdk } from 'dingtalk-opensdk-h5package';
+import { sdk } from 'dingtalk-h5package-opensdk';
 
 // 初始化参数
 sdk.setConfig({
-  asccessToken: '从开放平台获取的apiToken',
+  accessToken: '从开放平台获取的apiToken',
 });
 
 // 创建H5离线包
