@@ -2,35 +2,6 @@
 # yarn lockfile v1
 
 
-"@ali/minidev-rc@^1.2.11-game.2":
-  version "1.2.11-game.2"
-  resolved "https://registry.npm.alibaba-inc.com/@ali/minidev-rc/download/@ali/minidev-rc-1.2.11-game.2.tgz#d22abc19601a4eb914142058cb865baf4ffdf8e6"
-  integrity sha512-BWu5nEiVRNG+6IR4LLBuHp7hazDFXOgQFcLbgj3AnTQ6y/BzbZ0NiDKYiQ7Jgb7Px4S2w2JbHjdQunVU+3O0gw==
-  dependencies:
-    archiver "^5.3.0"
-    bent "^7.3.1"
-    bufferutil "^4.0.1"
-    chalk "^4.1.2"
-    chokidar "^3.4.0"
-    commander "^8.1.0"
-    compressing "^1.5.1"
-    download "^8.0.0"
-    execa "^5.1.1"
-    express "^4.0.0"
-    fs-extra "^10.0.0"
-    lodash "^4.17.21"
-    qrcode-reader "1.0.4"
-    reflect-metadata "^0.1.13"
-    request "^2.88.2"
-    request-promise-native "^1.0.9"
-    superagent "^6.1.0"
-    superagent-proxy "^3.0.0"
-    tar "^6.1.11"
-    utf-8-validate "^5.0.2"
-    watchpack "^2.2.0"
-    winston "^3.3.3"
-    ws "^8.2.3"
-
 "@babel/cli@^7.12.10":
   version "7.13.0"
   resolved "https://registry.npmjs.org/@babel/cli/-/cli-7.13.0.tgz#48e77614e897615ca299bece587b68a70723ff4c"
@@ -3022,6 +2993,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/archiver@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@types/archiver/-/archiver-5.3.1.tgz#02991e940a03dd1a32678fead4b4ca03d0e387ca"
+  integrity sha512-wKYZaSXaDvTZuInAWjCeGG7BEAgTWG2zZW0/f7IYFcoHB2X2d9lkVFnrOlXl3W6NrvO6Ml3FLLu8Uksyymcpnw==
+  dependencies:
+    "@types/glob" "*"
+
 "@types/babel-types@*", "@types/babel-types@^7.0.0":
   version "7.0.11"
   resolved "https://registry.npm.alibaba-inc.com/@types/babel-types/download/@types/babel-types-7.0.11.tgz#263b113fa396fac4373188d73225297fb86f19a9"
@@ -3331,6 +3309,11 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-14.17.4.tgz#218712242446fc868d0e007af29a4408c7765bc0"
   integrity sha512-8kQ3+wKGRNN0ghtEn7EGps/B8CzuBz1nXZEIGGLP2GnwbqYn4dbTs7k+VKLTq1HvZLRCIDtN3Snx1Ege8B7L5A==
 
+"@types/node@^18.7.18":
+  version "18.7.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.18.tgz#633184f55c322e4fb08612307c274ee6d5ed3154"
+  integrity sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -3437,6 +3420,11 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@types/urlencode/-/urlencode-1.1.2.tgz#60c8a206667e4c96a89b4ae47e8c0a9dadf9034b"
   integrity sha512-4Gqya3/CmZ280CA6DvBnHmnq/vfgIqXJvzUC2S7a8kxmv/gbmt0uhJbx6m7ypWJvNn9n8DKWj5LD8wFpSxeQuA==
+
+"@types/uuid@^8.3.4":
+  version "8.3.4"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.4.tgz#bd86a43617df0594787d38b735f55c805becf1bc"
+  integrity sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==
 
 "@types/vinyl@*":
   version "2.0.4"
@@ -3835,6 +3823,36 @@ ali-oss@^6.10.0:
     utility "^1.8.0"
     xml2js "^0.4.16"
 
+ali-oss@^6.17.1:
+  version "6.17.1"
+  resolved "https://registry.yarnpkg.com/ali-oss/-/ali-oss-6.17.1.tgz#3e88738ec01111a26a2b967cf857d97050886156"
+  integrity sha512-v2oT3UhSJTH/LrsscVvi7iEGrnundydNaFzpYAKatqOl4JNcBV4UiwtlJU+ZHLys040JH2k+CutznA0GoE+P2w==
+  dependencies:
+    address "^1.0.0"
+    agentkeepalive "^3.4.1"
+    bowser "^1.6.0"
+    copy-to "^2.0.1"
+    dateformat "^2.0.0"
+    debug "^2.2.0"
+    destroy "^1.0.4"
+    end-or-error "^1.0.1"
+    get-ready "^1.0.0"
+    humanize-ms "^1.2.0"
+    is-type-of "^1.0.0"
+    js-base64 "^2.5.2"
+    jstoxml "^2.0.0"
+    merge-descriptors "^1.0.1"
+    mime "^2.4.5"
+    mz-modules "^2.1.0"
+    platform "^1.3.1"
+    pump "^3.0.0"
+    sdk-base "^2.0.1"
+    stream-http "2.8.2"
+    stream-wormhole "^1.0.4"
+    urllib "^2.33.1"
+    utility "^1.8.0"
+    xml2js "^0.4.16"
+
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
   resolved "https://registry.npm.alibaba-inc.com/align-text/download/align-text-0.1.4.tgz#0cd90a561093f35d0a99256c22b7069433fad117"
@@ -4025,6 +4043,19 @@ archiver@^5.3.0:
   dependencies:
     archiver-utils "^2.1.0"
     async "^3.2.0"
+    buffer-crc32 "^0.2.1"
+    readable-stream "^3.6.0"
+    readdir-glob "^1.0.0"
+    tar-stream "^2.2.0"
+    zip-stream "^4.1.0"
+
+archiver@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/archiver/-/archiver-5.3.1.tgz#21e92811d6f09ecfce649fbefefe8c79e57cbbb6"
+  integrity sha512-8KyabkmbYrH+9ibcTScQ1xCJC/CGcugdVIwB+53f5sZziXgwUh3iXlAlANMxcZyDEfTHMe6+Z5FofV8nopXP7w==
+  dependencies:
+    archiver-utils "^2.1.0"
+    async "^3.2.3"
     buffer-crc32 "^0.2.1"
     readable-stream "^3.6.0"
     readdir-glob "^1.0.0"
@@ -4249,6 +4280,14 @@ axios@^0.21.1:
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   dependencies:
     follow-redirects "^1.10.0"
+
+axios@^0.27.2:
+  version "0.27.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
+  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
+  dependencies:
+    follow-redirects "^1.14.9"
+    form-data "^4.0.0"
 
 babel-cli@^6.26.0:
   version "6.26.0"
@@ -7086,7 +7125,7 @@ expect@^26.6.2:
     jest-message-util "^26.6.2"
     jest-regex-util "^26.0.0"
 
-express@^4.0.0, express@^4.17.3, express@^4.8.5:
+express@^4.0.0, express@^4.8.5:
   version "4.17.3"
   resolved "https://registry.npm.alibaba-inc.com/express/download/express-4.17.3.tgz#f6c7302194a4fb54271b73a1fe7a06478c8f85a1"
   integrity sha512-yuSQpz5I+Ch7gFrPCk4/c+dIBKlQUxtgwqzph132bsT6qhuzss6I8cLJQz7B3rFblzd6wtcI0ZbGltH/C4LjUg==
@@ -7579,6 +7618,11 @@ follow-redirects@^1.10.0:
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.2.tgz#dd73c8effc12728ba5cf4259d760ea5fb83e3147"
   integrity sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
 
+follow-redirects@^1.14.9:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
+  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
+
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -7609,6 +7653,15 @@ form-data@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-3.0.1.tgz#ebd53791b78356a99af9a300d4282c4d5eb9755f"
   integrity sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.8"
+    mime-types "^2.1.12"
+
+form-data@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
+  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
   dependencies:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
@@ -7685,6 +7738,15 @@ fs-extra@^10.0.0:
   version "10.0.0"
   resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-10.0.0.tgz#9ff61b655dde53fb34a82df84bb214ce802e17c1"
   integrity sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
+fs-extra@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
+  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
@@ -9888,6 +9950,11 @@ jstoxml@^0.2.3:
   resolved "https://registry.yarnpkg.com/jstoxml/-/jstoxml-0.2.4.tgz#ff3fb67856883a032953c7ce8ce7486210f48447"
   integrity sha1-/z+2eFaIOgMpU8fOjOdIYhD0hEc=
 
+jstoxml@^2.0.0:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/jstoxml/-/jstoxml-2.2.9.tgz#2eebd5e55383fe66a375022ca0aa88f77bc4fb84"
+  integrity sha512-OYWlK0j+roh+eyaMROlNbS5cd5R25Y+IUpdl7cNdB8HNrkgwQzIS7L9MegxOiWNBj9dQhA/yAxiMwCC5mwNoBw==
+
 jstransformer@1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.alibaba-inc.com/jstransformer/download/jstransformer-1.0.0.tgz#ed8bf0921e2f3f1ed4d5c1a44f68709ed24722c3"
@@ -10695,10 +10762,10 @@ minicode-compile-bundled@2.11.26:
   resolved "https://registry.yarnpkg.com/minicode-compile-bundled/-/minicode-compile-bundled-2.11.26.tgz#f05a15f42c25226b7464b5ade4755d0ece0a7a6a"
   integrity sha512-kiV08PMB7mNvhDlOHfJri/QFYfUv5auke8oJOlt89E0ZgF5mzffc3dMgu+JqCVi/VCNxrSSI5M7f6X3w2FlGNQ==
 
-minidev@^1.2.7:
-  version "1.2.7"
-  resolved "https://registry.npm.alibaba-inc.com/minidev/download/minidev-1.2.7.tgz#9abc89a8b47f400a709d21c7fd3620d08dc238a1"
-  integrity sha512-NbSu33ThUXIlaptDtv18U4ww7wIKOWmUyUo2td9VZJxNnpb95QfOGOwAG6Yl4Bqr87VCD2Ty93zA2B5DvgPq0w==
+minidev@^1.2.10:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/minidev/-/minidev-1.5.1.tgz#b6da3ec398e2ff2bffb5af67fc72432fbe517f58"
+  integrity sha512-rDbip6PVR2v2bkGMo0OLxKTmLcHlCSZ+EwzXxV6xXV8VuzYKO0ZQgHv4AN9xOA6HU3QTPBKtsMAb6D6M7nzIWw==
   dependencies:
     archiver "^5.3.0"
     bent "^7.3.1"
@@ -10710,7 +10777,7 @@ minidev@^1.2.7:
     download "^8.0.0"
     execa "^5.1.1"
     express "^4.0.0"
-    fs-extra "^10.0.0"
+    fs-extra "^10.1.0"
     lodash "^4.17.21"
     qrcode-reader "1.0.4"
     reflect-metadata "^0.1.13"
@@ -10719,10 +10786,9 @@ minidev@^1.2.7:
     superagent "^6.1.0"
     superagent-proxy "^3.0.0"
     tar "^6.1.11"
-    utf-8-validate "^5.0.2"
     watchpack "^2.2.0"
     winston "^3.3.3"
-    ws "^8.2.3"
+    ws "^8.6.0"
 
 minimatch@^3.0.2, minimatch@^3.0.4:
   version "3.0.4"
@@ -14687,13 +14753,6 @@ username@^5.1.0:
     execa "^1.0.0"
     mem "^4.3.0"
 
-utf-8-validate@^5.0.2:
-  version "5.0.9"
-  resolved "https://registry.npm.alibaba-inc.com/utf-8-validate/download/utf-8-validate-5.0.9.tgz#ba16a822fbeedff1a58918f2a6a6b36387493ea3"
-  integrity sha512-Yek7dAy0v3Kl0orwMlvi7TPtiCNrdfHNd7Gcc/pLq4BLXqfAmd0J7OWMizUQnTTJsyjKn02mU7anqwfmUP4J8Q==
-  dependencies:
-    node-gyp-build "^4.3.0"
-
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -14738,6 +14797,11 @@ uuid@^8.3.0:
   version "8.3.2"
   resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 v8-compile-cache@^2.0.3:
   version "2.2.0"
@@ -15137,10 +15201,10 @@ ws@^7.2.3:
   resolved "https://registry.npmjs.org/ws/-/ws-7.4.3.tgz#1f9643de34a543b8edb124bdcbc457ae55a6e5cd"
   integrity sha512-hr6vCR76GsossIRsr8OLR9acVVm1jyfEWvhbNjtgPOrfvAlKzvyeg/P6r8RuDjRyrcQoPQT7K0DGEPc7Ae6jzA==
 
-ws@^8.2.3:
-  version "8.5.0"
-  resolved "https://registry.npm.alibaba-inc.com/ws/download/ws-8.5.0.tgz#bfb4be96600757fe5382de12c670dab984a1ed4f"
-  integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
+ws@^8.6.0:
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
+  integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==
 
 xml-name-validator@^3.0.0:
   version "3.0.0"

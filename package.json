@@ -4,7 +4,8 @@
   "workspaces": [
     "packages/cli",
     "packages/generator",
-    "packages/opensdk"
+    "packages/opensdk",
+    "packages/dingtalk-h5package-opensdk"
   ],
   "version": "0.0.0",
   "scripts": {
