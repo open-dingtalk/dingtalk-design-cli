@@ -1,6 +1,6 @@
 {
   "name": "dingtalk-h5package-opensdk",
-  "version": "1.0.8",
+  "version": "0.0.1",
   "description": "H5离线包OpenSDK",
   "author": "vularr <vularr@hotmail.com>",
   "homepage": "https://github.com/open-dingtalk/dingtalk-design-cli#readme",
@@ -14,7 +14,7 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
