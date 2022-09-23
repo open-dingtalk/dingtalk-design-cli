@@ -1,5 +1,5 @@
-import axios, { AxiosInstance } from "axios";
-import assert from "assert";
+import axios, { AxiosInstance, } from 'axios';
+import assert from 'assert';
 
 export interface IGatewayOptions {
   host?: string;
@@ -22,23 +22,23 @@ export class OpenGateWay {
 
   constructor(private options: IGatewayOptions) {
     if (!options.host) {
-      options.host = "https://api.dingtalk.com";
+      options.host = 'https://api.dingtalk.com';
     }
 
-    assert(options.accessToken, "accessToken is required");
+    assert(options.accessToken, 'accessToken is required');
 
     this.client = axios.create({
       baseURL: options.host,
       timeout: 10000,
-      responseType: "json",
+      responseType: 'json',
       headers: {
-        "x-acs-dingtalk-access-token": options.accessToken,
+        'x-acs-dingtalk-access-token': options.accessToken,
       },
     });
   }
 
   public request<R>(
-    method: "GET" | "POST",
+    method: 'GET' | 'POST',
     pathname: string,
     query = {},
     data = {}

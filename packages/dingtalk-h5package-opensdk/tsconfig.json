@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "Node12",
     "lib": [
       "DOM"
     ], 
