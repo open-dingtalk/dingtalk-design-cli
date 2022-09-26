@@ -32,6 +32,7 @@
   "devDependencies": {
     "@tsconfig/node12": "^1.0.11",
     "@types/archiver": "^5.3.1",
+    "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.7.18",
     "@types/uuid": "^8.3.4",
     "decompress": "^4.2.1"
@@ -40,6 +41,7 @@
     "ali-oss": "^6.17.1",
     "archiver": "^5.3.1",
     "axios": "^0.27.2",
+    "fs-extra": "^10.1.0",
     "uuid": "^9.0.0"
   }
 }
