@@ -1,11 +1,11 @@
 import { packTarGz, } from '../src/index';
 import path from 'path';
 import decompress from 'decompress';
-import fs from 'fs';
+import fs from 'fs-extra';
 
 describe('dingtalk-opensdk-h5package', () => {
   afterEach(async () => {
-    fs.unlinkSync(path.join(__dirname, 'output'));
+    fs.remove(path.join(__dirname, 'output'));
   });
 
   it('zip', async () => {
