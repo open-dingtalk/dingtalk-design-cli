@@ -2,10 +2,10 @@ import archiver from 'archiver';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import { v4 as uuid, } from 'uuid';
+import { v4 as uuid } from 'uuid';
 import AliOSS from 'ali-oss';
 
-import { IGatewayOptions, OpenGateWay, } from './OpenGateWay';
+import { IGatewayOptions, OpenGateWay } from './OpenGateway';
 
 export interface ISdkOptions extends IGatewayOptions {}
 
@@ -27,13 +27,13 @@ export function packTarGz(dir: string, dist: string) {
     output: string;
   }>((resolve, reject) => {
     const output = fs.createWriteStream(dist);
-    const archive = archiver('tar', { gzip: true, });
+    const archive = archiver('tar', { gzip: true });
     let size = 0;
 
     output.on('close', () => {
       console.log(archive.pointer() + ' total bytes');
       size = archive.pointer();
-      resolve({ size, output: dist, });
+      resolve({ size, output: dist });
     });
     output.on('end', () => {
       console.log('Data has been drained');
@@ -54,15 +54,15 @@ export function packTarGz(dir: string, dist: string) {
     });
 
     archive.pipe(output);
-    archive.glob('**', { cwd: dir, });
+    archive.glob('**', { cwd: dir });
     archive.finalize();
   });
 }
 
 const enum OpenApiAction {
   GetUploadToken = '/v1.0/h5package/uploadTokens',
-  CreateH5Package = '/v1.0/h5package',
-  GetCreateStatus = '/v1.0/h5package/createStatus',
+  UploadPackage = '/v1.0/h5package/asyncUpload',
+  GetUploadStatus = '/v1.0/h5package/uploadStatus',
   Publish = 'v1.0/h5package/publish',
 }
 
@@ -81,9 +81,9 @@ export interface ICreatePackageResult {
 }
 
 export const enum CreateStatus {
-  Packing = '1',
-  Success = '2',
-  Failed = '3',
+  Packing = '0',
+  Success = '1',
+  Failed = '2',
   Timeout = '5',
 }
 
@@ -96,65 +96,71 @@ export interface IGetCreateStatusResult {
 
 class MiniAppOpenSDK {
   private sdkConfig?: ISdkOptions;
-  private gateway: OpenGateWay;
+  private gateway!: OpenGateWay;
 
   setConfig(sdkConfig: ISdkOptions) {
     this.sdkConfig = sdkConfig;
     this.gateway = new OpenGateWay(sdkConfig);
   }
 
-  private async pollingCreateStatus(
+  private async pollingCreateStatusWhenFinished(
     taskId: string,
     beginTime: number,
     maxTimeoutLimit: number
   ): Promise<IGetCreateStatusResult> {
     const createStatus = await this.gateway.request<IGetCreateStatusResult>(
       'GET',
-      OpenApiAction.GetCreateStatus,
+      OpenApiAction.GetUploadStatus,
       {
         taskId,
       }
     );
 
     switch (createStatus.status) {
-    case CreateStatus.Packing: {
-      const now = Date.now();
-      const costTime = now - beginTime;
+      case CreateStatus.Packing: {
+        const now = Date.now();
+        const costTime = now - beginTime;
 
-      if (costTime > maxTimeoutLimit) {
-        throw new Error('create timeout');
+        if (costTime > maxTimeoutLimit) {
+          throw new Error('create package timeout');
+        }
+
+        console.log('create task is doing, query task status 10s later');
+        return new Promise<IGetCreateStatusResult>((r, c) => {
+          setTimeout(() => {
+            this.pollingCreateStatusWhenFinished(
+              taskId,
+              beginTime,
+              maxTimeoutLimit
+            ).then(r, c);
+          }, 10 * 1000);
+        });
       }
-
-      return new Promise((r) => {
-        setTimeout(() => {
-          r(this.pollingCreateStatus(taskId, beginTime, maxTimeoutLimit));
-        }, 10 * 1000);
-      });
-    }
-    case CreateStatus.Success: {
-      return createStatus;
-    }
-    case CreateStatus.Failed: {
-      throw new Error('create package failed');
-    }
-    case CreateStatus.Timeout: {
-      throw new Error('create package timeout, please try again');
-    }
+      case CreateStatus.Success: {
+        console.log('create task is finished');
+        console.log(createStatus);
+        return createStatus;
+      }
+      case CreateStatus.Failed: {
+        throw new Error('create package failed');
+      }
+      case CreateStatus.Timeout: {
+        throw new Error('create package timeout, please try again');
+      }
+      default: {
+        throw new Error(`unknown create status: ${createStatus.status}`);
+      }
     }
   }
 
   public async createPackage(options: IUploadOptions) {
-    const startTime = Date.now();
     const maxTimeoutLimit = 1000 * 60 * 5; // 5 minutes
-    const { input, ...others } = options;
+    const { input, ...commonParamenters } = options;
     const { name, ...ossConfig } =
       await this.gateway.request<IGetUploadTokenResult>(
         'GET',
         OpenApiAction.GetUploadToken,
-        {
-          appId: options.appId,
-          agentId: options.agentId,
-        }
+        commonParamenters
       );
     const ossClient = new AliOSS({
       ...ossConfig,
@@ -166,27 +172,32 @@ class MiniAppOpenSDK {
       path.join(os.tmpdir(), `${uuid()}.tar.gz`)
     );
     await ossClient.put(name, packResult.output);
-    const { taskId, } = await this.gateway.request<ICreatePackageResult>(
+    const createResult = await this.gateway.request<ICreatePackageResult>(
       'POST',
-      OpenApiAction.CreateH5Package,
+      OpenApiAction.UploadPackage,
+      {},
       {
-        appId: options.appId,
-        agentId: options.agentId,
-        name,
+        ...commonParamenters,
+        ossObjectKey: name,
       }
     );
 
-    const createResult = await this.pollingCreateStatus(
-      taskId,
-      startTime,
+    const packageInfo = await this.pollingCreateStatusWhenFinished(
+      createResult.taskId,
+      Date.now(),
       maxTimeoutLimit
     );
 
-    return createResult;
+    return packageInfo;
   }
 
   public async publishPackage(options: IPublishOptions) {
-    return this.gateway.request<void>('POST', OpenApiAction.Publish, options);
+    return this.gateway.request<void>(
+      'POST',
+      OpenApiAction.Publish,
+      {},
+      options
+    );
   }
 }
 
