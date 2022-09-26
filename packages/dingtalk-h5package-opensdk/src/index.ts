@@ -1,5 +1,5 @@
 import archiver from 'archiver';
-import fs from 'fs';
+import fs from 'fs-extra';
 import os from 'os';
 import path from 'path';
 import { v4 as uuid } from 'uuid';
@@ -26,6 +26,8 @@ export function packTarGz(dir: string, dist: string) {
     size: number;
     output: string;
   }>((resolve, reject) => {
+    fs.ensureDirSync(path.dirname(dist));
+
     const output = fs.createWriteStream(dist);
     const archive = archiver('tar', { gzip: true });
     let size = 0;
