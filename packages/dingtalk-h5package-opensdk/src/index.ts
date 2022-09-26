@@ -2,10 +2,10 @@ import archiver from 'archiver';
 import fs from 'fs-extra';
 import os from 'os';
 import path from 'path';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid, } from 'uuid';
 import AliOSS from 'ali-oss';
 
-import { IGatewayOptions, OpenGateWay } from './OpenGateway';
+import { IGatewayOptions, OpenGateWay, } from './OpenGateway';
 
 export interface ISdkOptions extends IGatewayOptions {}
 
@@ -29,13 +29,13 @@ export function packTarGz(dir: string, dist: string) {
     fs.ensureDirSync(path.dirname(dist));
 
     const output = fs.createWriteStream(dist);
-    const archive = archiver('tar', { gzip: true });
+    const archive = archiver('tar', { gzip: true, });
     let size = 0;
 
     output.on('close', () => {
       console.log(archive.pointer() + ' total bytes');
       size = archive.pointer();
-      resolve({ size, output: dist });
+      resolve({ size, output: dist, });
     });
     output.on('end', () => {
       console.log('Data has been drained');
@@ -56,7 +56,7 @@ export function packTarGz(dir: string, dist: string) {
     });
 
     archive.pipe(output);
-    archive.glob('**', { cwd: dir });
+    archive.glob('**', { cwd: dir, });
     archive.finalize();
   });
 }
@@ -119,39 +119,39 @@ class MiniAppOpenSDK {
     );
 
     switch (createStatus.status) {
-      case CreateStatus.Packing: {
-        const now = Date.now();
-        const costTime = now - beginTime;
+    case CreateStatus.Packing: {
+      const now = Date.now();
+      const costTime = now - beginTime;
 
-        if (costTime > maxTimeoutLimit) {
-          throw new Error('create package timeout');
-        }
+      if (costTime > maxTimeoutLimit) {
+        throw new Error('create package timeout');
+      }
 
-        console.log('create task is doing, query task status 10s later');
-        return new Promise<IGetCreateStatusResult>((r, c) => {
-          setTimeout(() => {
-            this.pollingCreateStatusWhenFinished(
-              taskId,
-              beginTime,
-              maxTimeoutLimit
-            ).then(r, c);
-          }, 10 * 1000);
-        });
-      }
-      case CreateStatus.Success: {
-        console.log('create task is finished');
-        console.log(createStatus);
-        return createStatus;
-      }
-      case CreateStatus.Failed: {
-        throw new Error('create package failed');
-      }
-      case CreateStatus.Timeout: {
-        throw new Error('create package timeout, please try again');
-      }
-      default: {
-        throw new Error(`unknown create status: ${createStatus.status}`);
-      }
+      console.log('create task is doing, query task status 10s later');
+      return new Promise<IGetCreateStatusResult>((r, c) => {
+        setTimeout(() => {
+          this.pollingCreateStatusWhenFinished(
+            taskId,
+            beginTime,
+            maxTimeoutLimit
+          ).then(r, c);
+        }, 10 * 1000);
+      });
+    }
+    case CreateStatus.Success: {
+      console.log('create task is finished');
+      console.log(createStatus);
+      return createStatus;
+    }
+    case CreateStatus.Failed: {
+      throw new Error('create package failed');
+    }
+    case CreateStatus.Timeout: {
+      throw new Error('create package timeout, please try again');
+    }
+    default: {
+      throw new Error(`unknown create status: ${createStatus.status}`);
+    }
     }
   }
 
