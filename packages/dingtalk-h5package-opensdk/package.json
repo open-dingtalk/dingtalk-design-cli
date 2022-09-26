@@ -30,6 +30,7 @@
     "url": "https://github.com/open-dingtalk/dingtalk-design-cli/issues"
   },
   "devDependencies": {
+    "@tsconfig/node12": "^1.0.11",
     "@types/archiver": "^5.3.1",
     "@types/node": "^18.7.18",
     "@types/uuid": "^8.3.4",

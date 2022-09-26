@@ -43,13 +43,11 @@ export class OpenGateWay {
     query = {},
     data = {}
   ): Promise<R> {
-    const requestUrl = new URL(pathname, this.options.host);
-
     return this.client
       .request<IGatewaySuccessResult<R> | IGatewayErrorResult>({
-        url: requestUrl.href,
-        params: query,
         method,
+        url: pathname,
+        params: query,
         data,
       })
       .then((response) => {
