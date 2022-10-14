@@ -5567,6 +5567,11 @@ commander@^8.1.0:
   resolved "https://registry.npm.alibaba-inc.com/commander/download/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
   integrity sha1-SDfqGy2me5xhamevuw+v7lZ7ymY=
 
+commander@^9.4.1:
+  version "9.4.1"
+  resolved "https://registry.npm.alibaba-inc.com/commander/download/commander-9.4.1.tgz#d1dd8f2ce6faf93147295c0df13c7c21141cfbdd"
+  integrity sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==
+
 commander@~2.11.0:
   version "2.11.0"
   resolved "https://registry.npm.alibaba-inc.com/commander/download/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"

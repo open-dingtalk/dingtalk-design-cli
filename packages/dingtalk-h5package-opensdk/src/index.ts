@@ -96,7 +96,7 @@ export interface IGetCreateStatusResult {
   finished: boolean;
 }
 
-class MiniAppOpenSDK {
+export class MiniAppOpenSDK {
   private sdkConfig?: ISdkOptions;
   private gateway!: OpenGateWay;
 
@@ -119,39 +119,39 @@ class MiniAppOpenSDK {
     );
 
     switch (createStatus.status) {
-    case CreateStatus.Packing: {
-      const now = Date.now();
-      const costTime = now - beginTime;
+      case CreateStatus.Packing: {
+        const now = Date.now();
+        const costTime = now - beginTime;
 
-      if (costTime > maxTimeoutLimit) {
-        throw new Error('create package timeout');
+        if (costTime > maxTimeoutLimit) {
+          throw new Error('create package timeout');
+        }
+
+        console.log('create task is doing, query task status 10s later');
+        return new Promise<IGetCreateStatusResult>((r, c) => {
+          setTimeout(() => {
+            this.pollingCreateStatusWhenFinished(
+              taskId,
+              beginTime,
+              maxTimeoutLimit
+            ).then(r, c);
+          }, 10 * 1000);
+        });
       }
-
-      console.log('create task is doing, query task status 10s later');
-      return new Promise<IGetCreateStatusResult>((r, c) => {
-        setTimeout(() => {
-          this.pollingCreateStatusWhenFinished(
-            taskId,
-            beginTime,
-            maxTimeoutLimit
-          ).then(r, c);
-        }, 10 * 1000);
-      });
-    }
-    case CreateStatus.Success: {
-      console.log('create task is finished');
-      console.log(createStatus);
-      return createStatus;
-    }
-    case CreateStatus.Failed: {
-      throw new Error('create package failed');
-    }
-    case CreateStatus.Timeout: {
-      throw new Error('create package timeout, please try again');
-    }
-    default: {
-      throw new Error(`unknown create status: ${createStatus.status}`);
-    }
+      case CreateStatus.Success: {
+        console.log('create task is finished');
+        console.log(createStatus);
+        return createStatus;
+      }
+      case CreateStatus.Failed: {
+        throw new Error('create package failed');
+      }
+      case CreateStatus.Timeout: {
+        throw new Error('create package timeout, please try again');
+      }
+      default: {
+        throw new Error(`unknown create status: ${createStatus.status}`);
+      }
     }
   }
 
