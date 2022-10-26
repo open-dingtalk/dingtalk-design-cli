@@ -3108,7 +3108,7 @@
 
 "@types/download@^6.2.4":
   version "6.2.4"
-  resolved "https://registry.yarnpkg.com/@types/-/-/download-6.2.4.tgz#d9fb74defe20d75f59a38a9b5b0eb5037d37161a"
+  resolved "https://registry.yarnpkg.com/@types/download/-/download-6.2.4.tgz#d9fb74defe20d75f59a38a9b5b0eb5037d37161a"
   integrity sha512-Lo5dy3ai6LNnbL663sgdzqL1eib11u1yKH6w3v3IXEOO4kRfQpMn1qWUTaumcHLACjFp1RcBx9tUXEvJoR3vcA==
   dependencies:
     "@types/decompress" "*"
@@ -6531,7 +6531,7 @@ download-stats@^0.3.4:
 
 download@^8.0.0:
   version "8.0.0"
-  resolved "https://registry.yarnpkg.com/-/-/download-8.0.0.tgz#afc0b309730811731aae9f5371c9f46be73e51b1"
+  resolved "https://registry.yarnpkg.com/donwload/-/download-8.0.0.tgz#afc0b309730811731aae9f5371c9f46be73e51b1"
   integrity sha512-ASRY5QhDk7FK+XrQtQyvhpDKanLluEEQtWl/J7Lxuf/b+i8RYh997QeXvL85xitrmRKVlx9c7eTrcRdq2GS4eA==
   dependencies:
     archive-type "^4.0.0"
