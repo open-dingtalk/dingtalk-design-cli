@@ -1,6 +1,6 @@
 {
   "name": "dingtalk-h5package-opensdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "H5离线包OpenSDK",
   "author": "vularr <vularr@hotmail.com>",
   "homepage": "https://github.com/open-dingtalk/dingtalk-design-cli#readme",
@@ -27,7 +27,7 @@
     "build": "tsc ",
     "lint": "eslint src",
     "test": "jest -i",
-    "prepublishOnly": "npm run lint && npm run build"
+    "prepublishOnly": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/open-dingtalk/dingtalk-design-cli/issues"
