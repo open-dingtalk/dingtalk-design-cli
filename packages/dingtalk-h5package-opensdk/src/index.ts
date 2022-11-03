@@ -2,17 +2,18 @@ import archiver from 'archiver';
 import fs from 'fs-extra';
 import os from 'os';
 import path from 'path';
-import { v4 as uuid, } from 'uuid';
+import { v4 as uuid } from 'uuid';
 import AliOSS from 'ali-oss';
 
-import { IGatewayOptions, OpenGateWay, } from './OpenGateway';
+import { IGatewayOptions, OpenGateWay } from './OpenGateway';
 
 export interface ISdkOptions extends IGatewayOptions {}
 
 export interface IUploadOptions {
-  appId: string;
-  agentId: string;
+  appId?: string;
+  agentId?: string;
   input: string;
+  homeUrl?: string;
 }
 
 export interface IPublishOptions {
@@ -29,13 +30,13 @@ export function packTarGz(dir: string, dist: string) {
     fs.ensureDirSync(path.dirname(dist));
 
     const output = fs.createWriteStream(dist);
-    const archive = archiver('tar', { gzip: true, });
+    const archive = archiver('tar', { gzip: true });
     let size = 0;
 
     output.on('close', () => {
       console.log(archive.pointer() + ' total bytes');
       size = archive.pointer();
-      resolve({ size, output: dist, });
+      resolve({ size, output: dist });
     });
     output.on('end', () => {
       console.log('Data has been drained');
@@ -56,7 +57,7 @@ export function packTarGz(dir: string, dist: string) {
     });
 
     archive.pipe(output);
-    archive.glob('**', { cwd: dir, });
+    archive.glob('**', { cwd: dir });
     archive.finalize();
   });
 }
