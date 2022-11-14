@@ -1,63 +1,82 @@
-import { program, createCommand } from 'commander';
+#!/usr/bin/env node
+
+import { program } from 'commander';
+import fs from 'fs-extra';
+
 import { MiniAppOpenSDK } from '../index';
+import { PackagePacker, PackerConfig } from '../PackagePacker';
 
 async function run(opts: {
-  token: string;
-  appId?: string;
-  agentId?: string;
-  input: string;
-  homeUrl?: string;
+  accesstoken: string;
+  id: string;
+  config: string;
+  host?: string;
 }) {
-  const sdk = new MiniAppOpenSDK();
+  try {
+    const sdk = new MiniAppOpenSDK();
 
-  sdk.setConfig({ accessToken: opts.token });
+    sdk.setConfig({ accessToken: opts.accesstoken, host: opts.host  });
 
-  const createResult = await sdk.createPackage(opts);
+    const packer = new PackagePacker({
+      filename: `${opts.id}.tar.gz`,
+    });
 
-  await sdk.publishPackage({
-    appId: opts.appId,
-    agentId: opts.agentId,
-    version: createResult.version,
-  });
+    if (!fs.existsSync(opts.config)) {
+      throw new Error(`配置文件不存在: ${opts.config}`);
+    }
+
+    const config: PackerConfig = await fs.readJson(opts.config, {
+      throws: true,
+    });
+
+    if (!config) {
+      throw new Error(`配置文件格式错误: ${opts.config}`);
+    }
+
+    const { assets = {}, externalAssets = [] } = config;
+    const assetKeys = Object.keys(assets);
+
+    for (const assetKey of assetKeys) {
+      await packer.appendFile(assetKey, assets[assetKey]);
+    }
+
+    for (const externalAsset of externalAssets) {
+      await packer.appendUrl(externalAsset);
+    }
+
+    const file = await packer.finalize();
+
+    const createResult = await sdk.createPackage({
+      miniAppId: opts.id,
+      file,
+    });
+
+    await sdk.publishPackage({
+      miniAppId: opts.id,
+      version: createResult.version,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
-
-const inner = createCommand('inner');
-const provider = createCommand('provider');
-
-inner
-  .summary('上传企业自建应用离线包资源')
-  .requiredOption('-t, --accesstoken <accessToken>', '开发者后台apiToken')
-  .requiredOption('-a, --id <agentId>', '企业自建应用的agentId')
-  .requiredOption('-u, --url <url>', '离线包对应应用的入口地址')
-  .option('-d, --dir <dir>', '要打包上传的离线包资源目录', './')
-  .action(async (options) => {
-    return run({
-      token: options.accesstoken,
-      agentId: options.id,
-      input: options.dir,
-      homeUrl: options.url,
-    });
-  });
-
-provider
-  .summary('上传第三方企业应用离线包资源')
-  .requiredOption('-t, --accesstoken <accessToken>', '开发者后台apiToken')
-  .requiredOption('-a, --id <agentId>', '企业自建应用的agentId')
-  .requiredOption('-u, --url <url>', '离线包对应应用的入口地址')
-  .option('-d, --dir <dir>', '要打包上传的离线包资源目录', './')
-  .action(async (options) => {
-    return run({
-      token: options.accesstoken,
-      appId: options.id,
-      input: options.dir,
-      homeUrl: options.url,
-    });
-  });
-
+ 
 program
+  .summary('上传应用离线包资源')
   .name('h5package')
-  .version('0.0.1', '-v, --version', 'output the current version')
-  .addCommand(inner)
-  .addCommand(provider);
+  .version('2.0.0', '-v, --version', 'output the current version')
+  .requiredOption('-t, --accesstoken <accessToken>', '开发者后台apiToken')
+  .requiredOption('-i, --id <miniAppId>', '离线包ID')
+  .option('-h, --host <host>', '网关域名')
+  .option('-c, --config <config>', '打包配置', './localresource.json')
+  .action(
+    async (options: {
+      accesstoken: string;
+      id: string;
+      config: string;
+      host?: string;
+    }) => {
+      return run(options);
+    }
+  );
 
 program.parseAsync();
