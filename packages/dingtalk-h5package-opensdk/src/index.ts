@@ -16,7 +16,7 @@ export interface IPublishOptions {
 
 const enum OpenApiAction {
   GetUploadToken = '/v1.0/package/uploadTokens',
-  UploadPackage = '/v1.0/package/h5/upload',
+  UploadPackage = '/v1.0/package/h5/asyncUpload',
   GetUploadStatus = '/v1.0/package/h5/uploadStatus',
   Publish = 'v1.0/package/h5/publish',
 }
@@ -84,7 +84,7 @@ export class MiniAppOpenSDK {
       }
 
       // eslint-disable-next-line no-console
-      console.log('create task is doing, query task status 10s later');
+      console.log('uploading, query task status 10s later');
       return new Promise<IGetCreateStatusResult>((r, c) => {
         setTimeout(() => {
           this.pollingCreateStatusWhenFinished({ ...opts, }).then(r, c);

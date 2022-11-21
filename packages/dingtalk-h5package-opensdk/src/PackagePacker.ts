@@ -2,8 +2,12 @@ import archiver from 'archiver';
 import fs from 'fs-extra';
 import path from 'path';
 import download from 'download';
+import glob from 'glob';
 
 export interface PackerConfig {
+  host?: string;
+  miniAppId: string;
+  accessToken: string;
   assets: Record<string, string>;
   externalAssets?: string[];
   globMappingRules?: Record<string, string>;
@@ -61,18 +65,12 @@ export class PackagePacker {
   constructor(readonly options: {
     filename: string;
   }) {
-    this.file = path.join(__dirname, options.filename);
+    this.file = path.join(process.cwd(), options.filename);
     this.output = fs.createWriteStream(this.file);
     this.arch = archiver('tar', { gzip: true });
     this.prom = new Promise((r, c) => {
       this.arch.on('error', c);
       this.output.on('close', r);
-    });
-    this.arch.on('entry', (entry) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      if ((entry as any).type === 'file' && entry.name !== this.resourceConfigFileName) {
-        this.includeUrlSet.add(pathToUrl(entry.name));
-      }
     });
     this.arch.pipe(this.output);
   }
@@ -80,14 +78,27 @@ export class PackagePacker {
   async appendFile(url: string, fileOrDirectory: string) {
     const p = path.resolve(fileOrDirectory);
     const stat = await fs.stat(p);
-    const filePath = urlToPath(url);
 
-    if (stat.isDirectory()) {
-      this.arch.directory(p, filePath);
+    if (stat.isDirectory()) {    
+      await this.appendDirectory(url, p);
     } else if (stat.isFile()) {
-      this.arch.file(p, { name: filePath });
+      this.arch.file(p, { name: urlToPath(url), });
     } else {
       throw new Error(`无效的文件或目录: ${p}`);
+    }
+  }
+
+  async appendDirectory(url: string, directory: string) {
+    const prefixURL = new URL(url);
+    const prefixPathname = prefixURL.pathname;
+    const files = glob.sync('**/*', { cwd: directory, nodir: true, });
+
+    for (const file of files) {
+      const fullPathname = path.join(prefixPathname, file);
+      const fullUrl = new URL(fullPathname, prefixURL.origin).toString();
+
+      this.arch.file(path.join(directory, file), { name: urlToPath(fullUrl), });
+      this.includeUrlSet.add(fullUrl);
     }
   }
 
@@ -106,6 +117,7 @@ export class PackagePacker {
       includeUrls: Array.from(this.includeUrlSet),
       globMappingRules: [],
     }), { name: this.resourceConfigFileName, });
+
     await this.arch.finalize();
     return Promise.resolve(this.prom)
       .then(() => this.file);
