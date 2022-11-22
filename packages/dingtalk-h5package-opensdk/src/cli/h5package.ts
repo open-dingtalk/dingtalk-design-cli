@@ -62,7 +62,7 @@ async function run(opts: {
     }
 
     const file = await pack({
-      filename: `${opts.id}.tar.gz`,
+      filename: `${miniAppId}.tar.gz`,
       config,
     });
 
@@ -75,6 +75,8 @@ async function run(opts: {
       miniAppId,
       version: createResult.version,
     });
+
+    await fs.remove(file);
   } catch (error) {
     console.error(error);
   }

@@ -103,7 +103,7 @@ export class PackagePacker {
 
     if (fullFilePath.length > MAX_PATH_LENGTH) {
       console.warn(
-        `以下文件被忽略，原因：文件路径过长(>${MAX_PATH_LENGTH}): ${path.relative(
+        `以下文件被忽略(文件路径长度>${MAX_PATH_LENGTH}): ${path.relative(
           process.cwd(),
           filename,
         )}`
