@@ -91,12 +91,10 @@ program
   .option('--config <config>', '打包配置', './localresource.json')
   .action(async function (opts) {
     const config = await readResourceConfig(opts);
-    const file = await pack({
+    await pack({
       filename: `${config.miniAppId}.tar.gz`,
       config,
     });
-
-    console.log('打包完成: %s', file);
   });
 
 program

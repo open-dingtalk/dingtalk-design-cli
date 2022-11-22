@@ -4,6 +4,9 @@ import path from 'path';
 import download from 'download';
 import glob from 'glob';
 
+// 文件路径最大长度是100，扣除"web_assets/"目录，实际最大长度是89;
+export const MAX_PATH_LENGTH = 88;
+
 export interface PackerConfig {
   host?: string;
   miniAppId: string;
@@ -69,8 +72,15 @@ export class PackagePacker {
     this.output = fs.createWriteStream(this.file);
     this.arch = archiver('tar', { gzip: true });
     this.prom = new Promise((r, c) => {
-      this.arch.on('error', c);
-      this.output.on('close', r);
+      this.arch.on('error', err =>{
+        console.error('打包失败', err);
+        c(err);
+      });
+      this.output.on('close', () =>{
+        // eslint-disable-next-line no-console
+        console.log('打包完成', this.file);
+        r();
+      });
     });
     this.arch.pipe(this.output);
   }
@@ -82,23 +92,41 @@ export class PackagePacker {
     if (stat.isDirectory()) {    
       await this.appendDirectory(url, p);
     } else if (stat.isFile()) {
-      this.arch.file(p, { name: urlToPath(url), });
+      this._file(url, p);
     } else {
       throw new Error(`无效的文件或目录: ${p}`);
     }
   }
 
+  private _file(url: string, filename: string) {
+    const fullFilePath = urlToPath(url);
+
+    if (fullFilePath.length > MAX_PATH_LENGTH) {
+      console.warn(
+        `以下文件被忽略，原因：文件路径过长(>${MAX_PATH_LENGTH}): ${path.relative(
+          process.cwd(),
+          filename,
+        )}`
+      );
+      return;
+    }
+
+    this.arch.file(filename, { name: fullFilePath, });
+    this.includeUrlSet.add(url);
+  }
+
   async appendDirectory(url: string, directory: string) {
     const prefixURL = new URL(url);
-    const prefixPathname = prefixURL.pathname;
     const files = glob.sync('**/*', { cwd: directory, nodir: true, });
 
     for (const file of files) {
-      const fullPathname = path.join(prefixPathname, file);
-      const fullUrl = new URL(fullPathname, prefixURL.origin).toString();
+      const filename = path.join(directory, file);
+      const fullUrl = new URL(
+        path.join(prefixURL.pathname, file),
+        prefixURL.origin
+      ).toString();
 
-      this.arch.file(path.join(directory, file), { name: urlToPath(fullUrl), });
-      this.includeUrlSet.add(fullUrl);
+      this._file(fullUrl, filename);
     }
   }
 
