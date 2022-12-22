@@ -31,11 +31,11 @@ const commandsConfig: {
   [ECommandName.init]: {
     command: {
       name: ECommandName.init,
-      description: '创建一个钉钉应用，可以是小程序、h5、工作台组件',
+      description: '创建一个钉钉应用，可以是小程序、h5、工作台组件、文档酷应用',
     },
     options: {
       appType: {
-        description: '[可选] 指定应用类型，值可以为miniprogram | h5 | plugin',
+        description: '[可选] 指定应用类型，值可以为miniprogram | h5 | plugin | docsaddon',
         type: 'string',
         shortcut: 'a',
       },

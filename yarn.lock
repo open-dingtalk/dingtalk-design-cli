@@ -2701,6 +2701,11 @@
     fs-extra "^8.1.0"
     p-map "^2.1.0"
 
+"wait-until@^0.0.2":
+  integrity "sha512-iGfLac2IUOr2b70vGFznSthzPJ7YVoOLi25LDiSq5rloNNwzCzYYxSqox1/XK9FIoD8VNCAsEKtc/iPQRj9O2w=="
+  resolved "https://registry.npmjs.org/wait-until/-/wait-until-0.0.2.tgz"
+  version "0.0.2"
+
 "@lerna/symlink-dependencies@3.17.0":
   version "3.17.0"
   resolved "https://registry.npmjs.org/@lerna/symlink-dependencies/-/symlink-dependencies-3.17.0.tgz#48d6360e985865a0e56cd8b51b308a526308784a"

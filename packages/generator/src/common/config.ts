@@ -65,4 +65,9 @@ export const HUBS_CONFIG: HUB[] = [
     name: 'H5微应用',
     repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
+  {
+    key: APP_TYPE_ENUM.DOCSADDON,
+    name: '文档酷应用',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
+  }
 ];

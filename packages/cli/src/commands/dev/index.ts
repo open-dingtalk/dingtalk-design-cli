@@ -27,6 +27,7 @@ import getSimulatorFrameworkStoreDir from '../../lib/util/getSimulatorFrameworkS
 import openWebSImulator from '../../actions/openWebSImulator';
 import openMiniAppWebSimulator from '../../actions/openMiniAppSimulator';
 import updateConfig from '../../actions/updateConfig';
+import openDocsaddonSimulator from '../../actions/openDocsaddonSimulator';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -68,6 +69,7 @@ export default CommandWrapper<ICommandOptions>({
         const isPlugin = type === EAppType.PLUGIN;
         const isPcPlugin = type === EAppType.PLUGIN && dtdConfig.isPcPlugin;
         const isTs = typescript;
+        const isDocsaddon = type === EAppType.DOCSADDON;
 
         ctx.watcher.init();
         ctx.watcher.watch([dtdConfigPath], () => {
@@ -317,6 +319,17 @@ export default CommandWrapper<ICommandOptions>({
               if (webSimulator && webSimulator.webSimulatorUrl) {
                 open(webSimulator.webSimulatorUrl);
               }
+            },
+          });
+        } else if (isDocsaddon) {
+          GlobalStdinCommand.subscribe({
+            command: EStdioCommands.DOCUMENT,
+            description: '在当前命令行中敲入 「document <钉钉文档地址> <本地服务器端口号(可选，默认3000)> + 回车」 可以在钉钉文档中调试文档酷应用',
+            action: async (args) => {
+              const documentUrl = args[0];
+              const port = args[1];
+              const { url } = await openDocsaddonSimulator({ documentUrl, port });
+              url && open(url);
             },
           });
         }

@@ -31,32 +31,34 @@ var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, gene
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = this && this.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const child_process_1 = require("child_process");
 const fs = __importStar(require("fs"));
-exports.default = filePath => __awaiter(void 0, void 0, void 0, function* () {
-    if (!filePath)
-    return;
-    if (!fs.existsSync(filePath)) {
-        console.warn(`ENOENT ${filePath} is not exist`);
-        return;
-    }
-    const statInfo = fs.statSync(filePath);
-    const isDirectory = statInfo.isDirectory();
-    if (isDirectory) {
-        console.warn(`Clean a directory: ${filePath}`);
-    }
-    try {
-        (0, child_process_1.execSync)(`ls ${filePath}`);
-    }
-    catch (e) {
-        console.warn(`ll exec failed. filePath: ${filePath}`);
-    }
-    try {
-        (0, child_process_1.execSync)(`rm -r ${filePath}`);
-        console.log(`Clean success. filePath: ${filePath}`);
-    }
-    catch (e) {
-        console.warn(`Clean failed. filePath: ${filePath}. ${e}`);
-    }
-});
+const path = __importStar(require("path"));
+const uuid_1 = require("uuid");
+const chalk_1 = __importDefault(require("chalk"));
+function createManifest(output, logger) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise(resolve => {
+            const jsonPath = path.resolve(output, 'devManifest.json');
+            fs.readFile(jsonPath, 'utf8', (err, jsonString) => {
+                if (err) {
+                    logger(chalk_1.default.red.bold(`Cannot find devManifest.json in ${jsonPath}`));
+                    process.exit(1);
+                }
+                const jsonData = JSON.parse(jsonString);
+                jsonData.dev.id = 'dingdocs-' + (0, uuid_1.v4)().substring(0, 18);
+                fs.writeFile(jsonPath, JSON.stringify(jsonData, null, 2), err => {
+                    if (err) {
+                        logger(chalk_1.default.red.bold(`Cannot find devManifest.json in ${jsonPath}`));
+                        process.exit(1);
+                    }
+                    resolve(true);
+                });
+            });
+        });
+    });
+}
+exports.default = createManifest;
