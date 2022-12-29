@@ -33,7 +33,8 @@ export interface IPcPluginDevOpts {
 export enum EAppType {
   PLUGIN = 'plugin',
   MP = 'mp',
-  H5 = 'h5'
+  H5 = 'h5',
+  DOCSADDON = 'docsaddon'
 }
 
 // 项目rc配置
@@ -243,6 +244,9 @@ export enum EStdioCommands {
   PC = 'pc', // 在pc端钉钉预览工作台组件
   CREATE_PLUGIN_COMPONENT = 'createPluginComponent', // 创建插件组件
   PROXY = 'proxy', // 生成bundle+本地服务3001端口
+
+  /** 文档酷应用独有 */
+  DOCUMENT = 'document', // 文档酷应用web调试
 }
 export interface IProxyParams{
   miniAppId: string;

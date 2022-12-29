@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function () {return m[k];} });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function () {return m[k];} };
+    }
+    Object.defineProperty(o, k2, desc);
 } : function (o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -41,6 +45,7 @@ const config_1 = require("../common/config");
 const isValidRepoDirectory_1 = __importDefault(require("../utils/isValidRepoDirectory"));
 const fs_extra_1 = __importStar(require("fs-extra"));
 const getJson_1 = __importDefault(require("../utils/getJson"));
+const createManifest_1 = __importDefault(require("../utils/createManifest"));
 const git = (0, simple_git_1.default)();
 module.exports = class CustomGenerator extends yeoman_generator_1.default {
     constructor(args, opts) {
@@ -285,6 +290,10 @@ module.exports = class CustomGenerator extends yeoman_generator_1.default {
                 yarn: false,
                 bower: false });
 
+        }
+        if (this.answers.appType === 'docsaddon') {
+            const targetDir = path.join(this.contextRoot, this.outDir);
+            (0, createManifest_1.default)(targetDir, this.log.bind(this));
         }
     }
     // say good bye

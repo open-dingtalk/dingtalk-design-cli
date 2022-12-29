@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function () {return m[k];} });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function () {return m[k];} };
+    }
+    Object.defineProperty(o, k2, desc);
 } : function (o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -45,4 +49,9 @@ exports.HUBS_CONFIG = [
 {
     key: constants_1.APP_TYPE_ENUM.H5,
     name: 'H5微应用',
+    repoRemotePath: DEFAULT_REPO_REMOTE_PATH },
+
+{
+    key: constants_1.APP_TYPE_ENUM.DOCSADDON,
+    name: '文档酷应用',
     repoRemotePath: DEFAULT_REPO_REMOTE_PATH }];

@@ -14,6 +14,7 @@ import { HUBS_CONFIG, REPO_LOCAL_ROOT_PATH, DEFAULT_DIRECTORY_SEPERATOR,  } from
 import isValidDirectory from '../utils/isValidRepoDirectory';
 import fs, { mkdirp, } from 'fs-extra';
 import getJson from '../utils/getJson';
+import createManifest from '../utils/createManifest';
 
 const git = simpleGit();
 
@@ -295,6 +296,11 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
         yarn: false,
         bower: false,
       });
+    }
+
+    if (this.answers.appType === 'docsaddon') {
+      const targetDir = path.join(this.contextRoot, this.outDir);
+      createManifest(targetDir, this.log.bind(this));
     }
   }
   // say good bye
