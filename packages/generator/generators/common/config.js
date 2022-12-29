@@ -33,7 +33,7 @@ exports.RC_PATH = path.join(os.homedir(), '.dd-cli-rc.json');
 exports.REPO_LOCAL_ROOT_PATH = path.join(os.homedir(), '.dd-demo-repo');
 // 代码仓库目录名分隔符，合格的目录名格式: ${appType}${seperator}${desc}
 exports.DEFAULT_DIRECTORY_SEPERATOR = '_';
-const DEFAULT_REPO_REMOTE_PATH = process.env.REPO_REMOTE_PATH || 'https://gitee.com/baytest/dd-application-template.git';
+const DEFAULT_REPO_REMOTE_PATH = process.env.REPO_REMOTE_PATH || 'https://gitee.com/open-dingtalk/dd-application-template.git';
 // 套件配置
 exports.HUBS_CONFIG = [
 {
