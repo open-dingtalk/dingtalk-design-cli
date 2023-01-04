@@ -1,6 +1,6 @@
 {
   "name": "dingtalk-miniapp-opensdk",
-  "version": "1.0.8",
+  "version": "1.0.9-0",
   "description": "dingtalk miniprogram open sdk",
   "main": "./dist/index.js",
   "scripts": {
