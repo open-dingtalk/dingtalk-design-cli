@@ -1,6 +1,6 @@
 {
   "name": "generator-dd-application",
-  "version": "1.0.8",
+  "version": "1.0.8-beta.0",
   "description": "This is a generator for DingTalk application.",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json && babel generators -d generators",
@@ -27,8 +27,8 @@
     "semver": "^7.3.2",
     "simple-git": "^2.21.0",
     "strip-ansi": "^6.0.0",
-    "yeoman-generator": "^4.12.0",
-    "uuid": "^3.4.0"
+    "uuid": "^3.4.0",
+    "yeoman-generator": "^4.12.0"
   },
   "devDependencies": {
     "@types/copyfiles": "^2.4.0",
