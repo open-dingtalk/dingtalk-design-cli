@@ -7,6 +7,12 @@ import getMonitor from '../lib/cli-shared-utils/lib/monitor/framework-monitor';
 import config from '../lib/common/config';
 import { ICommandOptions, } from '../commands/preview';
 import { get, } from 'lodash';
+import chalk from 'chalk';
+import * as qrcode from 'qr-image';
+import * as consolePng from 'console-png';
+import open from 'open';
+
+consolePng.attachTo(console);
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -62,7 +68,7 @@ export default async (
   }
 
   try {
-    await opensdk.previewBuild({
+    const result = await opensdk.previewBuild({
       ...previewPlainParams,
       onProgressUpdate(info) {
         logger.debug('拉取构建结果', info);
@@ -79,6 +85,20 @@ export default async (
         }
       },
     });
+
+    const buffer = qrcode.imageSync(result.result_url, {
+      size: 1,
+      margin: 0,
+    });
+    console['png'](buffer);
+    console.log(chalk.green('scheme:'), result.result_url);
+
+    // debug模式下才输出devtools链接和打开devtools页面
+    if (result.debugUrl) {
+      console.log(chalk.green('devtools:'), result.debugUrl);
+      open(result.debugUrl);
+    }
+
   } catch(e) {
     failSpinner('生成构建任务出错');
     logger.error(e.message);

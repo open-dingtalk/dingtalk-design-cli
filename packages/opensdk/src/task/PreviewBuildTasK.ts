@@ -7,12 +7,6 @@ import { BuildStatusEnum, BuildStatusText, } from '../types';
 import { friendlyPackageSize, } from '../utils';
 import { ITaskOptionBase, TaskBase, } from './TaskBase';
 import superagent from 'superagent';
-import chalk from 'chalk';
-import * as qrcode from 'qr-image';
-import * as consolePng from 'console-png';
-import open from 'open';
-
-consolePng.attachTo(console);
 
 // 6.2.3
 const buildScriptVersion = '6.2.3'; // eslint-disable-line
@@ -156,7 +150,12 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
     const task = await this.openApi.createPreviewBuildTask(previewParams);
     const devUrl = await getWebDevToolsPage(debugParams);
 
-    return new Promise<string>((resolve, reject) => {
+    return new Promise<{
+      previewUrl: string;
+      debugUrl?: string;
+      tyroId?: string;
+      channelId?: string;
+    }>((resolve, reject) => {
       const start = Date.now();
       const timeout = 2 * 60 * 1000;
       const timer = setInterval(() => {
@@ -174,20 +173,13 @@ export class PreviewBuildTask extends TaskBase<IPreviewBuildOptions> {
 
           if (result.finished) {
             clearInterval(timer);
-            const buffer = qrcode.imageSync(result.result_url, {
-              size: 1,
-              margin: 0,
-            });
-            console['png'](buffer);
-            console.log(chalk.green('scheme:'), result.result_url);
-
-            // debug模式下才输出devtools链接和打开devtools页面
-            if (previewParams.is_remote_x) {
-              console.log(chalk.green('devtools:'), devUrl);
-              open(devUrl);
-            }
             
-            resolve(result.result_url || '');
+            resolve({
+              previewUrl: result.result_url || '',
+              debugUrl: devUrl,
+              channelId: debugParams.channelId,
+              tyroId: debugParams.tyroId,
+            });
             // tracker.retCode(EBuildTarget.Preview, true, Date.now() - startTime, options.miniAppId);
           } else {
             if (duration > timeout) {
