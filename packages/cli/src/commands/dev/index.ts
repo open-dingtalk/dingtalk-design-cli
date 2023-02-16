@@ -27,7 +27,7 @@ import getSimulatorFrameworkStoreDir from '../../lib/util/getSimulatorFrameworkS
 import openWebSImulator from '../../actions/openWebSImulator';
 import openMiniAppWebSimulator from '../../actions/openMiniAppSimulator';
 import updateConfig from '../../actions/updateConfig';
-import openDocsaddonSimulator from '../../actions/openDocsaddonSimulator';
+import openDocsCoolAppSimulator from '../../actions/openDocsCoolAppSimulator';
 
 const monitor = getMonitor(config.yuyanId);
 
@@ -328,7 +328,7 @@ export default CommandWrapper<ICommandOptions>({
             action: async (args) => {
               const documentUrl = args[0];
               const port = args[1];
-              const { url } = await openDocsaddonSimulator({ documentUrl, port });
+              const { url } = await openDocsCoolAppSimulator({ documentUrl, port });
               url && open(url);
             },
           });
