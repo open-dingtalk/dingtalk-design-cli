@@ -34,7 +34,7 @@ export enum EAppType {
   PLUGIN = 'plugin',
   MP = 'mp',
   H5 = 'h5',
-  DOCSADDON = 'docsaddon'
+  DOCSCOOLAPP = 'docscoolapp'
 }
 
 // 项目rc配置

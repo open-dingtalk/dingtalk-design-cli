@@ -69,7 +69,7 @@ export default CommandWrapper<ICommandOptions>({
         const isPlugin = type === EAppType.PLUGIN;
         const isPcPlugin = type === EAppType.PLUGIN && dtdConfig.isPcPlugin;
         const isTs = typescript;
-        const isDocsaddon = type === EAppType.DOCSADDON;
+        const isDocsCoolApp = type === EAppType.DOCSCOOLAPP;
 
         ctx.watcher.init();
         ctx.watcher.watch([dtdConfigPath], () => {
@@ -321,7 +321,7 @@ export default CommandWrapper<ICommandOptions>({
               }
             },
           });
-        } else if (isDocsaddon) {
+        } else if (isDocsCoolApp) {
           GlobalStdinCommand.subscribe({
             command: EStdioCommands.DOCUMENT,
             description: '在当前命令行中敲入 「document <钉钉文档地址> <本地服务器端口号(可选，默认3000)> + 回车」 可以在钉钉文档中调试文档酷应用',

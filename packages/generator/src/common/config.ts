@@ -66,7 +66,7 @@ export const HUBS_CONFIG: HUB[] = [
     repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   },
   {
-    key: APP_TYPE_ENUM.DOCSADDON,
+    key: APP_TYPE_ENUM.DOCSCOOLAPP,
     name: '文档酷应用',
     repoRemotePath: DEFAULT_REPO_REMOTE_PATH,
   }
