@@ -298,7 +298,7 @@ module.exports = class CustomGenerator extends Generator<IOptions> {
       });
     }
 
-    if (this.answers.appType === 'docsaddon') {
+    if (this.answers.appType === 'docscoolapp') {
       const targetDir = path.join(this.contextRoot, this.outDir);
       createManifest(targetDir, this.log.bind(this));
     }

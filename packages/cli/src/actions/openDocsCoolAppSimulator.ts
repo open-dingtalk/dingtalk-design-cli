@@ -15,8 +15,8 @@ interface IResponse {
   url: string;
 }
 
-export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
-  logger.debug('docs addon debug start');
+export default (opts: IOpts): Promise<IResponse | null | undefined> => {
+  logger.debug('docs cool app debug start');
 
   const { documentUrl, port } = opts;
 
@@ -60,6 +60,7 @@ export default async (opts: IOpts): Promise<IResponse | null | undefined> => {
         if (documentUrlCheck(documentUrl)) {
           logger.info(`正在打开 ${documentUrl}`);
           const initUrl = initDocumentUrl('devManifest.json', manifest.dev!.id, documentUrl, port);
+          logger.info(`如果没有自动打开文档，请手动在浏览器中打开链接： ${initUrl}`);
           resolve({ url: initUrl });
         }
       }
@@ -143,6 +144,6 @@ const documentUrlCheck = (documentUrl: string) => {
 }
 
 const initDocumentUrl = (manifestFile: string, id: string, document: string, port?: string): string => {
-  const queryParams = `&devaddon=${port ?? '3000'}|${manifestFile}|${id}`;
+  const queryParams = `&devcoolapp=${port ?? '3000'}|${manifestFile}|${id}`;
   return `${document}${document.includes('?') ? '' : '?'}${queryParams}`;
 }

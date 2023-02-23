@@ -1,26 +1,26 @@
 "use strict";
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-        desc = { enumerable: true, get: function () {return m[k];} };
-    }
-    Object.defineProperty(o, k2, desc);
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = { enumerable: true, get: function () {return m[k];} };
+  }
+  Object.defineProperty(o, k2, desc);
 } : function (o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
 });
 var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
+  Object.defineProperty(o, "default", { enumerable: true, value: v });
 } : function (o, v) {
-    o["default"] = v;
+  o["default"] = v;
 });
 var __importStar = this && this.__importStar || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  __setModuleDefault(result, mod);
+  return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HUBS_CONFIG = exports.DEFAULT_DIRECTORY_SEPERATOR = exports.REPO_LOCAL_ROOT_PATH = exports.RC_PATH = void 0;
@@ -37,21 +37,22 @@ const DEFAULT_REPO_REMOTE_PATH = process.env.REPO_REMOTE_PATH || 'https://gitee.
 // 套件配置
 exports.HUBS_CONFIG = [
 {
-    key: constants_1.APP_TYPE_ENUM.PLUGIN,
-    name: '插件',
-    repoRemotePath: DEFAULT_REPO_REMOTE_PATH },
-
+  key: constants_1.APP_TYPE_ENUM.PLUGIN,
+  name: '插件',
+  repoRemotePath: DEFAULT_REPO_REMOTE_PATH
+},
 {
-    key: constants_1.APP_TYPE_ENUM.MP,
-    name: '小程序',
-    repoRemotePath: DEFAULT_REPO_REMOTE_PATH },
-
+  key: constants_1.APP_TYPE_ENUM.MP,
+  name: '小程序',
+  repoRemotePath: DEFAULT_REPO_REMOTE_PATH
+},
 {
-    key: constants_1.APP_TYPE_ENUM.H5,
-    name: 'H5微应用',
-    repoRemotePath: DEFAULT_REPO_REMOTE_PATH },
-
+  key: constants_1.APP_TYPE_ENUM.H5,
+  name: 'H5微应用',
+  repoRemotePath: DEFAULT_REPO_REMOTE_PATH
+},
 {
-    key: constants_1.APP_TYPE_ENUM.DOCSADDON,
-    name: '文档酷应用',
-    repoRemotePath: DEFAULT_REPO_REMOTE_PATH }];
+  key: constants_1.APP_TYPE_ENUM.DOCSCOOLAPP,
+  name: '文档酷应用',
+  repoRemotePath: DEFAULT_REPO_REMOTE_PATH
+}];

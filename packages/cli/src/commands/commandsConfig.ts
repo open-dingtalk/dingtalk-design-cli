@@ -35,7 +35,7 @@ const commandsConfig: {
     },
     options: {
       appType: {
-        description: '[可选] 指定应用类型，值可以为miniprogram | h5 | plugin | docsaddon',
+        description: '[可选] 指定应用类型，值可以为miniprogram | h5 | plugin | docscoolapp',
         type: 'string',
         shortcut: 'a',
       },
