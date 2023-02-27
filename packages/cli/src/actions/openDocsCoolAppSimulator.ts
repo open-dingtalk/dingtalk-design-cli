@@ -144,6 +144,6 @@ const documentUrlCheck = (documentUrl: string) => {
 }
 
 const initDocumentUrl = (manifestFile: string, id: string, document: string, port?: string): string => {
-  const queryParams = `&devcoolapp=${port ?? '3000'}|${manifestFile}|${id}`;
+  const queryParams = `&devcoolapp=${port ?? '3000'}%7C${manifestFile}%7C${id}`;
   return `${document}${document.includes('?') ? '' : '?'}${queryParams}`;
 }
