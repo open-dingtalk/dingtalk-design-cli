@@ -18,7 +18,7 @@ export default function({ miniAppId, cwd, }: IProxyParams): void {
       webPort: 8002,
     },
     throttle: 10000,
-    forceProxyHttps: true,
+    forceProxyHttps: false,
     wsIntercept: false, // 不开启websocket代理
     silent: true,
     dangerouslyIgnoreUnauthorized: true,
