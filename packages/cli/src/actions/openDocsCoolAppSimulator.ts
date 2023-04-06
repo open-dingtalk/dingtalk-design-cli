@@ -57,9 +57,10 @@ export default (opts: IOpts): Promise<IResponse | null | undefined> => {
     .done(() => {
       // open document
       if (documentUrl) {
-        if (documentUrlCheck(documentUrl)) {
+        const url = documentUrlCheck(documentUrl);
+        if (url) {
           logger.info(`正在打开 ${documentUrl}`);
-          const initUrl = initDocumentUrl('devManifest.json', manifest.dev!.id, documentUrl, port);
+          const initUrl = initDocumentUrl('devManifest.json', manifest.dev!.id, url, port);
           logger.info(`如果没有自动打开文档，请手动在浏览器中打开链接： ${initUrl}`);
           resolve({ url: initUrl });
         }
@@ -130,20 +131,22 @@ const isPortOccupy = (port: string, callback: (condition: boolean) => void): voi
 }
 
 const documentUrlCheck = (documentUrl: string) => {
+  let url: URL | undefined;
   try {
-    const url = new URL(documentUrl);
+    url = new URL(documentUrl);
   } catch (e) {
     logger.error('文档地址不合法');
-    return false;
+    return;
   }
   if (documentUrl.includes('alidocs.dingtalk.com/spreadsheetv2/')) {
     logger.error(`当前文档地址不支持调试文档酷用，请访问 https://alidocs.dingtalk.com/i/ 并复制对应文档地址。`);
-    return false;
+    return;
   }
-  return true;
+  return url;
 }
 
-const initDocumentUrl = (manifestFile: string, id: string, document: string, port?: string): string => {
-  const queryParams = `&devcoolapp=${port ?? '3000'}%7C${manifestFile}%7C${id}`;
-  return `${document}${document.includes('?') ? '' : '?'}${queryParams}`;
+const initDocumentUrl = (manifestFile: string, id: string, url: URL, port?: string): string => {
+  const addonInfo = `${port ?? '3000'}%7C${manifestFile}%7C${id}`;
+  url.searchParams.set('devcoolapp', addonInfo);
+  return url.href;
 }
