@@ -146,7 +146,7 @@ const documentUrlCheck = (documentUrl: string) => {
 }
 
 const initDocumentUrl = (manifestFile: string, id: string, url: URL, port?: string): string => {
-  const addonInfo = `${port ?? '3000'}%7C${manifestFile}%7C${id}`;
+  const addonInfo = `${port ?? '3000'}\|${manifestFile}\|${id}`;
   url.searchParams.set('devcoolapp', addonInfo);
-  return url.href;
+  return url.href.replace('|', '%7C');
 }
