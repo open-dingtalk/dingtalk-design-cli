@@ -11,7 +11,7 @@ export default function ({ miniAppId, cwd, }: IProxyParams): RuleModule {
   return {
     summary: 'a rule to modify response',
     // eslint-disable-next-line require-yield
-    *beforeDealHttpsRequest(requestDetail) {
+    *beforeDealHttpsRequest(requestDetail): any {
       const host = requestDetail.host;
       const whiteList = [
         'aflow.dingtalk.com',
