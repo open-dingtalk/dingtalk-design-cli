@@ -21,7 +21,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
     cwd,
     miniProgramConfigContent,
   } = commandContext;
-        
+
   const miniAppId = get(options, 'miniAppId') || dtdConfig.miniAppId;
   const token = get(options, 'token') || dtdConfig.token;
   const host = get(options, 'host');
@@ -85,7 +85,7 @@ export default async (commandContext: ICommandContext, options?: ICommandOptions
 
   let hasDone = false;
   const uploadCommonParams = {
-    project: cwd,
+    project: path.join(cwd, dtdConfig.outDir || ''),
     miniAppId,
     packageVersion: '',
   };
